@@ -1,52 +1,58 @@
-# Radiant
+# Sendit
 
-Radiant is a [Tailwind Plus](https://tailwindcss.com/plus) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org), with a blog powered by [Sanity](https://www.sanity.io).
+Sendit is a polished, marketing website template for NextJS. Browse through a [live demo](https://mysterious-oryx.cloudvent.net/). 
 
-## Getting started
+![Sendit template screenshot](public/images/_screenshot.png)
 
-To get started with this template, first install the npm dependencies:
 
-```bash
-npm install
-```
+[![Deploy to CloudCannon](https://buttons.cloudcannon.com/deploy.svg)](https://app.cloudcannon.com/register#sites/connect/github/CloudCannon/sendit-nextjs-template)
 
-Next, create a new Sanity project to power the blog within this template:
+## Features
 
-```bash
-npm create sanity@latest -- --env=.env.local --create-project "Radiant Blog" --dataset production
-```
+* Pre-built pages
+* Pre-styled components
+* Blog with pagination and category pages
+* Configurable navigation and footer
+* Multiple hero options 
+* Configurable theme colors
+* Optimised for editing in [CloudCannon](https://cloudcannon.com/)
 
-This will prompt you to create a new Sanity account if you don't have one already. When asked "Would you like to add configuration files for a Sanity project in this Next.js folder?", choose "n".
+## Setup
 
-Next, optionally import the demo seed data for the blog:
+1. Get a workflow going to see your site's output (with [CloudCannon](https://app.cloudcannon.com/)
+or Next.js locally).
 
-```bash
-npx sanity@latest dataset import seed.tar.gz
-```
+## Develop
 
-Next, run the development server:
+Sendit is built with [Next.js](https://nextjs.org/) (version `13.0.4`).
 
-```bash
-npm run dev
-```
+~~~bash
+$ npm install
+$ npm run dev
+~~~
 
-Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
+## Editing
 
-To manage your blog content, visit the embedded Sanity Studio at [http://localhost:3000/studio](http://localhost:3000/studio).
+Sendit is set up for adding, updating and removing pages, components, posts, portfolio items, company details and footer elements in [CloudCannon](https://app.cloudcannon.com/).
 
-## Customizing
+### Posts
 
-You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
+* Add, update or remove a post in the *Posts* collection.
+* The **Staff Author** field links to members in the **Staff** collection.
+* Change the defaults when new posts are created in `content/posts/_defaults.md`.
 
-## License
+### Company details
 
-This site template is a commercial product and is licensed under the [Tailwind Plus license](https://tailwindcss.com/plus/license).
+* Reused around the site to save multiple editing locations.
+* Set in the *Data* / *Company* section.
 
-## Learn more
+### Nav/footer details
 
-To learn more about the technologies used in this site template, see the following resources:
+* Reused around the site to save multiple editing locations.
+* Set in the *Data* section with respective names
 
-- [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
-- [Next.js](https://nextjs.org/docs) - the official Next.js documentation
-- [Headless UI](https://headlessui.dev) - the official Headless UI documentation
-- [Sanity](https://www.sanity.io) - the Sanity website
+### Theme colors
+
+* Theme colors can be set in *Data* / *Theme*
+* The main colors are set and variants of them are computed
+* The colors will update on the next build
