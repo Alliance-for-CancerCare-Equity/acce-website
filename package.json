@@ -10,10 +10,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@cloudcannon/filer": "^0.0.3",
-    "@cloudcannon/react-connector": "^2.0.0",
-    "@googlemaps/js-api-loader": "^1.12.2",
-    "@makotot/ghostui": "^2.0.0",
     "eslint-config-next": "^13.0.4",
     "gray-matter": "^4.0.3",
     "luxon": "^3.1.0",
@@ -25,7 +21,6 @@
     "sass": "^1.39.1"
   },
   "devDependencies": {
-    "eslint": "7.32.0",
-    "import-glob-keyed": "^0.0.1"
+    "eslint": "7.32.0"
   }
 }
