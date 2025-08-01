@@ -18,7 +18,7 @@ content_blocks:
     image: /images/feature/feature-hero.png
     image_alt: Charts
 
-  - _bookshop_name: global/header
+  - _bookshop_name: global/SectionHeader
     title: "Sendit "
     title_suffix: Features
     description: Sendit is the most complete solution to create beautiful email designs, manage mails and send them out at the best price.

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { NextSeo } from 'next-seo';
 import data from '../../lib/data';
-import Navigation from './navigation';
+import Header from '../global/Header';
 import Footer from './footer';
 
 export default function DefaultLayout({ children, page }) {
@@ -61,7 +61,7 @@ export default function DefaultLayout({ children, page }) {
 				  ]}
 			/>
 
-			<Navigation page={page}/>
+			<Header page={page}/>
             {children}
 			<Footer page={page}/>
 		</>
