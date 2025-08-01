@@ -12,10 +12,8 @@ const icons = {
 export default function Icon({ icon }) {
 	return (
 		<svg
-			fill="#000000"
-			height="24"
+			className="fill-header h-6 w-6"
 			viewBox="0 0 24 24"
-			width="24"
 			xmlns="https://www.w3.org/2000/svg"
 			dangerouslySetInnerHTML={{ __html: icons[icon] }}></svg>
 	);
