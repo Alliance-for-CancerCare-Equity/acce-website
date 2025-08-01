@@ -31,6 +31,7 @@ module.exports = {
       },
       fontSize: {
         base: '1rem',
+        'nav': '1.1rem',
       },
       fontWeight: {
         regular: 400,

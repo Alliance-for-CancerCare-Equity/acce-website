@@ -1,34 +1,58 @@
 {
 	"logo": "/images/logo.svg",
 	"items": [
+		{ "text": "Home", "link": "/" },
 		{
-			"link": "/",
-			"text": "Home"
+			"text": "About Us",
+			"link": "#",
+			"children": [
+				{ "text": "Meet The Board", "link": "#" },
+				{ "text": "Meet Our Partners", "link": "#" },
+				{ "text": "Meet Our Champions", "link": "#" },
+				{ "text": "Annual Reports and Statements", "link": "#" }
+			]
 		},
 		{
-			"link": "/features/",
-			"text": "Features"
+			"text": "Our Impact",
+			"link": "#",
+			"children": [
+				{ "text": "Fund Cancer Treatment and Related Costs", "link": "#" },
+				{ "text": "Support Community Healthcare Centers", "link": "#" },
+				{ "text": "Support Patients and their Families", "link": "#" },
+				{ "text": "Promote and Advance Cancer Research", "link": "#" }
+			]
 		},
 		{
-			"link": "/pricing/",
-			"text": "Pricing"
+			"text": "Ways to Give",
+			"link": "#",
+			"children": [
+				{ "text": "Make It Monthly", "link": "#" },
+				{ "text": "Ongoing Campaigns", "link": "#" },
+				{ "text": "Patients Stories", "link": "#" }
+			]
 		},
 		{
-			"link": "/about/",
-			"text": "About"
+			"text": "Get Involved",
+			"link": "#",
+			"children": [
+				{ "text": "Become A Fundraiser", "link": "#" },
+				{ "text": "Become A Volunteer", "link": "#" },
+				{ "text": "Become A Partner", "link": "#" }
+			]
 		},
 		{
-			"link": "/blog/",
-			"text": "Blog"
+			"text": "Apply for Funding",
+			"link": "#",
+			"children": [
+				{ "text": "Treatment Support", "link": "#" },
+				{ "text": "Equipment Support", "link": "#" }
+			]
 		},
-		{
-			"link": "/contact/",
-			"text": "Contact"
-		}
+		{ "text": "Contact Us", "link": "/contact/" }
 	],
 	"button": {
-		"link": "/signup/",
-		"text": "Get Started"
+		"link": "#",
+		"text": "Donate"
 	},
 	"_inputs": {
 	  "logo": {
