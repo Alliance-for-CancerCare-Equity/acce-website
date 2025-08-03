@@ -1,19 +1,25 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import {
-  Popover,
-  PopoverButton,
-  PopoverBackdrop,
-  PopoverPanel,
+  Dialog,
+  DialogPanel,
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
 } from '@headlessui/react'
-import clsx from 'clsx'
+import {
+  Bars3Icon,
+  ChevronDownIcon,
+  XMarkIcon,
+} from '@heroicons/react/24/outline'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
+import { FlyoutMenu, type FlyoutMenuItem } from '@/components/FlyoutMenu'
 import { Logo } from '@/components/Logo'
 import { NavLink } from '@/components/NavLink'
-import { FlyoutMenu, type FlyoutMenuItem } from '@/components/FlyoutMenu'
 
 const aboutUsItems: FlyoutMenuItem[] = [
   { name: 'About Us', href: '/about-us' },
@@ -65,80 +71,59 @@ function MobileNavLink({
   children: React.ReactNode
 }) {
   return (
-    <PopoverButton as={Link} href={href} className="block w-full p-2">
-      {children}
-    </PopoverButton>
-  )
-}
-
-function MobileNavIcon({ open }: { open: boolean }) {
-  return (
-    <svg
-      aria-hidden="true"
-      className="h-3.5 w-3.5 overflow-visible stroke-slate-700"
-      fill="none"
-      strokeWidth={2}
-      strokeLinecap="round"
+    <Link
+      href={href}
+      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-slate-900 hover:bg-slate-50"
     >
-      <path
-        d="M0 1H14M0 7H14M0 13H14"
-        className={clsx(
-          'origin-center transition',
-          open && 'scale-90 opacity-0',
-        )}
-      />
-      <path
-        d="M2 2L12 12M12 2L2 12"
-        className={clsx(
-          'origin-center transition',
-          !open && 'scale-90 opacity-0',
-        )}
-      />
-    </svg>
+      {children}
+    </Link>
   )
 }
 
-function MobileNavigation() {
+function MobileNavDisclosure({
+  label,
+  items,
+}: {
+  label: string
+  items: FlyoutMenuItem[]
+}) {
   return (
-    <Popover>
-      <PopoverButton
-        className="relative z-10 flex h-8 w-8 items-center justify-center focus:not-data-focus:outline-hidden"
-        aria-label="Toggle Navigation"
-      >
-        {({ open }) => <MobileNavIcon open={open} />}
-      </PopoverButton>
-      <PopoverBackdrop
-        transition
-        className="fixed inset-0 bg-slate-300/50 duration-150 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
-      />
-      <PopoverPanel
-        transition
-        className="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5 data-closed:scale-95 data-closed:opacity-0 data-enter:duration-150 data-enter:ease-out data-leave:duration-100 data-leave:ease-in"
-      >
-        <MobileNavLink href="/">Home</MobileNavLink>
-        <MobileNavLink href="/about-us">About Us</MobileNavLink>
-        <MobileNavLink href="/our-projects">Our Projects</MobileNavLink>
-        <MobileNavLink href="/ways-to-give">Ways to Give</MobileNavLink>
-        <MobileNavLink href="/get-involved">Get Involved</MobileNavLink>
-        <MobileNavLink href="/funding-application">
-          Funding Application
-        </MobileNavLink>
-        <MobileNavLink href="/contact-us">Contact Us</MobileNavLink>
-      </PopoverPanel>
-    </Popover>
+    <Disclosure as="div" className="-mx-3">
+      <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-slate-900 hover:bg-slate-50">
+        {label}
+        <ChevronDownIcon
+          aria-hidden="true"
+          className="size-5 flex-none group-data-open:rotate-180"
+        />
+      </DisclosureButton>
+      <DisclosurePanel className="mt-2 space-y-2 pl-6">
+        {items.map((item) => (
+          <DisclosureButton
+            key={item.name}
+            as="a"
+            href={item.href}
+            className="block rounded-lg py-2 pr-3 pl-4 text-sm/7 font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            {item.name}
+          </DisclosureButton>
+        ))}
+      </DisclosurePanel>
+    </Disclosure>
   )
 }
 
 export function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
     <header className="py-10">
       <Container>
-        <nav className="relative z-50 flex justify-between">
-          <div className="flex items-center md:gap-x-12">
-            <Link href="#" aria-label="Home">
+        <nav className="relative z-50 flex items-center justify-between">
+          <div className="flex items-center gap-x-12">
+            <Link href="/" aria-label="Home">
               <Logo className="h-10 w-auto" />
             </Link>
-            <div className="hidden md:flex md:gap-x-6">
+            <div className="hidden lg:flex lg:gap-x-6">
               <NavLink href="/">Home</NavLink>
               <FlyoutMenu label="About Us" items={aboutUsItems} />
               <FlyoutMenu label="Our Projects" items={ourProjectsItems} />
@@ -151,18 +136,81 @@ export function Header() {
               <NavLink href="/contact-us">Contact Us</NavLink>
             </div>
           </div>
-          <div className="flex items-center gap-x-5 md:gap-x-8">
-            <Button href="/ways-to-give" color="blue">
-              <span>
-                Donate
-              </span>
-            </Button>
-            <div className="-mr-1 md:hidden">
-              <MobileNavigation />
+          <div className="flex items-center gap-x-5">
+            <div className="hidden lg:block">
+              <Button href="/ways-to-give" color="blue">
+                <span>Donate</span>
+              </Button>
+            </div>
+            <div className="lg:hidden">
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(true)}
+                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-slate-700"
+              >
+                <span className="sr-only">Open main menu</span>
+                <Bars3Icon aria-hidden="true" className="size-6" />
+              </button>
             </div>
           </div>
         </nav>
       </Container>
+      <Dialog
+        as="div"
+        open={mobileMenuOpen}
+        onClose={setMobileMenuOpen}
+        className="lg:hidden"
+      >
+        <div className="fixed inset-0 z-50" />
+        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-10 sm:max-w-sm sm:ring-1 sm:ring-slate-900/10">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="-m-1.5 p-1.5">
+              <span className="sr-only">
+                Alliance for Cancer Care Equity
+              </span>
+              <Logo className="h-10 w-auto" />
+            </Link>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(false)}
+              className="-m-2.5 rounded-md p-2.5 text-slate-700"
+            >
+              <span className="sr-only">Close menu</span>
+              <XMarkIcon aria-hidden="true" className="size-6" />
+            </button>
+          </div>
+          <div className="mt-6 flow-root">
+            <div className="-my-6 divide-y divide-slate-500/10">
+              <div className="space-y-2 py-6">
+                <MobileNavLink href="/">Home</MobileNavLink>
+                <MobileNavDisclosure label="About Us" items={aboutUsItems} />
+                <MobileNavDisclosure
+                  label="Our Projects"
+                  items={ourProjectsItems}
+                />
+                <MobileNavDisclosure
+                  label="Ways to Give"
+                  items={waysToGiveItems}
+                />
+                <MobileNavDisclosure
+                  label="Get Involved"
+                  items={getInvolvedItems}
+                />
+                <MobileNavDisclosure
+                  label="Funding Application"
+                  items={fundingApplicationItems}
+                />
+                <MobileNavLink href="/contact-us">Contact Us</MobileNavLink>
+              </div>
+              <div className="py-6">
+                <Button href="/ways-to-give" color="blue" className="w-full">
+                  Donate
+                </Button>
+              </div>
+            </div>
+          </div>
+        </DialogPanel>
+      </Dialog>
     </header>
   )
 }

@@ -14,9 +14,9 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <PrimaryFeatures />
-        <CallToAction />
-        <Faqs />
+        {/* <PrimaryFeatures /> */}
+        {/* <CallToAction /> */}
+        {/* <Faqs /> */}
       </main>
       <Footer />
     </>
