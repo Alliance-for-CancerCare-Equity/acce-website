@@ -10,7 +10,7 @@ content_blocks:
       text: Try This Free
       link: /signup
 
-  - _bookshop_name: global/counter
+  - _bookshop_name: global/stats
     title: Scale your
     title_suffix: Business
     description: We have an extensive library of pre-written sales emails, proven marketing templates, and more to get you started on your next project.
@@ -33,10 +33,7 @@ content_blocks:
         suffix: +
         text: Active users and growing
 
-  - _bookshop_name: home/video
-    image: /images/video/video-thum.jpg
-    image_alt: Thumbnail for video
-    video_url: https://vimeo.com/45830194
+  
 
   - _bookshop_name: global/SectionHeader
     title: "Sendit "

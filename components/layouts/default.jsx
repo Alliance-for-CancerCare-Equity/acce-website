@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { NextSeo } from 'next-seo';
 import data from '../../lib/data';
-import Header from '../global/Header';
+import Header from '../global/header';
 import Footer from './footer';
 
 export default function DefaultLayout({ children, page }) {
