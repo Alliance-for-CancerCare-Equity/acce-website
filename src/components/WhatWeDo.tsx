@@ -5,7 +5,7 @@ export function WhatWeDo() {
   return (
     <div className="relative bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
-        <div className="lg:flex lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
+        <div className="lg:flex lg:w-1/2 lg:shrink lg:grow-0 lg:pl-8 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
           <div className="relative h-80 overflow-hidden rounded-3xl lg:h-auto lg:w-full lg:grow xl:ml-0">
             <Image
               fill
