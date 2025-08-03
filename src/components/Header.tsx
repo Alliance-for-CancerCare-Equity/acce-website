@@ -13,6 +13,49 @@ import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
 import { NavLink } from '@/components/NavLink'
+import { FlyoutMenu, type FlyoutMenuItem } from '@/components/FlyoutMenu'
+
+const aboutUsItems: FlyoutMenuItem[] = [
+  { name: 'About Us', href: '/about-us' },
+  { name: 'Meet the Board', href: '/meet-the-board' },
+  { name: 'ACCE Champions', href: '/acce-champions' },
+  { name: '50/50 Campaign', href: '/50-50-campaign' },
+]
+
+const ourProjectsItems: FlyoutMenuItem[] = [
+  { name: 'Our Projects', href: '/our-projects' },
+  {
+    name: 'Fund Cancer Treatment and Related Costs',
+    href: '/fund-cancer-treatment-and-related-costs',
+  },
+  {
+    name: 'Support Community Healthcare Centers',
+    href: '/support-community-healthcare-centers',
+  },
+  {
+    name: 'Assistance to Education and Training',
+    href: '/assistance-to-education-and-training',
+  },
+  { name: 'Build a Cancer Center', href: '/build-a-cancer-center' },
+]
+
+const waysToGiveItems: FlyoutMenuItem[] = [
+  { name: 'Ways to Give', href: '/ways-to-give' },
+  { name: 'Fundraise', href: '/fundraise' },
+  { name: 'Champions Campaign', href: '/champions-campaign' },
+  { name: 'Patients Stories', href: '/patients-stories' },
+]
+
+const getInvolvedItems: FlyoutMenuItem[] = [
+  { name: 'Get Involved', href: '/get-involved' },
+  { name: 'Volunteer', href: '/volunteer' },
+  { name: 'Partner with Us', href: '/partner-with-us' },
+]
+
+const fundingApplicationItems: FlyoutMenuItem[] = [
+  { name: 'Support Treatment', href: '/support-treatment' },
+  { name: 'Equipment', href: '/equipment' },
+]
 
 function MobileNavLink({
   href,
@@ -72,11 +115,15 @@ function MobileNavigation() {
         transition
         className="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-2xl bg-white p-4 text-lg tracking-tight text-slate-900 shadow-xl ring-1 ring-slate-900/5 data-closed:scale-95 data-closed:opacity-0 data-enter:duration-150 data-enter:ease-out data-leave:duration-100 data-leave:ease-in"
       >
-        <MobileNavLink href="#features">Features</MobileNavLink>
-        <MobileNavLink href="#testimonials">Testimonials</MobileNavLink>
-        <MobileNavLink href="#pricing">Pricing</MobileNavLink>
-        <hr className="m-2 border-slate-300/40" />
-        <MobileNavLink href="/login">Sign in</MobileNavLink>
+        <MobileNavLink href="/">Home</MobileNavLink>
+        <MobileNavLink href="/about-us">About Us</MobileNavLink>
+        <MobileNavLink href="/our-projects">Our Projects</MobileNavLink>
+        <MobileNavLink href="/ways-to-give">Ways to Give</MobileNavLink>
+        <MobileNavLink href="/get-involved">Get Involved</MobileNavLink>
+        <MobileNavLink href="/funding-application">
+          Funding Application
+        </MobileNavLink>
+        <MobileNavLink href="/contact-us">Contact Us</MobileNavLink>
       </PopoverPanel>
     </Popover>
   )
@@ -92,18 +139,22 @@ export function Header() {
               <Logo className="h-10 w-auto" />
             </Link>
             <div className="hidden md:flex md:gap-x-6">
-              <NavLink href="#features">Features</NavLink>
-              <NavLink href="#testimonials">Testimonials</NavLink>
-              <NavLink href="#pricing">Pricing</NavLink>
+              <NavLink href="/">Home</NavLink>
+              <FlyoutMenu label="About Us" items={aboutUsItems} />
+              <FlyoutMenu label="Our Projects" items={ourProjectsItems} />
+              <FlyoutMenu label="Ways to Give" items={waysToGiveItems} />
+              <FlyoutMenu label="Get Involved" items={getInvolvedItems} />
+              <FlyoutMenu
+                label="Funding Application"
+                items={fundingApplicationItems}
+              />
+              <NavLink href="/contact-us">Contact Us</NavLink>
             </div>
           </div>
           <div className="flex items-center gap-x-5 md:gap-x-8">
-            <div className="hidden md:block">
-              <NavLink href="/login">Sign in</NavLink>
-            </div>
-            <Button href="/register" color="blue">
+            <Button href="/ways-to-give" color="blue">
               <span>
-                Get started <span className="hidden lg:inline">today</span>
+                Donate
               </span>
             </Button>
             <div className="-mr-1 md:hidden">
