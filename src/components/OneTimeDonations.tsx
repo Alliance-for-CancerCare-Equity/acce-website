@@ -5,14 +5,14 @@ const tiers = [
   {
     name: 'PayPal',
     id: 'tier-paypal',
-    href: '#',
+    href: 'https://www.paypal.com/donate/?hosted_button_id=VTDX9SVRTD7RE',
     description: 'Secure online giving with Debit or Credit Card via PayPal.',
     features: ['Give in US$ or CAD$', 'Set up a monthly donation'],
   },
   {
     name: 'CanadaHelps',
     id: 'tier-canadahelps',
-    href: '#',
+    href: 'https://www.canadahelps.org/en/dn/80223',
     description:
       'Secure online giving with Debit or Credit Card via CanadaHelps.',
     features: ['Give any amount', 'Set up a monthly donation'],
@@ -20,7 +20,7 @@ const tiers = [
   {
     name: 'Other Methods',
     id: 'tier-other',
-    href: '#',
+    href: 'mailto:donate@allianceforcancercareequity.ca',
     description: 'Give by Interac e-Transfer, Cheque, or MoMo.',
     features: [
       'Interac e-Transfer: donate@allianceforcancercareequity.ca',

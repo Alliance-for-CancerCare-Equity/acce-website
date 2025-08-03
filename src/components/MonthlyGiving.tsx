@@ -62,14 +62,14 @@ export function MonthlyGiving() {
                 </p>
                 <div className="mt-10 flex flex-col items-center gap-y-4">
                   <Button
-                    href="#"
+                    href="https://www.canadahelps.org/en/dn/80223"
                     color="blue"
                     className="w-full"
                   >
                     Make it Monthly via PayPal
                   </Button>
                   <Button
-                    href="#"
+                    href="https://www.paypal.com/donate/?hosted_button_id=VTDX9SVRTD7RE"
                     color="blue"
                     variant="outline"
                     className="w-full"
