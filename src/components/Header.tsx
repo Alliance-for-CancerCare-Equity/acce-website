@@ -30,7 +30,7 @@ const aboutUsItems: FlyoutMenuItem[] = [
 const ourProjectsItems: FlyoutMenuItem[] = [
   { name: 'Our Projects', href: '/our-projects' },
   {
-    name: 'Fund Cancer Treatment and Related Costs',
+    name: 'Fund Cancer Treatment',
     href: '/fund-cancer-treatment-and-related-costs',
   },
   {
@@ -38,10 +38,13 @@ const ourProjectsItems: FlyoutMenuItem[] = [
     href: '/support-community-healthcare-centers',
   },
   {
-    name: 'Assistance to Education and Training',
-    href: '/assistance-to-education-and-training',
+    name: 'Support Patients and their Families',
+    href: '/support-patients-and-their-families',
   },
-  { name: 'Build a Cancer Center', href: '/build-a-cancer-center' },
+  {
+    name: 'Promote and Advance Cancer Research',
+    href: '/promote-and-advance-cancer-research',
+  },
 ]
 
 const waysToGiveItems: FlyoutMenuItem[] = [
@@ -58,8 +61,9 @@ const getInvolvedItems: FlyoutMenuItem[] = [
 ]
 
 const fundingApplicationItems: FlyoutMenuItem[] = [
-  { name: 'Support Treatment', href: '/support-treatment' },
-  { name: 'Equipment', href: '/equipment' },
+  { name: 'Funding Application', href: '/funding-application' },
+  { name: 'Treatment Support', href: '/support-treatment' },
+  { name: 'Equipment Support', href: '/equipment' },
 ]
 
 function MobileNavLink({
