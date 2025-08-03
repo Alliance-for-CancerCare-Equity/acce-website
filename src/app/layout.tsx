@@ -7,7 +7,7 @@ import '@/styles/tailwind.css'
 export const metadata: Metadata = {
   title: {
     template: '%s | ACCE',
-    default: 'Alliance for Cancer Care Equity',
+    default: 'ACCE',
   },
   description:
     'ACCE is a registered charity in Canada dedicated to advancing equity in cancer care, from prevention through survivorship.',
