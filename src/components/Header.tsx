@@ -49,15 +49,14 @@ const ourProjectsItems: FlyoutMenuItem[] = [
 
 const waysToGiveItems: FlyoutMenuItem[] = [
   { name: 'Ways to Give', href: '/ways-to-give' },
-  { name: 'Fundraise', href: '/fundraise' },
-  { name: 'Champions Campaign', href: '/champions-campaign' },
-  { name: 'Patients Stories', href: '/patients-stories' },
+  { name: 'Ongoing Campaigns', href: '/ongoing-campaigns' },
 ]
 
 const getInvolvedItems: FlyoutMenuItem[] = [
   { name: 'Get Involved', href: '/get-involved' },
   { name: 'Volunteer', href: '/volunteer' },
   { name: 'Partner with Us', href: '/partner-with-us' },
+  { name: 'Patients Stories', href: '/patients-stories' },
 ]
 
 const fundingApplicationItems: FlyoutMenuItem[] = [
