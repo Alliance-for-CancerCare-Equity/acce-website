@@ -54,9 +54,9 @@ const waysToGiveItems: FlyoutMenuItem[] = [
 
 const getInvolvedItems: FlyoutMenuItem[] = [
   { name: 'Get Involved', href: '/get-involved' },
-  { name: 'Volunteer', href: '/volunteer' },
-  { name: 'Partner with Us', href: '/partner-with-us' },
-  { name: 'Patients Stories', href: '/patients-stories' },
+  { name: 'Become a Fundraiser', href: '/fundraise' },
+  { name: 'Become a Volunteer', href: '/volunteer' },
+  { name: 'Become a Partner', href: '/partner-with-us' },
 ]
 
 const fundingApplicationItems: FlyoutMenuItem[] = [
@@ -131,6 +131,7 @@ export function Header() {
             <FlyoutMenu label="Our Projects" items={ourProjectsItems} />
             <FlyoutMenu label="Ways to Give" items={waysToGiveItems} />
             <FlyoutMenu label="Get Involved" items={getInvolvedItems} />
+            <NavLink href="/patients-stories">Patients Stories</NavLink>
             <FlyoutMenu
               label="Funding Application"
               items={fundingApplicationItems}
@@ -196,6 +197,9 @@ export function Header() {
                   label="Get Involved"
                   items={getInvolvedItems}
                 />
+                <MobileNavLink href="/patients-stories">
+                  Patients Stories
+                </MobileNavLink>
                 <MobileNavDisclosure
                   label="Funding Application"
                   items={fundingApplicationItems}
