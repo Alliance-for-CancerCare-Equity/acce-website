@@ -1,58 +1,35 @@
-# Sendit
+# Salient
 
-Sendit is a polished, marketing website template for NextJS. Browse through a [live demo](https://mysterious-oryx.cloudvent.net/). 
+Salient is a [Tailwind Plus](https://tailwindcss.com/plus) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
 
-![Sendit template screenshot](public/images/_screenshot.png)
+## Getting started
 
+To get started with this template, first install the npm dependencies:
 
-[![Deploy to CloudCannon](https://buttons.cloudcannon.com/deploy.svg)](https://app.cloudcannon.com/register#sites/connect/github/CloudCannon/sendit-nextjs-template)
+```bash
+npm install
+```
 
-## Features
+Next, run the development server:
 
-* Pre-built pages
-* Pre-styled components
-* Blog with pagination and category pages
-* Configurable navigation and footer
-* Multiple hero options 
-* Configurable theme colors
-* Optimised for editing in [CloudCannon](https://cloudcannon.com/)
+```bash
+npm run dev
+```
 
-## Setup
+Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
 
-1. Get a workflow going to see your site's output (with [CloudCannon](https://app.cloudcannon.com/)
-or Next.js locally).
+## Customizing
 
-## Develop
+You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
 
-Sendit is built with [Next.js](https://nextjs.org/) (version `13.0.4`).
+## License
 
-~~~bash
-$ npm install
-$ npm run dev
-~~~
+This site template is a commercial product and is licensed under the [Tailwind Plus license](https://tailwindcss.com/plus/license).
 
-## Editing
+## Learn more
 
-Sendit is set up for adding, updating and removing pages, components, posts, portfolio items, company details and footer elements in [CloudCannon](https://app.cloudcannon.com/).
+To learn more about the technologies used in this site template, see the following resources:
 
-### Posts
-
-* Add, update or remove a post in the *Posts* collection.
-* The **Staff Author** field links to members in the **Staff** collection.
-* Change the defaults when new posts are created in `content/posts/_defaults.md`.
-
-### Company details
-
-* Reused around the site to save multiple editing locations.
-* Set in the *Data* / *Company* section.
-
-### Nav/footer details
-
-* Reused around the site to save multiple editing locations.
-* Set in the *Data* section with respective names
-
-### Theme colors
-
-* Theme colors can be set in *Data* / *Theme*
-* The main colors are set and variants of them are computed
-* The colors will update on the next build
+- [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
+- [Next.js](https://nextjs.org/docs) - the official Next.js documentation
+- [Headless UI](https://headlessui.dev) - the official Headless UI documentation
