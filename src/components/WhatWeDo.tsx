@@ -1,4 +1,5 @@
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
+import Image from 'next/image'
 
 export function WhatWeDo() {
   return (
@@ -6,7 +7,8 @@ export function WhatWeDo() {
       <div className="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
         <div className="lg:flex lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
           <div className="relative h-80 overflow-hidden rounded-3xl lg:h-auto lg:w-full lg:grow xl:ml-0">
-            <img
+            <Image
+              fill
               alt="A healthcare professional providing compassionate care to a patient."
               src="https://images.unsplash.com/photo-1550831106-2747f0d6a81c?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=2560&q=80"
               className="absolute inset-0 size-full bg-slate-50 object-cover"

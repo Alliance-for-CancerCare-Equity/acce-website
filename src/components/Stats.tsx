@@ -17,7 +17,7 @@ export function Stats() {
               Our Impact in Numbers
             </h2>
             <p className="mt-4 text-lg/8 text-slate-600">
-              We are proud of the progress we've made in the fight for cancer
+              We are proud of the progress we&apos;ve made in the fight for cancer
               care equity.
             </p>
           </div>
