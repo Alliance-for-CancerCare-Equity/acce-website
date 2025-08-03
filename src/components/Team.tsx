@@ -8,7 +8,7 @@ const people = [
   {
     name: 'Dr. Ernest Osei',
     role: 'President & CEO',
-    imageUrl: avatar1,
+    imageUrl: avatar3,
     bio: `Dr. Ernest Osei holds a BSc in Physics from the University of Science and Technology in Ghana, an MSc in Health and Radiation Physics from McMaster University in Canada, and a PhD in Medical Physics from the University of Newcastle Upon Tyne in the United Kingdom. He subsequently completed a postdoctoral fellowship and a Medical Physics Residency program at the Princess Margaret Cancer Centre in Toronto.
 
 Following his clinical residency, Dr. Osei joined the Medical Physics Department at the Waterloo Regional Health Network, where he has amassed over 22 years of experience in radiation oncology. He is a Fellow of the Canadian College of Physicists in Medicine and brings extensive expertise in managing comprehensive radiation oncology programs.
@@ -22,7 +22,7 @@ Beyond his professional commitments, Dr. Osei is a long-standing advocate for pr
   {
     name: 'Dr. Johnson Darko',
     role: 'Vice-President',
-    imageUrl: avatar2,
+    imageUrl: avatar3,
     bio: `Dr. Johnson Darko holds a BSc in Physics from the University of Science and Technology in Ghana, an MSc in Physics from the University of Ghana, and a PhD in Medical Physics from the University of Wales, Swansea, in the United Kingdom. He subsequently completed a postdoctoral fellowship at the Princess Margaret Cancer Centre in Toronto and a Medical Physics Residency program at Kingston Health Sciences Centre (KHSC).
 
 Following his clinical residency, Dr. Darko served as a staff Medical Physicist at Kingston Health Sciences Centre for over a decade before joining the Medical Physics Department, Waterloo Regional Health Network in March 2013, where he currently serves as a Senior Medical Physicist.
@@ -46,7 +46,7 @@ Outside of his professional and volunteer commitments, Daniel is a passionate so
   {
     name: 'Mr. Kwame Asare',
     role: 'Treasurer',
-    imageUrl: avatar4,
+    imageUrl: avatar3,
     bio: `Mr. Kwame Asare is a seasoned corporate finance professional with extensive expertise in credit and risk management. He has worked with leading global technology firms and major industrial players across sectors such as healthcare, energy, and aviation, among others.
 
 Mr. Asare holds a Bachelor of Commerce degree from the University of Windsor and an MBA with a specialization in Corporate Finance from Walden University in the United States.
@@ -73,11 +73,11 @@ export function Team() {
           className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-6 gap-y-20 sm:grid-cols-2 lg:max-w-4xl lg:gap-x-8 xl:max-w-none"
         >
           {people.map((person) => (
-            <li key={person.name} className="flex flex-col gap-6 xl:flex-row">
+            <li key={person.name} className="flex flex-col gap-6 xl:flex-row xl:items-start">
               <Image
                 alt={person.name}
                 src={person.imageUrl}
-                className="aspect-4/5 w-52 flex-none rounded-2xl bg-slate-100 object-cover outline-1 -outline-offset-1 outline-black/5"
+                className="aspect-4/5 w-52 flex-none rounded-2xl bg-slate-100 object-cover outline-1 -outline-offset-1 outline-black/5 xl:self-start"
               />
               <div className="flex-auto">
                 <h3 className="text-lg/8 font-semibold tracking-tight text-slate-900">
