@@ -18,7 +18,6 @@ import {
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { FlyoutMenu, type FlyoutMenuItem } from '@/components/FlyoutMenu'
-import { Logo } from '@/components/Logo'
 import { NavLink } from '@/components/NavLink'
 
 const aboutUsItems: FlyoutMenuItem[] = [
@@ -119,24 +118,23 @@ export function Header() {
     <header className="py-10">
       <Container>
         <nav className="relative z-50 flex items-center justify-between">
-          <div className="flex items-center gap-x-12">
-            <Link href="/" aria-label="Home">
-              <Logo className="h-10 w-auto" />
+          <div className="flex flex-1 items-center">
+            <Link href="/" aria-label="Home" className="text-2xl font-bold text-blue-600">
+              ACCE
             </Link>
-            <div className="hidden lg:flex lg:gap-x-6">
-              <NavLink href="/">Home</NavLink>
-              <FlyoutMenu label="About Us" items={aboutUsItems} />
-              <FlyoutMenu label="Our Projects" items={ourProjectsItems} />
-              <FlyoutMenu label="Ways to Give" items={waysToGiveItems} />
-              <FlyoutMenu label="Get Involved" items={getInvolvedItems} />
-              <FlyoutMenu
-                label="Funding Application"
-                items={fundingApplicationItems}
-              />
-              <NavLink href="/contact-us">Contact Us</NavLink>
-            </div>
           </div>
-          <div className="flex items-center gap-x-5">
+          <div className="hidden lg:flex lg:gap-x-6">
+            <FlyoutMenu label="About Us" items={aboutUsItems} />
+            <FlyoutMenu label="Our Projects" items={ourProjectsItems} />
+            <FlyoutMenu label="Ways to Give" items={waysToGiveItems} />
+            <FlyoutMenu label="Get Involved" items={getInvolvedItems} />
+            <FlyoutMenu
+              label="Funding Application"
+              items={fundingApplicationItems}
+            />
+            <NavLink href="/contact-us">Contact Us</NavLink>
+          </div>
+          <div className="flex flex-1 items-center justify-end gap-x-5">
             <div className="hidden lg:block">
               <Button href="/ways-to-give" color="blue">
                 <span>Donate</span>
@@ -168,7 +166,7 @@ export function Header() {
               <span className="sr-only">
                 Alliance for Cancer Care Equity
               </span>
-              <Logo className="h-10 w-auto" />
+              <div className="text-2xl font-bold text-blue-600">ACCE</div>
             </Link>
             <button
               type="button"
@@ -182,7 +180,6 @@ export function Header() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-slate-500/10">
               <div className="space-y-2 py-6">
-                <MobileNavLink href="/">Home</MobileNavLink>
                 <MobileNavDisclosure label="About Us" items={aboutUsItems} />
                 <MobileNavDisclosure
                   label="Our Projects"
