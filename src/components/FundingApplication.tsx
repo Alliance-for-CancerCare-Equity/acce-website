@@ -33,7 +33,7 @@ export function FundingApplication() {
               <Button href="/support-treatment" color="blue">
                 Treatment Support
               </Button>
-              <Button href="/equipment" color="blue" variant="outline">
+              <Button href="/equipment" color="slate" variant="outline">
                 Equipment Support
               </Button>
             </div>
