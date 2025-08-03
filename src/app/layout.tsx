@@ -6,11 +6,11 @@ import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - TaxPal',
-    default: 'TaxPal - Accounting made simple for small businesses',
+    template: '%s | ACCE',
+    default: 'Alliance for Cancer Care Equity',
   },
   description:
-    'Most bookkeeping software is accurate, but hard to use. We make the opposite trade-off, and hope you don’t get audited.',
+    'ACCE is a registered charity in Canada dedicated to advancing equity in cancer care, from prevention through survivorship.',
 }
 
 const inter = Inter({
