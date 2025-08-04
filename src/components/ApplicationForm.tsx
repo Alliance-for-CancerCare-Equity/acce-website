@@ -1,4 +1,28 @@
-export function ApplicationForm() {
+interface ApplicationFormProps {
+  title: string
+  form_title: string
+  submit_button_text: string
+  sidebar_p1: string
+  sidebar_link1_text: string
+  sidebar_link1_href: string
+  sidebar_link2_text: string
+  sidebar_link2_href: string
+  sidebar_p2: string
+  sidebar_p3: string
+}
+
+export function ApplicationForm({
+  title,
+  form_title,
+  submit_button_text,
+  sidebar_p1,
+  sidebar_link1_text,
+  sidebar_link1_href,
+  sidebar_link2_text,
+  sidebar_link2_href,
+  sidebar_p2,
+  sidebar_p3,
+}: ApplicationFormProps) {
   return (
     <div className="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
       <svg
@@ -32,7 +56,7 @@ export function ApplicationForm() {
       </svg>
       <div className="mx-auto max-w-xl lg:max-w-4xl">
         <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
-          Treatment Assistance Application
+          {title}
         </h2>
         <div className="mt-16 flex flex-col gap-16 sm:gap-y-20 lg:flex-row">
           <form action="#" method="POST" className="lg:flex-auto">
@@ -139,7 +163,7 @@ export function ApplicationForm() {
                 </div>
               </div>
               <h3 className="text-lg/8 font-semibold tracking-tight text-slate-900 sm:col-span-2">
-                Physician Info
+                {form_title}
               </h3>
               <div>
                 <label
@@ -215,34 +239,31 @@ export function ApplicationForm() {
                 type="submit"
                 className="block w-full rounded-md bg-blue-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
-                Submit Application
+                {submit_button_text}
               </button>
             </div>
           </form>
           <div className="lg:mt-6 lg:w-80 lg:flex-none">
             <div className="text-base/7 text-slate-600">
-              <p>
-                To apply for treatment assistance, please download the
-                appropriate application form below, and submit the completed
-                document to ACCE.
-              </p>
+              <p>{sidebar_p1}</p>
               <p className="mt-4">
-                <a href="#" className="font-semibold text-blue-600">
-                  Financial Assistance Form GH (for patients in Ghana)
+                <a
+                  href={sidebar_link1_href}
+                  className="font-semibold text-blue-600"
+                >
+                  {sidebar_link1_text}
                 </a>
               </p>
               <p className="mt-2">
-                <a href="#" className="font-semibold text-blue-600">
-                  Financial Assistance Form CA (for patients in Canada)
+                <a
+                  href={sidebar_link2_href}
+                  className="font-semibold text-blue-600"
+                >
+                  {sidebar_link2_text}
                 </a>
               </p>
-              <p className="mt-8">
-                OR
-              </p>
-              <p className="mt-4">
-                Complete and submit the information on this form to start the
-                application process.
-              </p>
+              <p className="mt-8">{sidebar_p2}</p>
+              <p className="mt-4">{sidebar_p3}</p>
             </div>
           </div>
         </div>

@@ -1,65 +1,32 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const people = [
-  {
-    name: 'Rukmini Adjetey',
-    role: 'Click to hear her story',
-    imageUrl: '',
-    youtubeUrl: '#',
-  },
-  {
-    name: 'Adisa Iddrisu',
-    role: 'Click to hear her story',
-    imageUrl: '',
-    youtubeUrl: '#',
-  },
-  {
-    name: 'Dr Cynthia Botchway',
-    role: 'Click to hear her story',
-    imageUrl: '',
-    youtubeUrl: '#',
-  },
-  {
-    name: 'Salomey Appiah',
-    role: 'Click to hear her story',
-    imageUrl: '',
-    youtubeUrl: '#',
-  },
-  {
-    name: 'Emmanuel Grusi',
-    role: 'Click to hear his story',
-    imageUrl: '',
-    youtubeUrl: '#',
-  },
-  {
-    name: 'Faustina Anakwa',
-    role: 'Click to hear her story',
-    imageUrl: '',
-    youtubeUrl: '#',
-  },
-  {
-    name: 'Rita Benson',
-    role: 'Click to hear her story',
-    imageUrl: '',
-    youtubeUrl: '#',
-  },
-]
+interface Person {
+  name: string
+  role: string
+  imageUrl: string
+  youtubeUrl: string
+}
 
-export function PatientsStories() {
+interface PatientsStoriesProps {
+  title: string
+  subtitle: string
+  people: Person[]
+}
+
+export function PatientsStories({
+  title,
+  subtitle,
+  people,
+}: PatientsStoriesProps) {
   return (
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
-            Real Patients, Real Stories
+            {title}
           </h2>
-          <p className="mt-6 text-lg/8 text-slate-600">
-            Alliance for CancerCare Equity is committed to realizing a bold
-            vision of equitable cancer care for every patient in need. As demand
-            for our assistance grows, our commitment to advancing cancer care
-            equity only strengthens.
-          </p>
+          <p className="mt-6 text-lg/8 text-slate-600">{subtitle}</p>
         </div>
         <ul
           role="list"
@@ -67,7 +34,11 @@ export function PatientsStories() {
         >
           {people.map((person) => (
             <li key={person.name}>
-              <Link href={person.youtubeUrl} target="_blank" rel="noopener noreferrer">
+              <Link
+                href={person.youtubeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Image
                   width={1024}
                   height={1024}

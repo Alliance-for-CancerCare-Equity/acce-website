@@ -1,4 +1,7 @@
 import { type Metadata } from 'next'
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
 
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
@@ -8,29 +11,26 @@ export const metadata: Metadata = {
   title: 'Promote and Advance Cancer Research',
 }
 
+const getPageContent = () => {
+  const filePath = path.join(
+    process.cwd(),
+    'src',
+    'content',
+    'promote-and-advance-cancer-research.md',
+  )
+  const fileContents = fs.readFileSync(filePath, 'utf8')
+  const { data } = matter(fileContents)
+  return data
+}
+
 export default function PromoteAndAdvanceCancerResearchPage() {
+  const { project_page } = getPageContent()
+
   return (
     <>
       <Header />
       <main>
-        <ProjectPage
-          title="ACCE Projects"
-          subtitle="We Promote and Advance Cancer Research"
-          imageUrl="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        >
-          <div>
-            <p>
-              We are at the forefront of education and cancer research, driving
-              breakthroughs in understanding the origins, prevention,
-              screening, diagnosis, control, and management of cancer and other
-              diseases in both Canada and Ghana. By conducting innovative
-              research, we aim to pioneer new treatments and approaches that
-              will shape the future of healthcare worldwide. Join us in our
-              mission to make a profound impact on global health through
-              cutting-edge research and education initiatives.
-            </p>
-          </div>
-        </ProjectPage>
+        <ProjectPage {...project_page} />
       </main>
       <Footer />
     </>

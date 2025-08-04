@@ -1,4 +1,7 @@
 import { type Metadata } from 'next'
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
 
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
@@ -8,12 +11,26 @@ export const metadata: Metadata = {
   title: 'Patients Stories',
 }
 
+const getPatientsStoriesPageContent = () => {
+  const filePath = path.join(
+    process.cwd(),
+    'src',
+    'content',
+    'patients-stories.md',
+  )
+  const fileContents = fs.readFileSync(filePath, 'utf8')
+  const { data } = matter(fileContents)
+  return data
+}
+
 export default function PatientsStoriesPage() {
+  const { patients_stories } = getPatientsStoriesPageContent()
+
   return (
     <>
       <Header />
       <main>
-        <PatientsStories />
+        <PatientsStories {...patients_stories} />
       </main>
       <Footer />
     </>

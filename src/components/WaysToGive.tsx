@@ -1,13 +1,32 @@
-import { DonationFaqs } from '@/components/DonationFaqs'
-import { MonthlyGiving } from '@/components/MonthlyGiving'
-import { OneTimeDonations } from '@/components/OneTimeDonations'
+import {
+  DonationFaqs,
+  type DonationFaqsProps,
+} from '@/components/DonationFaqs'
+import {
+  MonthlyGiving,
+  type MonthlyGivingProps,
+} from '@/components/MonthlyGiving'
+import {
+  OneTimeDonations,
+  type OneTimeDonationsProps,
+} from '@/components/OneTimeDonations'
 
-export function WaysToGive() {
+interface WaysToGiveProps {
+  one_time_donations: OneTimeDonationsProps
+  monthly_giving: MonthlyGivingProps
+  faqs: DonationFaqsProps
+}
+
+export function WaysToGive({
+  one_time_donations,
+  monthly_giving,
+  faqs,
+}: WaysToGiveProps) {
   return (
     <>
-      <OneTimeDonations />
-      <MonthlyGiving />
-      <DonationFaqs />
+      <OneTimeDonations {...one_time_donations} />
+      <MonthlyGiving {...monthly_giving} />
+      <DonationFaqs {...faqs} />
     </>
   )
 }

@@ -1,51 +1,38 @@
 import { CheckIcon } from '@heroicons/react/20/solid'
 import { Button } from '@/components/Button'
 
-const tiers = [
-  {
-    name: 'PayPal',
-    id: 'tier-paypal',
-    href: 'https://www.paypal.com/donate/?hosted_button_id=VTDX9SVRTD7RE',
-    description: 'Secure online giving with Debit or Credit Card via PayPal.',
-    features: ['Give in US$ or CAD$', 'Set up a monthly donation'],
-  },
-  {
-    name: 'CanadaHelps',
-    id: 'tier-canadahelps',
-    href: 'https://www.canadahelps.org/en/dn/80223',
-    description:
-      'Secure online giving with Debit or Credit Card via CanadaHelps.',
-    features: ['Give any amount', 'Set up a monthly donation'],
-  },
-  {
-    name: 'Other Methods',
-    id: 'tier-other',
-    href: 'mailto:donate@allianceforcancercareequity.ca',
-    description: 'Give by Interac e-Transfer, Cheque, or MoMo.',
-    features: [
-      'Interac e-Transfer: donate@allianceforcancercareequity.ca',
-      'Cheque: Payable to "Alliance for CancerCare Equity"',
-      'MoMo: 233 53 048 2155',
-    ],
-  },
-]
+interface Tier {
+  name: string
+  id: string
+  href: string
+  description: string
+  features: string[]
+}
 
-export function OneTimeDonations() {
+export interface OneTimeDonationsProps {
+  header: string
+  title: string
+  subtitle: string
+  tiers: Tier[]
+}
+
+export function OneTimeDonations({
+  header,
+  title,
+  subtitle,
+  tiers,
+}: OneTimeDonationsProps) {
   return (
     <div className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-base/7 font-semibold text-blue-600">
-            One-Time Donations
-          </h2>
+          <h2 className="text-base/7 font-semibold text-blue-600">{header}</h2>
           <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-slate-900 sm:text-6xl">
-            Choose Your Way to Give
+            {title}
           </p>
         </div>
         <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-slate-600 sm:text-xl/8">
-          You can support us with $25, $50, $100 or any amount you want to give.
-          Your generous gift will make cancer care equitably accessible to all
-          cancer patients.
+          {subtitle}
         </p>
         <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {tiers.map((tier) => (

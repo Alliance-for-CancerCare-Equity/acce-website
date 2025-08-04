@@ -1,11 +1,16 @@
-import { AboutIntro } from '@/components/AboutIntro'
-import { WhatWeDo } from '@/components/WhatWeDo'
+import { AboutIntro, type AboutIntroProps } from '@/components/AboutIntro'
+import { WhatWeDo, type WhatWeDoProps } from '@/components/WhatWeDo'
 
-export function About() {
+interface AboutProps {
+  intro: AboutIntroProps
+  what_we_do: WhatWeDoProps
+}
+
+export function About({ intro, what_we_do }: AboutProps) {
   return (
     <>
-      <AboutIntro />
-      <WhatWeDo />
+      <AboutIntro {...intro} />
+      <WhatWeDo {...what_we_do} />
     </>
   )
 }
