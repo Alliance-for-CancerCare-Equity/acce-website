@@ -1,7 +1,7 @@
 'use client'
 
-import { Container } from '@/components/Container'
-import { AnimatedNumber } from '@/components/AnimatedNumber'
+import { Container } from '@/components/ui/Container'
+import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
 
 interface Stat {
   name: string

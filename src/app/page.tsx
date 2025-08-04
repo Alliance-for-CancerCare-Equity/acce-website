@@ -3,11 +3,11 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-import { CallToAction } from '@/components/CallToAction'
-import { Footer } from '@/components/Footer'
-import { Header } from '@/components/Header'
-import { Hero } from '@/components/Hero'
-import { Stats } from '@/components/Stats'
+import { CallToAction } from '@/components/sections/home/CallToAction'
+import { Footer } from '@/components/layout/Footer'
+import { Header } from '@/components/layout/Header'
+import { Hero } from '@/components/sections/home/Hero'
+import { Stats } from '@/components/sections/home/Stats'
 
 export const metadata: Metadata = {
   title: 'Home',

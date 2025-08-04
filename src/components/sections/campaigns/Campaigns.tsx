@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { CampaignCta, type CampaignCtaProps } from '@/components/CampaignCta'
+import { CampaignCta, type CampaignCtaProps } from '@/components/sections/campaigns/CampaignCta'
 
 interface Campaign {
   name: string

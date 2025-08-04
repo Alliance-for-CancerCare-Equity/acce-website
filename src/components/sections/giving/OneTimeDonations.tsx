@@ -1,5 +1,5 @@
 import { CheckIcon } from '@heroicons/react/20/solid'
-import { Button } from '@/components/Button'
+import { Button } from '@/components/ui/Button'
 
 interface Tier {
   name: string

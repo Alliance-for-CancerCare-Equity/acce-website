@@ -3,9 +3,9 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-import { Footer } from '@/components/Footer'
-import { Header } from '@/components/Header'
-import { InvolvedPage } from '@/components/InvolvedPage'
+import { Footer } from '@/components/layout/Footer'
+import { Header } from '@/components/layout/Header'
+import { InvolvedPage } from '@/components/sections/involved/InvolvedPage'
 
 export const metadata: Metadata = {
   title: 'Become a Partner',

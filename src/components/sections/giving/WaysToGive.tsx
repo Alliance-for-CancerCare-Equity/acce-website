@@ -1,15 +1,15 @@
 import {
   DonationFaqs,
   type DonationFaqsProps,
-} from '@/components/DonationFaqs'
+} from '@/components/sections/giving/DonationFaqs'
 import {
   MonthlyGiving,
   type MonthlyGivingProps,
-} from '@/components/MonthlyGiving'
+} from '@/components/sections/giving/MonthlyGiving'
 import {
   OneTimeDonations,
   type OneTimeDonationsProps,
-} from '@/components/OneTimeDonations'
+} from '@/components/sections/giving/OneTimeDonations'
 
 interface WaysToGiveProps {
   one_time_donations: OneTimeDonationsProps

@@ -3,9 +3,9 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-import { Footer } from '@/components/Footer'
-import { Header } from '@/components/Header'
-import { OurProjects } from '@/components/OurProjects'
+import { Footer } from '@/components/layout/Footer'
+import { Header } from '@/components/layout/Header'
+import { OurProjects } from '@/components/sections/projects/OurProjects'
 
 export const metadata: Metadata = {
   title: 'Our Projects',

@@ -3,9 +3,9 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
-import { Champions } from '@/components/Champions'
-import { Footer } from '@/components/Footer'
-import { Header } from '@/components/Header'
+import { Champions } from '@/components/sections/about/Champions'
+import { Footer } from '@/components/layout/Footer'
+import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
   title: 'ACCE Champions',

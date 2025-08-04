@@ -15,10 +15,10 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 
-import { Button } from '@/components/Button'
-import { Container } from '@/components/Container'
-import { FlyoutMenu, type FlyoutMenuItem } from '@/components/FlyoutMenu'
-import { NavLink } from '@/components/NavLink'
+import { Button } from '@/components/ui/Button'
+import { Container } from '@/components/ui/Container'
+import { FlyoutMenu, type FlyoutMenuItem } from '@/components/layout/FlyoutMenu'
+import { NavLink } from '@/components/ui/NavLink'
 
 const aboutUsItems: FlyoutMenuItem[] = [
   { name: 'About Us', href: '/about-us' },
