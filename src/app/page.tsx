@@ -21,15 +21,15 @@ const getHomePageContent = () => {
 }
 
 export default function Home() {
-  const content = getHomePageContent()
+  const { home_page } = getHomePageContent()
 
   return (
     <>
       <Header />
       <main>
-        <Hero {...content.hero} />
-        <Stats {...content.stats} />
-        <CallToAction {...content.call_to_action} />
+        <Hero {...home_page.hero} />
+        <Stats {...home_page.stats} />
+        <CallToAction {...home_page.call_to_action} />
       </main>
       <Footer />
     </>

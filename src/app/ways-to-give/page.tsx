@@ -19,13 +19,13 @@ const getWaysToGivePageContent = () => {
 }
 
 export default function WaysToGivePage() {
-  const content = getWaysToGivePageContent()
+  const { ways_to_give_page } = getWaysToGivePageContent()
 
   return (
     <>
       <Header />
       <main>
-        <WaysToGive {...content} />
+        <WaysToGive {...ways_to_give_page} />
       </main>
       <Footer />
     </>

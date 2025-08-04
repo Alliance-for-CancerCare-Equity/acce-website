@@ -19,13 +19,13 @@ const getAboutUsPageContent = () => {
 }
 
 export default function AboutUsPage() {
-  const content = getAboutUsPageContent()
+  const { about_us_page } = getAboutUsPageContent()
 
   return (
     <>
       <Header />
       <main>
-        <About {...content} />
+        <About {...about_us_page} />
       </main>
       <Footer />
     </>

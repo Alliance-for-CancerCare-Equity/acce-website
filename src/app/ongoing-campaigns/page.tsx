@@ -24,13 +24,13 @@ const getOngoingCampaignsPageContent = () => {
 }
 
 export default function OngoingCampaignsPage() {
-  const content = getOngoingCampaignsPageContent()
+  const { ongoing_campaigns_page } = getOngoingCampaignsPageContent()
 
   return (
     <>
       <Header />
       <main>
-        <Campaigns {...content} />
+        <Campaigns {...ongoing_campaigns_page} />
       </main>
       <Footer />
     </>
