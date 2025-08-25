@@ -59,7 +59,8 @@ const getInvolvedItems: FlyoutMenuItem[] = [
   { name: 'Become a Partner', href: '/partner-with-us' },
 ]
 
-const fundingApplicationItems: FlyoutMenuItem[] = [
+const contactUsItems: FlyoutMenuItem[] = [
+  { name: 'Contact Us', href: '/contact-us' },
   { name: 'Funding Application', href: '/funding-application' },
   { name: 'Treatment Support', href: '/support-treatment' },
   { name: 'Equipment Support', href: '/equipment' },
@@ -119,44 +120,38 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white py-5 shadow-md">
-      <Container>
-        <nav className="flex items-center justify-between">
-          <div className="flex items-center gap-x-12">
-            <Link href="/" aria-label="Home" className="text-2xl font-bold text-blue-600">
-              ACCE
-            </Link>
-            <div className="hidden lg:flex lg:gap-x-8">
-              <FlyoutMenu label="About Us" items={aboutUsItems} />
-              <FlyoutMenu label="Our Projects" items={ourProjectsItems} />
-              <FlyoutMenu label="Ways to Give" items={waysToGiveItems} />
-              <FlyoutMenu label="Get Involved" items={getInvolvedItems} />
-              <NavLink href="/patients-stories">Patients Stories</NavLink>
-              <FlyoutMenu
-                label="Funding Application"
-                items={fundingApplicationItems}
-              />
-              <NavLink href="/contact-us">Contact Us</NavLink>
-            </div>
+      <nav className="flex items-center justify-between px-6 sm:px-8 lg:px-12">
+        <div className="flex items-center gap-x-8">
+          <Link href="/" aria-label="Home" className="-m-1.5 p-1.5 text-2xl font-bold text-blue-600">
+            ACCE
+          </Link>
+          <div className="hidden lg:flex lg:gap-x-6">
+            <FlyoutMenu label="About Us" items={aboutUsItems} />
+            <FlyoutMenu label="Our Projects" items={ourProjectsItems} />
+            <FlyoutMenu label="Ways to Give" items={waysToGiveItems} />
+            <FlyoutMenu label="Get Involved" items={getInvolvedItems} />
+            <NavLink href="/patients-stories">Patients Stories</NavLink>
+            <FlyoutMenu label="Contact Us" items={contactUsItems} />
           </div>
-          <div className="flex items-center gap-x-5">
-            <div className="hidden lg:block">
-              <Button href="/ways-to-give" color="blue">
-                <span>Donate</span>
-              </Button>
-            </div>
-            <div className="lg:hidden">
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(true)}
-                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-slate-700"
-              >
-                <span className="sr-only">Open main menu</span>
-                <Bars3Icon aria-hidden="true" className="size-6" />
-              </button>
-            </div>
+        </div>
+        <div className="flex items-center gap-x-5">
+          <div className="hidden lg:block">
+            <Button href="/ways-to-give" color="blue">
+              <span>Donate</span>
+            </Button>
           </div>
-        </nav>
-      </Container>
+          <div className="lg:hidden">
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(true)}
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-slate-700"
+            >
+              <span className="sr-only">Open main menu</span>
+              <Bars3Icon aria-hidden="true" className="size-6" />
+            </button>
+          </div>
+        </div>
+      </nav>
       <Dialog
         as="div"
         open={mobileMenuOpen}
@@ -201,10 +196,9 @@ export function Header() {
                   Patients Stories
                 </MobileNavLink>
                 <MobileNavDisclosure
-                  label="Funding Application"
-                  items={fundingApplicationItems}
+                  label="Contact Us"
+                  items={contactUsItems}
                 />
-                <MobileNavLink href="/contact-us">Contact Us</MobileNavLink>
               </div>
               <div className="py-6">
                 <Button href="/ways-to-give" color="blue" className="w-full">
