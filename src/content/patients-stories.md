@@ -6,30 +6,30 @@ patients_stories:
   people:
     - name: Rukmini Adjetey
       role: Click to hear her story
-      imageUrl: https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2369&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-      youtubeUrl: '#'
+      imageUrl: /stories/Rukmini.jpg
+      youtubeUrl: https://www.youtube.com/watch?v=DBfATugq8r4
     - name: Adisa Iddrisu
       role: Click to hear her story
-      imageUrl: https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2369&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-      youtubeUrl: '#'
+      imageUrl: /stories/Adisa.jpg
+      youtubeUrl: https://www.youtube.com/watch?v=ZtpmeGBW1JI
     - name: Dr Cynthia Botchway
       role: Click to hear her story
-      imageUrl: https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2369&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-      youtubeUrl: '#'
+      imageUrl: /stories/Cynthia.jpeg
+      youtubeUrl: https://www.youtube.com/watch?v=SCVRsCAezk8
     - name: Salomey Appiah
       role: Click to hear her story
-      imageUrl: https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2369&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-      youtubeUrl: '#'
+      imageUrl: /stories/Salomey.jpg
+      youtubeUrl: https://www.youtube.com/watch?v=TfBabZ19vqw
     - name: Emmanuel Grusi
       role: Click to hear his story
-      imageUrl: https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2369&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-      youtubeUrl: '#'
+      imageUrl: /stories/Emmanuel.jpg
+      youtubeUrl: https://www.youtube.com/watch?v=uMiacIM7w1Y
     - name: Faustina Anakwa
       role: Click to hear her story
-      imageUrl: https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2369&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-      youtubeUrl: '#'
+      imageUrl: /stories/Faustina.jpg
+      youtubeUrl: https://www.youtube.com/watch?v=0x-i-cFkdh0
     - name: Rita Benson
       role: Click to hear her story
-      imageUrl: https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2369&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-      youtubeUrl: '#'
+      imageUrl: /stories/Rita.jpg
+      youtubeUrl: https://www.youtube.com/watch?v=pE6oODZvlV8
 ---
