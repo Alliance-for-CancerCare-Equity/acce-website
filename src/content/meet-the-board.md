@@ -6,7 +6,7 @@ team:
   people:
     - name: Dr. Ernest Osei
       role: President & CEO
-      imageUrl: /avatars/avatar-3.png
+      imageUrl: /avatars/1_Ernest.png
       bio: |
         Dr. Ernest Osei holds a BSc in Physics from the University of Science and Technology in Ghana, an MSc in Health and Radiation Physics from McMaster University in Canada, and a PhD in Medical Physics from the University of Newcastle Upon Tyne in the United Kingdom. He subsequently completed a postdoctoral fellowship and a Medical Physics Residency program at the Princess Margaret Cancer Centre in Toronto.
 
@@ -19,7 +19,7 @@ team:
         Beyond his professional commitments, Dr. Osei is a long-standing advocate for prostate cancer research through his involvement with the Ride for Dad charity since 2010. He is also a dedicated community leader, currently serving as Chair of the Centerville Chicopee Community Association in Kitchener and Chair of the Waterloo Region Immigration Partnership Council.
     - name: Dr. Johnson Darko
       role: Vice-President
-      imageUrl: /avatars/avatar-3.png
+      imageUrl: /avatars/4_JDarko.png
       bio: |
         Dr. Johnson Darko holds a BSc in Physics from the University of Science and Technology in Ghana, an MSc in Physics from the University of Ghana, and a PhD in Medical Physics from the University of Wales, Swansea, in the United Kingdom. He subsequently completed a postdoctoral fellowship at the Princess Margaret Cancer Centre in Toronto and a Medical Physics Residency program at Kingston Health Sciences Centre (KHSC).
 
@@ -30,18 +30,18 @@ team:
         In addition to his professional roles, Dr. Darko is deeply involved in community service, actively volunteering with several local organizations. He also plays a key role in the global Medical Physics community through his ongoing volunteer work with the International Organization for Medical Physics (IOMP).
     - name: Mr. Daniel Manful
       role: Secretary
-      imageUrl: /avatars/avatar-3.png
+      imageUrl: /avatars/2_Daniel.png
       bio: |
         Mr. Daniel Manful is an experienced Caseworker with the Ontario Disability Support Program (ODSP), where he specializes in assessing, documenting, and evaluating client information to determine eligibility for ODSP income and Employment Supports in accordance with relevant legislation and established guidelines.
 
-        Mr. Daniel is a graduate of the University of Professional Studies (formerly IPS) in Accra, Ghana and has completed the Professional Level of the Chartered Governance Institute (ICSA), UK. He also studied Computer Information Systems at Humber College in Toronto and holds a certificate in the Governance of Non-Profit Organizations from the State University of New York. Additionally, he is a certified Board Checkup Coordinator.
+        Mr. Daniel is a graduate of the University of Professional Studies (formerly IPS) in Accra, Ghana and has completed the Professional Level of the Chartered Governance Institute (ICSA), UK. He also studied Computer Information Systems at Humber College in Toronto and holds a certificate in the Governance of Non-Profit Organizations from the State University of a New York. Additionally, he is a certified Board Checkup Coordinator.
 
         Mr. Daniel has a strong record of community service, having served as Chair of the Ross Drive Public School Parent-Teacher Association for two years and as a board member of Peel Pentecostal Tabernacle for two terms, including a term as Board Secretary.
 
         Outside of his professional and volunteer commitments, Daniel is a passionate soccer enthusiast who enjoys spending his summers playing the sport with young adults in his community.
     - name: Mr. Kwame Asare
       role: Treasurer
-      imageUrl: /avatars/avatar-3.png
+      imageUrl: /avatars/3_KAsare.png
       bio: |
         Mr. Kwame Asare is a seasoned corporate finance professional with extensive expertise in credit and risk management. He has worked with leading global technology firms and major industrial players across sectors such as healthcare, energy, and aviation, among others.
 

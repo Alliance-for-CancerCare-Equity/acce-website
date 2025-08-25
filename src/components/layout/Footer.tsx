@@ -80,7 +80,7 @@ export function Footer() {
   return (
     <footer className="bg-slate-50">
       <Container>
-        <div className="py-8">
+        <div className="py-4">
           <div className="flex items-center justify-between">
             <div className="text-2xl font-bold text-blue-600">ACCE</div>
             <nav className="text-sm" aria-label="quick links">
@@ -98,7 +98,7 @@ export function Footer() {
             </nav>
           </div>
         </div>
-        <div className="flex flex-col items-center border-t border-slate-400/10 py-6 sm:flex-row-reverse sm:justify-between">
+        <div className="flex flex-col items-center border-t border-slate-400/10 py-3 sm:flex-row-reverse sm:justify-between">
           <div className="flex gap-x-6">
             {navigation.social.map((item) => (
               <Link

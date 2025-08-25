@@ -118,27 +118,27 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="py-10">
+    <header className="sticky top-0 z-50 bg-white py-5 shadow-md">
       <Container>
-        <nav className="relative z-50 flex items-center justify-between">
-          <div className="flex flex-1 items-center">
+        <nav className="flex items-center justify-between">
+          <div className="flex items-center gap-x-12">
             <Link href="/" aria-label="Home" className="text-2xl font-bold text-blue-600">
               ACCE
             </Link>
+            <div className="hidden lg:flex lg:gap-x-8">
+              <FlyoutMenu label="About Us" items={aboutUsItems} />
+              <FlyoutMenu label="Our Projects" items={ourProjectsItems} />
+              <FlyoutMenu label="Ways to Give" items={waysToGiveItems} />
+              <FlyoutMenu label="Get Involved" items={getInvolvedItems} />
+              <NavLink href="/patients-stories">Patients Stories</NavLink>
+              <FlyoutMenu
+                label="Funding Application"
+                items={fundingApplicationItems}
+              />
+              <NavLink href="/contact-us">Contact Us</NavLink>
+            </div>
           </div>
-          <div className="hidden lg:flex lg:gap-x-6">
-            <FlyoutMenu label="About Us" items={aboutUsItems} />
-            <FlyoutMenu label="Our Projects" items={ourProjectsItems} />
-            <FlyoutMenu label="Ways to Give" items={waysToGiveItems} />
-            <FlyoutMenu label="Get Involved" items={getInvolvedItems} />
-            <NavLink href="/patients-stories">Patients Stories</NavLink>
-            <FlyoutMenu
-              label="Funding Application"
-              items={fundingApplicationItems}
-            />
-            <NavLink href="/contact-us">Contact Us</NavLink>
-          </div>
-          <div className="flex flex-1 items-center justify-end gap-x-5">
+          <div className="flex items-center gap-x-5">
             <div className="hidden lg:block">
               <Button href="/ways-to-give" color="blue">
                 <span>Donate</span>

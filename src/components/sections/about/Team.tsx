@@ -37,7 +37,7 @@ export function Team({ title, subtitle, people }: TeamProps) {
                 src={person.imageUrl}
                 width={208}
                 height={260}
-                className="aspect-4/5 w-52 flex-none rounded-2xl bg-slate-100 object-cover outline-1 -outline-offset-1 outline-black/5 xl:self-start"
+                className="aspect-4/5 w-52 flex-none rounded-2xl bg-sky-100 object-cover outline-1 -outline-offset-1 outline-black/5 xl:self-start"
               />
               <div className="flex-auto">
                 <h3 className="text-lg/8 font-semibold tracking-tight text-slate-900">
