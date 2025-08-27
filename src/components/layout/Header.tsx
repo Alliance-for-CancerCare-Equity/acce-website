@@ -136,7 +136,7 @@ export function Header() {
         </div>
         <div className="flex items-center gap-x-5">
           <div className="hidden lg:block">
-            <Button href="/ways-to-give" color="blue">
+            <Button href="/giving-options" color="blue">
               <span>Donate</span>
             </Button>
           </div>
@@ -201,7 +201,7 @@ export function Header() {
                 />
               </div>
               <div className="py-6">
-                <Button href="/ways-to-give" color="blue" className="w-full">
+                <Button href="/giving-options" color="blue" className="w-full">
                   Donate
                 </Button>
               </div>
