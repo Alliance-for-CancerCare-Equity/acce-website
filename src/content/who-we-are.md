@@ -15,7 +15,7 @@ about_us_page:
     title: How We Help
     subtitle: Our Commitment to Patients
     image_alt: A healthcare professional providing compassionate care to a patient.
-    image_src: https://images.unsplash.com/photo-1550831106-2747f0d6a81c?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=2560&q=80
+    image_src: /images/about_us.jpg
     intro_p: We are dedicated to breaking down the financial barriers that prevent individuals from receiving the cancer care they deserve. Our efforts are focused on the following areas
     commitments:
       - Covering the full spectrum of cancer treatments for patients in Ghana.

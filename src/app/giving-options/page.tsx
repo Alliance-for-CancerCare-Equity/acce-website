@@ -8,18 +8,18 @@ import { Header } from '@/components/layout/Header'
 import { WaysToGive } from '@/components/sections/giving/WaysToGive'
 
 export const metadata: Metadata = {
-  title: 'Ways to Give',
+  title: 'Giving Options',
 }
 
-const getWaysToGivePageContent = () => {
-  const filePath = path.join(process.cwd(), 'src', 'content', 'ways-to-give.md')
+const getGivingOptionsPageContent = () => {
+  const filePath = path.join(process.cwd(), 'src', 'content', 'giving-options.md')
   const fileContents = fs.readFileSync(filePath, 'utf8')
   const { data } = matter(fileContents)
   return data
 }
 
-export default function WaysToGivePage() {
-  const { ways_to_give_page } = getWaysToGivePageContent()
+export default function GivingOptionsPage() {
+  const { ways_to_give_page } = getGivingOptionsPageContent()
 
   return (
     <>

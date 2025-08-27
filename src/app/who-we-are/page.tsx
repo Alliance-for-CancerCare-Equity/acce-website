@@ -3,29 +3,29 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
+import { About } from '@/components/sections/about/About'
 import { Footer } from '@/components/layout/Footer'
-import { GetInvolved } from '@/components/sections/involved/GetInvolved'
 import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
-  title: 'Get Involved',
+  title: 'Who We Are',
 }
 
-const getGetInvolvedPageContent = () => {
-  const filePath = path.join(process.cwd(), 'src', 'content', 'get-involved.md')
+const getWhoWeArePageContent = () => {
+  const filePath = path.join(process.cwd(), 'src', 'content', 'who-we-are.md')
   const fileContents = fs.readFileSync(filePath, 'utf8')
   const { data } = matter(fileContents)
   return data
 }
 
-export default function GetInvolvedPage() {
-  const { get_involved } = getGetInvolvedPageContent()
+export default function WhoWeArePage() {
+  const { about_us_page } = getWhoWeArePageContent()
 
   return (
     <>
       <Header />
       <main>
-        <GetInvolved {...get_involved} />
+        <About {...about_us_page} />
       </main>
       <Footer />
     </>

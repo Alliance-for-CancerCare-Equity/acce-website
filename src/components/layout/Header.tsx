@@ -21,39 +21,39 @@ import { FlyoutMenu, type FlyoutMenuItem } from '@/components/layout/FlyoutMenu'
 import { NavLink } from '@/components/ui/NavLink'
 
 const aboutUsItems: FlyoutMenuItem[] = [
-  { name: 'About Us', href: '/about-us' },
+  { name: 'Who We Are', href: '/who-we-are' },
   { name: 'Meet the Board', href: '/meet-the-board' },
   { name: 'ACCE Champions', href: '/acce-champions' },
   { name: 'Annual Reports', href: '/annual-reports' },
 ]
 
 const ourProjectsItems: FlyoutMenuItem[] = [
-  { name: 'Our Projects', href: '/our-projects' },
+  { name: 'Projects Overview', href: '/projects-overview' },
   {
     name: 'Fund Cancer Treatment',
     href: '/fund-cancer-treatment-and-related-costs',
   },
   {
-    name: 'Support Community Healthcare Centers',
+    name: 'Support Health Centers',
     href: '/support-community-healthcare-centers',
   },
   {
-    name: 'Support Patients and their Families',
+    name: 'Patient & Family Support',
     href: '/support-patients-and-their-families',
   },
   {
-    name: 'Promote and Advance Cancer Research',
+    name: 'Advance Cancer Research',
     href: '/promote-and-advance-cancer-research',
   },
 ]
 
 const waysToGiveItems: FlyoutMenuItem[] = [
-  { name: 'Ways to Give', href: '/ways-to-give' },
+  { name: 'Giving Options', href: '/giving-options' },
   { name: 'Ongoing Campaigns', href: '/ongoing-campaigns' },
 ]
 
 const getInvolvedItems: FlyoutMenuItem[] = [
-  { name: 'Get Involved', href: '/get-involved' },
+  { name: 'Opportunities', href: '/opportunities' },
   { name: 'Become a Fundraiser', href: '/fundraise' },
   { name: 'Become a Volunteer', href: '/volunteer' },
   { name: 'Become a Partner', href: '/partner-with-us' },
@@ -131,7 +131,7 @@ export function Header() {
             <FlyoutMenu label="Ways to Give" items={waysToGiveItems} />
             <FlyoutMenu label="Get Involved" items={getInvolvedItems} />
             <NavLink href="/patients-stories">Patients Stories</NavLink>
-            <FlyoutMenu label="Contact Us" items={contactUsItems} />
+            <FlyoutMenu label="Get In Touch" items={contactUsItems} />
           </div>
         </div>
         <div className="flex items-center gap-x-5">

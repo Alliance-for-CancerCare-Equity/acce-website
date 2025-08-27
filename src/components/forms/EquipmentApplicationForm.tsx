@@ -51,7 +51,7 @@ export function EquipmentApplicationForm({
           {title}
         </h2>
         <div className="mt-16 flex flex-col gap-16 sm:gap-y-20 lg:flex-row">
-          <form action="#" method="POST" className="lg:flex-auto">
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" className="lg:flex-auto">
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <label

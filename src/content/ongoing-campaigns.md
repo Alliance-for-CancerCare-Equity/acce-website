@@ -8,22 +8,24 @@ ongoing_campaigns_page:
     intro_p3: Each campaign is a call to action—a chance for our community to step in and give hope where it's needed most. Every dollar you give directly impacts a life.
     intro_p4: Together, we can close the gap in cancer care and bring healing within reach.
     campaigns_title: Our Campaigns
-    campaigns_intro: Below are our ongoing campaigns. We invite you to share them with your friends, family, and social media circles—together, we can reach more hearts and help more lives Click on the images below for more information.
+    campaigns_intro: Below are our ongoing campaigns. We invite you to share them with your friends, family, and social media circles—together, we can reach more hearts and help more lives. Click on the images below for more information.
     campaign_items:
-      - name: Save Baby Ariel’s Life
-        description: She’s Only 14 Months and Fighting Liver Cancer
-        href: https://www.allianceforcancercareequity.ca/_files/ugd/8b0cc2_0e89f3559590412c92d8233d0812a60c.pdf
-        imageUrl: https://static.wixstatic.com/media/8b0cc2_2a096dfb0fa1402989907e2e812c82a3~mv2.jpg/v1/fill/w_388,h_550,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/8b0cc2_2a096dfb0fa1402989907e2e812c82a3~mv2.jpg
+      - name: Unfunded Cancer Drugs in Canada
+        description: Make a Difference. Help Us To Pay For Unfunded Cancer Drugs in Canada.
+        subtitle: Save Baby Ariel
+        href: /Ongoing_Campaigns/Make_a_difference.pdf
+        imageUrl: /Ongoing_Campaigns/Baby_Ariel.jpg
         external: true
-      - name: Hope for Gilda Tuffour
-        description: A 10-Year-Old Girl Fighting Brain Cancer
-        href: /campaigns/hope-for-gilda
-        imageUrl: https://static.wixstatic.com/media/8b0cc2_59d27f848958460ca8588348c68fbfe4~mv2.jpg/v1/fill/w_400,h_534,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/_8b0cc2_59d27f848958460ca8588348c68fbfe4~mv2.jpg
-        external: false
+      - name: Fighting Cancer in Ghana
+        description: Transforming Lives. Fighting Cancer with Compassion and Empathy in Ghana.
+        subtitle: Support Josh's Fight
+        href: /Ongoing_Campaigns/Transforming_Lives.pdf
+        imageUrl: /Ongoing_Campaigns/Josh.jpg
+        external: true
   cta:
     title: Read More About Our Campaigns
     button1_text: Transforming Lives
-    button1_href: https://www.allianceforcancercareequity.ca/_files/ugd/8b0cc2_0e89f3559590412c92d8233d0812a60c.pdf
+    button1_href: /Ongoing_Campaigns/Transforming_Lives.pdf
     button2_text: Unfunded Cancer Drugs
-    button2_href: https://www.allianceforcancercareequity.ca/_files/ugd/8b0cc2_bb8b1704b9094e019d1314efb6dcb119.pdf
+    button2_href: /Ongoing_Campaigns/Make_a_difference.pdf
 ---

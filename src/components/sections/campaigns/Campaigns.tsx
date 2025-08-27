@@ -4,6 +4,7 @@ import { CampaignCta, type CampaignCtaProps } from '@/components/sections/campai
 
 interface Campaign {
   name: string
+  subtitle: string
   description: string
   href: string
   imageUrl: string
@@ -70,6 +71,9 @@ export function Campaigns({ campaigns, cta }: CampaignsProps) {
                     </Link>
                     <p className="mt-1 text-base/7 text-slate-600">
                       {campaign.description}
+                    </p>
+                    <p className="mt-1 text-base/7 font-semibold text-slate-700">
+                      {campaign.subtitle}
                     </p>
                   </figcaption>
                 </figure>
