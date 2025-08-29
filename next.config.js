@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 
-const isGithubActions = process.env.GITHUB_ACTIONS === 'true'
+const isProd = process.env.NODE_ENV === 'production'
 
 const nextConfig = {
   output: 'export',
-  basePath: isGithubActions ? '/acce-website' : '',
-  assetPrefix: isGithubActions ? '/acce-website' : '',
+  basePath: isProd ? '/acce-website' : '',
+  assetPrefix: isProd ? '/acce-website' : '',
   images: {
     unoptimized: true,
     remotePatterns: [

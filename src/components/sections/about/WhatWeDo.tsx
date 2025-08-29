@@ -1,6 +1,5 @@
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
-import { prefixPath } from '@/utils/path'
 
 export interface WhatWeDoProps {
   title: string
@@ -30,8 +29,8 @@ export function WhatWeDo({
           <div className="relative h-80 overflow-hidden rounded-3xl lg:h-auto lg:w-full lg:grow xl:ml-0">
             <Image
               fill
-              alt={image_alt}
-              src={prefixPath(image_src)}
+                            alt={image_alt}
+              src={image_src}
               className="absolute inset-0 size-full bg-slate-50 object-cover"
             />
           </div>
