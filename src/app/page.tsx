@@ -1,35 +1,73 @@
 import { type Metadata } from 'next'
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
 
-import { CallToAction } from '@/components/sections/home/CallToAction'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
-import { Hero } from '@/components/sections/home/Hero'
-import { Stats } from '@/components/sections/home/Stats'
+import { CallToAction, Hero, Stats } from '@/app/home-sections'
 
 export const metadata: Metadata = {
   title: 'Home',
 }
 
-const getHomePageContent = () => {
-  const filePath = path.join(process.cwd(), 'src', 'content', 'home.md')
-  const fileContents = fs.readFileSync(filePath, 'utf8')
-  const { data } = matter(fileContents)
-  return data
+const homePageContent = {
+  hero: {
+    title_part1: 'Advancing Equity in Cancer Care',
+    title_part2_styled: 'for All',
+    subtitle:
+      'The Alliance for Cancer Care Equity (ACCE) is on a mission to ensure that every cancer patient receives equitable, high-quality care, regardless of their financial status. We provide compassionate support for patients and their families throughout their entire journey.',
+    button1: {
+      text: 'Donate',
+      href: '/ways-to-give',
+    },
+    button2: {
+      text: 'Learn More',
+      href: '/about-us',
+    },
+  },
+  stats: {
+    title: 'Our Impact in Numbers',
+    subtitle:
+      "We are proud of the progress we've made in the fight for cancer care equity.",
+    items: [
+      {
+        name: 'Amount Raised',
+        value: 90,
+        prefix: '$',
+        suffix: 'k+',
+        animate: true,
+      },
+      {
+        name: 'Patients Supported',
+        value: 60,
+        suffix: '+',
+        animate: true,
+      },
+      {
+        name: 'Established',
+        value: 2022,
+        animate: true,
+      },
+    ],
+  },
+  call_to_action: {
+    title: 'Make a Difference',
+    subtitle: 'Support Our Mission to Achieve Cancer Care Equity',
+    content:
+      'Your contribution can help us provide vital financial support, improve healthcare access, and fund life-saving treatments for patients in need.',
+    button: {
+      text: 'Donate Now',
+      href: '/ways-to-give',
+    },
+  },
 }
 
 export default function Home() {
-  const { home_page } = getHomePageContent()
-
   return (
     <>
       <Header />
       <main>
-        <Hero {...home_page.hero} />
-        <Stats {...home_page.stats} />
-        <CallToAction {...home_page.call_to_action} />
+        <Hero {...homePageContent.hero} />
+        <Stats {...homePageContent.stats} />
+        <CallToAction {...homePageContent.call_to_action} />
       </main>
       <Footer />
     </>
