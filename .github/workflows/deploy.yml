@@ -41,6 +41,9 @@ jobs:
           IS_GITHUB_PAGES: 'true'
         run: npm run build
 
+      - name: Add .nojekyll (needed for _next/)
+        run: touch out/.nojekyll
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
