@@ -1,4 +1,5 @@
 import Image, { type StaticImageData } from 'next/image'
+import { prefixPath } from '@/utils/path'
 
 interface Person {
   name: string
@@ -34,7 +35,7 @@ export function Team({ title, subtitle, people }: TeamProps) {
             >
               <Image
                 alt={person.name}
-                src={person.imageUrl}
+                src={prefixPath(person.imageUrl as string)}
                 width={208}
                 height={260}
                 className="aspect-4/5 w-52 flex-none rounded-2xl bg-sky-100 object-cover outline-1 -outline-offset-1 outline-black/5 xl:self-start"
