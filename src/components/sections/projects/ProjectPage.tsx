@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { prefixPath } from '@/utils/path'
 
 interface ProjectPageProps {
   header: string
@@ -61,7 +62,7 @@ export function ProjectPage({
             width={2432}
             height={1442}
             alt={imageAlt}
-            src={imageUrl}
+            src={prefixPath(imageUrl)}
             className="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-gray-900/10"
           />
           <div aria-hidden="true" className="relative">

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { prefixPath } from '@/utils/path'
 
 interface Person {
   name: string
@@ -43,7 +44,7 @@ export function PatientsStories({
                   width={1024}
                   height={1024}
                   alt={person.name}
-                  src={person.imageUrl}
+                  src={prefixPath(person.imageUrl)}
                   className="aspect-3/2 w-full rounded-2xl bg-slate-100 object-cover outline-1 -outline-offset-1 outline-black/5"
                 />
                 <h3 className="mt-6 text-lg/8 font-semibold tracking-tight text-slate-900">

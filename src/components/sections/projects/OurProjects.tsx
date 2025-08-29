@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { prefixPath } from '@/utils/path'
 
 interface Image {
   alt: string
@@ -64,7 +65,7 @@ export function OurProjects({
                   <Image
                     fill
                     alt={image.alt}
-                    src={image.src}
+                    src={prefixPath(image.src)}
                     className="object-cover"
                   />
                 </div>
