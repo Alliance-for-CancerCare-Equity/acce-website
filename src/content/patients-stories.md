@@ -6,30 +6,30 @@ patients_stories:
   people:
     - name: Rukmini Adjetey
       role: Click to hear her story
-      imageUrl: /stories/Rukmini.jpg
+      imageUrl: /stories/rukmini.jpg
       youtubeUrl: https://www.youtube.com/watch?v=DBfATugq8r4
     - name: Adisa Iddrisu
       role: Click to hear her story
-      imageUrl: /stories/Adisa.jpg
+      imageUrl: /stories/adisa.jpg
       youtubeUrl: https://www.youtube.com/watch?v=ZtpmeGBW1JI
     - name: Dr Cynthia Botchway
       role: Click to hear her story
-      imageUrl: /stories/Cynthia.jpeg
+      imageUrl: /stories/cynthia.jpeg
       youtubeUrl: https://www.youtube.com/watch?v=SCVRsCAezk8
     - name: Salomey Appiah
       role: Click to hear her story
-      imageUrl: /stories/Salomey.jpg
+      imageUrl: /stories/salomey.jpg
       youtubeUrl: https://www.youtube.com/watch?v=TfBabZ19vqw
     - name: Emmanuel Grusi
       role: Click to hear his story
-      imageUrl: /stories/Emmanuel.jpg
+      imageUrl: /stories/emmanuel.jpg
       youtubeUrl: https://www.youtube.com/watch?v=uMiacIM7w1Y
     - name: Faustina Anakwa
       role: Click to hear her story
-      imageUrl: /stories/Faustina.jpg
+      imageUrl: /stories/faustina.jpg
       youtubeUrl: https://www.youtube.com/watch?v=0x-i-cFkdh0
     - name: Rita Benson
       role: Click to hear her story
-      imageUrl: /stories/Rita.jpg
+      imageUrl: /stories/rita.jpg
       youtubeUrl: https://www.youtube.com/watch?v=pE6oODZvlV8
 ---

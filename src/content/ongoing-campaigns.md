@@ -13,19 +13,19 @@ ongoing_campaigns_page:
       - name: Unfunded Cancer Drugs in Canada
         description: Make a Difference. Help Us To Pay For Unfunded Cancer Drugs in Canada.
         subtitle: Save Baby Ariel
-        href: /Ongoing_Campaigns/Make_a_difference.pdf
-        imageUrl: /Ongoing_Campaigns/Baby_Ariel.jpg
+        href: /ongoing_campaigns/make_a_difference.pdf
+        imageUrl: /ongoing_campaigns/baby_ariel.jpg
         external: true
       - name: Fighting Cancer in Ghana
         description: Transforming Lives. Fighting Cancer with Compassion and Empathy in Ghana.
         subtitle: Support Josh's Fight
-        href: /Ongoing_Campaigns/Transforming_Lives.pdf
-        imageUrl: /Ongoing_Campaigns/Josh.jpg
+        href: /ongoing_campaigns/transforming_lives.pdf
+        imageUrl: /ongoing_campaigns/josh.jpg
         external: true
   cta:
     title: Read More About Our Campaigns
     button1_text: Transforming Lives
-    button1_href: /Ongoing_Campaigns/Transforming_Lives.pdf
+    button1_href: /ongoing_campaigns/transforming_lives.pdf
     button2_text: Unfunded Cancer Drugs
-    button2_href: /Ongoing_Campaigns/Make_a_difference.pdf
+    button2_href: /ongoing_campaigns/make_a_difference.pdf
 ---
