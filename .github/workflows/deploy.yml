@@ -19,10 +19,8 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
-      # used during build for your next.config.js
       IS_GITHUB_PAGES: 'true'
-      # used by the rewrite step; must equal your repo name
-      REPO_NAME: 'acce-website'
+      REPO_NAME: 'acce-website'   # <-- must match your repo exactly
     steps:
       - name: Check out your repository
         uses: actions/checkout@v4
@@ -43,76 +41,87 @@ jobs:
       - name: Add .nojekyll (needed for _next/)
         run: touch out/.nojekyll
 
-      - name: Debug — list exported images (optional)
-        run: ls -R out/images || true
+      - name: Debug — list exported folders (optional)
+        run: |
+          ls -R out | sed -n '1,200p' || true
 
-      - name: Prefix root-relative URLs with /${{ env.REPO_NAME }}
+      - name: Prefix root-relative URLs in HTML/CSS only
         run: |
           node - <<'NODE'
           const fs = require('fs');
           const path = require('path');
 
-          const prefix = '/' + (process.env.REPO_NAME || '').replace(/^\/+|\/+$/g, '');
-          if (!prefix || prefix === '/') {
-            console.error('Missing or invalid REPO_NAME');
+          const repo = (process.env.REPO_NAME || '').replace(/^\/+|\/+$/g, '');
+          if (!repo) {
+            console.error('REPO_NAME env missing');
             process.exit(1);
           }
+          const prefix = '/' + repo;
 
-          const exts = new Set(['.html', '.js', '.css', '.json', '.xml', '.txt']);
-          let files = 0, changes = 0;
+          // Only touch html/css to avoid breaking Next's chunk loader.
+          const exts = new Set(['.html', '.css']);
 
-          function rewriteSrcset(val) {
-            // Split by comma, then trim each candidate, prefix if it starts with "/"
-            return val.split(',').map(part => {
-              const t = part.trim();
-              const m = t.match(/^\/(?![^/]*?\b(?:${prefix.slice(1)})\/)(.*)$/); // starts with "/" but not already prefixed
-              if (m) {
-                const rest = m[1];
-                return `${prefix}/${rest}`;
-              }
-              return t;
-            }).join(', ');
-          }
+          let files = 0, edits = 0;
 
-          function processFile(p) {
-            const ext = path.extname(p);
-            if (!exts.has(ext)) return;
-            let s = fs.readFileSync(p, 'utf8');
-            const before = s;
+          function rewriteHTMLCSS(content) {
+            let s = content;
 
-            // 1) src= / href=  (not already prefixed)
-            s = s.replace(/(\b(?:src|href)=["'])\/(?!${prefix.slice(1)}\/)/g, `$1${prefix}/`);
+            // Helper: add prefix to a path that starts with "/"
+            const addPrefix = (p) => {
+              if (!p.startsWith('/')) return p;                         // not root-relative
+              if (p.startsWith(prefix + '/')) return p;                 // already prefixed
+              if (p.startsWith('/_next/')) return p;                    // Next assets
+              return prefix + p;
+            };
 
-            // 2) CSS url(/...)  (not already prefixed)
-            s = s.replace(/url\(\s*\/(?!${prefix.slice(1)}\/)/g, `url(${prefix}/`);
+            // 1) Rewrite src|href|content attributes with root-relative paths
+            s = s.replace(/\b(?:src|href|content)=["']([^"']+)["']/g, (m, url) => {
+              const newUrl = addPrefix(url);
+              if (newUrl !== url) { edits++; return m.replace(url, newUrl); }
+              return m;
+            });
 
-            // 3) srcset="..., /img 2x, /img@3x 3x"
-            s = s.replace(/\bsrcset=(["'])([^"']+)\1/g, (m, q, val) => {
-              const rewritten = val.replace(/(^|,\s*)\/(?!${prefix.slice(1)}\/)/g, `$1${prefix}/`);
-              if (rewritten !== val) changes++;
+            // 2) Rewrite srcset lists
+            s = s.replace(/\bsrcset=(["'])([^"']+)\1/g, (m, q, list) => {
+              const rewritten = list.split(',')
+                .map(part => {
+                  const trimmed = part.trim();
+                  const [u, ...rest] = trimmed.split(/\s+/);
+                  const newU = addPrefix(u);
+                  return [newU, ...rest].join(' ');
+                })
+                .join(', ');
+              if (rewritten !== list) edits++;
               return `srcset=${q}${rewritten}${q}`;
             });
 
-            // Bonus: content="/..." (rare, but safe)
-            s = s.replace(/(\bcontent=)["']\/(?!${prefix.slice(1)}\/)/g, `$1"${prefix}/`);
+            // 3) Rewrite CSS url(/...)
+            s = s.replace(/url\(\s*(['"]?)(\/[^'")]+)\1\s*\)/g, (m, quote, url) => {
+              const newUrl = addPrefix(url);
+              if (newUrl !== url) { edits++; return `url(${quote}${newUrl}${quote})`; }
+              return m;
+            });
 
-            if (s !== before) {
-              fs.writeFileSync(p, s);
-              changes++;
-            }
-            files++;
+            return s;
           }
 
           function walk(dir) {
             for (const d of fs.readdirSync(dir, { withFileTypes: true })) {
               const p = path.join(dir, d.name);
               if (d.isDirectory()) walk(p);
-              else processFile(p);
+              else {
+                const ext = path.extname(p);
+                if (!exts.has(ext)) continue;
+                const before = fs.readFileSync(p, 'utf8');
+                const after = rewriteHTMLCSS(before);
+                if (after !== before) fs.writeFileSync(p, after);
+                files++;
+              }
             }
           }
 
           walk('out');
-          console.log(`Rewrote ${changes} occurrence(s) across ${files} file(s). Prefix used: ${prefix}`);
+          console.log(`Processed ${files} files; rewrote ${edits} occurrence(s). Prefix = ${prefix}`);
           NODE
 
       - name: Upload artifact
