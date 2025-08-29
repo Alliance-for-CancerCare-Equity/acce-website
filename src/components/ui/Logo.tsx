@@ -1,6 +1,8 @@
 import Image from 'next/image'
 
-export function Logo(props: React.ComponentPropsWithoutRef<'img'>) {
+type LogoProps = Omit<React.ComponentPropsWithoutRef<'img'>, 'src'>
+
+export function Logo(props: LogoProps) {
   return (
     <Image
       src="/acce_logo_with_text.svg"
