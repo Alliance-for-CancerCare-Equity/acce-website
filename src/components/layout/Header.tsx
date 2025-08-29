@@ -18,6 +18,7 @@ import {
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { FlyoutMenu, type FlyoutMenuItem } from '@/components/layout/FlyoutMenu'
+import { Logo } from '@/components/ui/Logo'
 import { NavLink } from '@/components/ui/NavLink'
 
 const aboutUsItems: FlyoutMenuItem[] = [
@@ -122,8 +123,8 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-white py-5 shadow-md">
       <nav className="flex items-center justify-between px-6 sm:px-8 lg:px-12">
         <div className="flex items-center gap-x-8">
-          <Link href="/" aria-label="Home" className="-m-1.5 p-1.5 text-2xl font-bold text-blue-600">
-            ACCE
+          <Link href="/" aria-label="Home" className="-m-1.5 p-1.5">
+            <Logo />
           </Link>
           <div className="hidden lg:flex lg:gap-x-6">
             <FlyoutMenu label="About Us" items={aboutUsItems} />
@@ -165,7 +166,7 @@ export function Header() {
               <span className="sr-only">
                 Alliance for Cancer Care Equity
               </span>
-              <div className="text-2xl font-bold text-blue-600">ACCE</div>
+              <Logo />
             </Link>
             <button
               type="button"

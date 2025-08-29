@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { Container } from '@/components/ui/Container'
+import { Logo } from '@/components/ui/Logo'
 
 const navigation = {
   main: [
@@ -82,7 +83,7 @@ export function Footer() {
       <Container>
         <div className="py-4">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-blue-600">ACCE</div>
+            <Logo />
             <nav className="text-sm" aria-label="quick links">
               <div className="-my-1 flex justify-center gap-x-6">
                 {navigation.main.map((item) => (

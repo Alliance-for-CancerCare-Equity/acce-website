@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   },
   description:
     'ACCE is a registered charity in Canada dedicated to advancing equity in cancer care, from prevention through survivorship.',
+  icons: {
+    icon: '/acce_logo.svg',
+  },
 }
 
 const inter = Inter({
