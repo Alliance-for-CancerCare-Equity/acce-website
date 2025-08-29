@@ -4,17 +4,13 @@ on:
   push:
     branches:
       - main
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -22,6 +18,11 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      # used during build for your next.config.js
+      IS_GITHUB_PAGES: 'true'
+      # used by the rewrite step; must equal your repo name
+      REPO_NAME: 'acce-website'
     steps:
       - name: Check out your repository
         uses: actions/checkout@v4
@@ -34,15 +35,85 @@ jobs:
       - name: Install dependencies
         run: |
           npm config set registry https://registry.npmjs.org/
-          npm install
+          npm ci
 
-      - name: Build your site
-        env:
-          IS_GITHUB_PAGES: 'true'
+      - name: Build your site (static export to out/)
         run: npm run build
 
       - name: Add .nojekyll (needed for _next/)
         run: touch out/.nojekyll
+
+      - name: Debug — list exported images (optional)
+        run: ls -R out/images || true
+
+      - name: Prefix root-relative URLs with /${{ env.REPO_NAME }}
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+
+          const prefix = '/' + (process.env.REPO_NAME || '').replace(/^\/+|\/+$/g, '');
+          if (!prefix || prefix === '/') {
+            console.error('Missing or invalid REPO_NAME');
+            process.exit(1);
+          }
+
+          const exts = new Set(['.html', '.js', '.css', '.json', '.xml', '.txt']);
+          let files = 0, changes = 0;
+
+          function rewriteSrcset(val) {
+            // Split by comma, then trim each candidate, prefix if it starts with "/"
+            return val.split(',').map(part => {
+              const t = part.trim();
+              const m = t.match(/^\/(?![^/]*?\b(?:${prefix.slice(1)})\/)(.*)$/); // starts with "/" but not already prefixed
+              if (m) {
+                const rest = m[1];
+                return `${prefix}/${rest}`;
+              }
+              return t;
+            }).join(', ');
+          }
+
+          function processFile(p) {
+            const ext = path.extname(p);
+            if (!exts.has(ext)) return;
+            let s = fs.readFileSync(p, 'utf8');
+            const before = s;
+
+            // 1) src= / href=  (not already prefixed)
+            s = s.replace(/(\b(?:src|href)=["'])\/(?!${prefix.slice(1)}\/)/g, `$1${prefix}/`);
+
+            // 2) CSS url(/...)  (not already prefixed)
+            s = s.replace(/url\(\s*\/(?!${prefix.slice(1)}\/)/g, `url(${prefix}/`);
+
+            // 3) srcset="..., /img 2x, /img@3x 3x"
+            s = s.replace(/\bsrcset=(["'])([^"']+)\1/g, (m, q, val) => {
+              const rewritten = val.replace(/(^|,\s*)\/(?!${prefix.slice(1)}\/)/g, `$1${prefix}/`);
+              if (rewritten !== val) changes++;
+              return `srcset=${q}${rewritten}${q}`;
+            });
+
+            // Bonus: content="/..." (rare, but safe)
+            s = s.replace(/(\bcontent=)["']\/(?!${prefix.slice(1)}\/)/g, `$1"${prefix}/`);
+
+            if (s !== before) {
+              fs.writeFileSync(p, s);
+              changes++;
+            }
+            files++;
+          }
+
+          function walk(dir) {
+            for (const d of fs.readdirSync(dir, { withFileTypes: true })) {
+              const p = path.join(dir, d.name);
+              if (d.isDirectory()) walk(p);
+              else processFile(p);
+            }
+          }
+
+          walk('out');
+          console.log(`Rewrote ${changes} occurrence(s) across ${files} file(s). Prefix used: ${prefix}`);
+          NODE
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -52,3 +123,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
