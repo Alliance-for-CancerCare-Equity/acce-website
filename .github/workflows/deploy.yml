@@ -2,8 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -41,87 +40,171 @@ jobs:
       - name: Add .nojekyll (needed for _next/)
         run: touch out/.nojekyll
 
-      - name: Debug — list exported folders (optional)
+      # --- Quick visibility into what's actually exported
+      - name: Debug — list exported assets
         run: |
-          ls -R out | sed -n '1,200p' || true
+          echo "root .txt:"; ls -la out/*.txt || true
+          echo "stories:";    ls -la out/stories || true
+          echo "images:";     ls -la out/images  || true
+          echo "avatars:";    ls -la out/avatars || true
+          echo "Ongoing_Campaigns:"; ls -la out/Ongoing_Campaigns || true
 
-      - name: Prefix root-relative URLs in HTML/CSS only
+      # --- Rewrite HTML & CSS
+      - name: Prefix root-relative URLs in HTML/CSS
         run: |
           node - <<'NODE'
-          const fs = require('fs');
-          const path = require('path');
-
+          const fs = require('fs'), path = require('path');
           const repo = (process.env.REPO_NAME || '').replace(/^\/+|\/+$/g, '');
-          if (!repo) {
-            console.error('REPO_NAME env missing');
-            process.exit(1);
-          }
+          if (!repo) { console.error('REPO_NAME env missing'); process.exit(1); }
           const prefix = '/' + repo;
-
-          // Only touch html/css to avoid breaking Next's chunk loader.
           const exts = new Set(['.html', '.css']);
+          let files=0, edits=0;
 
-          let files = 0, edits = 0;
+          const addPrefix = (u) => {
+            if (!u.startsWith('/')) return u;
+            if (u.startsWith(prefix + '/')) return u;
+            if (u.startsWith('/_next/')) return u;
+            return prefix + u;
+          };
 
-          function rewriteHTMLCSS(content) {
-            let s = content;
-
-            // Helper: add prefix to a path that starts with "/"
-            const addPrefix = (p) => {
-              if (!p.startsWith('/')) return p;                         // not root-relative
-              if (p.startsWith(prefix + '/')) return p;                 // already prefixed
-              if (p.startsWith('/_next/')) return p;                    // Next assets
-              return prefix + p;
-            };
-
-            // 1) Rewrite src|href|content attributes with root-relative paths
-            s = s.replace(/\b(?:src|href|content)=["']([^"']+)["']/g, (m, url) => {
-              const newUrl = addPrefix(url);
-              if (newUrl !== url) { edits++; return m.replace(url, newUrl); }
-              return m;
+          const rewrite = (s) => {
+            // src|href|content
+            s = s.replace(/\b(?:src|href|content)=["']([^"']+)["']/g, (m,u)=>{
+              const nu = addPrefix(u); if(nu!==u){edits++; return m.replace(u,nu)}; return m;
             });
-
-            // 2) Rewrite srcset lists
-            s = s.replace(/\bsrcset=(["'])([^"']+)\1/g, (m, q, list) => {
-              const rewritten = list.split(',')
-                .map(part => {
-                  const trimmed = part.trim();
-                  const [u, ...rest] = trimmed.split(/\s+/);
-                  const newU = addPrefix(u);
-                  return [newU, ...rest].join(' ');
-                })
-                .join(', ');
-              if (rewritten !== list) edits++;
-              return `srcset=${q}${rewritten}${q}`;
+            // srcset
+            s = s.replace(/\bsrcset=(["'])([^"']+)\1/g,(m,q,list)=>{
+              const r = list.split(',').map(part=>{
+                const t=part.trim(); if(!t) return t;
+                const [u,...rest]=t.split(/\s+/); const nu=addPrefix(u);
+                return [nu,...rest].join(' ');
+              }).join(', ');
+              if(r!==list) edits++; return `srcset=${q}${r}${q}`;
             });
-
-            // 3) Rewrite CSS url(/...)
-            s = s.replace(/url\(\s*(['"]?)(\/[^'")]+)\1\s*\)/g, (m, quote, url) => {
-              const newUrl = addPrefix(url);
-              if (newUrl !== url) { edits++; return `url(${quote}${newUrl}${quote})`; }
-              return m;
+            // url(...)
+            s = s.replace(/url\(\s*(['"]?)(\/[^'")]+)\1\s*\)/g,(m,q,u)=>{
+              const nu=addPrefix(u); if(nu!==u){edits++; return `url(${q}${nu}${q})`}; return m;
             });
-
             return s;
-          }
+          };
 
-          function walk(dir) {
-            for (const d of fs.readdirSync(dir, { withFileTypes: true })) {
-              const p = path.join(dir, d.name);
+          const walk = (dir) => {
+            for (const d of fs.readdirSync(dir,{withFileTypes:true})) {
+              const p = path.join(dir,d.name);
               if (d.isDirectory()) walk(p);
-              else {
-                const ext = path.extname(p);
-                if (!exts.has(ext)) continue;
-                const before = fs.readFileSync(p, 'utf8');
-                const after = rewriteHTMLCSS(before);
-                if (after !== before) fs.writeFileSync(p, after);
+              else if (exts.has(path.extname(p))) {
+                const before = fs.readFileSync(p,'utf8');
+                const after = rewrite(before);
+                if (after!==before) fs.writeFileSync(p,after);
                 files++;
               }
             }
-          }
+          };
 
           walk('out');
-          console.log(`Processed ${files} files; rewrote ${edits} occurrence(s). Prefix = ${prefix}`);
+          console.log(`HTML/CSS processed: ${files} files; edits=${edits}; prefix=${prefix}`);
+          NODE
+
+      # --- Rewrite JS bundles (string literals/fetch) for whitelisted paths
+      - name: Prefix whitelisted URLs in JS
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'), path=require('path');
+          const repo=(process.env.REPO_NAME||'').replace(/^\/+|\/+$/g,'');
+          if(!repo){console.error('REPO_NAME env missing');process.exit(1)}
+          const prefix='/'+repo;
+          const exts=new Set(['.js']);
+          const WL=['images/','stories/','avatars/','Ongoing_Campaigns/'];
+          const isRootTxt=(u)=>/^\/[A-Za-z0-9._-]+\.txt(\?|$)/.test(u);
+          const shouldPrefix=(u)=>{
+            if(!u.startsWith('/')) return false;
+            if(u.startsWith(prefix+'/')) return false;
+            if(u.startsWith('/_next/')) return false;
+            if(isRootTxt(u)) return true;
+            return WL.some(w=>u.startsWith('/'+w));
+          };
+          let files=0, edits=0;
+
+          const rewrite=(s)=>{
+            // quoted strings
+            s = s.replace(/(['"`])\/(?!${repo}\/|_next\/)([^'"`\\)]*)\1/g,(m,q,rest)=>{
+              const u='/'+rest; if(shouldPrefix(u)){edits++; return `${q}${prefix}${u}${q}`}; return m;
+            });
+            // fetch('/...'), new Request('/...')
+            s = s.replace(/\b(fetch|Request)\(\s*(['"`])\/(?!${repo}\/|_next\/)([^'"`\\)]*)\2/g,(m,fn,q,rest)=>{
+              const u='/'+rest; if(shouldPrefix(u)){edits++; return `${fn}(${q}${prefix}${u}${q}`}; return m;
+            });
+            return s;
+          };
+
+          const walk=(dir)=>{
+            for(const d of fs.readdirSync(dir,{withFileTypes:true})){
+              const p=path.join(dir,d.name);
+              if(d.isDirectory()) walk(p);
+              else if(exts.has(path.extname(p))){
+                const before=fs.readFileSync(p,'utf8');
+                const after=rewrite(before);
+                if(after!==before) fs.writeFileSync(p,after);
+                files++;
+              }
+            }
+          };
+
+          walk('out');
+          console.log(`JS processed: ${files} files; edits=${edits}; prefix=${prefix}`);
+          NODE
+
+      # --- Rewrite RSC .txt payloads (this fixes "works after refresh" issue)
+      - name: Prefix URLs inside RSC .txt payloads
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'), path=require('path');
+          const repo=(process.env.REPO_NAME||'').replace(/^\/+|\/+$/g,'');
+          if(!repo){console.error('REPO_NAME env missing');process.exit(1)}
+          const prefix='/'+repo;
+          const exts=new Set(['.txt']);
+          const WL=['images/','stories/','avatars/','Ongoing_Campaigns/'];
+          const isRootTxt=(u)=>/^\/[A-Za-z0-9._-]+\.txt(\?|$)/.test(u);
+          const shouldPrefix=(u)=>{
+            if(!u.startsWith('/')) return false;
+            if(u.startsWith(prefix+'/')) return false;
+            if(u.startsWith('/_next/')) return false;
+            if(isRootTxt(u)) return true;
+            return WL.some(w=>u.startsWith('/'+w));
+          };
+          let files=0, edits=0;
+
+          const addPrefix=(u)=> shouldPrefix(u) ? (prefix+u) : u;
+
+          const rewrite=(s)=>{
+            // Most URLs appear quoted inside the flight stream; patch conservatively:
+            s = s.replace(/(["'`])\/(?!${repo}\/|_next\/)([^"'`\\\s)]+)\1/g,(m,q,rest)=>{
+              const u='/'+rest; const nu=addPrefix(u);
+              if(nu!==u){edits++; return `${q}${nu}${q}`}; return m;
+            });
+            // Also catch unquoted srcset-like fragments inside the stream (rare):
+            s = s.replace(/(^|,\s*)\/(?!${repo}\/|_next\/)(?:images|stories|avatars|Ongoing_Campaigns)\/[^\s,]+/g,(m,lead)=>{
+              const u=m.trim(); const nu=addPrefix(u);
+              if(nu!==u){edits++; return `${lead}${nu}`}; return m;
+            });
+            return s;
+          };
+
+          const walk=(dir)=>{
+            for(const d of fs.readdirSync(dir,{withFileTypes:true})){
+              const p=path.join(dir,d.name);
+              if(d.isDirectory()) walk(p);
+              else if(exts.has(path.extname(p))){
+                const before=fs.readFileSync(p,'utf8');
+                const after=rewrite(before);
+                if(after!==before) fs.writeFileSync(p,after);
+                files++;
+              }
+            }
+          };
+
+          walk('out');
+          console.log(`RSC .txt processed: ${files} files; edits=${edits}; prefix=${prefix}`);
           NODE
 
       - name: Upload artifact
