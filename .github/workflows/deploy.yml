@@ -37,6 +37,8 @@ jobs:
           npm install
 
       - name: Build your site
+        env:
+          IS_GITHUB_PAGES: 'true'
         run: npm run build
 
       - name: Upload artifact

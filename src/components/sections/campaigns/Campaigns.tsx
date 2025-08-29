@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { CampaignCta, type CampaignCtaProps } from '@/components/sections/campaigns/CampaignCta'
-import { prefixPath } from '@/utils/path'
 
 interface Campaign {
   name: string
@@ -55,7 +54,7 @@ export function Campaigns({ campaigns, cta }: CampaignsProps) {
                       width={1310}
                       height={873}
                       alt={campaign.name}
-                      src={prefixPath(campaign.imageUrl)}
+                      src={campaign.imageUrl}
                       className="aspect-video rounded-xl bg-slate-100 object-cover"
                     />
                   </Link>

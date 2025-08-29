@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { prefixPath } from '@/utils/path'
 
 interface Opportunity {
   text: string
@@ -81,7 +80,7 @@ export function GetInvolved({
                 >
                   <Image
                     fill
-                    src={prefixPath(link.imageUrl)}
+                    src={link.imageUrl}
                     alt={link.text}
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
