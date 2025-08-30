@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image, { type StaticImageData } from 'next/image'
 
 interface ProjectPageProps {
   header: string
@@ -9,7 +9,7 @@ interface ProjectPageProps {
   col2_p2?: string
   buttonText: string
   buttonHref: string
-  imageUrl: string
+  imageUrl: StaticImageData
   imageAlt: string
 }
 
