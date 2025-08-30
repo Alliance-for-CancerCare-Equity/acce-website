@@ -1,6 +1,9 @@
 import Image from 'next/image'
 
-type LogoProps = Omit<React.ComponentPropsWithoutRef<'img'>, 'src'>
+type LogoProps = Omit<
+  React.ComponentPropsWithoutRef<'img'>,
+  'src' | 'width' | 'height'
+>
 
 export function Logo(props: LogoProps) {
   return (
