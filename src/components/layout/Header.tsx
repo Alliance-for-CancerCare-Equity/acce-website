@@ -43,7 +43,7 @@ const ourProjectsItems: FlyoutMenuItem[] = [
     href: '/support-patients-and-their-families',
   },
   {
-    name: 'Advance Cancer Research',
+    name: 'Cancer Research',
     href: '/promote-and-advance-cancer-research',
   },
 ]
