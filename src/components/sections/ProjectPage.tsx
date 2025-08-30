@@ -9,7 +9,7 @@ interface ProjectPageProps {
   col2_p2?: string
   buttonText: string
   buttonHref: string
-  imageUrl: StaticImageData
+  imageUrl: StaticImageData | string
   imageAlt: string
 }
 
