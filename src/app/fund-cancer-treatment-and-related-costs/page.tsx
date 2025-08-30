@@ -4,6 +4,8 @@ import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { ProjectPage } from '@/components/sections/ProjectPage'
 
+import fundCancerImage from '../../../public/images/fund_cancer.jpg'
+
 export const metadata: Metadata = {
   title: 'Fund Cancer Treatment and Related Costs',
 }
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
 const fundCancerTreatmentContent = {
   header: 'ACCE Projects',
   title: 'We Fund Cancer Patients Treatment and Related Costs',
-  imageUrl: '/images/fund_cancer.jpg',
+  imageUrl: fundCancerImage,
   imageAlt: 'Doctor and patient reviewing documents.',
   col1_p1:
     "The Alliance for CancerCare Equity (ACCE) is committed to ensuring that a patient's family finances never determine their ability to survive cancer. ACCE achieves this mission by funding the full spectrum of cancer treatments, including radiotherapy, chemotherapy, surgery, and associated costs, for patients in Ghana who lack the financial means to access adequate healthcare services; providing financial support for cancer treatments to uninsured and underinsured patients in Canada (Kitchener-Waterloo); and covering the costs of essential medications that are not funded for patients in Canada (Kitchener-Waterloo).",

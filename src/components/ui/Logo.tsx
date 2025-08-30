@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import logoSvg from '../../../public/acce_logo_with_text.svg'
 
 type LogoProps = Omit<
   React.ComponentPropsWithoutRef<'img'>,
@@ -8,7 +9,7 @@ type LogoProps = Omit<
 export function Logo(props: LogoProps) {
   return (
     <Image
-      src="/acce_logo_with_text.svg"
+      src={logoSvg}
       alt="ACCE Logo"
       width={109}
       height={40}

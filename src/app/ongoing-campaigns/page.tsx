@@ -6,6 +6,9 @@ import { Button } from '@/components/ui/Button'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 
+import babyArielImage from '../../../public/ongoing_campaigns/baby_ariel.jpg'
+import joshImage from '../../../public/ongoing_campaigns/josh.jpg'
+
 export const metadata: Metadata = {
   title: 'Ongoing Campaigns',
 }
@@ -31,7 +34,7 @@ const ongoingCampaignsContent = {
           'Make a Difference. Help Us To Pay For Unfunded Cancer Drugs in Canada.',
         subtitle: 'Save Baby Ariel',
         href: '/ongoing_campaigns/make_a_difference.pdf',
-        imageUrl: '/ongoing_campaigns/baby_ariel.jpg',
+        imageUrl: babyArielImage,
         external: true,
       },
       {
@@ -40,7 +43,7 @@ const ongoingCampaignsContent = {
           'Transforming Lives. Fighting Cancer with Compassion and Empathy in Ghana.',
         subtitle: "Support Josh's Fight",
         href: '/ongoing_campaigns/transforming_lives.pdf',
-        imageUrl: '/ongoing_campaigns/josh.jpg',
+        imageUrl: joshImage,
         external: true,
       },
     ],
@@ -99,12 +102,14 @@ function CampaignCta({
   )
 }
 
+import { type StaticImageData } from 'next/image'
+
 interface Campaign {
   name: string
   subtitle: string
   description: string
   href: string
-  imageUrl: string
+  imageUrl: StaticImageData
   external: boolean
 }
 

@@ -3,6 +3,7 @@ import { Inter, Lexend } from 'next/font/google'
 import clsx from 'clsx'
 
 import '@/styles/tailwind.css'
+import favicon from '../../public/acce_logo.svg'
 
 export const metadata: Metadata = {
   title: {
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   description:
     'ACCE is a registered charity in Canada dedicated to advancing equity in cancer care, from prevention through survivorship.',
   icons: {
-    icon: '/acce_logo.svg',
+    icon: favicon.src,
   },
 }
 

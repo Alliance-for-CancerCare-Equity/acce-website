@@ -69,10 +69,12 @@ Deeply committed to community service, Mr. Asare currently serves as Board Treas
   ],
 }
 
+import { type StaticImageData } from 'next/image'
+
 interface Person {
   name: string
   role: string
-  imageUrl: string
+  imageUrl: StaticImageData
   bio: string
 }
 

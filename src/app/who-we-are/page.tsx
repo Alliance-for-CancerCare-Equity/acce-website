@@ -5,6 +5,8 @@ import { CheckCircleIcon } from '@heroicons/react/20/solid'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 
+import aboutUsImage from '../../../public/images/about_us.jpg'
+
 export const metadata: Metadata = {
   title: 'Who We Are',
 }
@@ -24,13 +26,15 @@ const whoWeAreContent = {
     who_we_are_p3:
       "Join us in our quest to redefine cancer care. Together, we can ensure that every individual, regardless of their financial situation, receives the treatment they need to fight cancer and reclaim their future. Together, let's make life-changing compassionate care accessible to all who need it most.",
     values_title: 'Our Values',
-    values_list: 'Equity, Compassion, Empathy, Empowerment, Transparency, Community',
+    values_list:
+      'Equity, Compassion, Empathy, Empowerment, Transparency, Community',
   },
   what_we_do: {
     title: 'How We Help',
     subtitle: 'Our Commitment to Patients',
-    image_alt: 'A healthcare professional providing compassionate care to a patient.',
-    image_src: '/images/about_us.jpg',
+    image_alt:
+      'A healthcare professional providing compassionate care to a patient.',
+    image_src: aboutUsImage,
     intro_p:
       'We are dedicated to breaking down the financial barriers that prevent individuals from receiving the cancer care they deserve. Our efforts are focused on the following areas',
     commitments: [
@@ -42,7 +46,8 @@ const whoWeAreContent = {
       'Conducting vital research into cancer and other diseases in Canada and Ghana.',
     ],
     values_strong: 'Our Values:',
-    values_list: 'Equity, Compassion, Empathy, Empowerment, Transparency, Community.',
+    values_list:
+      'Equity, Compassion, Empathy, Empowerment, Transparency, Community.',
   },
 }
 
@@ -96,11 +101,13 @@ function AboutIntro({
   )
 }
 
+import { type StaticImageData } from 'next/image'
+
 interface WhatWeDoProps {
   title: string
   subtitle: string
   image_alt: string
-  image_src: string
+  image_src: StaticImageData
   intro_p: string
   commitments: string[]
   values_strong: string
@@ -118,7 +125,7 @@ function WhatWeDo({
   values_list,
 }: WhatWeDoProps) {
   return (
-    <div className="relative bg-white py-24 sm:py-32 pb-24 sm:pb-32">
+    <div className="relative bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
         <div className="lg:flex lg:w-1/2 lg:shrink lg:grow-0 lg:pl-8 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
           <div className="relative h-80 overflow-hidden rounded-3xl lg:h-auto lg:w-full lg:grow xl:ml-0">

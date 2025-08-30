@@ -5,6 +5,14 @@ import Link from 'next/link'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 
+import rukminiImage from '../../../public/stories/rukmini.jpg'
+import adisaImage from '../../../public/stories/adisa.jpg'
+import cynthiaImage from '../../../public/stories/cynthia.jpeg'
+import salomeyImage from '../../../public/stories/salomey.jpg'
+import emmanuelImage from '../../../public/stories/emmanuel.jpg'
+import faustinaImage from '../../../public/stories/faustina.jpg'
+import ritaImage from '../../../public/stories/rita.jpg'
+
 export const metadata: Metadata = {
   title: 'Patients Stories',
 }
@@ -17,52 +25,54 @@ const patientsStoriesContent = {
     {
       name: 'Rukmini Adjetey',
       role: 'Click to hear her story',
-      imageUrl: '/stories/rukmini.jpg',
+      imageUrl: rukminiImage,
       youtubeUrl: 'https://www.youtube.com/watch?v=DBfATugq8r4',
     },
     {
       name: 'Adisa Iddrisu',
       role: 'Click to hear her story',
-      imageUrl: '/stories/adisa.jpg',
+      imageUrl: adisaImage,
       youtubeUrl: 'https://www.youtube.com/watch?v=ZtpmeGBW1JI',
     },
     {
       name: 'Dr Cynthia Botchway',
       role: 'Click to hear her story',
-      imageUrl: '/stories/cynthia.jpeg',
+      imageUrl: cynthiaImage,
       youtubeUrl: 'https://www.youtube.com/watch?v=SCVRsCAezk8',
     },
     {
       name: 'Salomey Appiah',
       role: 'Click to hear her story',
-      imageUrl: '/stories/salomey.jpg',
+      imageUrl: salomeyImage,
       youtubeUrl: 'https://www.youtube.com/watch?v=TfBabZ19vqw',
     },
     {
       name: 'Emmanuel Grusi',
       role: 'Click to hear his story',
-      imageUrl: '/stories/emmanuel.jpg',
+      imageUrl: emmanuelImage,
       youtubeUrl: 'https://www.youtube.com/watch?v=uMiacIM7w1Y',
     },
     {
       name: 'Faustina Anakwa',
       role: 'Click to hear her story',
-      imageUrl: '/stories/faustina.jpg',
+      imageUrl: faustinaImage,
       youtubeUrl: 'https://www.youtube.com/watch?v=0x-i-cFkdh0',
     },
     {
       name: 'Rita Benson',
       role: 'Click to hear her story',
-      imageUrl: '/stories/rita.jpg',
+      imageUrl: ritaImage,
       youtubeUrl: 'https://www.youtube.com/watch?v=pE6oODZvlV8',
     },
   ],
 }
 
+import { type StaticImageData } from 'next/image'
+
 interface Person {
   name: string
   role: string
-  imageUrl: string
+  imageUrl: StaticImageData
   youtubeUrl: string
 }
 
