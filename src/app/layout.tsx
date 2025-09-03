@@ -12,6 +12,55 @@ export const metadata: Metadata = {
   },
   description:
     'ACCE is a registered charity in Canada dedicated to advancing equity in cancer care, from prevention through survivorship.',
+  keywords: [
+    'cancer care',
+    'equity',
+    'charity',
+    'nonprofit',
+    'patient support',
+    'Ghana',
+    'Canada',
+    'healthcare access',
+  ],
+  authors: [{ name: 'Alliance for CancerCare Equity (ACCE)' }],
+  creator: 'Alliance for CancerCare Equity (ACCE)',
+  publisher: 'Alliance for CancerCare Equity (ACCE)',
+  category: 'Charity',
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    title: 'ACCE',
+    siteName: 'Alliance for CancerCare Equity',
+    description:
+      'ACCE is a registered charity in Canada dedicated to advancing equity in cancer care, from prevention through survivorship.',
+    url: '/',
+    images: [
+      {
+        url: '/images/about_us.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Alliance for CancerCare Equity',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Alliance for CancerCare Equity (ACCE)',
+    description:
+      'Advancing equity in cancer care through treatment funding and support.',
+    images: ['/images/about_us.jpg'],
+    creator: '@ACCE_CA',
+  },
+  themeColor: '#2563eb',
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   icons: {
     icon: favicon.src,
   },

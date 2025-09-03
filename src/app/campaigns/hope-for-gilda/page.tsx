@@ -19,7 +19,6 @@ export default function HopeForGildaPage() {
           <p className="mt-6 text-lg/8 text-slate-600">
             This page is coming soon. Please check back later for more
             information.
-          -
           </p>
         </div>
       </main>

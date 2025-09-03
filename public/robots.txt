@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# If you host on a custom domain, add your sitemap URL below
+# Sitemap: https://www.allianceforcancercareequity.ca/sitemap.xml

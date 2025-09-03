@@ -6,10 +6,10 @@ import { Logo } from '@/components/ui/Logo'
 const navigation = {
   main: [
     { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/about-us' },
-    { name: 'Our Projects', href: '/our-projects' },
-    { name: 'Ways to Give', href: '/ways-to-give' },
-    { name: 'Get Involved', href: '/get-involved' },
+    { name: 'About Us', href: '/who-we-are' },
+    { name: 'Our Projects', href: '/projects-overview' },
+    { name: 'Ways to Give', href: '/giving-options' },
+    { name: 'Get Involved', href: '/opportunities' },
     { name: 'Contact Us', href: '/contact-us' },
   ],
   social: [
