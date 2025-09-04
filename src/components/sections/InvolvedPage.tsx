@@ -22,7 +22,7 @@ export function InvolvedPage({
   list_items,
 }: InvolvedPageProps) {
   return (
-    <div className="bg-white px-6 py-24 sm:py-32 lg:px-8">
+    <div className="bg-white px-6 py-16 sm:py-20 lg:px-8">
       <div className="mx-auto max-w-3xl text-base/7 text-slate-700">
         <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
           {title}

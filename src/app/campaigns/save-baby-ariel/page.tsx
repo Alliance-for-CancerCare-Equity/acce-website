@@ -12,7 +12,7 @@ export default function SaveBabyArielPage() {
     <>
       <Header />
       <main>
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-8">
           <h1 className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
             Save Baby Ariel’s Life: She’s Only 14 Months and Fighting Liver
             Cancer

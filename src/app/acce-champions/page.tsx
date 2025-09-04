@@ -71,7 +71,7 @@ interface ChampionsProps {
 
 function Champions({ title, intro, tiers }: ChampionsProps) {
   return (
-    <Container className="py-24 sm:py-32">
+    <Container className="py-16 sm:py-20">
       <div className="mx-auto max-w-2xl lg:mx-0">
         <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
           {title}

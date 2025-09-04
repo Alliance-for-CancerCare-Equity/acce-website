@@ -18,7 +18,7 @@ export function FlyoutMenu({
 }) {
   return (
     <Popover className="relative">
-      <PopoverButton className="inline-flex items-center gap-x-1 whitespace-nowrap rounded-lg px-2 py-1.5 text-sm/6 font-semibold text-slate-700 hover:bg-slate-100 hover:text-slate-900">
+      <PopoverButton className="inline-flex items-center gap-x-1 whitespace-nowrap rounded-lg px-2 py-1.5 text-base/6 font-semibold text-slate-700 hover:bg-slate-100 hover:text-slate-900">
         <span>{label}</span>
         <ChevronDownIcon aria-hidden="true" className="size-5" />
       </PopoverButton>

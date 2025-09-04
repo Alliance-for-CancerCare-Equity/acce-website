@@ -39,7 +39,7 @@ function Contact({
   return (
     <div className="relative isolate bg-white">
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
-        <div className="relative px-6 pt-24 pb-20 sm:pt-32 lg:static lg:px-8 lg:py-48">
+        <div className="relative px-6 pt-16 pb-20 sm:pt-20 lg:static lg:px-8 lg:py-32">
           <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
             <div className="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-slate-100 ring-1 ring-slate-900/10 lg:w-1/2">
               <svg
@@ -123,7 +123,7 @@ function Contact({
         <form
           action="https://formspree.io/f/YOUR_FORM_ID"
           method="POST"
-          className="px-6 pt-20 pb-24 sm:pb-32 lg:px-8 lg:py-48"
+          className="px-6 pt-12 pb-24 sm:pb-28 lg:px-8 lg:py-32"
         >
           <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">

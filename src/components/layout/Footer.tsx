@@ -24,7 +24,7 @@ const navigation = {
     },
     {
       name: 'Instagram',
-      href: 'https://www.instagram.com/alliance4cancercareequity/',
+      href: 'https://www.instagram.com/allianceforcancercareequity/',
       icon: (props: React.SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path

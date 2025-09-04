@@ -26,7 +26,7 @@ export function ProjectPage({
   imageAlt,
 }: ProjectPageProps) {
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
           <p className="text-base/7 font-semibold text-blue-600">{header}</p>
@@ -55,7 +55,7 @@ export function ProjectPage({
           </div>
         </div>
       </div>
-      <div className="relative overflow-hidden pt-16 lg:pt-20">
+      <div className="relative overflow-hidden pt-8 lg:pt-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Image
             width={2432}

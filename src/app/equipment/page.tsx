@@ -36,7 +36,7 @@ function EquipmentApplicationForm({
   sidebar_p3,
 }: EquipmentApplicationFormProps) {
   return (
-    <div className="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+    <div className="relative isolate bg-white px-6 py-16 sm:py-20 lg:px-8">
       <svg
         aria-hidden="true"
         className="absolute inset-0 -z-10 size-full mask-[radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-slate-200"
@@ -70,7 +70,7 @@ function EquipmentApplicationForm({
         <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
           {title}
         </h2>
-        <div className="mt-16 flex flex-col gap-16 sm:gap-y-20 lg:flex-row">
+        <div className="mt-10 flex flex-col gap-16 sm:gap-y-16 lg:flex-row">
           <form
             action="https://formspree.io/f/YOUR_FORM_ID"
             method="POST"

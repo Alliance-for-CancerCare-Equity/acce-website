@@ -78,7 +78,7 @@ function OurProjects({
   images,
 }: OurProjectsProps) {
   return (
-    <div className="overflow-hidden bg-white py-24 sm:py-32">
+    <div className="overflow-hidden bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
         <div className="max-w-4xl">
           <p className="text-base/7 font-semibold text-blue-600">{header}</p>
