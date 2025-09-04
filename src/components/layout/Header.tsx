@@ -116,11 +116,17 @@ function MobileNavDisclosure({
   )
 }
 
-export function Header() {
+export function Header({ overlay = false }: { overlay?: boolean }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-white py-5 shadow-md">
+    <header
+      className={
+        overlay
+          ? 'absolute inset-x-0 top-0 z-50 bg-white/60 backdrop-blur-md py-5'
+          : 'sticky top-0 z-50 bg-white py-5 shadow-md'
+      }
+    >
       <nav className="flex items-center justify-between px-6 sm:px-8 lg:px-12">
         <div className="flex items-center gap-x-8">
           <Link href="/" aria-label="Home" className="-m-1.5 p-1.5">

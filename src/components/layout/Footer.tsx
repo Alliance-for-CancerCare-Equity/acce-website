@@ -84,13 +84,13 @@ export function Footer() {
         <div className="py-4">
           <div className="flex items-center justify-between">
             <Logo />
-            <nav className="text-sm" aria-label="quick links">
+            <nav className="text-base" aria-label="quick links">
               <div className="-my-1 flex justify-center gap-x-6">
                 {navigation.main.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="inline-block rounded-lg px-2 py-1 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                    className="inline-block rounded-lg px-2 py-1 text-base text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                   >
                     {item.name}
                   </Link>
@@ -112,10 +112,49 @@ export function Footer() {
               </Link>
             ))}
           </div>
-          <p className="mt-6 text-sm text-slate-500 sm:mt-0">
+          <p className="mt-6 text-base text-slate-500 sm:mt-0">
             Copyright &copy; {new Date().getFullYear()} Alliance for Cancer Care
             Equity. All rights reserved.
           </p>
+        </div>
+      </Container>
+    </footer>
+  )
+}
+
+export function CompactFooter() {
+  return (
+    <footer className="bg-transparent">
+      <Container>
+        <div className="border-t border-slate-900/10 py-4">
+          <div className="flex items-center justify-between gap-4">
+            <Logo />
+            <nav className="text-base" aria-label="quick links">
+              <div className="-my-1 flex flex-wrap justify-center gap-x-4 gap-y-2">
+                {navigation.main.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="inline-block rounded-lg px-2 py-1 text-base text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </nav>
+            <div className="hidden sm:flex gap-x-4">
+              {navigation.social.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-slate-600 hover:text-slate-800"
+                >
+                  <span className="sr-only">{item.name}</span>
+                  <item.icon aria-hidden="true" className="size-6" />
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </Container>
     </footer>

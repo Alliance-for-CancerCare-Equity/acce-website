@@ -1,6 +1,5 @@
 import { type Metadata } from 'next'
 
-import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { CallToAction, Hero, Stats } from '@/app/home-sections'
 
@@ -63,13 +62,12 @@ const homePageContent = {
 export default function Home() {
   return (
     <>
-      <Header />
-      <main>
+      <Header overlay />
+      <main className="h-[100dvh] overflow-y-auto snap-y snap-mandatory">
         <Hero {...homePageContent.hero} />
         <Stats {...homePageContent.stats} />
         <CallToAction {...homePageContent.call_to_action} />
       </main>
-      <Footer />
     </>
   )
 }
