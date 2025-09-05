@@ -1,180 +1,260 @@
 import { type Metadata } from 'next'
 import Image from 'next/image'
-import { CheckCircleIcon } from '@heroicons/react/20/solid'
 
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 
-import aboutUsImage from '../../../public/images/about_us.jpg'
+// New layout for the Who We Are page, based on a Tailwind UI pattern
 
 export const metadata: Metadata = {
   title: 'Who We Are',
 }
 
 const whoWeAreContent = {
-  intro: {
-    vision_title: 'Our Vision',
-    vision_statement:
-      'A world where every cancer patient receives equitable, high-quality care, regardless of financial status.',
-    mission_statement:
-      'To promote equity in cancer care from prevention through survivorship, providing comprehensive support to patients and families facing the challenges of this life-threatening illness.',
-    who_we_are_title: 'Who We Are',
-    who_we_are_p1:
-      'The Alliance for CancerCare Equity (ACCE) is a registered charity in Canada dedicated to advancing equity in cancer care. We passionately believe that no individual should lose their life to cancer simply because they lack the financial means to afford treatment. Furthermore, we are committed to ensuring that a patient’s financial circumstances never dictate their chances of surviving a cancer diagnosis.',
-    who_we_are_p2:
-      "At Alliance for CancerCare Equity, we've embarked on an ambitious mission to cover the costs of cancer treatment and related expenses for patients who lack the financial means to pay for their care. By doing so, we aim to alleviate the financial burden on families and empower patients to focus on their recovery journey without financial worry.",
-    who_we_are_p3:
-      "Join us in our quest to redefine cancer care. Together, we can ensure that every individual, regardless of their financial situation, receives the treatment they need to fight cancer and reclaim their future. Together, let's make life-changing compassionate care accessible to all who need it most.",
-    values_title: 'Our Values',
-    values_list:
-      'Equity, Compassion, Empathy, Empowerment, Transparency, Community',
-  },
-  what_we_do: {
-    title: 'How We Help',
-    subtitle: 'Our Commitment to Patients',
-    image_alt:
-      'A healthcare professional providing compassionate care to a patient.',
-    image_src: aboutUsImage,
-    intro_p:
-      'We are dedicated to breaking down the financial barriers that prevent individuals from receiving the cancer care they deserve. Our efforts are focused on the following areas',
-    commitments: [
-      'Covering the full spectrum of cancer treatments for patients in Ghana.',
-      'Providing financial support for uninsured and underinsured patients in Canada.',
-      'Assisting with the costs of essential, unfunded medications.',
-      'Providing medical equipment for diagnosis and treatment in non-profit centers.',
-      'Offering access to supportive networks and counseling services.',
-      'Conducting vital research into cancer and other diseases in Canada and Ghana.',
-    ],
-    values_strong: 'Our Values:',
-    values_list:
-      'Equity, Compassion, Empathy, Empowerment, Transparency, Community.',
-  },
+  vision:
+    'A world where every cancer patient receives equitable, high-quality care, regardless of financial status.',
+  mission:
+    'To promote equity in cancer care from prevention through survivorship, providing comprehensive support to patients and families facing the challenges of this life-threatening illness.',
+  about_p1:
+    'The Alliance for CancerCare Equity (ACCE) is a registered charity in Canada dedicated to advancing equity in cancer care. We passionately believe that no individual should lose their life to cancer simply because they lack the financial means to afford treatment. Furthermore, we are committed to ensuring that a patient’s financial circumstances never dictate their chances of surviving a cancer diagnosis.',
+  about_p2:
+    "We cover the costs of cancer treatment and related expenses for patients who lack the financial means to pay for their care. By doing so, we alleviate the financial burden on families and empower patients to focus on healing.",
+  about_p3:
+    "Join us in our quest to redefine cancer care. Together, we can ensure that every individual, regardless of their financial situation, receives the treatment they need to fight cancer and reclaim their future.",
+  values: [
+    { name: 'Equity', description: 'We remove financial barriers so treatment access is based on need, not income.' },
+    { name: 'Compassion', description: 'We meet patients and families with empathy and dignity at every step.' },
+    { name: 'Empowerment', description: 'We equip patients with resources, support, and information to make decisions.' },
+    { name: 'Transparency', description: 'We steward resources responsibly and report impact clearly.' },
+    { name: 'Community', description: 'We collaborate across Canada and Ghana to improve outcomes together.' },
+    { name: 'Integrity', description: 'We uphold the highest ethical standards in care and research.' },
+  ],
+  stats: [
+    { label: 'Founded', value: '2022' },
+    { label: 'Patients supported', value: '60+' },
+    { label: 'Amount raised', value: '$90k+' },
+  ],
 }
 
-interface AboutIntroProps {
-  vision_title: string
-  vision_statement: string
-  mission_statement: string
-  who_we_are_title: string
-  who_we_are_p1: string
-  who_we_are_p2: string
-  who_we_are_p3: string
-  values_title: string
-  values_list: string
-}
-
-function AboutIntro({
-  vision_title,
-  vision_statement,
-  mission_statement,
-  who_we_are_title,
-  who_we_are_p1,
-  who_we_are_p2,
-  who_we_are_p3,
-  values_title,
-  values_list,
-}: AboutIntroProps) {
+function Hero() {
   return (
-    <div className="bg-white px-6 py-16 sm:py-20 lg:px-8">
-      <div className="mx-auto max-w-3xl text-base/7 text-slate-700">
-        <p className="text-base/7 font-semibold text-blue-600">
-          {vision_title}
-        </p>
-        <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
-          {vision_statement}
-        </h1>
-        <p className="mt-6 text-xl/8 text-balance">{mission_statement}</p>
-        <div className="mt-10 max-w-2xl text-slate-600">
-          <h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-slate-900">
-            {who_we_are_title}
-          </h2>
-          <p className="mt-6">{who_we_are_p1}</p>
-          <p className="mt-8">{who_we_are_p2}</p>
-          <p className="mt-8">{who_we_are_p3}</p>
-          <h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-slate-900">
-            {values_title}
-          </h2>
-          <p className="mt-6 font-semibold">{values_list}</p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-import { type StaticImageData } from 'next/image'
-
-interface WhatWeDoProps {
-  title: string
-  subtitle: string
-  image_alt: string
-  image_src: StaticImageData
-  intro_p: string
-  commitments: string[]
-  values_strong: string
-  values_list: string
-}
-
-function WhatWeDo({
-  title,
-  subtitle,
-  image_alt,
-  image_src,
-  intro_p,
-  commitments,
-  values_strong,
-  values_list,
-}: WhatWeDoProps) {
-  return (
-    <div className="relative bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
-        <div className="lg:flex lg:w-1/2 lg:shrink lg:grow-0 lg:pl-8 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
-          <div className="relative h-80 overflow-hidden rounded-3xl lg:h-auto lg:w-full lg:grow xl:ml-0">
-            <Image
-              fill
-              alt={image_alt}
-              src={image_src}
-              className="absolute inset-0 size-full bg-slate-50 object-cover"
-            />
-          </div>
-        </div>
-        <div className="px-6 lg:contents">
-          <div className="mx-auto max-w-2xl pt-16 pb-24 sm:pt-20 sm:pb-32 lg:mr-0 lg:ml-8 lg:w-full lg:max-w-lg lg:flex-none lg:pt-32 xl:w-1/2">
-            <p className="text-base/7 font-semibold text-blue-600">{title}</p>
-            <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
-              {subtitle}
+    <section className="relative overflow-hidden bg-white">
+      <div className="mx-auto max-w-7xl px-6 pt-24 pb-16 sm:pt-32 sm:pb-24 lg:px-8">
+        <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
+          <div className="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
+            <h1 className="text-5xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-6xl">
+              Our Vision
             </h1>
-            <div className="mt-10 max-w-xl text-base/7 text-slate-600 lg:max-w-none">
-              <p>{intro_p}</p>
-              <ul role="list" className="mt-8 space-y-8 text-slate-600">
-                {commitments.map((commitment, index) => (
-                  <li key={index} className="flex gap-x-3">
-                    <CheckCircleIcon
-                      aria-hidden="true"
-                      className="mt-1 size-5 flex-none text-blue-600"
-                    />
-                    <span>{commitment}</span>
-                  </li>
-                ))}
-
-                <li className="flex gap-x-3">
-                  <CheckCircleIcon
-                    aria-hidden="true"
-                    className="mt-1 size-5 flex-none text-blue-600"
-                  />
-                  <span>
-                    <strong className="font-semibold text-slate-900">
-                      {values_strong}
-                    </strong>{' '}
-                    {values_list}
-                  </span>
-                </li>
-              </ul>
+            <p className="mt-4 text-xl/8 text-slate-700">{whoWeAreContent.vision}</p>
+            <h2 className="mt-10 text-5xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-6xl">
+              Our Mission
+            </h2>
+            <p className="mt-4 text-xl/8 text-slate-700">{whoWeAreContent.mission}</p>
+          </div>
+          <div className="mt-14 flex justify-end gap-6 sm:-mt-32 sm:justify-start sm:pl-16 lg:mt-0 lg:pl-0">
+            <div className="ml-auto w-40 flex-none space-y-6 pt-28 sm:ml-0 sm:pt-60 lg:order-last lg:pt-36 xl:order-0 xl:pt-60">
+              <div className="relative">
+                <Image
+                  alt="Patient support"
+                  src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1974&auto=format&fit=crop"
+                  width={396}
+                  height={528}
+                  className="aspect-[2/3] w-full rounded-xl bg-slate-50 object-cover shadow-lg"
+                />
+              </div>
+            </div>
+            <div className="mr-auto w-40 flex-none space-y-6 sm:mr-0 sm:pt-48 lg:pt-36">
+              <div className="relative">
+                <Image
+                  alt="Care team supporting patients"
+                  src="https://images.unsplash.com/photo-1631563019701-efcf403bc5fe?q=80&w=2691&auto=format&fit=crop"
+                  width={396}
+                  height={528}
+                  className="aspect-[2/3] w-full rounded-xl bg-slate-50 object-cover shadow-lg"
+                />
+              </div>
+              <div className="relative">
+                <Image
+                  alt="Community care in hospital"
+                  src="https://images.unsplash.com/photo-1631217868902-fa06818573b4?q=80&w=2691&auto=format&fit=crop"
+                  width={396}
+                  height={528}
+                  className="aspect-[2/3] w-full rounded-xl bg-slate-50 object-cover shadow-lg"
+                />
+              </div>
+            </div>
+            <div className="w-40 flex-none space-y-6 pt-24 sm:pt-0">
+              <div className="relative">
+                <Image
+                  alt="Research and clinical care"
+                  src="https://images.unsplash.com/photo-1626315869436-d6781ba69d6e?q=80&w=2670&auto=format&fit=crop"
+                  width={396}
+                  height={528}
+                  className="aspect-[2/3] w-full rounded-xl bg-slate-50 object-cover shadow-lg"
+                />
+              </div>
+              <div className="relative">
+                <Image
+                  alt="Family support and recovery"
+                  src="https://images.unsplash.com/photo-1548710123-e11f2e941a89?w=1000&auto=format&fit=crop&q=60"
+                  width={396}
+                  height={528}
+                  className="aspect-[2/3] w-full rounded-xl bg-slate-50 object-cover shadow-lg"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
+}
+
+function MissionAndStats() {
+  return (
+    <section className="bg-white py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
+          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+            Who We Are
+          </h2>
+          <div className="mt-6 flex flex-col gap-x-8 gap-y-16 lg:flex-row">
+            <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
+              <p className="text-xl/8 text-slate-700">{whoWeAreContent.about_p1}</p>
+              <p className="mt-8 text-base/7 text-slate-600">{whoWeAreContent.about_p2}</p>
+              <p className="mt-6 text-base/7 text-slate-600">{whoWeAreContent.about_p3}</p>
+            </div>
+            <div className="lg:flex lg:flex-auto lg:justify-center">
+              <dl className="w-64 space-y-8 xl:w-80">
+                {whoWeAreContent.stats.map((stat) => (
+                  <div key={stat.label} className="flex flex-col-reverse gap-y-2">
+                    <dt className="text-base/7 text-slate-600">{stat.label}</dt>
+                    <dd className="text-4xl font-semibold tracking-tight text-slate-900">
+                      {stat.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function WideImage() {
+  return (
+    <section className="mt-24 sm:mt-32 xl:mx-auto xl:max-w-7xl xl:px-8">
+      <Image
+        alt="Patients and providers at a community hospital"
+        src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+        width={2832}
+        height={1133}
+        className="aspect-[5/2] w-full object-cover outline outline-1 -outline-offset-1 outline-black/5 xl:rounded-3xl"
+      />
+    </section>
+  )
+}
+
+function OurValues() {
+  return (
+    <section className="mx-auto mt-24 max-w-7xl px-6 sm:mt-32 lg:px-8">
+      {/* Simple inline icons for each value */}
+      {/**/}
+      <ValueIconDefs />
+      <div className="mx-auto max-w-2xl lg:mx-0">
+        <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+          Our Values
+        </h2>
+        <p className="mt-6 text-xl/8 text-slate-700">
+          These principles guide our work with patients, families, partners, and communities.
+        </p>
+      </div>
+      <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 text-base/7 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        {whoWeAreContent.values.map((value) => (
+          <div key={value.name}>
+            <div className="flex gap-x-4">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-blue-50 ring-1 ring-blue-100">
+                <ValueIcon name={value.name} />
+              </span>
+              <dt className="text-xl font-semibold leading-8 text-slate-900">{value.name}</dt>
+            </div>
+            <dd className="mt-2 pl-12 text-lg/8 text-slate-600">{value.description}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  )
+}
+
+function ValueIcon({ name }: { name: string }) {
+  const common = 'size-6 text-blue-600';
+  switch (name) {
+    case 'Equity':
+      // Simple balance scale
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true" className={common}>
+          <g stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 4v14M5 8h14" />
+            <path d="M7.5 8l-3 4h6l-3-4zM19.5 8l-3 4h6l-3-4z" />
+            <path d="M3 20h18" />
+          </g>
+        </svg>
+      )
+    case 'Compassion':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true" className={common}>
+          <path
+            d="M12 21s-6-4.5-6-9a6 6 0 0 1 11.2-3.2A6 6 0 0 1 18 12c0 4.5-6 9-6 9z"
+            fill="currentColor"
+          />
+        </svg>
+      )
+    case 'Empowerment':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true" className={common}>
+          <path d="M13 2 3 14h7l-1 8 12-14h-8l1-6z" fill="currentColor" />
+        </svg>
+      )
+    case 'Transparency':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true" className={common}>
+          <g fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12z" />
+            <circle cx="12" cy="12" r="3" />
+          </g>
+        </svg>
+      )
+    case 'Community':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true" className={common}>
+          <g fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="8" cy="9" r="3" />
+            <circle cx="16" cy="9" r="3" />
+            <path d="M2 19c1.5-3 5-4 6-4s4.5 1 6 4M14 16c1-.6 2.5-1 4-1 2 0 3 .6 4 1.5" />
+          </g>
+        </svg>
+      )
+    case 'Integrity':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true" className={common}>
+          <path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6l8-3z" fill="currentColor" opacity="0.15" />
+          <path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6l8-3z" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    default:
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true" className={common}>
+          <circle cx="12" cy="12" r="5" fill="currentColor" />
+        </svg>
+      )
+  }
+}
+
+function ValueIconDefs() {
+  return null
 }
 
 export default function WhoWeArePage() {
@@ -182,8 +262,10 @@ export default function WhoWeArePage() {
     <>
       <Header />
       <main className="pb-24 sm:pb-32">
-        <AboutIntro {...whoWeAreContent.intro} />
-        <WhatWeDo {...whoWeAreContent.what_we_do} />
+        <Hero />
+        <WideImage />
+        <OurValues />
+        <MissionAndStats />
       </main>
       <Footer />
     </>
