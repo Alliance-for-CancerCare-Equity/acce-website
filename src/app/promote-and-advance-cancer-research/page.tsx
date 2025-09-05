@@ -16,6 +16,10 @@ const promoteAndAdvanceCancerResearchContent = {
   imageAlt: 'A scientist working in a research lab.',
   col1_p1:
     'We are at the forefront of education and cancer research, driving breakthroughs in understanding the origins, prevention, screening, diagnosis, control, and management of cancer and other diseases in both Canada and Ghana. By conducting innovative research, we aim to pioneer new treatments and approaches that will shape the future of healthcare worldwide. Join us in our mission to make a profound impact on global health through cutting-edge research and education initiatives.',
+  col1_p2:
+    'Our approach emphasizes equitable research partnerships, community engagement, and capacity building. We support data infrastructure, ethics governance, and training programs that empower clinicians, scientists, and students to lead high-impact studies. This ensures findings are translated into accessible, real-world improvements in care.',
+  col2_p1:
+    'Priority areas include screening and early detection, implementation science, and addressing disparities in outcomes across populations. We foster collaboration between Canadian and Ghanaian institutions, promote open science where possible, and disseminate results through publications and community forums—turning evidence into action.',
   buttonText: 'See Our Impact',
   buttonHref: '/annual-reports',
 }

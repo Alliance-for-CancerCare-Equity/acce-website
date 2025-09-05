@@ -16,8 +16,12 @@ const supportCommunityHealthcareCentersContent = {
   imageAlt: 'A community healthcare center building.',
   col1_p1:
     'The Alliance for CancerCare Equity (ACCE) is dedicated to transforming cancer care at non-profit community healthcare centers in Canada and Ghana. Through our initiative, we provide state-of-the-art medical equipment essential for accurate diagnosis and effective treatment of cancer, ensuring the highest standard of care for patients with cancer.',
+  col1_p2:
+    'Beyond equipment delivery, we focus on readiness and sustainability: assessing site needs, coordinating installation, and training frontline staff alongside biomedical engineers. We also help establish maintenance plans and consumables pathways so centers can reliably operate imaging, diagnostic, and treatment equipment over time.',
+  col2_p1:
+    'Typical support includes infusion pumps and chairs, radiation planning workstations, ultrasound units for guided procedures, pathology and lab analyzers, and essential monitoring devices. When feasible, we co-fund facility upgrades (power stabilization, climate control) to safeguard sensitive equipment and reduce downtime—directly improving patient throughput and outcomes.',
   buttonText: 'Learn More About Our Work',
-  buttonHref: '/our-projects',
+  buttonHref: '/projects-overview',
 }
 
 export default function SupportCommunityHealthcareCentersPage() {

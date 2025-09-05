@@ -21,7 +21,7 @@ const givingOptionsContent = {
         id: 'tier-paypal',
         href: 'https://www.paypal.com/donate/?hosted_button_id=VTDX9SVRTD7RE',
         description: 'Secure online giving with Debit or Credit Card via PayPal.',
-        features: ['Give in US$ or CAD$', 'Set up a monthly donation'],
+        features: ['Give any amount', 'Set up a monthly donation'],
       },
       {
         name: 'CanadaHelps',
@@ -35,12 +35,9 @@ const givingOptionsContent = {
         name: 'Other Methods',
         id: 'tier-other',
         href: 'mailto:donate@allianceforcancercareequity.ca',
-        description: 'Give by Interac e-Transfer, Cheque, or MoMo.',
-        features: [
-          'Interac e-Transfer: donate@allianceforcancercareequity.ca',
-          'Cheque: Payable to "Alliance for CancerCare Equity"',
-          'MoMo: 233 53 048 2155',
-        ],
+        description:
+          'Prefer Interac e-Transfer, Cheques, or MoMo? See the FAQ for details.',
+        features: [],
       },
     ],
   },
@@ -92,7 +89,7 @@ const givingOptionsContent = {
       {
         question: 'What payment methods do you accept?',
         answer:
-          'We accept one-time and monthly donations via PayPal and CanadaHelps. We also accept one-time donations via Interac e-Transfer, Cheque, and MoMo for our supporters in Ghana.',
+          'We accept one-time and monthly donations via PayPal and CanadaHelps. We also accept donations via Interac e-Transfer (for Canadian bank account holders), Cheques, and MoMo (for our supporters in Ghana).',
       },
       {
         question: 'How does my donation help?',
@@ -129,6 +126,35 @@ function OneTimeDonations({
   subtitle,
   tiers,
 }: OneTimeDonationsProps) {
+  function TierIcon({ name }: { name: string }) {
+    if (name === 'PayPal') {
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true" className="size-6 text-blue-700">
+          <rect x="3" y="6" width="18" height="12" rx="2" className="fill-current/20" />
+          <rect x="3" y="9" width="18" height="3" className="fill-current" />
+        </svg>
+      )
+    }
+    if (name === 'CanadaHelps') {
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true" className="size-6 text-emerald-700">
+          <path
+            className="fill-current"
+            fillRule="evenodd"
+            d="M11.645 20.374l-.013-.01C6.104 15.642 2.25 12.063 2.25 8.25A4.5 4.5 0 0 1 6.75 3.75c1.632 0 3.195.795 4.125 2.036A5.247 5.247 0 0 1 15 3.75a4.5 4.5 0 0 1 4.5 4.5c0 3.813-3.855 7.392-9.382 12.115l-.013.01a.75.75 0 0 1-.96 0z"
+            clipRule="evenodd"
+          />
+        </svg>
+      )
+    }
+    // Other Methods
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="size-6 text-slate-700">
+        <rect x="3" y="5" width="18" height="14" rx="2" className="fill-current/20" />
+        <path d="M4 7l8 6 8-6" className="stroke-current" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    )
+  }
   return (
     <div className="bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -145,15 +171,27 @@ function OneTimeDonations({
           {tiers.map((tier) => (
             <div
               key={tier.id}
-              className="rounded-3xl p-8 ring-1 ring-slate-200 xl:p-10"
+              className={
+                `rounded-3xl p-8 ring-1 xl:p-10 ` +
+                (tier.name === 'PayPal'
+                  ? 'bg-blue-50 ring-blue-200'
+                  : tier.name === 'CanadaHelps'
+                    ? 'bg-emerald-50 ring-emerald-200'
+                    : 'bg-slate-50 ring-slate-200')
+              }
             >
               <div className="flex items-center justify-between gap-x-4">
-                <h3
-                  id={`tier-${tier.id}`}
-                  className="text-lg/8 font-semibold text-slate-900"
-                >
-                  {tier.name}
-                </h3>
+                <div className="flex items-center gap-x-3">
+                  <span className="inline-flex size-10 items-center justify-center rounded-md bg-white/70 ring-1 ring-black/5">
+                    <TierIcon name={tier.name} />
+                  </span>
+                  <h3
+                    id={`tier-${tier.id}`}
+                    className="text-lg/8 font-semibold text-slate-900"
+                  >
+                    {tier.name}
+                  </h3>
+                </div>
               </div>
               <p className="mt-4 text-sm/6 text-slate-600">
                 {tier.description}
@@ -161,7 +199,6 @@ function OneTimeDonations({
               <Button
                 href={tier.href}
                 color="blue"
-                variant="outline"
                 aria-describedby={tier.id}
                 className="mt-6 block w-full"
               >
@@ -169,20 +206,22 @@ function OneTimeDonations({
                   ? 'Learn More'
                   : `Donate via ${tier.name}`}
               </Button>
-              <ul
-                role="list"
-                className="mt-8 space-y-3 text-sm/6 text-slate-600 xl:mt-10"
-              >
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex gap-x-3">
-                    <CheckIcon
-                      aria-hidden="true"
-                      className="h-6 w-5 flex-none text-blue-600"
-                    />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+              {tier.features.length > 0 && (
+                <ul
+                  role="list"
+                  className="mt-8 space-y-3 text-sm/6 text-slate-600 xl:mt-10"
+                >
+                  {tier.features.map((feature) => (
+                    <li key={feature} className="flex gap-x-3">
+                      <CheckIcon
+                        aria-hidden="true"
+                        className="h-6 w-5 flex-none text-blue-600"
+                      />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>
@@ -275,7 +314,6 @@ function MonthlyGiving({
                   <Button
                     href={cta_button2_href}
                     color="blue"
-                    variant="outline"
                     className="w-full"
                   >
                     {cta_button2_text}

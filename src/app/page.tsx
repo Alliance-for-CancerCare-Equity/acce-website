@@ -63,7 +63,7 @@ export default function Home() {
   return (
     <>
       <Header overlay />
-      <main className="h-[100dvh] overflow-y-auto snap-y snap-mandatory">
+      <main className="bg-slate-50">
         <Hero {...homePageContent.hero} />
         <Stats {...homePageContent.stats} />
         <CallToAction {...homePageContent.call_to_action} />

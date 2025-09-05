@@ -30,7 +30,7 @@ export function Hero({
   button2,
 }: HeroProps) {
   return (
-    <section className="relative min-h-[100dvh] snap-start overflow-hidden flex items-center">
+    <section className="relative min-h-[100dvh] overflow-hidden flex items-center rounded-t-[3rem] ring-1 ring-slate-900/10 shadow-lg">
       <Image
         src={backgroundHero}
         alt=""
@@ -84,7 +84,7 @@ interface StatsProps {
 
 export function Stats({ title, subtitle, items }: StatsProps) {
   return (
-    <section className="min-h-[100dvh] snap-start flex items-center bg-white">
+    <section className="relative z-10 min-h-[100dvh] -mt-10 sm:-mt-16 lg:-mt-24 pb-10 sm:pb-16 lg:pb-24 flex items-center bg-white rounded-t-[3rem] ring-1 ring-slate-900/10 shadow-lg">
       <Container>
         <div className="mx-auto max-w-2xl lg:max-w-none">
           <div className="text-center">
@@ -136,7 +136,7 @@ export function CallToAction({
   button,
 }: CallToActionProps) {
   return (
-    <section className="relative min-h-[100dvh] snap-start overflow-hidden flex items-center">
+    <section className="relative z-20 min-h-[100dvh] -mt-10 sm:-mt-16 lg:-mt-24 pb-10 sm:pb-16 lg:pb-24 overflow-hidden flex items-center rounded-t-[3rem] ring-1 ring-slate-900/10 shadow-lg">
       <Image
         src={backgroundCta}
         alt=""
