@@ -1,16 +1,17 @@
 import { type Metadata } from 'next'
 import { ArrowDownCircleIcon } from '@heroicons/react/20/solid'
+import Link from 'next/link'
 
 import { Container } from '@/components/ui/Container'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
-  title: 'Annual Reports',
+  title: 'Financial Statements and Annual Report',
 }
 
 const annualReportsContent = {
-  title: 'Financial Statements and Annual Reports',
+  title: 'Financial Statements and Annual Report',
   financial_statements: {
     title: 'Financial Statements',
     intro: `Your Impact in Action Every dollar you give helps deliver hope and healing to cancer patients who cannot afford care. Our annual financial statements show exactly how your generosity is being used—to fund treatments, provide medications, and support patients through their journey. Thank you for making equity in cancer care possible.`,
@@ -84,14 +85,14 @@ function ReportList({ title, intro, outro, reports }: ReportSectionProps) {
               aria-hidden="true"
             />
             <span>
-              <a
+              <Link
                 href={report.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-semibold text-slate-900 hover:text-blue-600"
               >
                 {report.text}
-              </a>
+              </Link>
             </span>
           </li>
         ))}

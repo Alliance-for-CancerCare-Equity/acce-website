@@ -25,7 +25,7 @@ const aboutUsItems: FlyoutMenuItem[] = [
   { name: 'Who We Are', href: '/who-we-are' },
   { name: 'Meet the Board', href: '/meet-the-board' },
   { name: 'ACCE Champions', href: '/acce-champions' },
-  { name: 'Annual Reports', href: '/annual-reports' },
+  { name: 'Financial Statements and Annual Report', href: '/annual-reports' },
 ]
 
 const ourProjectsItems: FlyoutMenuItem[] = [

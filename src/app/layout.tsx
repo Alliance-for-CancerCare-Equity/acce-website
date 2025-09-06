@@ -1,4 +1,4 @@
-import { type Metadata } from 'next'
+import { type Metadata, type Viewport } from 'next'
 import { Inter, Lexend } from 'next/font/google'
 import clsx from 'clsx'
 
@@ -6,6 +6,7 @@ import '@/styles/tailwind.css'
 import favicon from '../../public/acce_logo.svg'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
   title: {
     template: '%s | ACCE',
     default: 'ACCE',
@@ -51,7 +52,6 @@ export const metadata: Metadata = {
     images: ['/images/about_us.jpg'],
     creator: '@ACCE_CA',
   },
-  themeColor: '#2563eb',
   robots: {
     index: true,
     follow: true,
@@ -64,6 +64,10 @@ export const metadata: Metadata = {
   icons: {
     icon: favicon.src,
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#2563eb',
 }
 
 const inter = Inter({

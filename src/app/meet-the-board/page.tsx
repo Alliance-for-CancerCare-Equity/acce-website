@@ -100,14 +100,19 @@ function Team({ title, subtitle, people }: TeamProps) {
         >
           {people.map((person) => (
             <li key={person.name}>
-              <div className="relative h-72 w-full overflow-hidden rounded-3xl">
-                <Image
-                  fill
-                  className="object-cover"
-                  src={person.imageUrl}
-                  alt=""
-                  sizes="(min-width: 1024px) 20rem, (min-width: 640px) 24rem, 100vw"
-                />
+              <div className="relative h-72 w-full overflow-hidden rounded-3xl bg-gradient-to-b from-blue-50 to-white dark:from-blue-900/20 dark:to-slate-900 ring-1 ring-blue-100/70 dark:ring-blue-300/20 shadow-md">
+                <div className="absolute inset-0 px-4 pt-4 pb-0">
+                  <div className="relative h-full w-full">
+                    <Image
+                      fill
+                      className="object-contain object-bottom origin-bottom scale-110"
+                      src={person.imageUrl}
+                      alt={person.name}
+                      sizes="(min-width: 1024px) 20rem, (min-width: 640px) 24rem, 100vw"
+                      placeholder="blur"
+                    />
+                  </div>
+                </div>
               </div>
               <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-slate-900">
                 {person.name}

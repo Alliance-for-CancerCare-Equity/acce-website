@@ -105,12 +105,23 @@ function PatientsStories({ title, subtitle, people }: PatientsStoriesProps) {
                 className="group"
               >
                 <div className="relative h-72 w-full overflow-hidden rounded-3xl">
+                  {/* Blurred background fill to avoid letterboxing */}
                   <Image
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="object-cover scale-110 blur-md opacity-40"
                     src={person.imageUrl}
                     alt=""
+                    aria-hidden
                     sizes="(min-width: 1024px) 20rem, (min-width: 640px) 24rem, 100vw"
+                  />
+                  {/* Foreground image fully visible without cropping */}
+                  <Image
+                    fill
+                    className="relative z-10 object-contain object-center"
+                    src={person.imageUrl}
+                    alt={person.name}
+                    sizes="(min-width: 1024px) 20rem, (min-width: 640px) 24rem, 100vw"
+                    placeholder="blur"
                   />
                 </div>
                 <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-slate-900 group-hover:text-blue-600">

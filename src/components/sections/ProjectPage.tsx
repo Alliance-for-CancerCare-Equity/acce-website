@@ -7,8 +7,8 @@ interface ProjectPageProps {
   col1_p2?: string
   col2_p1?: string
   col2_p2?: string
-  buttonText: string
-  buttonHref: string
+  buttonText?: string
+  buttonHref?: string
   imageUrl: StaticImageData | string
   imageAlt: string
 }
@@ -45,14 +45,16 @@ export function ProjectPage({
               </div>
             )}
           </div>
-          <div className="mt-10 flex">
-            <a
-              href={buttonHref}
-              className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-            >
-              {buttonText}
-            </a>
-          </div>
+          {buttonText && buttonHref && (
+            <div className="mt-10 flex">
+              <a
+                href={buttonHref}
+                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              >
+                {buttonText}
+              </a>
+            </div>
+          )}
         </div>
       </div>
       <div className="relative overflow-hidden pt-8 lg:pt-12">

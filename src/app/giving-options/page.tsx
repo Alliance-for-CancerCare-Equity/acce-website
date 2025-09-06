@@ -19,7 +19,7 @@ const givingOptionsContent = {
       {
         name: 'PayPal',
         id: 'tier-paypal',
-        href: 'https://www.paypal.com/donate/?hosted_button_id=VTDX9SVRTD7RE',
+        href: 'https://www.paypal.com/donate/?hosted_button_id=PQGDEADWKKMA6',
         description: 'Secure online giving with Debit or Credit Card via PayPal.',
         features: ['Give any amount', 'Set up a monthly donation'],
       },
@@ -58,10 +58,9 @@ const givingOptionsContent = {
     ],
     cta_title: 'Become a monthly donor',
     cta_button1_text: 'Make it Monthly via PayPal',
-    cta_button1_href: 'https://www.canadahelps.org/en/dn/80223',
+    cta_button1_href: 'https://www.paypal.com/donate/?hosted_button_id=PQGDEADWKKMA6',
     cta_button2_text: 'Make it Monthly via CanadaHelps',
-    cta_button2_href:
-      'https://www.paypal.com/donate/?hosted_button_id=VTDX9SVRTD7RE',
+    cta_button2_href: 'https://www.canadahelps.org/en/dn/80223',
   },
   faqs: {
     title: 'Frequently asked questions',

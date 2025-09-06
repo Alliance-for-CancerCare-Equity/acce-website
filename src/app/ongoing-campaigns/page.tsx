@@ -6,8 +6,7 @@ import { Button } from '@/components/ui/Button'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 
-import babyArielImage from '../../../public/ongoing_campaigns/baby_ariel.jpg'
-import joshImage from '../../../public/ongoing_campaigns/josh.jpg'
+// import babyArielImage from '../../../public/ongoing_campaigns/baby_ariel.jpg'
 
 export const metadata: Metadata = {
   title: 'Ongoing Campaigns',
@@ -32,19 +31,19 @@ const ongoingCampaignsContent = {
         name: 'Unfunded Cancer Drugs in Canada',
         description:
           'Make a Difference. Help Us To Pay For Unfunded Cancer Drugs in Canada.',
-        subtitle: 'Save Baby Ariel',
         href: '/ongoing_campaigns/make_a_difference.pdf',
-        imageUrl: babyArielImage,
+        // Use the requested representative image of cancer drugs
+        imageUrl:
+          'https://images.unsplash.com/photo-1515350540008-a3f566782a3e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         external: true,
       },
       {
         name: 'Fighting Cancer in Ghana',
         description:
           'Transforming Lives. Fighting Cancer with Compassion and Empathy in Ghana.',
-        subtitle: "Support Josh's Fight",
-        href: '/ongoing_campaigns/transforming_lives.pdf',
-        imageUrl: joshImage,
-        external: true,
+        // Remove linking for now (campaign no longer active)
+        imageUrl: '/images/patient_ghana.jpg',
+        external: false,
       },
     ],
   },
@@ -106,10 +105,10 @@ import { type StaticImageData } from 'next/image'
 
 interface Campaign {
   name: string
-  subtitle: string
+  subtitle?: string
   description: string
-  href: string
-  imageUrl: StaticImageData
+  href?: string
+  imageUrl: StaticImageData | string
   external: boolean
 }
 
@@ -147,11 +146,27 @@ function Campaigns({ campaigns, cta }: CampaignsProps) {
             <div className="mt-10 space-y-16">
               {campaigns.campaign_items.map((campaign) => (
                 <figure key={campaign.name}>
-                  <Link
-                    href={campaign.href}
-                    target={campaign.external ? '_blank' : undefined}
-                    rel={campaign.external ? 'noopener noreferrer' : undefined}
-                  >
+                  {/* Optional subtitle above the image */}
+                  {campaign.subtitle && (
+                    <div className="mb-3 text-sm/6 font-semibold text-blue-600">
+                      {campaign.subtitle}
+                    </div>
+                  )}
+                  {campaign.href ? (
+                    <Link
+                      href={campaign.href}
+                      target={campaign.external ? '_blank' : undefined}
+                      rel={campaign.external ? 'noopener noreferrer' : undefined}
+                    >
+                      <Image
+                        width={1310}
+                        height={873}
+                        alt={campaign.name}
+                        src={campaign.imageUrl}
+                        className="aspect-video rounded-xl bg-slate-100 object-cover"
+                      />
+                    </Link>
+                  ) : (
                     <Image
                       width={1310}
                       height={873}
@@ -159,23 +174,26 @@ function Campaigns({ campaigns, cta }: CampaignsProps) {
                       src={campaign.imageUrl}
                       className="aspect-video rounded-xl bg-slate-100 object-cover"
                     />
-                  </Link>
+                  )}
                   <figcaption className="mt-4">
-                    <Link
-                      href={campaign.href}
-                      target={campaign.external ? '_blank' : undefined}
-                      rel={
-                        campaign.external ? 'noopener noreferrer' : undefined
-                      }
-                      className="text-lg/7 font-semibold text-slate-900 hover:text-blue-600"
-                    >
-                      {campaign.name}
-                    </Link>
+                    {campaign.href ? (
+                      <Link
+                        href={campaign.href}
+                        target={campaign.external ? '_blank' : undefined}
+                        rel={
+                          campaign.external ? 'noopener noreferrer' : undefined
+                        }
+                        className="text-lg/7 font-semibold text-slate-900 hover:text-blue-600"
+                      >
+                        {campaign.name}
+                      </Link>
+                    ) : (
+                      <span className="text-lg/7 font-semibold text-slate-900">
+                        {campaign.name}
+                      </span>
+                    )}
                     <p className="mt-1 text-base/7 text-slate-600">
                       {campaign.description}
-                    </p>
-                    <p className="mt-1 text-base/7 font-semibold text-slate-700">
-                      {campaign.subtitle}
                     </p>
                   </figcaption>
                 </figure>
