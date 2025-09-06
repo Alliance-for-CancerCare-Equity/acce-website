@@ -23,8 +23,9 @@ const homePageContent = {
     },
   },
   stats: {
-    title: 'Our Impact in Numbers',
-    subtitle:
+    title: 'Our track record',
+    subtitle: 'Turning generosity into lifesaving care',
+    description:
       "We are proud of the progress we've made in the fight for cancer care equity.",
     items: [
       {
@@ -44,6 +45,11 @@ const homePageContent = {
         name: 'Established',
         value: 2022,
         animate: true,
+      },
+      {
+        name: 'Hospitals Supported',
+        value: 3,
+        suffix: '+',
       },
     ],
   },

@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import backgroundCta from '@/images/background-call-to-action.jpg'
@@ -85,44 +84,49 @@ interface Stat {
 }
 
 interface StatsProps {
-  title: string
-  subtitle: string
+  title: string // small label
+  subtitle: string // big heading
+  description?: string // optional paragraph under heading
   items: Stat[]
 }
 
-export function Stats({ title, subtitle, items }: StatsProps) {
+export function Stats({ title, subtitle, description, items }: StatsProps) {
+  // Reworked to use the provided stats section pattern
+  // while preserving dynamic page content (title, subtitle, items).
+  const formatted = items.map((s, i) => ({
+    id: i + 1,
+    name: s.name,
+    value: `${s.prefix ?? ''}${s.value}${s.suffix ?? ''}`,
+  }))
+
   return (
-    <section className="relative z-10 min-h-[100dvh] -mt-10 sm:-mt-16 lg:-mt-24 pb-10 sm:pb-16 lg:pb-24 flex items-center bg-white rounded-t-[3rem] ring-1 ring-slate-900/10 shadow-lg">
-      <Container>
-        <div className="mx-auto max-w-2xl lg:max-w-none">
-          <div className="text-center">
-            <h2 className="text-4xl font-semibold tracking-tight text-balance text-slate-900 sm:text-5xl">
-              {title}
-            </h2>
-            <p className="mt-4 text-xl/8 text-slate-600">{subtitle}</p>
-          </div>
-          <dl className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-slate-900/10 text-center sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((stat, index) => (
-              <div key={index} className="flex flex-col bg-white p-8">
-                <dt className="text-sm/6 font-semibold text-slate-600">
-                  {stat.name}
-                </dt>
-                <dd className="order-first text-4xl font-semibold tracking-tight text-slate-900">
-                  {stat.prefix}
-                  {stat.animate ? (
-                    <AnimatedNumber value={stat.value} suffix={stat.suffix} />
-                  ) : (
-                    <>
-                      {stat.value}
-                      {stat.suffix}
-                    </>
-                  )}
-                </dd>
-              </div>
-            ))}
-          </dl>
+    <section className="relative isolate overflow-hidden bg-white py-24 sm:py-32">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
+          <h2 className="text-base/8 font-semibold text-indigo-600">
+            {title}
+          </h2>
+          <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+            {subtitle}
+          </p>
+          {description && (
+            <p className="mt-6 text-lg/8 text-gray-700">{description}</p>
+          )}
         </div>
-      </Container>
+        <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 text-gray-900 sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+          {formatted.map((stat) => (
+            <div
+              key={stat.id}
+              className="flex flex-col gap-y-3 border-l border-slate-200 pl-6"
+            >
+              <dt className="text-sm/6">{stat.name}</dt>
+              <dd className="order-first text-3xl font-semibold tracking-tight">
+                {stat.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
     </section>
   )
 }
@@ -144,14 +148,7 @@ export function CallToAction({
   button,
 }: CallToActionProps) {
   return (
-    <section className="relative z-20 min-h-[100dvh] -mt-10 sm:-mt-16 lg:-mt-24 pb-10 sm:pb-16 lg:pb-24 overflow-hidden flex items-center rounded-t-[3rem] ring-1 ring-slate-900/10 shadow-lg">
-      <Image
-        src={backgroundCta}
-        alt=""
-        fill
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-      <div className="absolute inset-0 bg-white/75" />
+    <section className="relative z-20 min-h-[100dvh] -mt-10 sm:-mt-16 lg:-mt-24 pb-10 sm:pb-16 lg:pb-24 overflow-hidden flex items-center bg-white">
       <Container className="relative z-10 pb-24 lg:pb-28">
         <div className="mx-auto max-w-2xl text-center">
           <hgroup>
