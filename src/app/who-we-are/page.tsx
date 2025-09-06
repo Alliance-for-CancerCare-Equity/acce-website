@@ -31,15 +31,15 @@ const whoWeAreContent = {
   ],
   stats: [
     { label: 'Founded', value: '2022' },
-    { label: 'Patients supported', value: '60+' },
-    { label: 'Amount raised', value: '$90k+' },
+    { label: 'Patients supported', value: '65+' },
+    { label: 'Amount raised', value: '$100k+' },
   ],
 }
 
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-white">
-      <div className="mx-auto max-w-7xl px-6 pt-24 pb-16 sm:pt-32 sm:pb-24 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 pt-6 pb-0 sm:pt-8 sm:pb-0 lg:px-8">
         <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
           <div className="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
             <h1 className="text-5xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-6xl">
@@ -148,7 +148,7 @@ function WideImage() {
     <section className="mt-24 sm:mt-32 xl:mx-auto xl:max-w-7xl xl:px-8">
       <Image
         alt="Patients and providers at a community hospital"
-        src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+        src="/images/who_we_are.jpg"
         width={2832}
         height={1133}
         className="aspect-[5/2] w-full object-cover outline outline-1 -outline-offset-1 outline-black/5 xl:rounded-3xl"
@@ -159,7 +159,7 @@ function WideImage() {
 
 function OurValues() {
   return (
-    <section className="mx-auto mt-24 max-w-7xl px-6 sm:mt-32 lg:px-8">
+    <section className="mx-auto mt-0 max-w-7xl px-6 sm:mt-0 lg:px-8">
       {/* Simple inline icons for each value */}
       {/**/}
       <ValueIconDefs />
@@ -263,9 +263,9 @@ export default function WhoWeArePage() {
       <Header />
       <main className="pb-24 sm:pb-32">
         <Hero />
-        <WideImage />
         <OurValues />
         <MissionAndStats />
+        <WideImage />
       </main>
       <Footer />
     </>

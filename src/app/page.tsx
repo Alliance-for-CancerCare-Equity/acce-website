@@ -30,14 +30,14 @@ const homePageContent = {
     items: [
       {
         name: 'Amount Raised',
-        value: 90,
+        value: 100,
         prefix: '$',
         suffix: 'k+',
         animate: true,
       },
       {
         name: 'Patients Supported',
-        value: 60,
+        value: 65,
         suffix: '+',
         animate: true,
       },
