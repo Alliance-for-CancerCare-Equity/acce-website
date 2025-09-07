@@ -28,7 +28,16 @@ const opportunitiesContent = {
   p1: 'This is not just a health issue—it’s a justice issue.',
   p2: 'We’re working to close the gap by providing direct financial support for cancer treatments, raising awareness, and advocating for equitable healthcare policies. But we can’t do it alone.',
   p3: 'You can make a difference. Whether you give, volunteer, start a fundraiser, or simply spread the word, your action can help save lives and bring dignity to those in their most vulnerable moments.',
+  p4: 'Here are a few powerful ways to help right now: become a monthly donor to sustain treatment funding throughout the year; start a peer‑to‑peer fundraiser and invite your network to give; or volunteer your skills—from events to digital outreach—to expand our impact.',
+  p5: 'If you lead a group (school, faith community, sports team, or workplace), consider choosing ACCE as your cause for an upcoming campaign or event. We can provide messaging, visuals, and simple giving links to make it easy and effective.',
+  p6: 'Every action—big or small—helps a real person access the care they need. Join us and help turn compassion into lifesaving care.',
   links: [
+    {
+      text: 'Fundraise For Us',
+      href: '/fundraise',
+      imageUrl:
+        'https://images.unsplash.com/photo-1561414927-6d86591d0c4f?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    },
     {
       text: 'Volunteer With Us',
       href: '/volunteer',
@@ -40,12 +49,6 @@ const opportunitiesContent = {
       href: '/partner-with-us',
       imageUrl:
         'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-      text: 'Fundraise For Us',
-      href: '/ways-to-give',
-      imageUrl:
-        'https://images.unsplash.com/photo-1561414927-6d86591d0c4f?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
   ],
 }
@@ -70,6 +73,9 @@ interface GetInvolvedProps {
   p1: string
   p2: string
   p3: string
+  p4?: string
+  p5?: string
+  p6?: string
   links: Link[]
 }
 
@@ -82,6 +88,9 @@ function GetInvolved({
   p1,
   p2,
   p3,
+  p4,
+  p5,
+  p6,
   links,
 }: GetInvolvedProps) {
   return (
@@ -118,6 +127,9 @@ function GetInvolved({
             <p className="mt-8 text-base/7 text-slate-600">{p1}</p>
             <p className="mt-8 text-base/7 text-slate-600">{p2}</p>
             <p className="mt-8 text-base/7 text-slate-600">{p3}</p>
+            {p4 && <p className="mt-8 text-base/7 text-slate-600">{p4}</p>}
+            {p5 && <p className="mt-8 text-base/7 text-slate-600">{p5}</p>}
+            {p6 && <p className="mt-8 text-base/7 text-slate-600">{p6}</p>}
           </div>
           <div className="pt-16 lg:row-span-2">
             <div className="-mx-8 grid grid-cols-1 gap-8 sm:-mx-16 lg:mx-0">
