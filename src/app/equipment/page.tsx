@@ -72,10 +72,19 @@ function EquipmentApplicationForm({
         </h2>
         <div className="mt-10 flex flex-col gap-16 sm:gap-y-16 lg:flex-row">
           <form
-            action="https://formspree.io/f/YOUR_FORM_ID"
+            action="https://formsubmit.co/support@allianceforcancercareequity.ca"
             method="POST"
             className="lg:flex-auto"
           >
+            {/* formsubmit.co helpers */}
+            <input type="hidden" name="_subject" value="Equipment Assistance Request — ACCE" />
+            <input
+              type="hidden"
+              name="_next"
+              value="https://allianceforcancercareequity.ca/equipment?submitted=1"
+            />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <label

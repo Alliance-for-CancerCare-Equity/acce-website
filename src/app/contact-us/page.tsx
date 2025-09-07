@@ -121,10 +121,19 @@ function Contact({
           </div>
         </div>
         <form
-          action="https://formspree.io/f/YOUR_FORM_ID"
+          action="https://formsubmit.co/info@allianceforcancercareequity.ca"
           method="POST"
           className="px-6 pt-12 pb-24 sm:pb-28 lg:px-8 lg:py-32"
         >
+          {/* formsubmit.co helpers */}
+          <input type="hidden" name="_subject" value="New Contact Message — ACCE" />
+          <input
+            type="hidden"
+            name="_next"
+            value="https://allianceforcancercareequity.ca/contact-us?submitted=1"
+          />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
           <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div>
