@@ -12,7 +12,7 @@ const homePageContent = {
     title_part1: 'Advancing Equity in Cancer Care',
     title_part2_styled: 'for All',
     subtitle:
-      'The Alliance for Cancer Care Equity (ACCE) is on a mission to ensure that every cancer patient receives equitable, high-quality care, regardless of their financial status. We provide compassionate support for patients and their families throughout their entire journey.',
+      'The Alliance for CancerCare Equity (ACCE) is on a mission to ensure that every cancer patient receives equitable, high-quality care, regardless of their financial status. We provide compassionate support for patients and their families throughout their entire journey.',
     button1: {
       text: 'Donate',
       href: '/giving-options',
