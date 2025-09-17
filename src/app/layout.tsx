@@ -1,4 +1,5 @@
 import { type Metadata, type Viewport } from 'next'
+import { Analytics } from '@vercel/analytics/next'
 import { Inter, Lexend } from 'next/font/google'
 import clsx from 'clsx'
 
@@ -97,7 +98,10 @@ export default function RootLayout({
         lexend.variable,
       )}
     >
-      <body suppressHydrationWarning className="flex h-full flex-col">{children}</body>
+      <body suppressHydrationWarning className="flex h-full flex-col">
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }
