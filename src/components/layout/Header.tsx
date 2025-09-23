@@ -172,7 +172,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
               <span className="sr-only">
                 Alliance for Cancer Care Equity
               </span>
-              <Logo />
+              <Logo width={140} height={51} />
             </Link>
             <button
               type="button"
