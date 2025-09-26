@@ -4,7 +4,6 @@ import { Inter, Lexend } from 'next/font/google'
 import clsx from 'clsx'
 
 import '@/styles/tailwind.css'
-import favicon from '../../public/acce_logo.svg'
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
@@ -63,7 +62,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: favicon.src,
+    icon: [
+      { url: '/acce_logo.svg', type: 'image/svg+xml' },
+    ],
   },
 }
 
