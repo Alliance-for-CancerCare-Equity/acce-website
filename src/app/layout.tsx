@@ -1,4 +1,5 @@
 import { type Metadata, type Viewport } from 'next'
+import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import { Inter, Lexend } from 'next/font/google'
 import clsx from 'clsx'
@@ -101,6 +102,19 @@ export default function RootLayout({
     >
       <body suppressHydrationWarning className="flex h-full flex-col">
         {children}
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-16499928311"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-16499928311');
+          `}
+        </Script>
         <Analytics />
       </body>
     </html>
