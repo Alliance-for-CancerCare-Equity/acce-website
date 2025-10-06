@@ -95,7 +95,7 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       className={clsx(
-        'h-full scroll-smooth bg-white antialiased',
+        'h-full scroll-smooth bg-white antialiased font-sans',
         inter.variable,
         lexend.variable,
       )}
