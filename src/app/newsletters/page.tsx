@@ -235,14 +235,39 @@ function getNewsletterIssues(): Newsletter[] {
         imageUrl: pickImage(base, displayDate, year),
         // @ts-ignore: we keep mtime for sorting only, not in type
         _mtime: stat?.mtimeMs ?? 0,
-      } as Newsletter & { _mtime?: number }
-    }) as (Newsletter & { _mtime?: number })[]
+        // internal key for ordering
+        _key: key,
+      } as Newsletter & { _mtime?: number; _key: string }
+    }) as (Newsletter & { _mtime?: number; _key: string })[]
 
-    // Sort newest first by mtime (fallback: by filename desc)
-    items.sort((a, b) => (b._mtime ?? 0) - (a._mtime ?? 0))
+    // Hardcoded order to avoid environment differences (newest → oldest)
+    const manualOrder = [
+      '2025octoberaccelens',
+      '2025octoberaccelenz',
+      'alliancelenznovember2024',
+      'alliancelenzoctober2024',
+      'alliancelenzseptember2024',
+      'alliancelenzaugust2024',
+      'alliancelenzapriljune',
+    ]
+    const orderIndex = new Map<string, number>()
+    manualOrder.forEach((k, i) => orderIndex.set(k, i))
+
+    items.sort((a, b) => {
+      const ai = orderIndex.has(a._key)
+        ? (orderIndex.get(a._key) as number)
+        : Number.MAX_SAFE_INTEGER
+      const bi = orderIndex.has(b._key)
+        ? (orderIndex.get(b._key) as number)
+        : Number.MAX_SAFE_INTEGER
+      if (ai !== bi) return ai - bi
+      // Fallback stable sort: by date string desc then title
+      if (a.date !== b.date) return a.date < b.date ? 1 : -1
+      return a.title.localeCompare(b.title)
+    })
 
     // Strip helper field
-    return items.map(({ _mtime, ...rest }) => rest)
+    return items.map(({ _mtime, _key, ...rest }) => rest)
   } catch {
     return []
   }
