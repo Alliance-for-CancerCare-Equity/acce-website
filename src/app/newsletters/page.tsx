@@ -31,14 +31,14 @@ const newslettersContent: {
   subscribe_subtitle: string
   newsletters?: Newsletter[]
 } = {
-  header: 'News & Publications',
-  title: 'ACCE Connection — Newsletter',
+  header: 'Newsletter',
+  title: 'Alliance Lenz',
   intro_1:
-    'Stories of impact, program updates, and ways to get involved. Explore recent issues of our newsletter to see how your support brings equitable cancer care within reach for patients and families.',
+    'Stories of impact, program updates, and ways to get involved. Explore recent issues of Alliance Lenz to see how your support brings equitable cancer care within reach for patients and families.',
   intro_2:
     'Prefer updates by email? Subscribe below to receive new issues and highlights directly in your inbox.',
   issues_title: 'Recent Issues',
-  subscribe_title: 'Subscribe to ACCE Connection',
+  subscribe_title: 'Subscribe to Alliance Lenz',
   subscribe_subtitle:
     'Get stories of hope, impact updates, and opportunities to help—delivered a few times a year. Unsubscribe anytime.',
   // If no PDFs are found, we can optionally populate a static fallback list here.
@@ -98,6 +98,63 @@ function getNewsletterIssues(): Newsletter[] {
       return prefer('fall.jpg')
     }
 
+    function sanitizeTitle(value: string) {
+      // Remove non-printable characters, collapse whitespace
+      return value
+        .replace(/[\x00-\x09\x0B-\x1F\x7F]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+    }
+
+    // Manual overrides for titles and descriptions keyed by normalized filename
+    const manualOverrides: Record<string, { title: string; description: string }> = {
+      // 2024 issues
+      alliancelenzapriljune: {
+        title: 'Fueling Care: New Patients Funded, Equipment Delivered',
+        description:
+          'Highlights from April–June 2024: funding chemotherapy and surgery for patients in Ghana and Canada, delivering essential equipment to community clinics, and growing our volunteer network.',
+      },
+      alliancelenzaugust2024: {
+        title: 'Mid‑Year Momentum: Treatment Funding and Community Drives',
+        description:
+          'This issue spotlights newly funded patients, volunteer mobilization across chapters, and partner‑led community drives that keep lifesaving care within reach.',
+      },
+      alliancelenzseptember2024: {
+        title: 'Back‑to‑Care: Patient Stories, Clinic Support, Volunteers',
+        description:
+          'Patient and family stories, clinic support updates in Ghana, and new volunteer roles in Kitchener‑Waterloo to expand access to care.',
+      },
+      alliancelenzoctober2024: {
+        title: 'Breast Cancer Awareness: Screening, Support, Fundraising',
+        description:
+          'Awareness month highlights: community screening initiatives, support resources for patients and families, and fundraising that pays for treatment and unfunded medications.',
+      },
+      alliancelenznovember2024: {
+        title: 'Year‑End Giving: Unfunded Medications and Lifesaving Care',
+        description:
+          'Your generosity closes gaps in coverage. Read how year‑end gifts fund unfunded medications, transport, and treatment for patients in need.',
+      },
+      // 2025 issue (include both normalized variants for safety)
+      '2025octoberaccelens': {
+        title: 'Expanding Access: New Partners, More Patients Reached',
+        description:
+          'New partnerships, expanded patient support, and impact milestones across Canada and Ghana—plus ways you can help accelerate equitable care.',
+      },
+      '2025octoberaccelenz': {
+        title: 'Expanding Access: New Partners, More Patients Reached',
+        description:
+          'New partnerships, expanded patient support, and impact milestones across Canada and Ghana—plus ways you can help accelerate equitable care.',
+      },
+    }
+
+    function normalizeKey(filePathOrName: string) {
+      const base = path.parse(filePathOrName).name.toLowerCase()
+      // Remove spaces and punctuation, unify lens→lenz
+      return base
+        .replace(/lens/g, 'lenz')
+        .replace(/[^a-z0-9]+/g, '')
+    }
+
     const items = files.map((file) => {
       const fullPath = path.join(dir, file)
       let stat: fs.Stats | null = null
@@ -109,12 +166,26 @@ function getNewsletterIssues(): Newsletter[] {
 
       const base = path.parse(file).name
       // Attempt to split a series name from a date-ish suffix
-      let title = base
+      let series = 'Alliance Lenz'
       let date = ''
-      const prefix = 'Alliance Lenz'
-      if (base.startsWith(prefix)) {
-        title = prefix
-        date = base.slice(prefix.length).trim().replace(/\s+/g, ' ')
+      const prefixes = [
+        /^Alliance\s+Lenz/i,
+        /^Alliance\s+Lens/i,
+        /^ACCE\s+Lenz/i,
+        /^ACCE\s+Lens/i,
+        /^Lenz/i,
+        /^Lens/i,
+      ]
+      let matchedPrefix = ''
+      for (const re of prefixes) {
+        const m = base.match(re)
+        if (m) {
+          matchedPrefix = m[0]
+          break
+        }
+      }
+      if (matchedPrefix) {
+        date = base.slice(matchedPrefix.length).trim().replace(/\s+/g, ' ')
       }
 
       // Extract year if present, otherwise fall back to file mtime year
@@ -123,16 +194,43 @@ function getNewsletterIssues(): Newsletter[] {
       const fallbackYear = new Date(mtime).getFullYear()
       const year = yearMatch ? parseInt(yearMatch[1], 10) : fallbackYear
 
+      // If we didn't get a date from a recognized prefix, try to parse month or range from anywhere in the filename
+      if (!date) {
+        const months = '(january|february|march|april|may|june|july|august|september|october|november|december)'
+        const rangeRe = new RegExp(`${months}\\s*[-–]\\s*${months}`, 'i')
+        const singleRe = new RegExp(months, 'i')
+        const rangeMatch = base.match(rangeRe)
+        if (rangeMatch) {
+          const m1 = rangeMatch[1]
+          const m2 = rangeMatch[2]
+          date = `${m1[0].toUpperCase()}${m1.slice(1).toLowerCase()}–${m2[0].toUpperCase()}${m2.slice(1).toLowerCase()}`
+        } else {
+          const m = base.match(singleRe)
+          if (m) {
+            const mm = m[0]
+            date = `${mm[0].toUpperCase()}${mm.slice(1).toLowerCase()}`
+          }
+        }
+      }
+
       // Normalize a hyphen range to an en dash and append year if missing
       let displayDate = date.replace(/\s*-\s*/g, '–').trim()
       const hasYearInDate = /(19|20)\d{2}/.test(displayDate)
       if (displayDate && !hasYearInDate) displayDate = `${displayDate} ${year}`
       if (!displayDate && year) displayDate = String(year)
 
+      // Manual override lookup; fall back to date-based title
+      const key = normalizeKey(file)
+      const override = manualOverrides[key]
+      const finalTitle = override?.title || 'Alliance Lenz'
+      const description =
+        override?.description ||
+        'Patient support updates, equipment for clinics, and ways to get involved.'
+
       return {
-        title: title || base,
+        title: finalTitle,
         date: displayDate || '',
-        description: 'Download the ACCE Connection newsletter (PDF).',
+        description,
         pdfUrl: `/newsletter/${encodeURIComponent(file)}`,
         imageUrl: pickImage(base, displayDate, year),
         // @ts-ignore: we keep mtime for sorting only, not in type
