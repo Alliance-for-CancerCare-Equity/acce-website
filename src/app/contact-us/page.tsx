@@ -183,6 +183,7 @@ function Contact({
                     name="email"
                     type="email"
                     autoComplete="email"
+                    required
                     className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-slate-900 outline-1 -outline-offset-1 outline-slate-300 placeholder:text-slate-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600"
                   />
                 </div>

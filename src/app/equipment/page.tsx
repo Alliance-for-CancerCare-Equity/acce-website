@@ -175,6 +175,23 @@ function EquipmentApplicationForm({
               </div>
               <div className="sm:col-span-2">
                 <label
+                  htmlFor="contact-email"
+                  className="block text-sm/6 font-semibold text-slate-900"
+                >
+                  Email Address (Person of Contact)
+                </label>
+                <div className="mt-2.5">
+                  <input
+                    id="contact-email"
+                    name="contact-email"
+                    type="email"
+                    autoComplete="email"
+                    className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-slate-900 outline-1 -outline-offset-1 outline-slate-300 backdrop-blur-sm placeholder:text-slate-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600"
+                  />
+                </div>
+              </div>
+              <div className="sm:col-span-2">
+                <label
                   htmlFor="description"
                   className="block text-sm/6 font-semibold text-slate-900"
                 >

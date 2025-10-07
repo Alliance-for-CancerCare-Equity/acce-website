@@ -19,7 +19,7 @@ import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { FlyoutMenu, type FlyoutMenuItem } from '@/components/layout/FlyoutMenu'
 import { Logo } from '@/components/ui/Logo'
-import { NavLink } from '@/components/ui/NavLink'
+// import { NavLink } from '@/components/ui/NavLink'
 
 const aboutUsItems: FlyoutMenuItem[] = [
   { name: 'Who We Are', href: '/who-we-are' },
@@ -58,6 +58,11 @@ const getInvolvedItems: FlyoutMenuItem[] = [
   { name: 'Become a Fundraiser', href: '/fundraise' },
   { name: 'Become a Volunteer', href: '/volunteer' },
   { name: 'Become a Partner', href: '/partner-with-us' },
+]
+
+const storiesAndNewsItems: FlyoutMenuItem[] = [
+  { name: 'Patients Stories', href: '/patients-stories' },
+  { name: 'Newsletters', href: '/newsletters' },
 ]
 
 const contactUsItems: FlyoutMenuItem[] = [
@@ -137,7 +142,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
             <FlyoutMenu label="Our Projects" items={ourProjectsItems} />
             <FlyoutMenu label="Ways to Give" items={waysToGiveItems} />
             <FlyoutMenu label="Get Involved" items={getInvolvedItems} />
-            <NavLink href="/patients-stories">Patients Stories</NavLink>
+            <FlyoutMenu label="Stories & News" items={storiesAndNewsItems} />
             <FlyoutMenu label="Get In Touch" items={contactUsItems} />
           </div>
         </div>
@@ -199,9 +204,10 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
                   label="Get Involved"
                   items={getInvolvedItems}
                 />
-                <MobileNavLink href="/patients-stories">
-                  Patients Stories
-                </MobileNavLink>
+                <MobileNavDisclosure
+                  label="Stories & News"
+                  items={storiesAndNewsItems}
+                />
                 <MobileNavDisclosure
                   label="Contact Us"
                   items={contactUsItems}
