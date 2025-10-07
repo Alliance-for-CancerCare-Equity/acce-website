@@ -354,7 +354,7 @@ function IssuesGrid({ items }: { items: Newsletter[] }) {
   )
 }
 
-function Subscribe() {
+function Subscribe({ attempted }: { attempted?: boolean }) {
   return (
     <section id="subscribe" className="bg-slate-50 py-16 sm:py-24">
       <Container>
@@ -365,22 +365,22 @@ function Subscribe() {
           <p className="mt-6 text-lg/8 text-slate-600">
             {newslettersContent.subscribe_subtitle}
           </p>
+          {attempted && (
+            <div className="mx-auto mt-6 w-full max-w-xl rounded-md bg-amber-50 px-4 py-3 text-left ring-1 ring-amber-200">
+              <p className="text-sm/6 font-medium text-amber-800">
+                We’re experiencing technical issues with newsletter subscriptions. Please try again later.
+              </p>
+            </div>
+          )}
         </div>
         <div className="mx-auto mt-10 max-w-xl">
           <form
-            action="https://formsubmit.co/info@allianceforcancercareequity.ca"
-            method="POST"
+            action="/newsletters"
+            method="GET"
             className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6"
           >
-            {/* formsubmit.co helpers */}
-            <input type="hidden" name="_subject" value="Newsletter Subscription — ACCE" />
-            <input
-              type="hidden"
-              name="_next"
-              value="https://allianceforcancercareequity.ca/newsletters?subscribed=1"
-            />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
+            {/* Temporarily disabled: on submit, show a notice via query param */}
+            <input type="hidden" name="subscribe_error" value="1" />
 
             <div>
               <label htmlFor="first-name" className="block text-sm/6 font-semibold text-slate-900">
@@ -392,8 +392,9 @@ function Subscribe() {
                   name="first-name"
                   type="text"
                   autoComplete="given-name"
-                  className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-slate-900 outline-1 -outline-offset-1 outline-slate-300 placeholder:text-slate-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600"
-                />
+                  disabled
+                  className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-slate-900 outline-1 -outline-offset-1 outline-slate-300 placeholder:text-slate-400 disabled:cursor-not-allowed disabled:bg-slate-100 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600"
+                  />
               </div>
             </div>
             <div>
@@ -406,7 +407,8 @@ function Subscribe() {
                   name="last-name"
                   type="text"
                   autoComplete="family-name"
-                  className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-slate-900 outline-1 -outline-offset-1 outline-slate-300 placeholder:text-slate-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600"
+                  disabled
+                  className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-slate-900 outline-1 -outline-offset-1 outline-slate-300 placeholder:text-slate-400 disabled:cursor-not-allowed disabled:bg-slate-100 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600"
                 />
               </div>
             </div>
@@ -420,14 +422,14 @@ function Subscribe() {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  required
-                  className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-slate-900 outline-1 -outline-offset-1 outline-slate-300 placeholder:text-slate-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600"
+                  disabled
+                  className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-slate-900 outline-1 -outline-offset-1 outline-slate-300 placeholder:text-slate-400 disabled:cursor-not-allowed disabled:bg-slate-100 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600"
                 />
               </div>
             </div>
             <div className="sm:col-span-2">
               <div className="flex items-start gap-3">
-                <input id="consent" name="consent" type="checkbox" required className="mt-1 size-4 rounded border-slate-300 text-blue-600 focus:ring-blue-600" />
+                <input id="consent" name="consent" type="checkbox" disabled className="mt-1 size-4 rounded border-slate-300 text-blue-600 disabled:cursor-not-allowed" />
                 <label htmlFor="consent" className="text-sm/6 text-slate-600">
                   I agree to receive email updates from ACCE. I can unsubscribe at any time.
                 </label>
@@ -446,15 +448,20 @@ function Subscribe() {
   )
 }
 
-export default function NewslettersPage() {
+export default function NewslettersPage({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>
+}) {
   const issues = getNewsletterIssues()
+  const attempted = Boolean(searchParams && searchParams['subscribe_error'])
   return (
     <>
       <Header />
       <main>
         <PageHeader />
         <IssuesGrid items={issues} />
-        <Subscribe />
+        <Subscribe attempted={attempted} />
       </main>
       <Footer />
     </>
