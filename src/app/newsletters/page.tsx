@@ -107,13 +107,14 @@ function getNewsletterIssues(): Newsletter[] {
         .trim()
     }
 
-    // Manual overrides for titles and descriptions keyed by normalized filename
-    const manualOverrides: Record<string, { title: string; description: string }> = {
+    // Manual overrides for titles/descriptions (and optional date) keyed by normalized filename
+    const manualOverrides: Record<string, { title: string; description: string; date?: string }> = {
       // 2024 issues
       alliancelenzapriljune: {
         title: 'Fueling Care: New Patients Funded, Equipment Delivered',
         description:
           'Highlights from April–June 2024: funding chemotherapy and surgery for patients in Ghana and Canada, delivering essential equipment to community clinics, and growing our volunteer network.',
+        date: 'April–June 2024',
       },
       alliancelenzaugust2024: {
         title: 'Mid‑Year Momentum: Treatment Funding and Community Drives',
@@ -220,9 +221,12 @@ function getNewsletterIssues(): Newsletter[] {
       if (displayDate && !hasYearInDate) displayDate = `${displayDate} ${year}`
       if (!displayDate && year) displayDate = String(year)
 
-      // Manual override lookup; fall back to date-based title
+      // Apply manual date override if provided
       const key = normalizeKey(file)
       const override = manualOverrides[key]
+      if (override?.date) displayDate = override.date
+
+      // Manual override lookup; fall back to date-based title
       const finalTitle = override?.title || 'Alliance Lenz'
       const description =
         override?.description ||
