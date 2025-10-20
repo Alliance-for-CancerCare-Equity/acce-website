@@ -20,6 +20,12 @@ jobs:
     env:
       IS_GITHUB_PAGES: 'true'
       REPO_NAME: 'acce-website'   # <-- must match your repo exactly
+      # Mailchimp audience config for static JSONP signup
+      # Define these as Repository Variables (Settings → Variables → Repository variables)
+      # They are public values from your Mailchimp embed form, not API keys.
+      NEXT_PUBLIC_MAILCHIMP_U: ${{ vars.NEXT_PUBLIC_MAILCHIMP_U }}
+      NEXT_PUBLIC_MAILCHIMP_ID: ${{ vars.NEXT_PUBLIC_MAILCHIMP_ID }}
+      NEXT_PUBLIC_MAILCHIMP_DC: ${{ vars.NEXT_PUBLIC_MAILCHIMP_DC }}
     steps:
       - name: Check out your repository
         uses: actions/checkout@v4
@@ -48,4 +54,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
