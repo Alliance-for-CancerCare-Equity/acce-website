@@ -14,8 +14,8 @@ function jsonp<T = unknown>(url: string, timeoutMs = 12000): Promise<T> {
     const src = `${url}${hasQuery ? '&' : '?'}c=${cbName}`
     const script = document.createElement('script')
     let done = false
-    // @ts-expect-error dynamic global assignment
-    ;(window as any)[cbName] = (data: T) => {
+    const anyWindow = window as any
+    anyWindow[cbName] = (data: T) => {
       if (done) return
       done = true
       cleanup()
@@ -30,8 +30,7 @@ function jsonp<T = unknown>(url: string, timeoutMs = 12000): Promise<T> {
     function cleanup() {
       window.clearTimeout(timer)
       try {
-        // @ts-expect-error dynamic global deletion
-        delete (window as any)[cbName]
+        delete anyWindow[cbName]
       } catch {
         // no-op
       }
