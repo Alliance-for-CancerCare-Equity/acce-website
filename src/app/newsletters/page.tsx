@@ -108,7 +108,25 @@ function getNewsletterIssues(): Newsletter[] {
     }
 
     // Manual overrides for titles/descriptions (and optional date) keyed by normalized filename
-    const manualOverrides: Record<string, { title: string; description: string; date?: string }> = {
+    const manualOverrides: Record<
+      string,
+      { title: string; description: string; date?: string; image?: string }
+    > = {
+      // 2025 issues
+      '2025novemberaccelens': {
+        title: 'Lung Cancer Awareness Month: Prevention, Equity, Action',
+        description:
+          'Awareness month highlights: key stats in Canada, prevention tips, and the equity gap in Ghana—plus ways to help patients and families.',
+        date: 'November 2025',
+        image: '/newsletter_images/november-2025.jpg',
+      },
+      '2025novemberaccelenz': {
+        title: 'Lung Cancer Awareness Month: Prevention, Equity, Action',
+        description:
+          'Awareness month highlights: key stats in Canada, prevention tips, and the equity gap in Ghana—plus ways to help patients and families.',
+        date: 'November 2025',
+        image: '/newsletter_images/november-2025.jpg',
+      },
       // 2024 issues
       alliancelenzapriljune: {
         title: 'Fueling Care: New Patients Funded, Equipment Delivered',
@@ -136,7 +154,7 @@ function getNewsletterIssues(): Newsletter[] {
         description:
           'Your generosity closes gaps in coverage. Read how year‑end gifts fund unfunded medications, transport, and treatment for patients in need.',
       },
-      // 2025 issue (include both normalized variants for safety)
+      // 2025 October issue (include both normalized variants for safety)
       '2025octoberaccelens': {
         title: 'Expanding Access: New Partners, More Patients Reached',
         description:
@@ -231,13 +249,27 @@ function getNewsletterIssues(): Newsletter[] {
       const description =
         override?.description ||
         'Patient support updates, equipment for clinics, and ways to get involved.'
+      // Prefer a manual image override when present and the file exists; otherwise use heuristic
+      let imageUrl = ''
+      if (override?.image) {
+        const rel = override.image.startsWith('/')
+          ? override.image.slice(1)
+          : override.image
+        const abs = path.join(process.cwd(), 'public', rel)
+        if (fs.existsSync(abs)) {
+          imageUrl = override.image.startsWith('/') ? override.image : `/${rel}`
+        }
+      }
+      if (!imageUrl) {
+        imageUrl = pickImage(base, displayDate, year)
+      }
 
       return {
         title: finalTitle,
         date: displayDate || '',
         description,
         pdfUrl: `/newsletter/${encodeURIComponent(file)}`,
-        imageUrl: pickImage(base, displayDate, year),
+        imageUrl,
         // @ts-ignore: we keep mtime for sorting only, not in type
         _mtime: stat?.mtimeMs ?? 0,
         // internal key for ordering
@@ -247,6 +279,8 @@ function getNewsletterIssues(): Newsletter[] {
 
     // Hardcoded order to avoid environment differences (newest → oldest)
     const manualOrder = [
+      '2025novemberaccelens',
+      '2025novemberaccelenz',
       '2025octoberaccelens',
       '2025octoberaccelenz',
       'alliancelenznovember2024',

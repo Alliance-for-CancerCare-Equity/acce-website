@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const isGithubPages = process.env.IS_GITHUB_PAGES === 'true'
 
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+})
+
 const nextConfig = {
   output: 'export',
   basePath: isGithubPages ? '/acce-website' : '',
@@ -9,6 +13,7 @@ const nextConfig = {
     unoptimized: true,
     remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com' }],
   },
+  pageExtensions: ['ts', 'tsx', 'mdx'],
 }
 
-module.exports = nextConfig
+module.exports = withMDX(nextConfig)

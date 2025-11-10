@@ -61,6 +61,7 @@ const getInvolvedItems: FlyoutMenuItem[] = [
 ]
 
 const storiesAndNewsItems: FlyoutMenuItem[] = [
+  // { name: 'Blog', href: '/blogs' }, // Temporarily hidden while WIP
   { name: 'Patients Stories', href: '/patients-stories' },
   { name: 'Newsletters', href: '/newsletters' },
 ]
