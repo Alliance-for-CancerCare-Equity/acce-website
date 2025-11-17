@@ -4,12 +4,8 @@ import type { ComponentType } from 'react'
 import { useEffect, useState } from 'react'
 
 const loaders: Record<string, () => Promise<{ default: ComponentType<any> }>> = {
-  'removing-cost-barriers': () =>
-    import('@/content/blogs/removing-cost-barriers.mdx'),
-  'partner-spotlight-community-clinics': () =>
-    import('@/content/blogs/partner-spotlight-community-clinics.mdx'),
-  'what-it-costs-to-beat-cancer-in-ghana': () =>
-    import('@/content/blogs/what-it-costs-to-beat-cancer-in-ghana.mdx'),
+  'turning-breath-into-hope': () =>
+    import('@/content/blogs/turning-breath-into-hope.mdx'),
 }
 
 export default function PostProseClient({ slug }: { slug: string }) {
