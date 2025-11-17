@@ -92,6 +92,8 @@
 .blog-prose a {
   font-weight: 600;
   color: rgb(37 99 235); /* blue-600 */
+  text-decoration-line: underline;
+  text-underline-offset: 2px;
 }
 
 .blog-prose blockquote {
@@ -104,5 +106,8 @@
 
 .blog-prose strong {
   font-weight: 600;
-  color: rgb(15 23 42);
+}
+
+.blog-prose a strong {
+  color: inherit;
 }
