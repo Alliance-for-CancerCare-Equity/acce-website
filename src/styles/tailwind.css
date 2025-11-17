@@ -40,3 +40,69 @@
 }
 
 /* Font usage: Inter as base via html/body class. */
+
+/* Basic typography for blog MDX content */
+.blog-prose h1 {
+  font-size: var(--text-3xl);
+  line-height: var(--text-3xl--line-height);
+  font-weight: 600;
+  color: rgb(15 23 42); /* slate-900 */
+  margin-top: 2.5rem;
+}
+
+.blog-prose h2 {
+  font-size: var(--text-2xl);
+  line-height: var(--text-2xl--line-height);
+  font-weight: 600;
+  color: rgb(15 23 42);
+  margin-top: 2.5rem;
+}
+
+.blog-prose h3 {
+  font-size: var(--text-xl);
+  line-height: var(--text-xl--line-height);
+  font-weight: 600;
+  color: rgb(15 23 42);
+  margin-top: 2rem;
+}
+
+.blog-prose p {
+  margin-top: 1.5rem;
+}
+
+.blog-prose ul,
+.blog-prose ol {
+  margin-top: 1.5rem;
+  padding-left: 1.5rem;
+  list-style-position: outside;
+}
+
+.blog-prose ul {
+  list-style-type: disc;
+}
+
+.blog-prose ol {
+  list-style-type: decimal;
+}
+
+.blog-prose li {
+  margin-top: 0.5rem;
+}
+
+.blog-prose a {
+  font-weight: 600;
+  color: rgb(37 99 235); /* blue-600 */
+}
+
+.blog-prose blockquote {
+  margin-top: 2rem;
+  border-left: 4px solid rgb(226 232 240); /* slate-200 */
+  padding-left: 1rem;
+  font-style: italic;
+  color: rgb(71 85 105); /* slate-600 */
+}
+
+.blog-prose strong {
+  font-weight: 600;
+  color: rgb(15 23 42);
+}

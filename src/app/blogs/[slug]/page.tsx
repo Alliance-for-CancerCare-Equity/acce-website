@@ -83,7 +83,11 @@ function PostHeader({
 }
 
 function Prose({ children }: { children: React.ReactNode }) {
-  return <div className="mx-auto max-w-3xl text-base/7 text-slate-700">{children}</div>
+  return (
+    <div className="blog-prose mx-auto max-w-3xl text-base/7 text-slate-700">
+      {children}
+    </div>
+  )
 }
 
 export default async function BlogPostPage({

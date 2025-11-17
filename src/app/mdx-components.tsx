@@ -2,6 +2,14 @@ import type { MDXComponents } from 'mdx/types'
 
 export default function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    h1: ({ children, ...props }) => (
+      <h1
+        {...props}
+        className="mt-10 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl"
+      >
+        {children}
+      </h1>
+    ),
     h2: ({ children, ...props }) => (
       <h2
         {...props}
@@ -9,6 +17,14 @@ export default function useMDXComponents(components: MDXComponents): MDXComponen
       >
         {children}
       </h2>
+    ),
+    h3: ({ children, ...props }) => (
+      <h3
+        {...props}
+        className="mt-8 text-xl font-semibold tracking-tight text-slate-900"
+      >
+        {children}
+      </h3>
     ),
     p: ({ children, ...props }) => (
       <p {...props} className="mt-6 text-base/7 text-slate-700">
@@ -35,6 +51,11 @@ export default function useMDXComponents(components: MDXComponents): MDXComponen
         {children}
       </li>
     ),
+    strong: ({ children, ...props }) => (
+      <strong {...props} className="font-semibold text-slate-900">
+        {children}
+      </strong>
+    ),
     blockquote: ({ children, ...props }) => (
       <blockquote
         {...props}
@@ -51,4 +72,3 @@ export default function useMDXComponents(components: MDXComponents): MDXComponen
     ...components,
   }
 }
-
