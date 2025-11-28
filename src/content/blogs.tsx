@@ -27,6 +27,31 @@ const entries: BlogEntry[] = [
     },
     import: () => import('@/content/blogs/turning-breath-into-hope.mdx'),
   },
+  {
+    slug: 'five-ways-to-make-an-impact-this-giving-tuesday',
+    meta: {
+      title: 'Five Ways to Make an Impact This Giving Tuesday',
+      date: '2025-11-28',
+      excerpt:
+        'GivingTuesday is the world’s largest generosity movement. Founded in 2012, its goal is to establish an annual day dedicated to giving.',
+      imageUrl: '/images/giving_tuesday.jpg',
+      category: 'Giving Tuesday',
+    },
+    import: () =>
+      import('@/content/blogs/five-ways-to-make-an-impact-this-giving-tuesday.mdx'),
+  },
+  {
+    slug: 'stomach-cancer-is-silent',
+    meta: {
+      title: 'Stomach Cancer is Silent - but your voice doesn’t have to be',
+      date: '2025-11-28',
+      excerpt:
+        'November recognizes Gastric Cancer, also known as stomach cancer, which forms when there’s a genetic mutation in the DNA of your stomach cells.',
+      imageUrl: '/images/stomach_cancer_ribbon.jpg',
+      category: 'Gastric Cancer Awareness',
+    },
+    import: () => import('@/content/blogs/stomach-cancer-is-silent.mdx'),
+  },
 ]
 
 export function allPosts(): BlogEntry[] {

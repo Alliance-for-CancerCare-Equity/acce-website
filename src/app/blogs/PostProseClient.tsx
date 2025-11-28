@@ -6,6 +6,12 @@ import { useEffect, useState } from 'react'
 const loaders: Record<string, () => Promise<{ default: ComponentType<any> }>> = {
   'turning-breath-into-hope': () =>
     import('@/content/blogs/turning-breath-into-hope.mdx'),
+  'five-ways-to-make-an-impact-this-giving-tuesday': () =>
+    import(
+      '@/content/blogs/five-ways-to-make-an-impact-this-giving-tuesday.mdx'
+    ),
+  'stomach-cancer-is-silent': () =>
+    import('@/content/blogs/stomach-cancer-is-silent.mdx'),
 }
 
 export default function PostProseClient({ slug }: { slug: string }) {
