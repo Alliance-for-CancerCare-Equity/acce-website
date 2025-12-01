@@ -1,4 +1,5 @@
 import { type Metadata } from 'next'
+import { type ReactNode } from 'react'
 import { CheckIcon } from '@heroicons/react/20/solid'
 
 import { Button } from '@/components/ui/Button'
@@ -35,8 +36,33 @@ const givingOptionsContent = {
         name: 'Other Methods',
         id: 'tier-other',
         href: 'mailto:donate@allianceforcancercareequity.ca',
-        description:
-          'Prefer Interac e-Transfer, Cheques, or MoMo? See the FAQ for details.',
+        description: (
+          <>
+            <strong className="font-semibold text-slate-900">
+              Prefer Interac e-Transfer, Cheques, or MoMo?
+            </strong>
+            <br />
+            <br />
+            <strong className="font-semibold text-slate-900">
+              Interac e-Transfer
+            </strong>{' '}
+            (Canadian bank account holders) to:{' '}
+            <span className="text-slate-900">
+              donate@allianceforcancercareequity.ca
+            </span>
+            <br />
+            <br />
+            <strong className="font-semibold text-slate-900">By cheque</strong>{' '}
+            payable to “Alliance for CancerCare Equity”
+            <br />
+            Mail to: 226 David Elsey Street, Kitchener, ON, Canada. N2A 4L5
+            <br />
+            <br />
+            <strong className="font-semibold text-slate-900">Via MoMo</strong>{' '}
+            (Ghanaians with MoMo account) to ACCE MTN MoMo number{' '}
+            <span className="text-slate-900">053 048 2155</span>
+          </>
+        ),
         features: [],
       },
     ],
@@ -108,7 +134,7 @@ interface Tier {
   name: string
   id: string
   href: string
-  description: string
+  description: string | ReactNode
   features: string[]
 }
 
@@ -195,16 +221,16 @@ function OneTimeDonations({
               <p className="mt-4 text-sm/6 text-slate-600">
                 {tier.description}
               </p>
-              <Button
-                href={tier.href}
-                color="blue"
-                aria-describedby={tier.id}
-                className="mt-6 block w-full"
-              >
-                {tier.name === 'Other Methods'
-                  ? 'Learn More'
-                  : `Donate via ${tier.name}`}
-              </Button>
+              {tier.name !== 'Other Methods' && (
+                <Button
+                  href={tier.href}
+                  color="blue"
+                  aria-describedby={tier.id}
+                  className="mt-6 block w-full"
+                >
+                  Donate via {tier.name}
+                </Button>
+              )}
               {tier.features.length > 0 && (
                 <ul
                   role="list"
