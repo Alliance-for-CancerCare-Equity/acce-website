@@ -113,6 +113,13 @@ function getNewsletterIssues(): Newsletter[] {
       { title: string; description: string; date?: string; image?: string }
     > = {
       // 2025 issues
+      '2025decemberaccejourney2026plan': {
+        title: '2025 Year in Review & 2026 Plan',
+        description:
+          'Reflecting on our journey and impact in 2025, and sharing our vision and strategic plans for 2026.',
+        date: 'December 2025',
+        image: '/newsletter_images/december-2025.jpg',
+      },
       '2025novemberaccelens': {
         title: 'Lung Cancer Awareness Month: Prevention, Equity, Action',
         description:
@@ -279,6 +286,7 @@ function getNewsletterIssues(): Newsletter[] {
 
     // Hardcoded order to avoid environment differences (newest → oldest)
     const manualOrder = [
+      '2025decemberaccejourney2026plan',
       '2025novemberaccelens',
       '2025novemberaccelenz',
       '2025octoberaccelens',
