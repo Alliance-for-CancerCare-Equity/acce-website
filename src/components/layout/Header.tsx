@@ -64,6 +64,7 @@ const storiesAndNewsItems: FlyoutMenuItem[] = [
   { name: 'Blog', href: '/blogs' },
   { name: 'Patients Stories', href: '/patients-stories' },
   { name: 'Newsletters', href: '/newsletters' },
+  { name: 'Events', href: '/events' },
 ]
 
 const contactUsItems: FlyoutMenuItem[] = [
