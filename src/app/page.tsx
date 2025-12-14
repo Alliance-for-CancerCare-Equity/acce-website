@@ -21,6 +21,10 @@ const homePageContent = {
       text: 'Learn More',
       href: '/who-we-are',
     },
+    eventButton: {
+      text: '2026 Cancer Awareness Event',
+      href: '/events/empowering-communities-2026',
+    },
   },
   stats: {
     title: 'Our track record',

@@ -18,6 +18,10 @@ interface HeroProps {
     text: string
     href: string
   }
+  eventButton?: {
+    text: string
+    href: string
+  }
 }
 
 export function Hero({
@@ -26,6 +30,7 @@ export function Hero({
   subtitle,
   button1,
   button2,
+  eventButton,
 }: HeroProps) {
   return (
     <section className="relative overflow-hidden bg-white dark:bg-gray-900">
@@ -52,11 +57,16 @@ export function Hero({
               <p className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8 dark:text-gray-400">
                 {subtitle}
               </p>
-              <div className="mt-10 flex items-center gap-x-6">
+              <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
                 <Button href={button1.href}>{button1.text}</Button>
                 <Button href={button2.href} variant="outline">
                   <span className="ml-3">{button2.text}</span>
                 </Button>
+                {eventButton && (
+                   <Button href={eventButton.href} color="white" className="ring-1 ring-inset ring-slate-200 text-blue-600 hover:bg-blue-50">
+                     {eventButton.text}
+                   </Button>
+                )}
               </div>
             </div>
           </div>
