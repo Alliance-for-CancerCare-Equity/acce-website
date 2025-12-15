@@ -1,6 +1,7 @@
 import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { CalendarDaysIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline'
 
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
@@ -10,169 +11,169 @@ import { allEvents } from '@/content/events'
 
 export const metadata: Metadata = {
   title: 'Events',
+  description: 'Join the Alliance for CancerCare Equity at our upcoming community events.',
 }
 
 type Event = {
   title: string
-  date: string
+  dateObj: Date
   excerpt: string
   href: string
   imageUrl: string
   location: string
   time: string
+  slug: string
 }
 
-const eventContent: {
-  header: string
-  title: string
-  intro: string
-  events: Event[]
-} = {
-  header: 'Events',
-  title: 'Upcoming Community Events',
-  intro:
-    'Join us for events dedicated to cancer education, awareness, prevention, and early detection.',
-  events: allEvents().map((e) => ({
-    title: e.meta.title,
-    date: new Date(e.meta.date).toLocaleDateString(undefined, {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }),
-    excerpt: e.meta.excerpt,
-    href: `/events/${e.slug}`,
-    imageUrl: e.meta.imageUrl,
-    location: e.meta.location,
-    time: e.meta.time,
-  })),
-}
+const events: Event[] = allEvents().map((e) => ({
+  title: e.meta.title,
+  dateObj: new Date(e.meta.date),
+  excerpt: e.meta.excerpt,
+  href: `/events/${e.slug}`,
+  imageUrl: e.meta.imageUrl,
+  location: e.meta.location,
+  time: e.meta.time,
+  slug: e.slug,
+}))
 
-function EventsHero({ header, title, intro }: { header: string; title: string; intro: string }) {
+function EventsHero() {
   return (
-    <section className="relative isolate overflow-hidden bg-white">
-      <div className="absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-blue-50 to-transparent" />
-      <Container className="py-14 sm:py-16">
-        <p className="text-base/7 font-semibold text-blue-600">{header}</p>
-        <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
-          {title}
-        </h1>
-        <p className="mt-6 max-w-3xl text-lg/8 text-slate-600">{intro}</p>
-      </Container>
-    </section>
-  )
-}
-
-function FeatureEvent({ event, className }: { event: Event; className?: string }) {
-  return (
-    <section className={`bg-white ${className || ''}`}>
-      <Container>
-        <Link href={event.href} className="group relative isolate block overflow-hidden rounded-3xl bg-slate-50 ring-1 ring-slate-200 shadow-sm">
-          <div className="relative h-[22rem] sm:h-[26rem]">
-            <Image
-              fill
-              src={event.imageUrl}
-              alt={event.title}
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent" />
-          </div>
-          <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-            <span className="inline-flex items-center rounded-md bg-white/90 px-2 py-1 text-xs font-medium text-slate-900 ring-1 ring-slate-900/10">
-              Upcoming
-            </span>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-              {event.title}
-            </h2>
-            <p className="mt-2 max-w-3xl text-base/7 text-slate-100/90">{event.excerpt}</p>
-            <div className="mt-3 flex flex-col gap-1 text-sm/6 text-slate-200">
-                <p>{event.date} • {event.time}</p>
-                <p>{event.location}</p>
-            </div>
-          </div>
-        </Link>
-      </Container>
-    </section>
-  )
-}
-
-function EventCard({ event }: { event: Event }) {
-  return (
-    <article className="flex flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm">
-      <div className="relative h-48">
-        <Image fill src={event.imageUrl} alt={event.title} className="object-cover" />
+    <section className="relative isolate overflow-hidden bg-slate-900 py-24 sm:py-32">
+      <div className="absolute inset-0 -z-10 h-full w-full object-cover opacity-20">
+          <svg
+          viewBox="0 0 1024 1024"
+          className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
+          aria-hidden="true"
+        >
+          <circle cx={512} cy={512} r={512} fill="url(#gradient)" fillOpacity="0.7" />
+          <defs>
+            <radialGradient id="gradient">
+              <stop stopColor="#7775D6" />
+              <stop offset={1} stopColor="#E935C1" />
+            </radialGradient>
+          </defs>
+        </svg>
       </div>
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex items-center gap-x-3 text-sm text-slate-600">
-           <time>{event.date}</time>
-        </div>
-        <h3 className="mt-2 text-lg font-semibold text-slate-900">
-          <Link href={event.href} className="hover:text-blue-600">
+      <Container className="relative text-center">
+        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+          Community Events
+        </h1>
+        <p className="mt-6 text-lg leading-8 text-gray-300 max-w-2xl mx-auto">
+          Connect, learn, and grow with us. Join our workshops, fundraisers, and awareness sessions to make a real impact in cancer care equity.
+        </p>
+      </Container>
+    </section>
+  )
+}
+
+function EventRow({ event }: { event: Event }) {
+  const month = event.dateObj.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()
+  const day = event.dateObj.toLocaleDateString('en-US', { day: 'numeric' })
+
+  return (
+    <div className="group relative flex flex-col gap-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-900/5 transition-all hover:shadow-md sm:flex-row sm:items-center sm:p-8">
+      {/* Date Block */}
+      <div className="flex h-20 w-20 flex-none flex-col items-center justify-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 sm:h-24 sm:w-24">
+        <span className="text-sm font-bold tracking-wider">{month}</span>
+        <span className="text-3xl font-extrabold">{day}</span>
+      </div>
+
+      {/* Content */}
+      <div className="flex-auto">
+        <h3 className="text-xl font-semibold leading-8 tracking-tight text-gray-900 group-hover:text-blue-600 transition-colors">
+          <Link href={event.href}>
+            <span className="absolute inset-0" />
             {event.title}
           </Link>
         </h3>
-        <p className="mt-2 text-base/7 text-slate-600">{event.excerpt}</p>
-        <div className="mt-4">
-          <Link href={event.href} className="text-sm font-semibold text-blue-600 hover:text-blue-500">
-            Event details →
-          </Link>
+        
+        <div className="mt-2 flex flex-wrap gap-4 text-sm leading-6 text-gray-500">
+            <div className="flex items-center gap-x-2">
+                <CalendarDaysIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                <time dateTime={event.dateObj.toISOString()}>{event.dateObj.toLocaleDateString()} • {event.time}</time>
+            </div>
+            <div className="flex items-center gap-x-2">
+                <MapPinIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                {event.location}
+            </div>
         </div>
+        
+        <p className="mt-4 text-base leading-7 text-gray-600 line-clamp-2">
+          {event.excerpt}
+        </p>
       </div>
-    </article>
+
+       {/* Optional Image Thumbnail for Desktop */}
+       <div className="hidden sm:block flex-none w-32 h-32 relative rounded-lg overflow-hidden bg-gray-100">
+         <Image 
+            src={event.imageUrl} 
+            alt="" 
+            fill 
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+         />
+       </div>
+       
+       <div className="mt-4 flex sm:hidden">
+         <span className="text-sm font-semibold text-blue-600">View Details <span aria-hidden="true">&rarr;</span></span>
+       </div>
+    </div>
   )
 }
 
-function EventsGrid({ events }: { events: Event[] }) {
-  const [first, ...rest] = events
+function EventsList() {
+  const upcomingEvents = events
+  
   return (
-    <>
-      {first && <FeatureEvent event={first} className={rest.length === 0 ? "pb-16" : ""} />}
-      {rest.length > 0 && (
-        <section className="bg-white py-12 sm:py-16">
-          <Container>
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {rest.map((e, i) => (
-                <EventCard key={`${e.title}-${i}`} event={e} />
-              ))}
-            </div>
-          </Container>
-        </section>
-      )}
-    </>
+    <section className="bg-slate-50 py-16 sm:py-24">
+      <Container>
+        <div className="mx-auto max-w-4xl space-y-8">
+            {upcomingEvents.length > 0 ? (
+                upcomingEvents.map((event) => (
+                    <EventRow key={event.slug} event={event} />
+                ))
+            ) : (
+                <div className="text-center py-12">
+                    <p className="text-lg text-gray-500">No upcoming events at the moment. Check back soon!</p>
+                </div>
+            )}
+        </div>
+      </Container>
+    </section>
   )
 }
 
 function EventsCta() {
-  return (
-    <section className="bg-slate-50">
-      <Container className="py-16 sm:py-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-4xl">
-            Support our mission
-          </h2>
-          <p className="mt-4 text-lg/8 text-slate-600">
-            Help us provide cancer education and support to our communities.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button href="/giving-options" color="blue">
-              Donate now
-            </Button>
-            <Button href="/newsletters#subscribe" variant="outline" color="slate">
-              Subscribe to Alliance Lenz
-            </Button>
+    return (
+      <section className="bg-white">
+        <Container className="py-16 sm:py-24">
+          <div className="relative isolate overflow-hidden bg-blue-600 px-6 py-24 text-center shadow-2xl rounded-3xl sm:px-16">
+            <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Stay in the loop
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-blue-100">
+              Subscribe to our newsletter to get the latest updates on events, fundraisers, and our mission to improve cancer care equity.
+            </p>
+            <div className="mt-10 flex items-center justify-center gap-x-6">
+              <Button href="/newsletters#subscribe" variant="solid" color="white">
+                Subscribe to Alliance Lenz
+              </Button>
+              <Link href="/contact-us" className="text-sm font-semibold leading-6 text-white hover:text-blue-50">
+                Contact us <span aria-hidden="true">→</span>
+              </Link>
+            </div>
           </div>
-        </div>
-      </Container>
-    </section>
-  )
-}
+        </Container>
+      </section>
+    )
+  }
 
 export default function EventsPage() {
   return (
     <>
       <Header />
       <main>
-        <EventsHero header={eventContent.header} title={eventContent.title} intro={eventContent.intro} />
-        <EventsGrid events={eventContent.events} />
+        <EventsHero />
+        <EventsList />
         <EventsCta />
       </main>
       <Footer />
