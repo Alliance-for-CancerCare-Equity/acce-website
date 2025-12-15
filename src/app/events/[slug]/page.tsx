@@ -130,8 +130,21 @@ export default async function EventPage({
         />
         <section className="bg-white py-12 sm:py-16">
           <Container>
-            <div className="mb-10 text-center text-lg font-semibold text-slate-800">
-                No registration required. This is a free event open to everyone!
+            <div className="mb-10 text-center">
+                <p className="text-xl font-bold text-slate-800">
+                    This is a Free Hybrid Event open to everyone: Join Us In-person or On-line
+                </p>
+                <p className="mt-2 text-lg text-slate-700">
+                    Lunch and light refreshments provided. Registration Required: Save Your Spot!
+                </p>
+                <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                    <Button href="https://www.eventbrite.com/e/empowering-communities-a-cancer-awareness-and-education-event-tickets-1977326317243?aff=oddtdtcreator&keep_tld=1" color="blue">
+                        In-person: Save Your Spot
+                    </Button>
+                    <Button href="https://www.eventbrite.com/e/empowering-communities-a-cancer-awareness-and-education-event-tickets-1977326317243?aff=oddtdtcreator&keep_tld=1" variant="outline" color="blue">
+                        Watch Online: Save Your Spot
+                    </Button>
+                </div>
             </div>
 
             <Prose>
