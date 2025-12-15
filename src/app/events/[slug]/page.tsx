@@ -130,20 +130,8 @@ export default async function EventPage({
         />
         <section className="bg-white py-12 sm:py-16">
           <Container>
-            <div className="mb-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                 {/* Buttons as requested */}
-                <div className="flex flex-col items-center">
-                    <Button disabled className="opacity-75 cursor-not-allowed" color="blue">
-                        In-Person (Register Today: It is Free)
-                    </Button>
-                    <span className="text-xs text-slate-500 mt-1">Registration link available soon</span>
-                </div>
-                <div className="flex flex-col items-center">
-                    <Button disabled className="opacity-75 cursor-not-allowed" color="blue">
-                        Watch Online (Register Today: It is Free)
-                    </Button>
-                    <span className="text-xs text-slate-500 mt-1">Registration link available soon</span>
-                </div>
+            <div className="mb-10 text-center text-lg font-semibold text-slate-800">
+                No registration required. This is a free event open to everyone!
             </div>
 
             <Prose>
