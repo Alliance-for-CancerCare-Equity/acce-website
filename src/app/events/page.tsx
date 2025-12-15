@@ -1,7 +1,7 @@
 import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { CalendarDaysIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline'
+import { CalendarDaysIcon, MapPinIcon } from '@heroicons/react/24/outline'
 
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
@@ -66,21 +66,27 @@ function EventsHero() {
   )
 }
 
-function EventRow({ event }: { event: Event }) {
+function EventRow({ event, isPast = false }: { event: Event; isPast?: boolean }) {
   const month = event.dateObj.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()
   const day = event.dateObj.toLocaleDateString('en-US', { day: 'numeric' })
 
   return (
-    <div className="group relative flex flex-col gap-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-900/5 transition-all hover:shadow-md sm:flex-row sm:items-center sm:p-8">
+    <div className={`group relative flex flex-col gap-6 rounded-2xl p-6 shadow-sm ring-1 transition-all hover:shadow-md sm:flex-row sm:items-center sm:p-8 ${
+      isPast ? 'bg-slate-50 ring-slate-200 opacity-75 grayscale-[50%] hover:grayscale-0 hover:opacity-100' : 'bg-white ring-gray-900/5'
+    }`}>
       {/* Date Block */}
-      <div className="flex h-20 w-20 flex-none flex-col items-center justify-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 sm:h-24 sm:w-24">
+      <div className={`flex h-20 w-20 flex-none flex-col items-center justify-center rounded-xl ring-1 sm:h-24 sm:w-24 ${
+          isPast ? 'bg-slate-100 text-slate-500 ring-slate-200' : 'bg-blue-50 text-blue-600 ring-blue-100'
+      }`}>
         <span className="text-sm font-bold tracking-wider">{month}</span>
         <span className="text-3xl font-extrabold">{day}</span>
       </div>
 
       {/* Content */}
       <div className="flex-auto">
-        <h3 className="text-xl font-semibold leading-8 tracking-tight text-gray-900 group-hover:text-blue-600 transition-colors">
+        <h3 className={`text-xl font-semibold leading-8 tracking-tight transition-colors ${
+            isPast ? 'text-slate-700 group-hover:text-blue-600' : 'text-gray-900 group-hover:text-blue-600'
+        }`}>
           <Link href={event.href}>
             <span className="absolute inset-0" />
             {event.title}
@@ -121,21 +127,58 @@ function EventRow({ event }: { event: Event }) {
 }
 
 function EventsList() {
+  const today = new Date()
+  
+  // Sort events: Upcoming (Ascending date), Past (Descending date)
   const upcomingEvents = events
+    .filter((e) => e.dateObj >= today)
+    .sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime())
+
+  const pastEvents = events
+    .filter((e) => e.dateObj < today)
+    .sort((a, b) => b.dateObj.getTime() - a.dateObj.getTime())
   
   return (
     <section className="bg-slate-50 py-16 sm:py-24">
       <Container>
-        <div className="mx-auto max-w-4xl space-y-8">
-            {upcomingEvents.length > 0 ? (
-                upcomingEvents.map((event) => (
-                    <EventRow key={event.slug} event={event} />
-                ))
-            ) : (
-                <div className="text-center py-12">
-                    <p className="text-lg text-gray-500">No upcoming events at the moment. Check back soon!</p>
+        <div className="mx-auto max-w-4xl space-y-16">
+            
+            {/* Upcoming Events Section */}
+            <div>
+                 <div className="flex items-center gap-4 mb-8">
+                    <h2 className="text-2xl font-bold tracking-tight text-slate-900">Upcoming Events</h2>
+                    <div className="h-px flex-1 bg-slate-200" />
+                 </div>
+                 
+                <div className="space-y-8">
+                    {upcomingEvents.length > 0 ? (
+                        upcomingEvents.map((event) => (
+                            <EventRow key={event.slug} event={event} />
+                        ))
+                    ) : (
+                        <div className="text-center py-12 rounded-2xl bg-white ring-1 ring-slate-200 border-dashed border-2 border-slate-300">
+                            <p className="text-lg text-slate-500">No upcoming events at the moment. Check back soon!</p>
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            {/* Past Events Section - Only show if there are past events */}
+            {pastEvents.length > 0 && (
+                <div>
+                    <div className="flex items-center gap-4 mb-8">
+                        <h2 className="text-2xl font-bold tracking-tight text-slate-500">Past Events</h2>
+                        <div className="h-px flex-1 bg-slate-200" />
+                    </div>
+                    
+                    <div className="space-y-8">
+                        {pastEvents.map((event) => (
+                            <EventRow key={event.slug} event={event} isPast={true} />
+                        ))}
+                    </div>
                 </div>
             )}
+
         </div>
       </Container>
     </section>
