@@ -62,9 +62,9 @@ function EventsHero({ header, title, intro }: { header: string; title: string; i
   )
 }
 
-function FeatureEvent({ event }: { event: Event }) {
+function FeatureEvent({ event, className }: { event: Event; className?: string }) {
   return (
-    <section className="bg-white">
+    <section className={`bg-white ${className || ''}`}>
       <Container>
         <Link href={event.href} className="group relative isolate block overflow-hidden rounded-3xl bg-slate-50 ring-1 ring-slate-200 shadow-sm">
           <div className="relative h-[22rem] sm:h-[26rem]">
@@ -125,7 +125,7 @@ function EventsGrid({ events }: { events: Event[] }) {
   const [first, ...rest] = events
   return (
     <>
-      {first && <FeatureEvent event={first} />}
+      {first && <FeatureEvent event={first} className={rest.length === 0 ? "pb-16" : ""} />}
       {rest.length > 0 && (
         <section className="bg-white py-12 sm:py-16">
           <Container>
