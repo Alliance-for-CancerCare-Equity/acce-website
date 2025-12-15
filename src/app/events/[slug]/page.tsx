@@ -137,12 +137,9 @@ export default async function EventPage({
                 <p className="mt-2 text-lg text-slate-700">
                     Lunch and light refreshments provided. Registration Required: Save Your Spot!
                 </p>
-                <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <div className="mt-8 flex flex-col items-center justify-center">
                     <Button href="https://www.eventbrite.com/e/empowering-communities-a-cancer-awareness-and-education-event-tickets-1977326317243?aff=oddtdtcreator&keep_tld=1" color="blue">
-                        In-person: Save Your Spot
-                    </Button>
-                    <Button href="https://www.eventbrite.com/e/empowering-communities-a-cancer-awareness-and-education-event-tickets-1977326317243?aff=oddtdtcreator&keep_tld=1" variant="outline" color="blue">
-                        Watch Online: Save Your Spot
+                        Register Here
                     </Button>
                 </div>
             </div>
