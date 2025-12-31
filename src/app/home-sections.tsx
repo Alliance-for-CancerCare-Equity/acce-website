@@ -1,6 +1,8 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
+import adisaImage from '../../public/stories/adisa.jpg'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import backgroundCta from '@/images/background-call-to-action.jpg'
@@ -179,6 +181,133 @@ export function CallToAction({
       </Container>
       <div className="absolute inset-x-0 bottom-0 z-10">
         <CompactFooter />
+      </div>
+    </section>
+  )
+}
+
+export function MissionPreview() {
+  const pillars = [
+    {
+      name: 'Treatment Funding',
+      description: 'We cover the costs of cancer treatment and related expenses for patients who lack financial means.',
+      icon: (
+        <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" className="size-6 text-white">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      href: '/support-treatment',
+    },
+    {
+      name: 'Community Support',
+      description: 'We provide comprehensive support to patients and families, ensuring they never face cancer alone.',
+      icon: (
+        <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" className="size-6 text-white">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 5.472m0 0a9.09 9.09 0 00-3.261-3.223 3 3 0 014.714-3.088M12 12.75a5.995 5.995 0 01-5.058-5.472m0 0A5.995 5.995 0 0112 6.75a5.995 5.995 0 015.058 6m0 0a5.995 5.995 0 01-5.058 5.472M12 12.75V3m0 9.75V21" />
+        </svg>
+      ),
+      href: '/support-patients-and-their-families',
+    },
+    {
+      name: 'Research & Education',
+      description: 'We advance cancer research and educate communities to improve prevention and early detection.',
+      icon: (
+        <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" className="size-6 text-white">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.499 5.516 50.552 50.552 0 00-2.658.813m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+        </svg>
+      ),
+      href: '/promote-and-advance-cancer-research',
+    },
+  ]
+
+  return (
+    <section className="bg-slate-50 py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:text-center">
+          <h2 className="text-base/7 font-semibold text-blue-600">Our Impact</h2>
+          <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl lg:text-balance">
+            Comprehensive care for every step of the journey
+          </p>
+          <p className="mt-6 text-lg/8 text-slate-600">
+            We are dedicated to bridging the gap in cancer care through three key pillars of action.
+          </p>
+        </div>
+        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+            {pillars.map((pillar) => (
+              <div key={pillar.name} className="flex flex-col">
+                <dt className="flex items-center gap-x-3 text-base/7 font-semibold text-slate-900">
+                  <div className="flex size-10 flex-none items-center justify-center rounded-lg bg-blue-600">
+                    {pillar.icon}
+                  </div>
+                  {pillar.name}
+                </dt>
+                <dd className="mt-4 flex flex-auto flex-col text-base/7 text-slate-600">
+                  <p className="flex-auto">{pillar.description}</p>
+                  <p className="mt-6">
+                    <Link href={pillar.href} className="text-sm/6 font-semibold text-blue-600">
+                      Learn more <span aria-hidden="true">→</span>
+                    </Link>
+                  </p>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export function FeatureStory() {
+  return (
+    <section className="bg-white py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-16 sm:gap-y-24 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+          <div className="lg:pr-4">
+            <div className="relative overflow-hidden rounded-3xl bg-gray-900 px-6 pb-9 pt-64 shadow-2xl sm:px-12 lg:max-w-lg lg:px-8 lg:pb-8 xl:px-10 xl:pb-10">
+              <Image
+                className="absolute inset-0 size-full object-cover brightness-125 saturate-0"
+                src={adisaImage}
+                alt="Adisa Iddrisu"
+              />
+              <div className="absolute inset-0 bg-gray-900/70 mix-blend-multiply" />
+              <div className="absolute left-1/2 top-1/2 -ml-16 -translate-x-1/2 -translate-y-1/2 transform-gpu blur-3xl" aria-hidden="true">
+                <div className="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-40" style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }} />
+              </div>
+              <figure className="relative isolate">
+                <blockquote className="mt-6 text-xl/8 font-semibold text-white">
+                  <p>
+                    “I am so grateful to ACCE for coming to my aid. I was diagnosed with breast cancer and I didn&apos;t have money for the surgery. ACCE paid for my surgery and chemotherapy.”
+                  </p>
+                </blockquote>
+                <figcaption className="mt-6 text-sm/6 leading-6 text-gray-300">
+                  <strong className="font-semibold text-white">Adisa Iddrisu</strong> – Breast Cancer Survivor
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+          <div>
+            <div className="text-base/7 font-semibold text-blue-600">Real Stories</div>
+            <h2 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+              We are changing lives, one patient at a time.
+            </h2>
+            <p className="mt-6 text-xl/8 text-slate-600">
+              Behind every statistic is a person with a family, dreams, and a future worth fighting for. Our mission is to ensure that financial barriers do not stand in the way of life-saving treatment.
+            </p>
+            <p className="mt-6 text-base/7 text-slate-600">
+              From covering surgery costs to funding chemotherapy and providing emotional support, we walk alongside patients every step of the way.
+            </p>
+            <div className="mt-10 flex items-center gap-x-6">
+              <Button href="/patients-stories" color="blue">
+                Read more stories
+              </Button>
+              <Link href="/who-we-are" className="text-sm/6 font-semibold text-slate-900">
+                Learn about our mission <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

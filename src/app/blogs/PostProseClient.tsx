@@ -4,6 +4,7 @@ import type { ComponentType } from 'react'
 import { useEffect, useState } from 'react'
 
 const loaders: Record<string, () => Promise<{ default: ComponentType<any> }>> = {
+  'acce-journey': () => import('@/content/blogs/acce-journey.mdx'),
   'turning-breath-into-hope': () =>
     import('@/content/blogs/turning-breath-into-hope.mdx'),
   'five-ways-to-make-an-impact-this-giving-tuesday': () =>

@@ -141,7 +141,7 @@ export function NewsletterSubscribe({
   const disabled = status === 'submitting'
 
   return (
-    <section id="subscribe" className="bg-slate-50 py-16 sm:py-24">
+    <section id="subscribe" className="bg-slate-50 pt-16 pb-28 sm:pt-24 sm:pb-48">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">

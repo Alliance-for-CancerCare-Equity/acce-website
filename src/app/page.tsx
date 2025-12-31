@@ -1,7 +1,8 @@
 import { type Metadata } from 'next'
 
 import { Header } from '@/components/layout/Header'
-import { CallToAction, Hero, Stats } from '@/app/home-sections'
+import { NewsletterSubscribe } from '@/components/sections/NewsletterSubscribe'
+import { CallToAction, FeatureStory, Hero, MissionPreview, Stats } from '@/app/home-sections'
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -67,6 +68,10 @@ const homePageContent = {
       href: '/giving-options',
     },
   },
+  newsletter: {
+    title: 'Stay Updated',
+    subtitle: 'Subscribe to our newsletter to receive the latest news, stories, and impact reports.',
+  },
 }
 
 export default function Home() {
@@ -75,7 +80,10 @@ export default function Home() {
       <Header overlay />
       <main className="bg-slate-50">
         <Hero {...homePageContent.hero} />
+        <MissionPreview />
         <Stats {...homePageContent.stats} />
+        <FeatureStory />
+        <NewsletterSubscribe {...homePageContent.newsletter} />
         <CallToAction {...homePageContent.call_to_action} />
       </main>
     </>

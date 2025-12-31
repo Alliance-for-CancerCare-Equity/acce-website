@@ -16,6 +16,18 @@ export type BlogEntry = {
 
 const entries: BlogEntry[] = [
   {
+    slug: 'acce-journey',
+    meta: {
+      title: 'ACCE Journey: How a Vision for Equity Became a Lifeline for Cancer Patients Across Borders',
+      date: '2025-12-29',
+      excerpt:
+        'The journey of the Alliance for CancerCare Equity (ACCE) did not begin with an organization or a boardroom discussion. It began with a simple and heartbreaking observation.',
+      imageUrl: '/images/acce_journey.jpg',
+      category: 'Our Journey',
+    },
+    import: () => import('@/content/blogs/acce-journey.mdx'),
+  },
+  {
     slug: 'turning-breath-into-hope',
     meta: {
       title: 'Turning Breath Into Hope: November and the Global Fight Against Lung Cancer',
