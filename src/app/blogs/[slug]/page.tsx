@@ -1,18 +1,19 @@
 import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
-import { allPosts, findPostBySlug } from '@/content/blogs'
-import PostProseClient from '@/app/blogs/PostProseClient'
+import { getPostBySlug, getPostSlugs } from '@/lib/mdx'
 
 type PageParams = { slug: string }
 
 export function generateStaticParams() {
-  return allPosts().map((p) => ({ slug: p.slug }))
+  const slugs = getPostSlugs()
+  return slugs.map((file) => ({ slug: file.replace(/\.mdx$/, '') }))
 }
 
 export async function generateMetadata({
@@ -21,7 +22,7 @@ export async function generateMetadata({
   params: Promise<PageParams>
 }): Promise<Metadata> {
   const { slug } = await params
-  const entry = findPostBySlug(slug)
+  const entry = getPostBySlug(slug)
   if (!entry) return { title: 'Blog' }
   return {
     title: entry.meta.title,
@@ -96,9 +97,9 @@ export default async function BlogPostPage({
   params: Promise<PageParams>
 }) {
   const { slug } = await params
-  const entry = findPostBySlug(slug)
+  const entry = getPostBySlug(slug)
+  
   if (!entry) {
-    // App Router will route to not-found for this page if we throw
     return (
       <>
         <Header />
@@ -129,7 +130,7 @@ export default async function BlogPostPage({
         <section className="bg-white py-12 sm:py-16">
           <Container>
             <Prose>
-              <PostProseClient slug={entry.slug} />
+              <MDXRemote source={entry.content} />
             </Prose>
             <div className="mt-10 flex items-center gap-4">
               <Button href="/giving-options" color="blue">Donate</Button>

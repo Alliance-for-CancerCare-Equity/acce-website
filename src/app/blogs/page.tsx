@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
-import { allPosts } from '@/content/blogs'
+import { getAllPosts, type BlogMeta } from '@/lib/mdx'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -21,28 +21,11 @@ type Post = {
   category?: string
 }
 
-const blogContent: {
-  header: string
-  title: string
-  intro: string
-  posts: Post[]
-} = {
+const blogContent = {
   header: 'Stories & News',
   title: 'Insights from the Frontline of Cancer Care Equity',
   intro:
     'Updates, reflections, and research notes from ACCE — covering impact stories, partnerships, and the practical realities of funding lifesaving care.',
-  posts: allPosts().map((p) => ({
-    title: p.meta.title,
-    date: new Date(p.meta.date).toLocaleDateString(undefined, {
-      year: 'numeric',
-      month: 'short',
-      day: '2-digit',
-    }),
-    excerpt: p.meta.excerpt,
-    href: `/blogs/${p.slug}`,
-    imageUrl: p.meta.imageUrl,
-    category: p.meta.category,
-  })),
 }
 
 function BlogHero({ header, title, intro }: { header: string; title: string; intro: string }) {
@@ -169,15 +152,30 @@ function BlogCta() {
 }
 
 export default function BlogsPage() {
+  const rawPosts = getAllPosts()
+  const posts: Post[] = rawPosts.map((p) => ({
+    title: p.title,
+    date: new Date(p.date).toLocaleDateString(undefined, {
+      year: 'numeric',
+      month: 'short',
+      day: '2-digit',
+    }),
+    excerpt: p.excerpt,
+    href: `/blogs/${p.slug}`,
+    imageUrl: p.imageUrl,
+    category: p.category,
+  }))
+
   return (
     <>
       <Header />
       <main>
         <BlogHero header={blogContent.header} title={blogContent.title} intro={blogContent.intro} />
-        <PostsGrid posts={blogContent.posts} />
+        <PostsGrid posts={posts} />
         <BlogCta />
       </main>
       <Footer />
     </>
   )
 }
+

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
-import { allEvents } from '@/content/events'
+import { getAllEvents } from '@/lib/mdx'
 
 export const metadata: Metadata = {
   title: 'Events',
@@ -24,17 +24,6 @@ type Event = {
   time: string
   slug: string
 }
-
-const events: Event[] = allEvents().map((e) => ({
-  title: e.meta.title,
-  dateObj: new Date(e.meta.date),
-  excerpt: e.meta.excerpt,
-  href: `/events/${e.slug}`,
-  imageUrl: e.meta.imageUrl,
-  location: e.meta.location,
-  time: e.meta.time,
-  slug: e.slug,
-}))
 
 function EventsHero() {
   return (
@@ -127,6 +116,18 @@ function EventRow({ event, isPast = false }: { event: Event; isPast?: boolean })
 }
 
 function EventsList() {
+  const rawEvents = getAllEvents()
+  const events: Event[] = rawEvents.map((e) => ({
+    title: e.title,
+    dateObj: new Date(e.date),
+    excerpt: e.excerpt,
+    href: `/events/${e.slug}`,
+    imageUrl: e.imageUrl,
+    location: e.location,
+    time: e.time,
+    slug: e.slug,
+  }))
+
   const today = new Date()
   
   // Sort events: Upcoming (Ascending date), Past (Descending date)

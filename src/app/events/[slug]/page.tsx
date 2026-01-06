@@ -1,18 +1,19 @@
 import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
-import { allEvents, findEventBySlug } from '@/content/events'
-import EventProseClient from '@/app/events/EventProseClient'
+import { getEventBySlug, getEventSlugs } from '@/lib/mdx'
 
 type PageParams = { slug: string }
 
 export function generateStaticParams() {
-  return allEvents().map((e) => ({ slug: e.slug }))
+  const slugs = getEventSlugs()
+  return slugs.map((file) => ({ slug: file.replace(/\.mdx$/, '') }))
 }
 
 export async function generateMetadata({
@@ -21,7 +22,7 @@ export async function generateMetadata({
   params: Promise<PageParams>
 }): Promise<Metadata> {
   const { slug } = await params
-  const entry = findEventBySlug(slug)
+  const entry = getEventBySlug(slug)
   if (!entry) return { title: 'Events' }
   return {
     title: entry.meta.title,
@@ -98,7 +99,7 @@ export default async function EventPage({
   params: Promise<PageParams>
 }) {
   const { slug } = await params
-  const entry = findEventBySlug(slug)
+  const entry = getEventBySlug(slug)
   if (!entry) {
     return (
       <>
@@ -148,7 +149,7 @@ export default async function EventPage({
             </div>
 
             <Prose>
-              <EventProseClient slug={entry.slug} />
+              <MDXRemote source={entry.content} />
             </Prose>
              
           </Container>
