@@ -131,23 +131,6 @@ export default async function EventPage({
         />
         <section className="bg-white py-12 sm:py-16">
           <Container>
-            <div className="mb-10 text-center">
-                <p className="text-xl font-bold text-slate-800">
-                    This is a Free Hybrid Event open to everyone: Join Us In-person or On-line
-                </p>
-                <p className="mt-2 text-lg text-slate-700">
-                    Registration Required: Save Your Spot!
-                </p>
-                <p className="mt-2 text-base text-slate-600">
-                    Light refreshments and lunch will be provided during the event. Please indicate any dietary restrictions (vegetarian, vegan, or allergies) when registering. You can also email the organizer at <a href="mailto:events@allianceforcancercareequity.ca" className="text-blue-600 hover:underline">events@allianceforcancercareequity.ca</a> with any dietary restrictions. While we will do our best to accommodate needs, options may be limited based on availability.
-                </p>
-                <div className="mt-8 flex flex-col items-center justify-center">
-                    <Button href="https://www.eventbrite.com/e/empowering-communities-a-cancer-awareness-and-education-event-tickets-1977326317243?aff=oddtdtcreator&keep_tld=1" color="blue">
-                        Register Here
-                    </Button>
-                </div>
-            </div>
-
             <Prose>
               <MDXRemote source={entry.content} />
             </Prose>
