@@ -132,7 +132,7 @@ export default async function EventPage({
         <section className="bg-white py-12 sm:py-16">
           <Container>
             <Prose>
-              <MDXRemote source={entry.content} />
+              <MDXRemote source={entry.content} components={{ Button }} />
             </Prose>
              
           </Container>
