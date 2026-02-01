@@ -97,39 +97,39 @@ function GetInvolved({
     <div className="overflow-hidden bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
         <div className="max-w-4xl">
-          <p className="text-base/7 font-semibold text-blue-600">{header}</p>
-          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+          <p className="text-base/7 font-semibold text-teal-600">{header}</p>
+          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-5xl">
             {title}
           </h1>
-          <p className="mt-6 text-xl/8 text-balance text-slate-700">
+          <p className="mt-6 text-xl/8 text-balance text-charcoal-700">
             {subtitle}
           </p>
         </div>
         <section className="mt-20 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-16">
           <div className="lg:pr-8">
-            <h2 className="text-2xl font-semibold tracking-tight text-pretty text-slate-900">
+            <h2 className="text-2xl font-semibold tracking-tight text-pretty text-charcoal-900">
               {opportunities_title}
             </h2>
-            <ul className="mt-6 list-disc space-y-2 pl-6 text-base/7 text-slate-600">
+            <ul className="mt-6 list-disc space-y-2 pl-6 text-base/7 text-charcoal-600">
               {opportunities.map((opportunity) => (
                 <li key={opportunity.text}>
                   <a
                     href={opportunity.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800"
+                    className="text-teal-600 hover:text-teal-800"
                   >
                     {opportunity.text}
                   </a>
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-base/7 text-slate-600">{p1}</p>
-            <p className="mt-8 text-base/7 text-slate-600">{p2}</p>
-            <p className="mt-8 text-base/7 text-slate-600">{p3}</p>
-            {p4 && <p className="mt-8 text-base/7 text-slate-600">{p4}</p>}
-            {p5 && <p className="mt-8 text-base/7 text-slate-600">{p5}</p>}
-            {p6 && <p className="mt-8 text-base/7 text-slate-600">{p6}</p>}
+            <p className="mt-8 text-base/7 text-charcoal-600">{p1}</p>
+            <p className="mt-8 text-base/7 text-charcoal-600">{p2}</p>
+            <p className="mt-8 text-base/7 text-charcoal-600">{p3}</p>
+            {p4 && <p className="mt-8 text-base/7 text-charcoal-600">{p4}</p>}
+            {p5 && <p className="mt-8 text-base/7 text-charcoal-600">{p5}</p>}
+            {p6 && <p className="mt-8 text-base/7 text-charcoal-600">{p6}</p>}
           </div>
           <div className="pt-16 lg:row-span-2">
             <div className="-mx-8 grid grid-cols-1 gap-8 sm:-mx-16 lg:mx-0">
@@ -145,7 +145,7 @@ function GetInvolved({
                     alt={link.text}
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 to-transparent" />
                   <h3 className="absolute bottom-4 left-4 text-2xl font-semibold text-white">
                     {link.text}
                   </h3>

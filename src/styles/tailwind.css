@@ -3,6 +3,78 @@
 @plugin '@tailwindcss/forms';
 
 @theme {
+  /* ============================================
+     ACCE Brand Color System
+     ============================================ */
+
+  /* Lavender - Compassion, highlights, soft backgrounds */
+  --color-lavender-50: #faf8fc;
+  --color-lavender-100: #f3eff7;
+  --color-lavender-200: #e8e0f0;
+  --color-lavender-300: #d6c9e4;
+  --color-lavender-400: #bea8d3;
+  --color-lavender-500: #9B8BB8;
+  --color-lavender-600: #8674a3;
+  --color-lavender-700: #715f8a;
+  --color-lavender-800: #5e4f72;
+  --color-lavender-900: #4e425e;
+  --color-lavender-950: #2f2739;
+
+  /* Teal - Buttons, secondary elements, trust */
+  --color-teal-50: #effefa;
+  --color-teal-100: #c8fff0;
+  --color-teal-200: #92fee2;
+  --color-teal-300: #53f5d1;
+  --color-teal-400: #21e0bb;
+  --color-teal-500: #2A9D8F;
+  --color-teal-600: #07806f;
+  --color-teal-700: #0b665a;
+  --color-teal-800: #0e5149;
+  --color-teal-900: #10433d;
+  --color-teal-950: #022824;
+
+  /* Charcoal - Text, outlines, grounding */
+  --color-charcoal-50: #f6f6f7;
+  --color-charcoal-100: #e2e3e4;
+  --color-charcoal-200: #c5c6c9;
+  --color-charcoal-300: #a0a2a6;
+  --color-charcoal-400: #7b7e83;
+  --color-charcoal-500: #606368;
+  --color-charcoal-600: #4c4e53;
+  --color-charcoal-700: #3f4145;
+  --color-charcoal-800: #2D3436;
+  --color-charcoal-900: #2a2c2e;
+  --color-charcoal-950: #18191a;
+
+  /* Accent Red - CTAs only, donate buttons */
+  --color-accent-50: #fef3f2;
+  --color-accent-100: #fee4e2;
+  --color-accent-200: #fececa;
+  --color-accent-300: #fcaba4;
+  --color-accent-400: #f77b70;
+  --color-accent-500: #ec5042;
+  --color-accent-600: #C0392B;
+  --color-accent-700: #a42a1e;
+  --color-accent-800: #88271d;
+  --color-accent-900: #71261e;
+  --color-accent-950: #3d100b;
+
+  /* Gold - Gradients, warm highlights, hope */
+  --color-gold-50: #fcf9eb;
+  --color-gold-100: #f8f0cb;
+  --color-gold-200: #f2de99;
+  --color-gold-300: #eac85e;
+  --color-gold-400: #D4A03C;
+  --color-gold-500: #d19422;
+  --color-gold-600: #b9741a;
+  --color-gold-700: #995418;
+  --color-gold-800: #7e441b;
+  --color-gold-900: #6b391c;
+  --color-gold-950: #3e1c0c;
+
+  /* ============================================
+     Typography Scale
+     ============================================ */
   --text-*: initial;
   --text-xs: 0.75rem;
   --text-xs--line-height: 1rem;
@@ -31,12 +103,30 @@
   --text-9xl: 8rem;
   --text-9xl--line-height: 1;
 
+  /* ============================================
+     Spacing & Layout
+     ============================================ */
   --radius-4xl: 2rem;
-
   --font-sans: var(--font-inter);
   --font-display: var(--font-lexend);
-
   --container-2xl: 40rem;
+
+  /* ============================================
+     Shadow System
+     ============================================ */
+  --shadow-soft: 0 2px 15px -3px rgba(45, 52, 54, 0.07), 0 10px 20px -2px rgba(45, 52, 54, 0.04);
+  --shadow-medium: 0 4px 25px -5px rgba(45, 52, 54, 0.1), 0 10px 30px -5px rgba(45, 52, 54, 0.08);
+  --shadow-strong: 0 10px 40px -10px rgba(45, 52, 54, 0.15), 0 20px 50px -10px rgba(45, 52, 54, 0.1);
+  --shadow-glow-teal: 0 0 30px rgba(42, 157, 143, 0.3);
+  --shadow-glow-lavender: 0 0 30px rgba(155, 139, 184, 0.3);
+  --shadow-glow-gold: 0 0 30px rgba(212, 160, 60, 0.3);
+  --shadow-glow-accent: 0 0 30px rgba(192, 57, 43, 0.3);
+
+  /* ============================================
+     Animation Timing
+     ============================================ */
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Font usage: Inter as base via html/body class. */
@@ -110,4 +200,296 @@
 
 .blog-prose a strong {
   color: inherit;
+}
+
+/* ============================================
+   Animation Keyframes
+   ============================================ */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Animation Utility Classes
+   ============================================ */
+.animate-fade-in {
+  animation: fade-in 0.6s var(--ease-smooth) forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s var(--ease-smooth) forwards;
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 0.7s var(--ease-smooth) forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s var(--ease-smooth) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.7s var(--ease-smooth) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.7s var(--ease-smooth) forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Animation delay utilities */
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+.animation-delay-600 { animation-delay: 600ms; }
+.animation-delay-700 { animation-delay: 700ms; }
+.animation-delay-800 { animation-delay: 800ms; }
+
+/* ============================================
+   Gradient Utilities
+   ============================================ */
+.gradient-lavender-teal {
+  background: linear-gradient(135deg, var(--color-lavender-500), var(--color-teal-500));
+}
+
+.gradient-teal-gold {
+  background: linear-gradient(135deg, var(--color-teal-500), var(--color-gold-400));
+}
+
+.gradient-gold-lavender {
+  background: linear-gradient(135deg, var(--color-gold-400), var(--color-lavender-500));
+}
+
+.gradient-lavender-soft {
+  background: linear-gradient(135deg, var(--color-lavender-50), var(--color-lavender-100));
+}
+
+.gradient-teal-soft {
+  background: linear-gradient(180deg, var(--color-teal-50), white);
+}
+
+.gradient-gold-soft {
+  background: linear-gradient(135deg, var(--color-gold-50), var(--color-gold-100));
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg,
+    var(--color-lavender-50) 0%,
+    white 30%,
+    var(--color-teal-50) 70%,
+    var(--color-gold-50) 100%
+  );
+}
+
+.gradient-charcoal {
+  background: linear-gradient(180deg, var(--color-charcoal-800), var(--color-charcoal-950));
+}
+
+.gradient-accent-glow {
+  background: radial-gradient(ellipse at center, var(--color-accent-600) 0%, var(--color-accent-700) 100%);
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, var(--color-gold-400), var(--color-gold-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-teal {
+  background: linear-gradient(135deg, var(--color-teal-400), var(--color-teal-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   Card & Surface Utilities
+   ============================================ */
+.card-elevated {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.card-elevated:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-4px);
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+}
+
+.card-gradient-border {
+  position: relative;
+  background: white;
+  border-radius: 1rem;
+}
+
+.card-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(1rem + 2px);
+  background: linear-gradient(135deg, var(--color-lavender-400), var(--color-teal-400), var(--color-gold-400));
+  z-index: -1;
+}
+
+/* ============================================
+   Focus Ring Utilities
+   ============================================ */
+.focus-ring-teal:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-teal-200);
+}
+
+.focus-ring-accent:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-accent-200);
+}
+
+/* ============================================
+   Decorative Shape Helpers
+   ============================================ */
+.blob-shape {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.wave-clip {
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 85%,
+    75% 100%, 50% 85%, 25% 100%, 0% 85%
+  );
 }

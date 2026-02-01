@@ -81,25 +81,25 @@ function OurProjects({
     <div className="overflow-hidden bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
         <div className="max-w-4xl">
-          <p className="text-base/7 font-semibold text-blue-600">{header}</p>
-          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+          <p className="text-base/7 font-semibold text-teal-600">{header}</p>
+          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-5xl">
             {title}
           </h1>
-          <p className="mt-6 text-xl/8 text-balance text-slate-700">
+          <p className="mt-6 text-xl/8 text-balance text-charcoal-700">
             {subtitle}
           </p>
         </div>
         <section className="mt-20 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-16">
           <div className="lg:pr-8">
-            <p className="text-base/7 text-slate-600">{section_1_p_1}</p>
-            <p className="mt-8 text-base/7 text-slate-600">{section_1_p_2}</p>
-            <ul className="mt-8 list-disc space-y-4 pl-6 text-base/7 text-slate-600">
+            <p className="text-base/7 text-charcoal-600">{section_1_p_1}</p>
+            <p className="mt-8 text-base/7 text-charcoal-600">{section_1_p_2}</p>
+            <ul className="mt-8 list-disc space-y-4 pl-6 text-base/7 text-charcoal-600">
               {commitments.map((commitment) => (
                 <li key={commitment}>{commitment}</li>
               ))}
             </ul>
-            <p className="mt-8 text-sm/6 text-slate-500">{footnote_1}</p>
-            <p className="mt-2 text-sm/6 text-slate-500">{footnote_2}</p>
+            <p className="mt-8 text-sm/6 text-charcoal-500">{footnote_1}</p>
+            <p className="mt-2 text-sm/6 text-charcoal-500">{footnote_2}</p>
           </div>
           <div className="pt-16 lg:row-span-2">
             <div className="-mx-8 grid grid-cols-2 gap-4 sm:-mx-16 sm:grid-cols-4 lg:mx-0 lg:grid-cols-2 lg:gap-4 xl:gap-8">

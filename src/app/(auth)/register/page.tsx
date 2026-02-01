@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   title: 'Sign Up',
 }
 
+const referralOptions = [
+  { value: 'altavista', label: 'Search engine' },
+  { value: 'social', label: 'Social media' },
+  { value: 'friend', label: 'Friend or family' },
+  { value: 'event', label: 'Community event' },
+  { value: 'other', label: 'Other' },
+]
+
 export default function Register() {
   return (
     <SlimLayout>
@@ -18,14 +26,14 @@ export default function Register() {
           <Logo className="h-10 w-auto" />
         </Link>
       </div>
-      <h2 className="mt-20 text-lg font-semibold text-gray-900">
+      <h2 className="mt-20 text-lg font-semibold text-charcoal-800">
         Get started for free
       </h2>
-      <p className="mt-2 text-sm text-gray-700">
+      <p className="mt-2 text-sm text-charcoal-600">
         Already registered?{' '}
         <Link
           href="/login"
-          className="font-medium text-blue-600 hover:underline"
+          className="font-medium text-teal-600 hover:underline"
         >
           Sign in
         </Link>{' '}
@@ -69,14 +77,10 @@ export default function Register() {
           className="col-span-full"
           label="How did you hear about us?"
           name="referral_source"
-        >
-          <option>AltaVista search</option>
-          <option>Super Bowl commercial</option>
-          <option>Our route 34 city bus ad</option>
-          <option>The “Never Use This” podcast</option>
-        </SelectField>
+          options={referralOptions}
+        />
         <div className="col-span-full">
-          <Button type="submit" variant="solid" color="blue" className="w-full">
+          <Button type="submit" variant="primary" className="w-full">
             <span>
               Sign up <span aria-hidden="true">&rarr;</span>
             </span>

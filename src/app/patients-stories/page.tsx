@@ -87,10 +87,10 @@ function PatientsStories({ title, subtitle, people }: PatientsStoriesProps) {
     <div className="bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-5xl">
             {title}
           </h2>
-          <p className="mt-6 text-lg/8 text-slate-600">{subtitle}</p>
+          <p className="mt-6 text-lg/8 text-charcoal-600">{subtitle}</p>
         </div>
         <ul
           role="list"
@@ -104,7 +104,7 @@ function PatientsStories({ title, subtitle, people }: PatientsStoriesProps) {
                 rel="noopener noreferrer"
                 className="group"
               >
-                <div className="relative h-72 w-full overflow-hidden rounded-3xl">
+                <div className="relative h-72 w-full overflow-hidden rounded-3xl ring-1 ring-lavender-200 shadow-sm group-hover:ring-teal-300 group-hover:shadow-md transition-all">
                   {/* Blurred background fill to avoid letterboxing */}
                   <Image
                     fill
@@ -124,10 +124,10 @@ function PatientsStories({ title, subtitle, people }: PatientsStoriesProps) {
                     placeholder="blur"
                   />
                 </div>
-                <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-slate-900 group-hover:text-blue-600">
+                <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-charcoal-900 group-hover:text-teal-600">
                   {person.name}
                 </h3>
-                <p className="text-base/7 text-slate-600 group-hover:text-blue-600">
+                <p className="text-base/7 text-charcoal-600 group-hover:text-teal-600">
                   {person.role}
                 </p>
               </Link>

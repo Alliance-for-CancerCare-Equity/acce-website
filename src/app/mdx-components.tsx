@@ -5,7 +5,7 @@ export default function useMDXComponents(components: MDXComponents): MDXComponen
     h1: ({ children, ...props }) => (
       <h1
         {...props}
-        className="mt-10 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl"
+        className="mt-10 text-3xl font-semibold tracking-tight text-charcoal-900 sm:text-4xl"
       >
         {children}
       </h1>
@@ -13,7 +13,7 @@ export default function useMDXComponents(components: MDXComponents): MDXComponen
     h2: ({ children, ...props }) => (
       <h2
         {...props}
-        className="mt-10 text-2xl font-semibold tracking-tight text-slate-900"
+        className="mt-10 text-2xl font-semibold tracking-tight text-charcoal-900"
       >
         {children}
       </h2>
@@ -21,45 +21,45 @@ export default function useMDXComponents(components: MDXComponents): MDXComponen
     h3: ({ children, ...props }) => (
       <h3
         {...props}
-        className="mt-8 text-xl font-semibold tracking-tight text-slate-900"
+        className="mt-8 text-xl font-semibold tracking-tight text-charcoal-900"
       >
         {children}
       </h3>
     ),
     p: ({ children, ...props }) => (
-      <p {...props} className="mt-6 text-base/7 text-slate-700">
+      <p {...props} className="mt-6 text-base/7 text-charcoal-700">
         {children}
       </p>
     ),
     a: ({ children, ...props }) => (
-      <a {...props} className="font-semibold text-blue-600 hover:text-blue-500">
+      <a {...props} className="font-semibold text-teal-600 hover:text-teal-500">
         {children}
       </a>
     ),
     ul: ({ children, ...props }) => (
-      <ul {...props} className="mt-6 list-disc space-y-2 pl-6 text-base/7 text-slate-700">
+      <ul {...props} className="mt-6 list-disc space-y-2 pl-6 text-base/7 text-charcoal-700">
         {children}
       </ul>
     ),
     ol: ({ children, ...props }) => (
-      <ol {...props} className="mt-6 list-decimal space-y-2 pl-6 text-base/7 text-slate-700">
+      <ol {...props} className="mt-6 list-decimal space-y-2 pl-6 text-base/7 text-charcoal-700">
         {children}
       </ol>
     ),
     li: ({ children, ...props }) => (
-      <li {...props} className="marker:text-slate-400">
+      <li {...props} className="marker:text-charcoal-400">
         {children}
       </li>
     ),
     strong: ({ children, ...props }) => (
-      <strong {...props} className="font-semibold text-slate-900">
+      <strong {...props} className="font-semibold text-charcoal-900">
         {children}
       </strong>
     ),
     blockquote: ({ children, ...props }) => (
       <blockquote
         {...props}
-        className="mt-8 border-l-4 border-slate-200 pl-4 italic text-slate-600"
+        className="mt-8 border-l-4 border-charcoal-200 pl-4 italic text-charcoal-600"
       >
         {children}
       </blockquote>

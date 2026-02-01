@@ -73,15 +73,15 @@ interface AnnualReportsProps {
 function ReportList({ title, intro, outro, reports }: ReportSectionProps) {
   return (
     <section>
-      <h3 className="text-2xl font-semibold leading-8 tracking-tight text-slate-900">
+      <h3 className="text-2xl font-semibold leading-8 tracking-tight text-charcoal-900">
         {title}
       </h3>
-      <p className="mt-6 text-base/7 text-slate-600">{intro}</p>
-      <ul role="list" className="mt-8 space-y-6 text-base/7 text-slate-600">
+      <p className="mt-6 text-base/7 text-charcoal-600">{intro}</p>
+      <ul role="list" className="mt-8 space-y-6 text-base/7 text-charcoal-600">
         {reports.map((report) => (
           <li key={report.text} className="flex gap-x-3">
             <ArrowDownCircleIcon
-              className="h-6 w-5 flex-none text-blue-600"
+              className="h-6 w-5 flex-none text-teal-600"
               aria-hidden="true"
             />
             <span>
@@ -89,7 +89,7 @@ function ReportList({ title, intro, outro, reports }: ReportSectionProps) {
                 href={report.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-slate-900 hover:text-blue-600"
+                className="font-semibold text-charcoal-900 hover:text-teal-600"
               >
                 {report.text}
               </Link>
@@ -97,7 +97,7 @@ function ReportList({ title, intro, outro, reports }: ReportSectionProps) {
           </li>
         ))}
       </ul>
-      {outro && <p className="mt-8 text-base/7 text-slate-600">{outro}</p>}
+      {outro && <p className="mt-8 text-base/7 text-charcoal-600">{outro}</p>}
     </section>
   )
 }
@@ -110,7 +110,7 @@ function AnnualReports({
   return (
     <Container className="py-16 sm:py-20">
       <div className="mx-auto max-w-2xl lg:mx-0">
-        <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+        <h2 className="text-4xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-5xl">
           {title}
         </h2>
       </div>

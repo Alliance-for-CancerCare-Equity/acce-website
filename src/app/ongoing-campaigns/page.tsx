@@ -72,9 +72,9 @@ function CampaignCta({
   button2_href,
 }: CampaignCtaProps) {
   return (
-    <div className="bg-slate-100">
+    <div className="bg-charcoal-100">
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:justify-between lg:px-8">
-        <h2 className="max-w-2xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
+        <h2 className="max-w-2xl text-4xl font-semibold tracking-tight text-charcoal-900 sm:text-5xl">
           {title}
         </h2>
         <div className="mt-10 flex items-center gap-x-6 lg:mt-0 lg:shrink-0">
@@ -82,7 +82,7 @@ function CampaignCta({
             href={button1_href}
             target="_blank"
             rel="noopener noreferrer"
-            color="blue"
+            variant="cta"
           >
             {button1_text}
           </Button>
@@ -90,8 +90,7 @@ function CampaignCta({
             href={button2_href}
             target="_blank"
             rel="noopener noreferrer"
-            variant="outline"
-            color="slate"
+            variant="secondary"
           >
             {button2_text}
           </Button>
@@ -130,16 +129,16 @@ function Campaigns({ campaigns, cta }: CampaignsProps) {
   return (
     <>
       <div className="bg-white px-6 py-16 sm:py-20 lg:px-8">
-        <div className="mx-auto max-w-3xl text-base/7 text-slate-700">
-          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+        <div className="mx-auto max-w-3xl text-base/7 text-charcoal-700">
+          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-5xl">
             {campaigns.title}
           </h1>
-          <p className="mt-6 text-lg/8 text-slate-600">{campaigns.intro_p1}</p>
-          <p className="mt-6 text-lg/8 text-slate-600">{campaigns.intro_p2}</p>
-          <p className="mt-6 text-lg/8 text-slate-600">{campaigns.intro_p3}</p>
-          <p className="mt-6 text-lg/8 text-slate-600">{campaigns.intro_p4}</p>
-          <div className="mt-16 max-w-2xl text-slate-600">
-            <h2 className="text-3xl font-semibold tracking-tight text-pretty text-slate-900">
+          <p className="mt-6 text-lg/8 text-charcoal-600">{campaigns.intro_p1}</p>
+          <p className="mt-6 text-lg/8 text-charcoal-600">{campaigns.intro_p2}</p>
+          <p className="mt-6 text-lg/8 text-charcoal-600">{campaigns.intro_p3}</p>
+          <p className="mt-6 text-lg/8 text-charcoal-600">{campaigns.intro_p4}</p>
+          <div className="mt-16 max-w-2xl text-charcoal-600">
+            <h2 className="text-3xl font-semibold tracking-tight text-pretty text-charcoal-900">
               {campaigns.campaigns_title}
             </h2>
             <p className="mt-6">{campaigns.campaigns_intro}</p>
@@ -148,7 +147,7 @@ function Campaigns({ campaigns, cta }: CampaignsProps) {
                 <figure key={campaign.name}>
                   {/* Optional subtitle above the image */}
                   {campaign.subtitle && (
-                    <div className="mb-3 text-sm/6 font-semibold text-blue-600">
+                    <div className="mb-3 text-sm/6 font-semibold text-teal-600">
                       {campaign.subtitle}
                     </div>
                   )}
@@ -163,7 +162,7 @@ function Campaigns({ campaigns, cta }: CampaignsProps) {
                         height={873}
                         alt={campaign.name}
                         src={campaign.imageUrl}
-                        className="aspect-video rounded-xl bg-slate-100 object-cover"
+                        className="aspect-video rounded-xl bg-charcoal-100 object-cover"
                       />
                     </Link>
                   ) : (
@@ -172,7 +171,7 @@ function Campaigns({ campaigns, cta }: CampaignsProps) {
                       height={873}
                       alt={campaign.name}
                       src={campaign.imageUrl}
-                      className="aspect-video rounded-xl bg-slate-100 object-cover"
+                      className="aspect-video rounded-xl bg-charcoal-100 object-cover"
                     />
                   )}
                   <figcaption className="mt-4">
@@ -183,16 +182,16 @@ function Campaigns({ campaigns, cta }: CampaignsProps) {
                         rel={
                           campaign.external ? 'noopener noreferrer' : undefined
                         }
-                        className="text-lg/7 font-semibold text-slate-900 hover:text-blue-600"
+                        className="text-lg/7 font-semibold text-charcoal-900 hover:text-teal-600"
                       >
                         {campaign.name}
                       </Link>
                     ) : (
-                      <span className="text-lg/7 font-semibold text-slate-900">
+                      <span className="text-lg/7 font-semibold text-charcoal-900">
                         {campaign.name}
                       </span>
                     )}
-                    <p className="mt-1 text-base/7 text-slate-600">
+                    <p className="mt-1 text-base/7 text-charcoal-600">
                       {campaign.description}
                     </p>
                   </figcaption>

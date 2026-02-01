@@ -59,15 +59,15 @@ function EventHeader({
     <section className="bg-white">
       <Container className="pt-10 sm:pt-12">
         <div className="mb-6">
-          <Link href="/events" className="text-sm font-semibold text-slate-600 hover:text-blue-600">
+          <Link href="/events" className="text-sm font-semibold text-charcoal-600 hover:text-teal-600">
             ← Back to Events
           </Link>
         </div>
-        
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+
+        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-5xl">
           {title}
         </h1>
-        <div className="mt-4 flex flex-col gap-2 text-base text-slate-600">
+        <div className="mt-4 flex flex-col gap-2 text-base text-charcoal-600">
             <p className="font-medium">
             {new Date(date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
             {' • '}{time}
@@ -87,7 +87,7 @@ function EventHeader({
 
 function Prose({ children }: { children: React.ReactNode }) {
   return (
-    <div className="blog-prose mx-auto max-w-3xl text-base/7 text-slate-700">
+    <div className="blog-prose mx-auto max-w-3xl text-base/7 text-charcoal-700">
       {children}
     </div>
   )
@@ -106,10 +106,10 @@ export default async function EventPage({
         <Header />
         <main>
           <Container className="py-24">
-            <h1 className="text-2xl font-semibold text-slate-900">Event not found</h1>
-            <p className="mt-2 text-slate-600">The event you’re looking for doesn’t exist.</p>
+            <h1 className="text-2xl font-semibold text-charcoal-900">Event not found</h1>
+            <p className="mt-2 text-charcoal-600">The event you&apos;re looking for doesn&apos;t exist.</p>
             <div className="mt-6">
-              <Button href="/events" color="blue">Back to Events</Button>
+              <Button href="/events" variant="primary">Back to Events</Button>
             </div>
           </Container>
         </main>

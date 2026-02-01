@@ -45,8 +45,8 @@ function FundingApplication({
   return (
     <div className="bg-white">
       <div className="px-6 py-16 sm:py-20 lg:px-8">
-        <div className="mx-auto max-w-3xl text-base/7 text-slate-700">
-          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+        <div className="mx-auto max-w-3xl text-base/7 text-charcoal-700">
+          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-5xl">
             {title}
           </h1>
           <p className="mt-6 text-xl/8 text-balance">{subtitle}</p>
@@ -55,17 +55,17 @@ function FundingApplication({
       <div className="bg-white">
         <div className="px-6 pb-24 sm:px-6 sm:pb-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-semibold tracking-tight text-balance text-slate-900 sm:text-4xl">
+            <h2 className="text-3xl font-semibold tracking-tight text-balance text-charcoal-900 sm:text-4xl">
               {cta_title}
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg/8 text-pretty text-slate-600">
+            <p className="mx-auto mt-6 max-w-xl text-lg/8 text-pretty text-charcoal-600">
               {cta_subtitle}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Button href={button1_href} color="blue">
+              <Button href={button1_href} variant="cta">
                 {button1_text}
               </Button>
-              <Button href={button2_href} color="slate" variant="outline">
+              <Button href={button2_href} variant="secondary">
                 {button2_text}
               </Button>
             </div>

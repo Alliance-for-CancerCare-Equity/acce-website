@@ -42,14 +42,14 @@ function Hero() {
       <div className="mx-auto max-w-7xl px-6 pt-6 pb-0 sm:pt-8 sm:pb-0 lg:px-8">
         <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
           <div className="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
-            <h1 className="text-5xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-6xl">
+            <h1 className="text-5xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-6xl">
               Our Vision
             </h1>
-            <p className="mt-4 text-xl/8 text-slate-700">{whoWeAreContent.vision}</p>
-            <h2 className="mt-10 text-5xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-6xl">
+            <p className="mt-4 text-xl/8 text-charcoal-700">{whoWeAreContent.vision}</p>
+            <h2 className="mt-10 text-5xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-6xl">
               Our Mission
             </h2>
-            <p className="mt-4 text-xl/8 text-slate-700">{whoWeAreContent.mission}</p>
+            <p className="mt-4 text-xl/8 text-charcoal-700">{whoWeAreContent.mission}</p>
           </div>
           <div className="mt-14 flex justify-end gap-6 sm:-mt-32 sm:justify-start sm:pl-16 lg:mt-0 lg:pl-0">
             <div className="ml-auto w-40 flex-none space-y-6 pt-28 sm:ml-0 sm:pt-60 lg:order-last lg:pt-36 xl:order-0 xl:pt-60">
@@ -59,7 +59,7 @@ function Hero() {
                   src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1974&auto=format&fit=crop"
                   width={396}
                   height={528}
-                  className="aspect-[2/3] w-full rounded-xl bg-slate-50 object-cover shadow-lg"
+                  className="aspect-[2/3] w-full rounded-xl bg-charcoal-50 object-cover shadow-lg"
                 />
               </div>
             </div>
@@ -70,7 +70,7 @@ function Hero() {
                   src="https://images.unsplash.com/photo-1631563019701-efcf403bc5fe?q=80&w=2691&auto=format&fit=crop"
                   width={396}
                   height={528}
-                  className="aspect-[2/3] w-full rounded-xl bg-slate-50 object-cover shadow-lg"
+                  className="aspect-[2/3] w-full rounded-xl bg-charcoal-50 object-cover shadow-lg"
                 />
               </div>
               <div className="relative">
@@ -79,7 +79,7 @@ function Hero() {
                   src="https://images.unsplash.com/photo-1631217868902-fa06818573b4?q=80&w=2691&auto=format&fit=crop"
                   width={396}
                   height={528}
-                  className="aspect-[2/3] w-full rounded-xl bg-slate-50 object-cover shadow-lg"
+                  className="aspect-[2/3] w-full rounded-xl bg-charcoal-50 object-cover shadow-lg"
                 />
               </div>
             </div>
@@ -90,7 +90,7 @@ function Hero() {
                   src="https://images.unsplash.com/photo-1626315869436-d6781ba69d6e?q=80&w=2670&auto=format&fit=crop"
                   width={396}
                   height={528}
-                  className="aspect-[2/3] w-full rounded-xl bg-slate-50 object-cover shadow-lg"
+                  className="aspect-[2/3] w-full rounded-xl bg-charcoal-50 object-cover shadow-lg"
                 />
               </div>
               <div className="relative">
@@ -99,7 +99,7 @@ function Hero() {
                   src="https://images.unsplash.com/photo-1548710123-e11f2e941a89?w=1000&auto=format&fit=crop&q=60"
                   width={396}
                   height={528}
-                  className="aspect-[2/3] w-full rounded-xl bg-slate-50 object-cover shadow-lg"
+                  className="aspect-[2/3] w-full rounded-xl bg-charcoal-50 object-cover shadow-lg"
                 />
               </div>
             </div>
@@ -115,21 +115,21 @@ function MissionAndStats() {
     <section className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-5xl">
             Who We Are
           </h2>
           <div className="mt-6 flex flex-col gap-x-8 gap-y-16 lg:flex-row">
             <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
-              <p className="text-xl/8 text-slate-700">{whoWeAreContent.about_p1}</p>
-              <p className="mt-8 text-base/7 text-slate-600">{whoWeAreContent.about_p2}</p>
-              <p className="mt-6 text-base/7 text-slate-600">{whoWeAreContent.about_p3}</p>
+              <p className="text-xl/8 text-charcoal-700">{whoWeAreContent.about_p1}</p>
+              <p className="mt-8 text-base/7 text-charcoal-600">{whoWeAreContent.about_p2}</p>
+              <p className="mt-6 text-base/7 text-charcoal-600">{whoWeAreContent.about_p3}</p>
             </div>
             <div className="lg:flex lg:flex-auto lg:justify-center">
               <dl className="w-64 space-y-8 xl:w-80">
                 {whoWeAreContent.stats.map((stat) => (
                   <div key={stat.label} className="flex flex-col-reverse gap-y-2">
-                    <dt className="text-base/7 text-slate-600">{stat.label}</dt>
-                    <dd className="text-4xl font-semibold tracking-tight text-slate-900">
+                    <dt className="text-base/7 text-charcoal-600">{stat.label}</dt>
+                    <dd className="text-4xl font-semibold tracking-tight text-charcoal-900">
                       {stat.value}
                     </dd>
                   </div>
@@ -164,10 +164,10 @@ function OurValues() {
       {/**/}
       <ValueIconDefs />
       <div className="mx-auto max-w-2xl lg:mx-0">
-        <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+        <h2 className="text-4xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-5xl">
           Our Values
         </h2>
-        <p className="mt-6 text-xl/8 text-slate-700">
+        <p className="mt-6 text-xl/8 text-charcoal-700">
           These principles guide our work with patients, families, partners, and communities.
         </p>
       </div>
@@ -175,12 +175,12 @@ function OurValues() {
         {whoWeAreContent.values.map((value) => (
           <div key={value.name}>
             <div className="flex gap-x-4">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-blue-50 ring-1 ring-blue-100">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-teal-50 ring-1 ring-teal-100">
                 <ValueIcon name={value.name} />
               </span>
-              <dt className="text-xl font-semibold leading-8 text-slate-900">{value.name}</dt>
+              <dt className="text-xl font-semibold leading-8 text-charcoal-900">{value.name}</dt>
             </div>
-            <dd className="mt-2 pl-12 text-lg/8 text-slate-600">{value.description}</dd>
+            <dd className="mt-2 pl-12 text-lg/8 text-charcoal-600">{value.description}</dd>
           </div>
         ))}
       </dl>
@@ -189,7 +189,7 @@ function OurValues() {
 }
 
 function ValueIcon({ name }: { name: string }) {
-  const common = 'size-6 text-blue-600';
+  const common = 'size-6 text-teal-600';
   switch (name) {
     case 'Equity':
       // Simple balance scale

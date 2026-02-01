@@ -73,25 +73,25 @@ function Champions({ title, intro, tiers }: ChampionsProps) {
   return (
     <Container className="py-16 sm:py-20">
       <div className="mx-auto max-w-2xl lg:mx-0">
-        <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+        <h2 className="text-4xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-5xl">
           {title}
         </h2>
-        <p className="mt-6 text-lg/8 text-slate-600">{intro}</p>
+        <p className="mt-6 text-lg/8 text-charcoal-600">{intro}</p>
       </div>
       <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
         {tiers.map((tier) => (
           <section key={tier.title}>
-            <h3 className="text-2xl font-semibold leading-8 tracking-tight text-slate-900">
+            <h3 className="text-2xl font-semibold leading-8 tracking-tight text-gold-600">
               {tier.title}
             </h3>
             <ul
               role="list"
-              className="mt-8 space-y-6 text-base/7 text-slate-600"
+              className="mt-8 space-y-6 text-base/7 text-charcoal-600"
             >
               {tier.donors.map((donor) => (
                 <li key={donor.name} className="flex gap-x-3">
                   <span>
-                    <strong className="font-semibold text-slate-900">
+                    <strong className="font-semibold text-charcoal-900">
                       {donor.name}
                     </strong>
                     {donor.location && `, ${donor.location}`}

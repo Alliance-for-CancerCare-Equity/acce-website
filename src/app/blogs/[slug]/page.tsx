@@ -57,19 +57,19 @@ function PostHeader({
     <section className="bg-white">
       <Container className="pt-10 sm:pt-12">
         <div className="mb-6">
-          <Link href="/blogs" className="text-sm font-semibold text-slate-600 hover:text-blue-600">
+          <Link href="/blogs" className="text-sm font-semibold text-charcoal-600 hover:text-teal-600">
             ← Back to Blog
           </Link>
         </div>
         {category && (
-          <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-blue-200">
+          <span className="inline-flex items-center rounded-md bg-lavender-50 px-2 py-1 text-xs font-medium text-lavender-700 ring-1 ring-lavender-200">
             {category}
           </span>
         )}
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-5xl">
           {title}
         </h1>
-        <p className="mt-3 text-sm/6 text-slate-600">
+        <p className="mt-3 text-sm/6 text-charcoal-600">
           {new Date(date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
         </p>
       </Container>
@@ -85,7 +85,7 @@ function PostHeader({
 
 function Prose({ children }: { children: React.ReactNode }) {
   return (
-    <div className="blog-prose mx-auto max-w-3xl text-base/7 text-slate-700">
+    <div className="blog-prose mx-auto max-w-3xl text-base/7 text-charcoal-700">
       {children}
     </div>
   )
@@ -105,10 +105,10 @@ export default async function BlogPostPage({
         <Header />
         <main>
           <Container className="py-24">
-            <h1 className="text-2xl font-semibold text-slate-900">Post not found</h1>
-            <p className="mt-2 text-slate-600">The article you’re looking for doesn’t exist.</p>
+            <h1 className="text-2xl font-semibold text-charcoal-900">Post not found</h1>
+            <p className="mt-2 text-charcoal-600">The article you&apos;re looking for doesn&apos;t exist.</p>
             <div className="mt-6">
-              <Button href="/blogs" color="blue">Back to Blog</Button>
+              <Button href="/blogs" variant="primary">Back to Blog</Button>
             </div>
           </Container>
         </main>
@@ -133,8 +133,8 @@ export default async function BlogPostPage({
               <MDXRemote source={entry.content} />
             </Prose>
             <div className="mt-10 flex items-center gap-4">
-              <Button href="/giving-options" color="blue">Donate</Button>
-              <Button href="/newsletters#subscribe" variant="outline" color="slate">Subscribe</Button>
+              <Button href="/giving-options" variant="cta">Donate</Button>
+              <Button href="/newsletters#subscribe" variant="secondary">Subscribe</Button>
             </div>
           </Container>
         </section>

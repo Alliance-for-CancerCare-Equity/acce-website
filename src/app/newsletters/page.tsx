@@ -30,16 +30,16 @@ function PageHeader() {
     <div className="bg-white py-16 sm:py-20">
       <Container>
         <div className="max-w-4xl">
-          <p className="text-base/7 font-semibold text-blue-600">
+          <p className="text-base/7 font-semibold text-teal-600">
             {newslettersContent.header}
           </p>
-          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-5xl">
             {newslettersContent.title}
           </h1>
-          <p className="mt-6 text-xl/8 text-slate-700">
+          <p className="mt-6 text-xl/8 text-charcoal-700">
             {newslettersContent.intro_1}
           </p>
-          <p className="mt-4 text-base/7 text-slate-600">
+          <p className="mt-4 text-base/7 text-charcoal-600">
             {newslettersContent.intro_2}
           </p>
         </div>
@@ -54,7 +54,7 @@ function NewsletterCard({
   item: NewsletterMeta
 }) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+    <article className="flex flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-charcoal-200 shadow-sm hover:shadow-md transition-shadow">
       <div className="relative h-56 w-full">
         <Image
           fill
@@ -65,23 +65,23 @@ function NewsletterCard({
         />
       </div>
       <div className="p-6">
-        <h3 className="text-lg font-semibold leading-7 tracking-tight text-slate-900">
+        <h3 className="text-lg font-semibold leading-7 tracking-tight text-charcoal-900">
           {item.title}
         </h3>
-        <p className="mt-1 text-sm/6 text-slate-500">
+        <p className="mt-1 text-sm/6 text-charcoal-500">
              {new Date(item.date).toLocaleDateString(undefined, {
                 year: 'numeric',
                 month: 'long',
-                day: undefined, 
+                day: undefined,
               })}
         </p>
-        <p className="mt-3 text-base/7 text-slate-600">{item.excerpt}</p>
+        <p className="mt-3 text-base/7 text-charcoal-600">{item.excerpt}</p>
         <div className="mt-6">
           <Link
             href={item.pdfUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center rounded-full bg-blue-600 px-3.5 py-2 text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            className="inline-flex items-center rounded-full bg-teal-600 px-3.5 py-2 text-sm font-semibold text-white shadow-xs hover:bg-teal-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
           >
             Read PDF
           </Link>
@@ -95,7 +95,7 @@ function IssuesGrid({ items }: { items: NewsletterMeta[] }) {
   return (
     <div className="bg-white pb-8 sm:pb-12">
       <Container>
-        <h2 className="text-3xl font-semibold tracking-tight text-pretty text-slate-900">
+        <h2 className="text-3xl font-semibold tracking-tight text-pretty text-charcoal-900">
           {newslettersContent.issues_title}
         </h2>
         {items.length > 0 ? (
@@ -105,7 +105,7 @@ function IssuesGrid({ items }: { items: NewsletterMeta[] }) {
             ))}
           </div>
         ) : (
-          <p className="mt-6 text-base/7 text-slate-600">No newsletters found.</p>
+          <p className="mt-6 text-base/7 text-charcoal-600">No newsletters found.</p>
         )}
       </Container>
     </div>

@@ -13,11 +13,11 @@ export default function SaveBabyArielPage() {
       <Header />
       <main>
         <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-8">
-          <h1 className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
+          <h1 className="text-4xl font-semibold tracking-tight text-charcoal-900 sm:text-5xl">
             Save Baby Ariel’s Life: She’s Only 14 Months and Fighting Liver
             Cancer
           </h1>
-          <p className="mt-6 text-lg/8 text-slate-600">
+          <p className="mt-6 text-lg/8 text-charcoal-600">
             This page is coming soon. Please check back later for more
             information.
           </p>

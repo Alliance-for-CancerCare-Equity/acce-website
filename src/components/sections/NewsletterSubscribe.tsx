@@ -4,6 +4,7 @@ import { useCallback, useMemo, useState } from 'react'
 
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
+import { GradientOrb } from '@/components/decorative'
 
 type McResult = { result: 'success' | 'error'; msg: string }
 
@@ -62,7 +63,6 @@ export function NewsletterSubscribe({
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [message, setMessage] = useState<string>('')
 
-  // Read Mailchimp audience config from public env (safe to expose)
   const mc = useMemo(() => {
     const u = process.env.NEXT_PUBLIC_MAILCHIMP_U || ''
     const id = process.env.NEXT_PUBLIC_MAILCHIMP_ID || ''
@@ -99,12 +99,10 @@ export function NewsletterSubscribe({
         })
         if (first) params.append('FNAME', first)
         if (last) params.append('LNAME', last)
-        // Use Mailchimp JSONP endpoint to avoid CORS
         const url = `https://${mc.dc}.list-manage.com/subscribe/post-json?${params.toString()}`
         const res = (await jsonp<McResult>(url)) as McResult
         if (res.result === 'success') {
           setStatus('success')
-          // Mailchimp returns a human message; prefer it if present
           const text = (res.msg || '').replace(/<[^>]*>/g, '')
           setMessage(text || 'Thanks for subscribing!')
           setFirst('')
@@ -112,9 +110,7 @@ export function NewsletterSubscribe({
           setEmail('')
           setConsent(false)
         } else {
-          // Mailchimp sometimes returns HTML in msg; strip tags for safety
           const text = (res.msg || '').replace(/<[^>]*>/g, '')
-          // Treat duplicate subscription as a friendly success
           if (/already\s+subscribed/i.test(text)) {
             setStatus('success')
             setMessage("You're already subscribed. You're all set!")
@@ -141,24 +137,39 @@ export function NewsletterSubscribe({
   const disabled = status === 'submitting'
 
   return (
-    <section id="subscribe" className="bg-slate-50 pt-16 pb-28 sm:pt-24 sm:pb-48">
-      <Container>
+    <section id="subscribe" className="relative bg-gold-50 py-24 sm:py-32 overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <GradientOrb variant="gold-lavender" size="xl" className="-top-48 -right-48 opacity-30" />
+        <GradientOrb variant="teal-gold" size="lg" className="bottom-0 -left-32 opacity-20" />
+      </div>
+
+      <Container className="relative">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 rounded-full bg-gold-200 px-4 py-1.5 text-sm font-medium text-gold-800 mb-6">
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Newsletter
+          </div>
+
+          <h2 className="text-4xl font-bold tracking-tight text-charcoal-800 sm:text-5xl">
             {title}
           </h2>
-          <p className="mt-6 text-lg/8 text-slate-600">{subtitle}</p>
+          <p className="mt-6 text-lg text-charcoal-600">{subtitle}</p>
+
           {status !== 'idle' && (
             <div
-              className={`mx-auto mt-6 w-full max-w-xl rounded-md px-4 py-3 text-left ring-1 ${
+              className={`mx-auto mt-6 w-full max-w-xl rounded-xl px-4 py-3 text-left ring-1 ${
                 status === 'success'
-                  ? 'bg-emerald-50 ring-emerald-200'
-                  : 'bg-amber-50 ring-amber-200'
+                  ? 'bg-teal-50 ring-teal-200'
+                  : 'bg-accent-50 ring-accent-200'
               }`}
             >
               <p
-                className={`text-sm/6 font-medium ${
-                  status === 'success' ? 'text-emerald-800' : 'text-amber-800'
+                className={`text-sm font-medium ${
+                  status === 'success' ? 'text-teal-700' : 'text-accent-700'
                 }`}
               >
                 {message}
@@ -166,64 +177,59 @@ export function NewsletterSubscribe({
             </div>
           )}
           {!mc.ok && (
-            <p className="mx-auto mt-4 max-w-xl text-sm/6 text-slate-500">
+            <p className="mx-auto mt-4 max-w-xl text-sm text-charcoal-500">
               Note: Mailchimp is not configured. Set NEXT_PUBLIC_MAILCHIMP_U, NEXT_PUBLIC_MAILCHIMP_ID, and NEXT_PUBLIC_MAILCHIMP_DC at build time to enable subscriptions.
             </p>
           )}
         </div>
+
         <div className="mx-auto mt-10 max-w-xl">
           <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6">
             <div>
-              <label htmlFor="first-name" className="block text-sm/6 font-semibold text-slate-900">
+              <label htmlFor="first-name" className="block text-sm font-semibold text-charcoal-700 mb-2">
                 First name (optional)
               </label>
-              <div className="mt-2.5">
-                <input
-                  id="first-name"
-                  name="first-name"
-                  type="text"
-                  autoComplete="given-name"
-                  value={first}
-                  onChange={(e) => setFirst(e.target.value)}
-                  disabled={disabled}
-                  className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-slate-900 outline-1 -outline-offset-1 outline-slate-300 placeholder:text-slate-400 disabled:cursor-not-allowed disabled:bg-slate-100 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600"
-                />
-              </div>
+              <input
+                id="first-name"
+                name="first-name"
+                type="text"
+                autoComplete="given-name"
+                value={first}
+                onChange={(e) => setFirst(e.target.value)}
+                disabled={disabled}
+                className="block w-full rounded-xl border-2 border-gold-200 bg-white px-4 py-3 text-base text-charcoal-800 transition-all focus:border-teal-500 focus:ring-2 focus:ring-teal-100 focus:outline-none disabled:cursor-not-allowed disabled:bg-charcoal-50"
+              />
             </div>
             <div>
-              <label htmlFor="last-name" className="block text-sm/6 font-semibold text-slate-900">
+              <label htmlFor="last-name" className="block text-sm font-semibold text-charcoal-700 mb-2">
                 Last name (optional)
               </label>
-              <div className="mt-2.5">
-                <input
-                  id="last-name"
-                  name="last-name"
-                  type="text"
-                  autoComplete="family-name"
-                  value={last}
-                  onChange={(e) => setLast(e.target.value)}
-                  disabled={disabled}
-                  className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-slate-900 outline-1 -outline-offset-1 outline-slate-300 placeholder:text-slate-400 disabled:cursor-not-allowed disabled:bg-slate-100 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600"
-                />
-              </div>
+              <input
+                id="last-name"
+                name="last-name"
+                type="text"
+                autoComplete="family-name"
+                value={last}
+                onChange={(e) => setLast(e.target.value)}
+                disabled={disabled}
+                className="block w-full rounded-xl border-2 border-gold-200 bg-white px-4 py-3 text-base text-charcoal-800 transition-all focus:border-teal-500 focus:ring-2 focus:ring-teal-100 focus:outline-none disabled:cursor-not-allowed disabled:bg-charcoal-50"
+              />
             </div>
             <div className="sm:col-span-2">
-              <label htmlFor="email" className="block text-sm/6 font-semibold text-slate-900">
+              <label htmlFor="email" className="block text-sm font-semibold text-charcoal-700 mb-2">
                 Email address
               </label>
-              <div className="mt-2.5">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  disabled={disabled}
-                  className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-slate-900 outline-1 -outline-offset-1 outline-slate-300 placeholder:text-slate-400 disabled:cursor-not-allowed disabled:bg-slate-100 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600"
-                />
-              </div>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={disabled}
+                className="block w-full rounded-xl border-2 border-gold-200 bg-white px-4 py-3 text-base text-charcoal-800 transition-all focus:border-teal-500 focus:ring-2 focus:ring-teal-100 focus:outline-none disabled:cursor-not-allowed disabled:bg-charcoal-50"
+              />
             </div>
             <div className="sm:col-span-2">
               <div className="flex items-start gap-3">
@@ -234,20 +240,20 @@ export function NewsletterSubscribe({
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
                   disabled={disabled}
-                  className="mt-1 size-4 rounded border-slate-300 text-blue-600 disabled:cursor-not-allowed"
+                  className="mt-1 h-5 w-5 rounded border-2 border-gold-300 text-teal-500 transition-colors focus:ring-2 focus:ring-teal-100 focus:ring-offset-0 disabled:cursor-not-allowed"
                 />
-                <label htmlFor="consent" className="text-sm/6 text-slate-600">
+                <label htmlFor="consent" className="text-sm text-charcoal-600">
                   I agree to receive email updates from ACCE. I can unsubscribe at any time.
                 </label>
               </div>
             </div>
             <div className="sm:col-span-2">
-              <Button type="submit" color="blue" className="w-full" disabled={disabled || !mc.ok}>
-                {status === 'submitting' ? 'Subscribing…' : 'Subscribe'}
+              <Button type="submit" variant="primary" className="w-full" disabled={disabled || !mc.ok}>
+                {status === 'submitting' ? 'Subscribing...' : 'Subscribe'}
               </Button>
             </div>
           </form>
-          <p className="mt-4 text-center text-sm/6 text-slate-500">
+          <p className="mt-4 text-center text-sm text-charcoal-500">
             We respect your privacy. We never share your email.
           </p>
         </div>

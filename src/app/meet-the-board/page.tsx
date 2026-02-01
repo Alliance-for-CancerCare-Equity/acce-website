@@ -89,10 +89,10 @@ function Team({ title, subtitle, people }: TeamProps) {
     <div className="bg-white py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-charcoal-900 sm:text-5xl">
             {title}
           </h2>
-          <p className="mt-6 text-lg/8 text-slate-600">{subtitle}</p>
+          <p className="mt-6 text-lg/8 text-charcoal-600">{subtitle}</p>
         </div>
         <ul
           role="list"
@@ -100,7 +100,7 @@ function Team({ title, subtitle, people }: TeamProps) {
         >
           {people.map((person) => (
             <li key={person.name}>
-              <div className="relative h-72 w-full overflow-hidden rounded-3xl bg-gradient-to-b from-blue-50 to-white dark:from-blue-900/20 dark:to-slate-900 ring-1 ring-blue-100/70 dark:ring-blue-300/20 shadow-md">
+              <div className="relative h-72 w-full overflow-hidden rounded-3xl bg-gradient-to-b from-lavender-50 to-white ring-1 ring-lavender-100/70 shadow-md">
                 <div className="absolute inset-0 px-4 pt-4 pb-0">
                   <div className="relative h-full w-full">
                     <Image
@@ -114,11 +114,11 @@ function Team({ title, subtitle, people }: TeamProps) {
                   </div>
                 </div>
               </div>
-              <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-slate-900">
+              <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-charcoal-900">
                 {person.name}
               </h3>
-              <p className="text-base/7 text-slate-600">{person.role}</p>
-              <p className="mt-4 text-base/7 text-slate-600">{person.bio}</p>
+              <p className="text-base/7 text-teal-600">{person.role}</p>
+              <p className="mt-4 text-base/7 text-charcoal-600">{person.bio}</p>
             </li>
           ))}
         </ul>

@@ -1,16 +1,31 @@
 import Link from 'next/link'
-
-import { Container } from '@/components/ui/Container'
 import { Logo } from '@/components/ui/Logo'
+import { Button } from '@/components/ui/Button'
 
 const navigation = {
-  main: [
-    { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/who-we-are' },
-    { name: 'Our Projects', href: '/projects-overview' },
-    { name: 'Ways to Give', href: '/giving-options' },
-    { name: 'Get Involved', href: '/opportunities' },
+  about: [
+    { name: 'Who We Are', href: '/who-we-are' },
+    { name: 'Meet the Board', href: '/meet-the-board' },
+    { name: 'ACCE Champions', href: '/acce-champions' },
+    { name: 'Annual Reports', href: '/annual-reports' },
+  ],
+  projects: [
+    { name: 'Projects Overview', href: '/projects-overview' },
+    { name: 'Fund Cancer Treatment', href: '/fund-cancer-treatment-and-related-costs' },
+    { name: 'Support Health Centers', href: '/support-community-healthcare-centers' },
+    { name: 'Patient & Family Support', href: '/support-patients-and-their-families' },
+  ],
+  getInvolved: [
+    { name: 'Giving Options', href: '/giving-options' },
+    { name: 'Volunteer', href: '/volunteer' },
+    { name: 'Fundraise', href: '/fundraise' },
+    { name: 'Partner With Us', href: '/partner-with-us' },
+  ],
+  connect: [
     { name: 'Contact Us', href: '/contact-us' },
+    { name: 'Blog', href: '/blogs' },
+    { name: 'Events', href: '/events' },
+    { name: 'Newsletters', href: '/newsletters' },
   ],
   social: [
     {
@@ -77,86 +92,205 @@ const navigation = {
   ],
 }
 
+// Wave SVG for top divider
+function WaveDivider() {
+  return (
+    <div className="absolute inset-x-0 -top-16 overflow-hidden">
+      <svg
+        className="relative block w-full h-16"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+          className="fill-white"
+          opacity="0.15"
+        />
+        <path
+          d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+          className="fill-white"
+          opacity="0.3"
+        />
+        <path
+          d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+          className="fill-white"
+        />
+      </svg>
+    </div>
+  )
+}
+
 export function Footer() {
   return (
-    <footer className="bg-slate-50">
-      <Container>
-        <div className="py-4">
-          <div className="flex items-center justify-between">
-            <Logo />
-            <nav className="text-base" aria-label="quick links">
-              <div className="-my-1 flex justify-center gap-x-6">
-                {navigation.main.map((item) => (
+    <footer className="relative bg-charcoal-800 pt-20 mt-16">
+      <WaveDivider />
+
+      {/* Gold accent line */}
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-gold-400 via-gold-500 to-gold-400" />
+
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Top section with CTA */}
+        <div className="mb-12 flex flex-col items-center text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Join Us in the Fight for{' '}
+            <span className="text-gold-400">Cancer Care Equity</span>
+          </h2>
+          <p className="text-charcoal-300 max-w-2xl mb-6">
+            Every contribution helps us provide hope and support to cancer patients and their families.
+          </p>
+          <Button href="/giving-options" variant="cta" size="lg">
+            <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            Donate Now
+          </Button>
+        </div>
+
+        {/* Navigation grid */}
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 pb-12 border-b border-charcoal-700">
+          <div>
+            <h3 className="text-sm font-semibold text-gold-400 uppercase tracking-wider mb-4">
+              About Us
+            </h3>
+            <ul className="space-y-3">
+              {navigation.about.map((item) => (
+                <li key={item.name}>
                   <Link
-                    key={item.name}
                     href={item.href}
-                    className="inline-block rounded-lg px-2 py-1 text-base text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                    className="text-charcoal-300 hover:text-white transition-colors"
                   >
                     {item.name}
                   </Link>
-                ))}
-              </div>
-            </nav>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-gold-400 uppercase tracking-wider mb-4">
+              Our Projects
+            </h3>
+            <ul className="space-y-3">
+              {navigation.projects.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="text-charcoal-300 hover:text-white transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-gold-400 uppercase tracking-wider mb-4">
+              Get Involved
+            </h3>
+            <ul className="space-y-3">
+              {navigation.getInvolved.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="text-charcoal-300 hover:text-white transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-gold-400 uppercase tracking-wider mb-4">
+              Connect
+            </h3>
+            <ul className="space-y-3">
+              {navigation.connect.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="text-charcoal-300 hover:text-white transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <div className="flex flex-col items-center border-t border-slate-400/10 py-3 sm:flex-row-reverse sm:justify-between">
-          <div className="flex gap-x-6">
+
+        {/* Bottom section */}
+        <div className="py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <Logo />
+          </div>
+
+          {/* Social links */}
+          <div className="flex gap-4">
             {navigation.social.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-slate-600 hover:text-slate-800"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-charcoal-700 text-charcoal-300 transition-all hover:bg-teal-500 hover:text-white"
               >
                 <span className="sr-only">{item.name}</span>
-                <item.icon aria-hidden="true" className="size-6" />
+                <item.icon aria-hidden="true" className="h-5 w-5" />
               </Link>
             ))}
           </div>
-          <p className="mt-6 text-base text-slate-500 sm:mt-0">
-            Copyright &copy; {new Date().getFullYear()} Alliance for Cancer Care
-            Equity. All rights reserved.
+        </div>
+
+        {/* Copyright */}
+        <div className="border-t border-charcoal-700 py-6 text-center">
+          <p className="text-sm text-charcoal-400">
+            &copy; {new Date().getFullYear()} Alliance for Cancer Care Equity. All rights reserved.
+          </p>
+          <p className="text-xs text-charcoal-500 mt-2">
+            A 501(c)(3) nonprofit organization. EIN: XX-XXXXXXX
           </p>
         </div>
-      </Container>
+      </div>
     </footer>
   )
 }
 
 export function CompactFooter() {
   return (
-    <footer className="bg-transparent">
-      <Container>
-        <div className="border-t border-slate-900/10 py-4">
-          <div className="flex items-center justify-between gap-4">
+    <footer className="bg-charcoal-800">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="border-t border-charcoal-700 py-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <Logo />
-            <nav className="text-base" aria-label="quick links">
-              <div className="-my-1 flex flex-wrap justify-center gap-x-4 gap-y-2">
-                {navigation.main.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="inline-block rounded-lg px-2 py-1 text-base text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            </nav>
-            <div className="hidden sm:flex gap-x-4">
-              {navigation.social.map((item) => (
+            <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+              {[
+                { name: 'Home', href: '/' },
+                { name: 'About', href: '/who-we-are' },
+                { name: 'Donate', href: '/giving-options' },
+                { name: 'Contact', href: '/contact-us' },
+              ].map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-slate-600 hover:text-slate-800"
+                  className="text-sm text-charcoal-300 hover:text-white transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </nav>
+            <div className="flex gap-3">
+              {navigation.social.slice(0, 3).map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-charcoal-400 hover:text-white transition-colors"
                 >
                   <span className="sr-only">{item.name}</span>
-                  <item.icon aria-hidden="true" className="size-6" />
+                  <item.icon aria-hidden="true" className="h-5 w-5" />
                 </Link>
               ))}
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </footer>
   )
 }
