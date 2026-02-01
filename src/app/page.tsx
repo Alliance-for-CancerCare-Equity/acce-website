@@ -2,7 +2,14 @@ import { type Metadata } from 'next'
 
 import { Header } from '@/components/layout/Header'
 import { NewsletterSubscribe } from '@/components/sections/NewsletterSubscribe'
-import { CallToAction, FeatureStory, Hero, MissionPreview, Stats } from '@/app/home-sections'
+import { NeedsSpotlight } from '@/components/sections/NeedsSpotlight'
+import { StoriesCarousel } from '@/components/sections/StoriesCarousel'
+import { JourneyTimeline } from '@/components/sections/JourneyTimeline'
+import { ImpactCalculator } from '@/components/sections/ImpactCalculator'
+import { CommunityWall } from '@/components/sections/CommunityWall'
+import { PathwayCards } from '@/components/sections/PathwayCards'
+import { Footer } from '@/components/layout/Footer'
+import { Hero } from '@/app/home-sections'
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -27,47 +34,6 @@ const homePageContent = {
       href: '/events/empowering-communities-2026',
     },
   },
-  stats: {
-    title: 'Our track record',
-    subtitle: 'Turning generosity into lifesaving care',
-    description:
-      "We are proud of the progress we've made in the fight for cancer care equity.",
-    items: [
-      {
-        name: 'Amount Raised',
-        value: 100,
-        prefix: '$',
-        suffix: 'k+',
-        animate: true,
-      },
-      {
-        name: 'Patients Supported',
-        value: 65,
-        suffix: '+',
-        animate: true,
-      },
-      {
-        name: 'Established',
-        value: 2022,
-        animate: true,
-      },
-      {
-        name: 'Hospitals Supported',
-        value: 3,
-        suffix: '+',
-      },
-    ],
-  },
-  call_to_action: {
-    title: 'Make a Difference',
-    subtitle: 'Support Our Mission to Achieve Cancer Care Equity',
-    content:
-      'Your contribution can help us provide vital financial support, improve healthcare access, and fund life-saving treatments for patients in need.',
-    button: {
-      text: 'Donate Now',
-      href: '/giving-options',
-    },
-  },
   newsletter: {
     title: 'Stay Updated',
     subtitle: 'Subscribe to our newsletter to receive the latest news, stories, and impact reports.',
@@ -80,12 +46,15 @@ export default function Home() {
       <Header overlay />
       <main>
         <Hero {...homePageContent.hero} />
-        <MissionPreview />
-        <Stats {...homePageContent.stats} />
-        <FeatureStory />
+        <NeedsSpotlight />
+        <StoriesCarousel />
+        <JourneyTimeline />
+        <ImpactCalculator />
+        <CommunityWall />
+        <PathwayCards />
         <NewsletterSubscribe {...homePageContent.newsletter} />
-        <CallToAction {...homePageContent.call_to_action} />
       </main>
+      <Footer />
     </>
   )
 }

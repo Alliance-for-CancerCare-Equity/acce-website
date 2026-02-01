@@ -149,10 +149,15 @@ export function NewsletterSubscribe({
 
       <Container className="relative">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-4xl font-bold tracking-tight text-charcoal-900 sm:text-5xl">
-            {title}
+          <span className="text-sm font-semibold text-gold-600 uppercase tracking-wider">
+            Stay Connected
+          </span>
+          <h2 className="mt-2 font-display text-4xl font-bold tracking-tight text-charcoal-900 sm:text-5xl">
+            Stories of Hope, Delivered
           </h2>
-          <p className="mt-6 text-lg/8 text-charcoal-600">{subtitle}</p>
+          <p className="mt-6 text-lg/8 text-charcoal-600">
+            Join our community of supporters and receive inspiring patient stories, impact reports, and ways to help.
+          </p>
           {status !== 'idle' && (
             <div
               className={`mx-auto mt-6 w-full max-w-xl rounded-xl px-4 py-3 text-left ring-1 ${

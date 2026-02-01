@@ -8,6 +8,37 @@ import { Container } from '@/components/ui/Container'
 import { CompactFooter } from '@/components/layout/Footer'
 import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
 
+// Urgency Ticker Component
+function UrgencyTicker() {
+  const items = [
+    { icon: '❤️', text: '65+ patients supported' },
+    { icon: '🏥', text: '3 hospitals partnered' },
+    { icon: '💰', text: '$100k+ raised for treatment' },
+    { icon: '🌍', text: 'Serving communities across Ghana' },
+    { icon: '🎗️', text: 'Fighting for cancer care equity' },
+  ]
+
+  // Duplicate items for seamless loop
+  const tickerItems = [...items, ...items]
+
+  return (
+    <div className="absolute top-0 left-0 right-0 z-30 bg-charcoal-900/90 backdrop-blur-sm overflow-hidden">
+      <div className="animate-scroll-left flex whitespace-nowrap py-2.5">
+        {tickerItems.map((item, index) => (
+          <span
+            key={index}
+            className="inline-flex items-center gap-2 px-8 text-sm text-white/90"
+          >
+            <span>{item.icon}</span>
+            <span>{item.text}</span>
+            <span className="text-gold-400 ml-4">•</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 interface HeroProps {
   title_part1: string
   title_part2_styled: string
@@ -35,76 +66,108 @@ export function Hero({
   eventButton,
 }: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-hero min-h-[90vh] flex items-center">
-      {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-lavender-300/30 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-20 right-20 w-96 h-96 bg-gold-300/20 rounded-full blur-3xl animate-float animation-delay-300" />
-      <div className="absolute top-1/2 left-1/4 w-48 h-48 bg-teal-300/20 rounded-full blur-2xl animate-float animation-delay-500" />
+    <section className="relative min-h-screen overflow-hidden">
+      {/* Urgency Ticker */}
+      <UrgencyTicker />
 
-      <div className="mx-auto max-w-7xl w-full">
-        <div className="relative z-20 pt-14 lg:w-full lg:max-w-2xl">
-          <div className="relative px-6 py-24 sm:py-32 lg:px-8 lg:py-40 lg:pr-0">
-            <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
+      {/* Full-bleed Background Image with Ken Burns effect */}
+      <div className="absolute inset-0">
+        <Image
+          alt="Cancer patients and caregivers"
+          src="/images/home.jpg"
+          fill
+          priority
+          className="object-cover object-center animate-ken-burns"
+        />
+        {/* Gradient overlays for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-900/70 to-charcoal-900/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal-950/80 via-transparent to-transparent" />
+      </div>
+
+      {/* Content positioned bottom-left (asymmetric) */}
+      <div className="relative z-20 min-h-screen flex items-end">
+        <div className="w-full pb-20 pt-32 sm:pb-28 lg:pb-32">
+          <Container>
+            <div className="max-w-3xl">
               {/* Event Badge */}
               {eventButton && (
                 <Link
                   href={eventButton.href}
-                  className="inline-flex items-center gap-2 rounded-full bg-lavender-100 px-4 py-1.5 text-sm font-medium text-lavender-700 ring-1 ring-inset ring-lavender-300 hover:bg-lavender-200 transition-colors mb-8"
+                  className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm px-4 py-2 text-sm font-medium text-white ring-1 ring-inset ring-white/20 hover:bg-white/20 transition-colors mb-8"
                 >
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-gold-500"></span>
                   </span>
                   {eventButton.text}
-                  <span aria-hidden="true">→</span>
+                  <span aria-hidden="true" className="ml-1">→</span>
                 </Link>
               )}
 
-              <h1 className="font-display text-5xl font-bold tracking-tight text-charcoal-900 sm:text-7xl">
-                {title_part1}{' '}
-                <span className="relative whitespace-nowrap">
-                  <span className="relative text-teal-600">{title_part2_styled}</span>
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 418 42"
-                    className="absolute -bottom-2 left-0 h-[0.4em] w-full fill-gold-400/60"
-                    preserveAspectRatio="none"
-                  >
-                    <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z" />
-                  </svg>
+              {/* Large emotional headline */}
+              <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.95]">
+                Every Cancer Patient Deserves a{' '}
+                <span className="relative inline-block">
+                  <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-500">
+                    Fighting Chance
+                  </span>
+                  <span className="absolute -bottom-2 left-0 w-full h-3 bg-gradient-to-r from-teal-500/50 to-lavender-500/50 blur-sm" />
                 </span>
               </h1>
-              <p className="mt-8 text-lg font-medium text-charcoal-600 sm:text-xl/8 max-w-xl">
+
+              <p className="mt-8 text-lg sm:text-xl text-white/80 max-w-2xl leading-relaxed">
                 {subtitle}
               </p>
+
+              {/* CTAs */}
               <div className="mt-10 flex flex-wrap items-center gap-4">
-                <Button href={button1.href} color="cta" size="lg">
+                <Button href={button1.href} color="cta" size="xl" className="animate-pulse-subtle">
                   <span className="flex items-center gap-2">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                     </svg>
-                    {button1.text}
+                    {button1.text} Now
                   </span>
                 </Button>
-                <Button href={button2.href} variant="outline" color="charcoal" size="lg">
+                <Button href={button2.href} variant="outline" color="white" size="lg">
                   {button2.text}
                 </Button>
               </div>
+
+              {/* Quick stats row */}
+              <div className="mt-16 flex flex-wrap gap-8 sm:gap-12 border-t border-white/10 pt-8">
+                <div>
+                  <div className="font-display text-3xl sm:text-4xl font-bold text-white">
+                    <AnimatedNumber value={65} />+
+                  </div>
+                  <div className="text-sm text-white/60 mt-1">Patients Helped</div>
+                </div>
+                <div>
+                  <div className="font-display text-3xl sm:text-4xl font-bold text-white">
+                    $<AnimatedNumber value={100} />k+
+                  </div>
+                  <div className="text-sm text-white/60 mt-1">Raised for Care</div>
+                </div>
+                <div>
+                  <div className="font-display text-3xl sm:text-4xl font-bold text-white">
+                    <AnimatedNumber value={3} />
+                  </div>
+                  <div className="text-sm text-white/60 mt-1">Partner Hospitals</div>
+                </div>
+              </div>
             </div>
-          </div>
+          </Container>
         </div>
       </div>
 
-      {/* Hero Image */}
-      <div className="relative z-10 hidden lg:absolute lg:top-14 lg:bottom-0 lg:right-0 lg:block lg:w-1/2 lg:[clip-path:polygon(12%_0,100%_0,100%_100%,0_100%)]">
-        <div className="absolute inset-0 bg-gradient-to-r from-lavender-100/50 to-transparent z-10" />
-        <Image
-          alt=""
-          src="/images/home.jpg"
-          fill
-          priority
-          className="object-cover object-[50%_60%]"
-        />
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden sm:block">
+        <div className="flex flex-col items-center gap-2 text-white/50">
+          <span className="text-xs uppercase tracking-widest">Scroll</span>
+          <div className="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center pt-2">
+            <div className="w-1.5 h-3 bg-white/50 rounded-full animate-bounce" />
+          </div>
+        </div>
       </div>
     </section>
   )
