@@ -18,14 +18,14 @@ export default function Register() {
           <Logo className="h-10 w-auto" />
         </Link>
       </div>
-      <h2 className="mt-20 text-lg font-semibold text-gray-900">
+      <h2 className="mt-20 font-display text-2xl font-bold text-charcoal-900">
         Get started for free
       </h2>
-      <p className="mt-2 text-sm text-gray-700">
+      <p className="mt-2 text-sm text-charcoal-600">
         Already registered?{' '}
         <Link
           href="/login"
-          className="font-medium text-blue-600 hover:underline"
+          className="font-medium text-teal-600 hover:text-teal-700 hover:underline"
         >
           Sign in
         </Link>{' '}
@@ -76,7 +76,7 @@ export default function Register() {
           <option>The “Never Use This” podcast</option>
         </SelectField>
         <div className="col-span-full">
-          <Button type="submit" variant="solid" color="blue" className="w-full">
+          <Button type="submit" variant="solid" color="teal" className="w-full">
             <span>
               Sign up <span aria-hidden="true">&rarr;</span>
             </span>

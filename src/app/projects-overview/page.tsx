@@ -1,6 +1,8 @@
 import { type Metadata } from 'next'
 import Image from 'next/image'
 
+import { Button } from '@/components/ui/Button'
+import { Container } from '@/components/ui/Container'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 
@@ -16,7 +18,7 @@ const projectsOverviewContent = {
   section_1_p_1:
     "Disturbingly, Africa is also projected to bear half of the world's childhood cancers by 2050*. In Ghana alone, despite an estimated 24,000 new cases each year among its 31 million population, only approximately 3,500 patients receive treatment annually—highlighting a stark disparity. Tragically, around 15,800 lives are lost to cancer yearly in the country**. Financial constraints further exacerbate this crisis, with over half of treated patients unable to afford to complete their treatment.",
   section_1_p_2:
-    'Addressing this urgent issue, Alliance for CancerCare Equity (ACCE) champion’s health equity by',
+    "Addressing this urgent issue, Alliance for CancerCare Equity (ACCE) champions health equity by",
   commitments: [
     'Covering the expenses for the full spectrum of cancer treatments, including radiotherapy, chemotherapy, surgery, and associated costs, for patients in Ghana who lack the financial means to access adequate healthcare services.',
     'Providing financial support for cancer treatments to uninsured and underinsured patients in Canada (Kitchener-Waterloo).',
@@ -49,65 +51,76 @@ const projectsOverviewContent = {
   ],
 }
 
-interface Image {
+interface ImageItem {
   alt: string
   src: string
 }
 
-interface OurProjectsProps {
-  header: string
-  title: string
-  subtitle: string
-  section_1_p_1: string
-  section_1_p_2: string
-  commitments: string[]
-  footnote_1: string
-  footnote_2: string
-  images: Image[]
-}
-
-function OurProjects({
-  header,
-  title,
-  subtitle,
-  section_1_p_1,
-  section_1_p_2,
-  commitments,
-  footnote_1,
-  footnote_2,
-  images,
-}: OurProjectsProps) {
+function ProjectsHero() {
   return (
-    <div className="overflow-hidden bg-white py-16 sm:py-20">
-      <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+    <section className="relative overflow-hidden bg-gradient-hero">
+      <div className="absolute inset-0 bg-dot-pattern opacity-20" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-lavender-300/30 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 right-10 w-64 h-64 bg-teal-300/30 rounded-full blur-3xl" />
+
+      <Container className="relative py-20 sm:py-28">
         <div className="max-w-4xl">
-          <p className="text-base/7 font-semibold text-blue-600">{header}</p>
-          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
-            {title}
+          <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-1.5 text-sm font-medium text-teal-700 ring-1 ring-inset ring-teal-200 mb-6">
+            {projectsOverviewContent.header}
+          </div>
+          <h1 className="font-display text-4xl font-bold tracking-tight text-charcoal-900 sm:text-5xl lg:text-6xl">
+            {projectsOverviewContent.title}
           </h1>
-          <p className="mt-6 text-xl/8 text-balance text-slate-700">
-            {subtitle}
+          <p className="mt-6 text-xl/8 text-charcoal-600">
+            {projectsOverviewContent.subtitle}
           </p>
         </div>
-        <section className="mt-20 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-16">
-          <div className="lg:pr-8">
-            <p className="text-base/7 text-slate-600">{section_1_p_1}</p>
-            <p className="mt-8 text-base/7 text-slate-600">{section_1_p_2}</p>
-            <ul className="mt-8 list-disc space-y-4 pl-6 text-base/7 text-slate-600">
-              {commitments.map((commitment) => (
-                <li key={commitment}>{commitment}</li>
+      </Container>
+    </section>
+  )
+}
+
+function ProjectsContent({ images }: { images: ImageItem[] }) {
+  return (
+    <section className="bg-lavender-50 py-20 sm:py-28">
+      <Container>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div>
+            <p className="text-lg/8 text-charcoal-700">
+              {projectsOverviewContent.section_1_p_1}
+            </p>
+            <p className="mt-8 text-lg/8 text-charcoal-700">
+              {projectsOverviewContent.section_1_p_2}
+            </p>
+
+            <ul className="mt-8 space-y-4">
+              {projectsOverviewContent.commitments.map((commitment, idx) => (
+                <li key={idx} className="flex gap-4">
+                  <div className="flex-none">
+                    <div className="flex size-8 items-center justify-center rounded-lg bg-teal-100 text-teal-600">
+                      <svg className="size-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                      </svg>
+                    </div>
+                  </div>
+                  <p className="text-base/7 text-charcoal-600">{commitment}</p>
+                </li>
               ))}
             </ul>
-            <p className="mt-8 text-sm/6 text-slate-500">{footnote_1}</p>
-            <p className="mt-2 text-sm/6 text-slate-500">{footnote_2}</p>
+
+            <div className="mt-10 p-6 bg-white rounded-2xl shadow-soft border-l-4 border-gold-500">
+              <p className="text-sm text-charcoal-500">{projectsOverviewContent.footnote_1}</p>
+              <p className="mt-2 text-sm text-charcoal-500">{projectsOverviewContent.footnote_2}</p>
+            </div>
           </div>
-          <div className="pt-16 lg:row-span-2">
-            <div className="-mx-8 grid grid-cols-2 gap-4 sm:-mx-16 sm:grid-cols-4 lg:mx-0 lg:grid-cols-2 lg:gap-4 xl:gap-8">
+
+          <div className="relative">
+            <div className="grid grid-cols-2 gap-4">
               {images.map((image, index) => (
                 <div
                   key={image.alt}
-                  className={`relative aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 ${
-                    index % 2 !== 0 ? 'lg:-mt-40' : ''
+                  className={`relative aspect-square overflow-hidden rounded-2xl shadow-medium ring-2 ring-white ${
+                    index % 2 !== 0 ? 'lg:-mt-12' : ''
                   }`}
                 >
                   <Image
@@ -120,9 +133,38 @@ function OurProjects({
               ))}
             </div>
           </div>
-        </section>
-      </div>
-    </div>
+        </div>
+      </Container>
+    </section>
+  )
+}
+
+function ProjectsCta() {
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-br from-teal-600 via-teal-700 to-charcoal-800 py-20 sm:py-24">
+      <div className="absolute inset-0 bg-dot-pattern-light opacity-10" />
+      <div className="absolute top-10 right-10 w-64 h-64 bg-gold-400/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 left-10 w-48 h-48 bg-lavender-400/20 rounded-full blur-3xl" />
+
+      <Container className="relative">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Support our mission
+          </h2>
+          <p className="mt-4 text-lg/8 text-teal-100">
+            Your contribution helps fund life-saving treatment for cancer patients in need.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button href="/giving-options" color="cta" size="lg">
+              Donate now
+            </Button>
+            <Button href="/volunteer" variant="outline" color="white" size="lg">
+              Get involved
+            </Button>
+          </div>
+        </div>
+      </Container>
+    </section>
   )
 }
 
@@ -131,7 +173,9 @@ export default function ProjectsOverviewPage() {
     <>
       <Header />
       <main>
-        <OurProjects {...projectsOverviewContent} />
+        <ProjectsHero />
+        <ProjectsContent images={projectsOverviewContent.images} />
+        <ProjectsCta />
       </main>
       <Footer />
     </>

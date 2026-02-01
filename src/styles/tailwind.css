@@ -3,6 +3,99 @@
 @plugin '@tailwindcss/forms';
 
 @theme {
+  /* ========================================
+     ACCE BRAND COLOR SCALES
+     ======================================== */
+
+  /* Lavender - Compassion & Softness (#9B8BB8 as 500) */
+  --color-lavender-50: #f8f6fb;
+  --color-lavender-100: #f0ecf6;
+  --color-lavender-200: #e3daef;
+  --color-lavender-300: #cfc0e2;
+  --color-lavender-400: #b5a0d0;
+  --color-lavender-500: #9B8BB8;
+  --color-lavender-600: #8574a3;
+  --color-lavender-700: #705f8a;
+  --color-lavender-800: #5d4f72;
+  --color-lavender-900: #4d425e;
+  --color-lavender-950: #2f2839;
+
+  /* Teal - Trust & Action (#2A9D8F as 500) */
+  --color-teal-50: #f0fdfa;
+  --color-teal-100: #ccfbf1;
+  --color-teal-200: #99f6e4;
+  --color-teal-300: #5eead4;
+  --color-teal-400: #2dd4bf;
+  --color-teal-500: #2A9D8F;
+  --color-teal-600: #1a7f74;
+  --color-teal-700: #17655c;
+  --color-teal-800: #174e4a;
+  --color-teal-900: #17403d;
+  --color-teal-950: #072623;
+
+  /* Charcoal - Structure & Text (#2D3436 as 900) */
+  --color-charcoal-50: #f7f8f8;
+  --color-charcoal-100: #edefef;
+  --color-charcoal-200: #d8dcdd;
+  --color-charcoal-300: #b6bfc1;
+  --color-charcoal-400: #8e9a9d;
+  --color-charcoal-500: #717e82;
+  --color-charcoal-600: #5c686b;
+  --color-charcoal-700: #4b5557;
+  --color-charcoal-800: #41494a;
+  --color-charcoal-900: #2D3436;
+  --color-charcoal-950: #1a1f20;
+
+  /* Red - CTAs ONLY (#C0392B as 500) */
+  --color-red-50: #fef3f2;
+  --color-red-100: #fee4e2;
+  --color-red-200: #ffcdc8;
+  --color-red-300: #fda8a1;
+  --color-red-400: #f97568;
+  --color-red-500: #C0392B;
+  --color-red-600: #a12e22;
+  --color-red-700: #87261c;
+  --color-red-800: #70241b;
+  --color-red-900: #5e241d;
+  --color-red-950: #330e0a;
+
+  /* Gold - Warmth & Highlights (#D4A03C as 500) */
+  --color-gold-50: #fdfbf3;
+  --color-gold-100: #faf4de;
+  --color-gold-200: #f4e7bc;
+  --color-gold-300: #edd590;
+  --color-gold-400: #e4be5e;
+  --color-gold-500: #D4A03C;
+  --color-gold-600: #be8530;
+  --color-gold-700: #9d6729;
+  --color-gold-800: #815228;
+  --color-gold-900: #6b4524;
+  --color-gold-950: #3d2311;
+
+  /* ========================================
+     SHADOWS & ELEVATION
+     ======================================== */
+  --shadow-soft: 0 2px 8px -2px rgba(45, 52, 54, 0.08), 0 4px 12px -4px rgba(45, 52, 54, 0.05);
+  --shadow-medium: 0 4px 16px -4px rgba(45, 52, 54, 0.12), 0 8px 24px -8px rgba(45, 52, 54, 0.08);
+  --shadow-strong: 0 8px 32px -8px rgba(45, 52, 54, 0.16), 0 16px 48px -16px rgba(45, 52, 54, 0.12);
+  --shadow-glow-teal: 0 0 24px -4px rgba(42, 157, 143, 0.35);
+  --shadow-glow-gold: 0 0 24px -4px rgba(212, 160, 60, 0.35);
+  --shadow-glow-lavender: 0 0 24px -4px rgba(155, 139, 184, 0.35);
+
+  /* ========================================
+     ANIMATIONS
+     ======================================== */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --animate-fade-up: fade-up 0.5s var(--ease-out-expo) forwards;
+  --animate-scale-in: scale-in 0.3s var(--ease-out-expo) forwards;
+  --animate-pulse-subtle: pulse-subtle 2s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  /* ========================================
+     TYPOGRAPHY SCALE
+     ======================================== */
   --text-*: initial;
   --text-xs: 0.75rem;
   --text-xs--line-height: 1rem;
@@ -110,4 +203,133 @@
 
 .blog-prose a strong {
   color: inherit;
+}
+
+/* ========================================
+   KEYFRAME ANIMATIONS
+   ======================================== */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.4);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 8px rgba(192, 57, 43, 0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ========================================
+   GRADIENT UTILITIES
+   ======================================== */
+.bg-gradient-warm {
+  background: linear-gradient(135deg, var(--color-lavender-100) 0%, var(--color-gold-100) 100%);
+}
+
+.bg-gradient-accent {
+  background: linear-gradient(135deg, var(--color-teal-400) 0%, var(--color-lavender-400) 100%);
+}
+
+.bg-gradient-subtle {
+  background: linear-gradient(180deg, var(--color-lavender-50) 0%, transparent 100%);
+}
+
+.bg-gradient-hero {
+  background: linear-gradient(135deg, var(--color-lavender-100) 0%, var(--color-gold-50) 50%, var(--color-teal-50) 100%);
+}
+
+.bg-gradient-charcoal {
+  background: linear-gradient(180deg, var(--color-charcoal-900) 0%, var(--color-charcoal-950) 100%);
+}
+
+/* ========================================
+   DECORATIVE PATTERNS
+   ======================================== */
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, var(--color-charcoal-200) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-dot-pattern-light {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ========================================
+   MOTION UTILITIES
+   ======================================== */
+.animate-fade-up {
+  animation: fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Staggered animation delays */
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+
+/* ========================================
+   CARD GRADIENT BORDERS
+   ======================================== */
+.card-gradient-border {
+  position: relative;
+  background: white;
+  border-radius: 1rem;
+}
+
+.card-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--color-teal-400), var(--color-lavender-400));
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
 }

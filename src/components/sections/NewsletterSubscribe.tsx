@@ -141,24 +141,29 @@ export function NewsletterSubscribe({
   const disabled = status === 'submitting'
 
   return (
-    <section id="subscribe" className="bg-slate-50 pt-16 pb-28 sm:pt-24 sm:pb-48">
-      <Container>
+    <section id="subscribe" className="relative overflow-hidden bg-gradient-warm py-20 sm:py-28">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-1/4 w-64 h-64 bg-gold-300/30 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-lavender-300/30 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-dot-pattern opacity-20" />
+
+      <Container className="relative">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+          <h2 className="font-display text-4xl font-bold tracking-tight text-charcoal-900 sm:text-5xl">
             {title}
           </h2>
-          <p className="mt-6 text-lg/8 text-slate-600">{subtitle}</p>
+          <p className="mt-6 text-lg/8 text-charcoal-600">{subtitle}</p>
           {status !== 'idle' && (
             <div
-              className={`mx-auto mt-6 w-full max-w-xl rounded-md px-4 py-3 text-left ring-1 ${
+              className={`mx-auto mt-6 w-full max-w-xl rounded-xl px-4 py-3 text-left ring-1 ${
                 status === 'success'
-                  ? 'bg-emerald-50 ring-emerald-200'
-                  : 'bg-amber-50 ring-amber-200'
+                  ? 'bg-teal-50 ring-teal-200'
+                  : 'bg-gold-50 ring-gold-200'
               }`}
             >
               <p
                 className={`text-sm/6 font-medium ${
-                  status === 'success' ? 'text-emerald-800' : 'text-amber-800'
+                  status === 'success' ? 'text-teal-800' : 'text-gold-800'
                 }`}
               >
                 {message}
@@ -166,88 +171,90 @@ export function NewsletterSubscribe({
             </div>
           )}
           {!mc.ok && (
-            <p className="mx-auto mt-4 max-w-xl text-sm/6 text-slate-500">
+            <p className="mx-auto mt-4 max-w-xl text-sm/6 text-charcoal-500">
               Note: Mailchimp is not configured. Set NEXT_PUBLIC_MAILCHIMP_U, NEXT_PUBLIC_MAILCHIMP_ID, and NEXT_PUBLIC_MAILCHIMP_DC at build time to enable subscriptions.
             </p>
           )}
         </div>
         <div className="mx-auto mt-10 max-w-xl">
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6">
-            <div>
-              <label htmlFor="first-name" className="block text-sm/6 font-semibold text-slate-900">
-                First name (optional)
-              </label>
-              <div className="mt-2.5">
-                <input
-                  id="first-name"
-                  name="first-name"
-                  type="text"
-                  autoComplete="given-name"
-                  value={first}
-                  onChange={(e) => setFirst(e.target.value)}
-                  disabled={disabled}
-                  className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-slate-900 outline-1 -outline-offset-1 outline-slate-300 placeholder:text-slate-400 disabled:cursor-not-allowed disabled:bg-slate-100 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600"
-                />
-              </div>
-            </div>
-            <div>
-              <label htmlFor="last-name" className="block text-sm/6 font-semibold text-slate-900">
-                Last name (optional)
-              </label>
-              <div className="mt-2.5">
-                <input
-                  id="last-name"
-                  name="last-name"
-                  type="text"
-                  autoComplete="family-name"
-                  value={last}
-                  onChange={(e) => setLast(e.target.value)}
-                  disabled={disabled}
-                  className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-slate-900 outline-1 -outline-offset-1 outline-slate-300 placeholder:text-slate-400 disabled:cursor-not-allowed disabled:bg-slate-100 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600"
-                />
-              </div>
-            </div>
-            <div className="sm:col-span-2">
-              <label htmlFor="email" className="block text-sm/6 font-semibold text-slate-900">
-                Email address
-              </label>
-              <div className="mt-2.5">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  disabled={disabled}
-                  className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-slate-900 outline-1 -outline-offset-1 outline-slate-300 placeholder:text-slate-400 disabled:cursor-not-allowed disabled:bg-slate-100 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600"
-                />
-              </div>
-            </div>
-            <div className="sm:col-span-2">
-              <div className="flex items-start gap-3">
-                <input
-                  id="consent"
-                  name="consent"
-                  type="checkbox"
-                  checked={consent}
-                  onChange={(e) => setConsent(e.target.checked)}
-                  disabled={disabled}
-                  className="mt-1 size-4 rounded border-slate-300 text-blue-600 disabled:cursor-not-allowed"
-                />
-                <label htmlFor="consent" className="text-sm/6 text-slate-600">
-                  I agree to receive email updates from ACCE. I can unsubscribe at any time.
+          <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-medium p-8">
+            <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6">
+              <div>
+                <label htmlFor="first-name" className="block text-sm/6 font-semibold text-charcoal-900">
+                  First name <span className="font-normal text-charcoal-400">(optional)</span>
                 </label>
+                <div className="mt-2.5">
+                  <input
+                    id="first-name"
+                    name="first-name"
+                    type="text"
+                    autoComplete="given-name"
+                    value={first}
+                    onChange={(e) => setFirst(e.target.value)}
+                    disabled={disabled}
+                    className="block w-full rounded-xl border-2 border-charcoal-200 bg-white px-4 py-3 text-base text-charcoal-900 placeholder:text-charcoal-400 disabled:cursor-not-allowed disabled:bg-charcoal-50 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-colors"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="sm:col-span-2">
-              <Button type="submit" color="blue" className="w-full" disabled={disabled || !mc.ok}>
-                {status === 'submitting' ? 'Subscribing…' : 'Subscribe'}
-              </Button>
+              <div>
+                <label htmlFor="last-name" className="block text-sm/6 font-semibold text-charcoal-900">
+                  Last name <span className="font-normal text-charcoal-400">(optional)</span>
+                </label>
+                <div className="mt-2.5">
+                  <input
+                    id="last-name"
+                    name="last-name"
+                    type="text"
+                    autoComplete="family-name"
+                    value={last}
+                    onChange={(e) => setLast(e.target.value)}
+                    disabled={disabled}
+                    className="block w-full rounded-xl border-2 border-charcoal-200 bg-white px-4 py-3 text-base text-charcoal-900 placeholder:text-charcoal-400 disabled:cursor-not-allowed disabled:bg-charcoal-50 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-colors"
+                  />
+                </div>
+              </div>
+              <div className="sm:col-span-2">
+                <label htmlFor="email" className="block text-sm/6 font-semibold text-charcoal-900">
+                  Email address <span className="text-red-500">*</span>
+                </label>
+                <div className="mt-2.5">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={disabled}
+                    className="block w-full rounded-xl border-2 border-charcoal-200 bg-white px-4 py-3 text-base text-charcoal-900 placeholder:text-charcoal-400 disabled:cursor-not-allowed disabled:bg-charcoal-50 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 transition-colors"
+                  />
+                </div>
+              </div>
+              <div className="sm:col-span-2">
+                <div className="flex items-start gap-3">
+                  <input
+                    id="consent"
+                    name="consent"
+                    type="checkbox"
+                    checked={consent}
+                    onChange={(e) => setConsent(e.target.checked)}
+                    disabled={disabled}
+                    className="mt-1 size-5 rounded border-2 border-charcoal-300 text-teal-500 focus:ring-teal-500 disabled:cursor-not-allowed"
+                  />
+                  <label htmlFor="consent" className="text-sm/6 text-charcoal-600">
+                    I agree to receive email updates from ACCE. I can unsubscribe at any time.
+                  </label>
+                </div>
+              </div>
+              <div className="sm:col-span-2">
+                <Button type="submit" color="teal" className="w-full" size="lg" disabled={disabled || !mc.ok}>
+                  {status === 'submitting' ? 'Subscribing…' : 'Subscribe to Newsletter'}
+                </Button>
+              </div>
             </div>
           </form>
-          <p className="mt-4 text-center text-sm/6 text-slate-500">
+          <p className="mt-6 text-center text-sm/6 text-charcoal-500">
             We respect your privacy. We never share your email.
           </p>
         </div>

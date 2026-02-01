@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
-import { getAllPosts, type BlogMeta } from '@/lib/mdx'
+import { getAllPosts } from '@/lib/mdx'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -30,14 +30,19 @@ const blogContent = {
 
 function BlogHero({ header, title, intro }: { header: string; title: string; intro: string }) {
   return (
-    <section className="relative isolate overflow-hidden bg-white">
-      <div className="absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-blue-50 to-transparent" />
-      <Container className="py-14 sm:py-16">
-        <p className="text-base/7 font-semibold text-blue-600">{header}</p>
-        <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+    <section className="relative isolate overflow-hidden bg-gradient-hero">
+      <div className="absolute inset-0 bg-dot-pattern opacity-20" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-lavender-300/30 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 right-10 w-64 h-64 bg-gold-300/30 rounded-full blur-3xl" />
+
+      <Container className="relative py-20 sm:py-28">
+        <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-4 py-1.5 text-sm font-medium text-teal-700 ring-1 ring-inset ring-teal-200 mb-6">
+          {header}
+        </div>
+        <h1 className="font-display text-4xl font-bold tracking-tight text-charcoal-900 sm:text-5xl lg:text-6xl">
           {title}
         </h1>
-        <p className="mt-6 max-w-3xl text-lg/8 text-slate-600">{intro}</p>
+        <p className="mt-6 max-w-3xl text-xl/8 text-charcoal-600">{intro}</p>
       </Container>
     </section>
   )
@@ -45,29 +50,29 @@ function BlogHero({ header, title, intro }: { header: string; title: string; int
 
 function FeaturePost({ post }: { post: Post }) {
   return (
-    <section className="bg-white">
+    <section className="bg-lavender-50 py-12">
       <Container>
-        <Link href={post.href} className="group relative isolate block overflow-hidden rounded-3xl bg-slate-50 ring-1 ring-slate-200 shadow-sm">
+        <Link href={post.href} className="group relative isolate block overflow-hidden rounded-3xl bg-white shadow-medium ring-2 ring-lavender-200 hover:shadow-strong hover:ring-teal-300 transition-all duration-300">
           <div className="relative h-[22rem] sm:h-[26rem]">
             <Image
               fill
               src={post.imageUrl}
               alt={post.title}
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/30 to-transparent" />
           </div>
           <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
             {post.category && (
-              <span className="inline-flex items-center rounded-md bg-white/90 px-2 py-1 text-xs font-medium text-slate-900 ring-1 ring-slate-900/10">
+              <span className="inline-flex items-center rounded-full bg-teal-500 px-3 py-1 text-xs font-semibold text-white">
                 {post.category}
               </span>
             )}
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
               {post.title}
             </h2>
-            <p className="mt-2 max-w-3xl text-base/7 text-slate-100/90">{post.excerpt}</p>
-            <p className="mt-3 text-sm/6 text-slate-200">{post.date}</p>
+            <p className="mt-2 max-w-3xl text-base/7 text-white/90">{post.excerpt}</p>
+            <p className="mt-3 text-sm/6 text-gold-300 font-medium">{post.date}</p>
           </div>
         </Link>
       </Container>
@@ -77,28 +82,37 @@ function FeaturePost({ post }: { post: Post }) {
 
 function PostCard({ post }: { post: Post }) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm">
-      <div className="relative h-48">
-        <Image fill src={post.imageUrl} alt={post.title} className="object-cover" />
+    <article className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-charcoal-100 hover:shadow-medium hover:ring-teal-200 transition-all duration-300">
+      <div className="relative h-48 overflow-hidden">
+        <Image
+          fill
+          src={post.imageUrl}
+          alt={post.title}
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
       </div>
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex items-center gap-x-3 text-sm text-slate-600">
+      <div className="flex flex-1 flex-col p-6">
+        <div className="flex items-center gap-x-3 text-sm">
           {post.category && (
-            <span className="rounded-md bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-700 ring-1 ring-slate-200">
+            <span className="rounded-full bg-lavender-100 px-3 py-0.5 text-xs font-semibold text-lavender-700 ring-1 ring-lavender-200">
               {post.category}
             </span>
           )}
-          <time>{post.date}</time>
+          <time className="text-charcoal-500">{post.date}</time>
         </div>
-        <h3 className="mt-2 text-lg font-semibold text-slate-900">
-          <Link href={post.href} className="hover:text-blue-600">
+        <h3 className="mt-3 font-display text-lg font-bold text-charcoal-900 group-hover:text-teal-600 transition-colors">
+          <Link href={post.href}>
             {post.title}
           </Link>
         </h3>
-        <p className="mt-2 text-base/7 text-slate-600">{post.excerpt}</p>
-        <div className="mt-4">
-          <Link href={post.href} className="text-sm font-semibold text-blue-600 hover:text-blue-500">
-            Read more →
+        <p className="mt-2 text-base/7 text-charcoal-600 line-clamp-3">{post.excerpt}</p>
+        <div className="mt-auto pt-4">
+          <Link href={post.href} className="inline-flex items-center gap-1 text-sm font-semibold text-teal-600 hover:text-teal-700 transition-colors">
+            Read more
+            <svg className="size-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
           </Link>
         </div>
       </div>
@@ -112,7 +126,7 @@ function PostsGrid({ posts }: { posts: Post[] }) {
     <>
       {first && <FeaturePost post={first} />}
       {rest.length > 0 && (
-        <section className="bg-white py-12 sm:py-16">
+        <section className="bg-white py-16 sm:py-20">
           <Container>
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {rest.map((p, i) => (
@@ -128,20 +142,24 @@ function PostsGrid({ posts }: { posts: Post[] }) {
 
 function BlogCta() {
   return (
-    <section className="bg-slate-50">
-      <Container className="py-16 sm:py-20">
+    <section className="relative overflow-hidden bg-gradient-to-br from-teal-600 via-teal-700 to-charcoal-800">
+      <div className="absolute inset-0 bg-dot-pattern-light opacity-10" />
+      <div className="absolute top-10 right-10 w-64 h-64 bg-gold-400/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 left-10 w-48 h-48 bg-lavender-400/20 rounded-full blur-3xl" />
+
+      <Container className="relative py-20 sm:py-24">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Join the mission for equitable cancer care
           </h2>
-          <p className="mt-4 text-lg/8 text-slate-600">
+          <p className="mt-4 text-lg/8 text-teal-100">
             Fuel treatment, equipment, and patient support — and get stories of impact in your inbox.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button href="/giving-options" color="blue">
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button href="/giving-options" color="cta" size="lg">
               Donate now
             </Button>
-            <Button href="/newsletters#subscribe" variant="outline" color="slate">
+            <Button href="/newsletters#subscribe" variant="outline" color="white" size="lg">
               Subscribe to Alliance Lenz
             </Button>
           </div>
@@ -178,4 +196,3 @@ export default function BlogsPage() {
     </>
   )
 }
-

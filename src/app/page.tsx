@@ -78,7 +78,7 @@ export default function Home() {
   return (
     <>
       <Header overlay />
-      <main className="bg-slate-50">
+      <main>
         <Hero {...homePageContent.hero} />
         <MissionPreview />
         <Stats {...homePageContent.stats} />

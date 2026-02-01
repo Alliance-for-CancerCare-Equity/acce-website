@@ -2,6 +2,8 @@ import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { Button } from '@/components/ui/Button'
+import { Container } from '@/components/ui/Container'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 
@@ -82,19 +84,35 @@ interface PatientsStoriesProps {
   people: Person[]
 }
 
-function PatientsStories({ title, subtitle, people }: PatientsStoriesProps) {
+function StoriesHero() {
   return (
-    <div className="bg-white py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
-            {title}
-          </h2>
-          <p className="mt-6 text-lg/8 text-slate-600">{subtitle}</p>
+    <section className="relative overflow-hidden bg-gradient-hero">
+      <div className="absolute inset-0 bg-dot-pattern opacity-20" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-lavender-300/30 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 right-10 w-64 h-64 bg-gold-300/30 rounded-full blur-3xl" />
+
+      <Container className="relative py-20 sm:py-28">
+        <div className="inline-flex items-center gap-2 rounded-full bg-lavender-100 px-4 py-1.5 text-sm font-medium text-lavender-700 ring-1 ring-inset ring-lavender-200 mb-6">
+          Patient Stories
         </div>
+        <h1 className="font-display text-4xl font-bold tracking-tight text-charcoal-900 sm:text-5xl lg:text-6xl max-w-3xl">
+          {patientsStoriesContent.title}
+        </h1>
+        <p className="mt-6 max-w-2xl text-xl/8 text-charcoal-600">
+          {patientsStoriesContent.subtitle}
+        </p>
+      </Container>
+    </section>
+  )
+}
+
+function PatientsStories({ people }: { people: Person[] }) {
+  return (
+    <section className="bg-lavender-50 py-20 sm:py-28">
+      <Container>
         <ul
           role="list"
-          className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+          className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
         >
           {people.map((person) => (
             <li key={person.name}>
@@ -102,10 +120,10 @@ function PatientsStories({ title, subtitle, people }: PatientsStoriesProps) {
                 href={person.youtubeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group"
+                className="group block"
               >
-                <div className="relative h-72 w-full overflow-hidden rounded-3xl">
-                  {/* Blurred background fill to avoid letterboxing */}
+                <div className="relative h-80 w-full overflow-hidden rounded-3xl bg-white shadow-soft ring-2 ring-lavender-200 transition-all duration-300 group-hover:shadow-medium group-hover:ring-teal-300">
+                  {/* Blurred background fill */}
                   <Image
                     fill
                     className="object-cover scale-110 blur-md opacity-40"
@@ -114,7 +132,7 @@ function PatientsStories({ title, subtitle, people }: PatientsStoriesProps) {
                     aria-hidden
                     sizes="(min-width: 1024px) 20rem, (min-width: 640px) 24rem, 100vw"
                   />
-                  {/* Foreground image fully visible without cropping */}
+                  {/* Foreground image */}
                   <Image
                     fill
                     className="relative z-10 object-contain object-center"
@@ -123,19 +141,59 @@ function PatientsStories({ title, subtitle, people }: PatientsStoriesProps) {
                     sizes="(min-width: 1024px) 20rem, (min-width: 640px) 24rem, 100vw"
                     placeholder="blur"
                   />
+                  {/* Play button overlay */}
+                  <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="flex size-16 items-center justify-center rounded-full bg-teal-500 shadow-strong">
+                      <svg className="size-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-slate-900 group-hover:text-blue-600">
+                <h3 className="mt-6 font-display text-xl font-bold leading-8 tracking-tight text-charcoal-900 group-hover:text-teal-600 transition-colors">
                   {person.name}
                 </h3>
-                <p className="text-base/7 text-slate-600 group-hover:text-blue-600">
+                <p className="text-base/7 text-lavender-600 group-hover:text-teal-600 transition-colors flex items-center gap-2">
+                  <svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
                   {person.role}
                 </p>
               </Link>
             </li>
           ))}
         </ul>
-      </div>
-    </div>
+      </Container>
+    </section>
+  )
+}
+
+function StoriesCta() {
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-br from-teal-600 via-teal-700 to-charcoal-800 py-20 sm:py-24">
+      <div className="absolute inset-0 bg-dot-pattern-light opacity-10" />
+      <div className="absolute top-10 right-10 w-64 h-64 bg-gold-400/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 left-10 w-48 h-48 bg-lavender-400/20 rounded-full blur-3xl" />
+
+      <Container className="relative">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Help us write more stories of hope
+          </h2>
+          <p className="mt-4 text-lg/8 text-teal-100">
+            Your donation directly funds life-saving treatment for patients in need.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button href="/giving-options" color="cta" size="lg">
+              Donate now
+            </Button>
+            <Button href="/volunteer" variant="outline" color="white" size="lg">
+              Volunteer with us
+            </Button>
+          </div>
+        </div>
+      </Container>
+    </section>
   )
 }
 
@@ -144,7 +202,9 @@ export default function PatientsStoriesPage() {
     <>
       <Header />
       <main>
-        <PatientsStories {...patientsStoriesContent} />
+        <StoriesHero />
+        <PatientsStories people={patientsStoriesContent.people} />
+        <StoriesCta />
       </main>
       <Footer />
     </>

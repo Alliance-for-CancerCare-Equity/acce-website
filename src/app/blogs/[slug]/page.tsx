@@ -54,29 +54,39 @@ function PostHeader({
   imageUrl: string
 }) {
   return (
-    <section className="bg-white">
-      <Container className="pt-10 sm:pt-12">
+    <section className="relative bg-gradient-hero overflow-hidden">
+      <div className="absolute inset-0 bg-dot-pattern opacity-20" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-lavender-300/30 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 right-20 w-64 h-64 bg-gold-300/30 rounded-full blur-3xl" />
+
+      <Container className="relative pt-12 pb-8 sm:pt-16">
         <div className="mb-6">
-          <Link href="/blogs" className="text-sm font-semibold text-slate-600 hover:text-blue-600">
-            ← Back to Blog
+          <Link
+            href="/blogs"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-teal-600 hover:text-teal-700 transition-colors"
+          >
+            <svg className="size-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+            </svg>
+            Back to Blog
           </Link>
         </div>
         {category && (
-          <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-blue-200">
+          <span className="inline-flex items-center rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold text-teal-700 ring-1 ring-teal-200">
             {category}
           </span>
         )}
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-5xl">
+        <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-charcoal-900 sm:text-5xl lg:text-6xl">
           {title}
         </h1>
-        <p className="mt-3 text-sm/6 text-slate-600">
+        <p className="mt-4 text-base/6 text-charcoal-500 font-medium">
           {new Date(date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
         </p>
       </Container>
-      <Container>
-        <div className="relative mx-auto mt-8 aspect-[16/9] max-w-5xl overflow-hidden rounded-2xl shadow-md">
+      <Container className="pb-12">
+        <div className="relative mx-auto aspect-[16/9] max-w-5xl overflow-hidden rounded-3xl shadow-strong ring-2 ring-lavender-200">
           <Image fill src={imageUrl} alt={title} className="object-cover" sizes="(min-width: 1280px) 80rem, (min-width: 1024px) 64rem, (min-width: 640px) 100vw, 100vw" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/20 to-transparent" />
         </div>
       </Container>
     </section>
@@ -85,9 +95,37 @@ function PostHeader({
 
 function Prose({ children }: { children: React.ReactNode }) {
   return (
-    <div className="blog-prose mx-auto max-w-3xl text-base/7 text-slate-700">
+    <div className="blog-prose mx-auto max-w-3xl text-base/7 text-charcoal-700">
       {children}
     </div>
+  )
+}
+
+function RelatedCta() {
+  return (
+    <section className="relative overflow-hidden bg-lavender-50 py-16 sm:py-20">
+      <div className="absolute inset-0 bg-dot-pattern opacity-20" />
+      <div className="absolute top-10 right-10 w-48 h-48 bg-gold-300/30 rounded-full blur-3xl" />
+
+      <Container className="relative">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-display text-2xl font-bold text-charcoal-900 sm:text-3xl">
+            Continue the journey
+          </h2>
+          <p className="mt-4 text-lg text-charcoal-600">
+            Join us in making cancer care accessible to everyone.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button href="/giving-options" color="cta" size="lg">
+              Donate now
+            </Button>
+            <Button href="/newsletters#subscribe" variant="outline" color="charcoal" size="lg">
+              Subscribe to updates
+            </Button>
+          </div>
+        </div>
+      </Container>
+    </section>
   )
 }
 
@@ -98,19 +136,21 @@ export default async function BlogPostPage({
 }) {
   const { slug } = await params
   const entry = getPostBySlug(slug)
-  
+
   if (!entry) {
     return (
       <>
         <Header />
         <main>
-          <Container className="py-24">
-            <h1 className="text-2xl font-semibold text-slate-900">Post not found</h1>
-            <p className="mt-2 text-slate-600">The article you’re looking for doesn’t exist.</p>
-            <div className="mt-6">
-              <Button href="/blogs" color="blue">Back to Blog</Button>
-            </div>
-          </Container>
+          <section className="bg-lavender-50 py-24">
+            <Container>
+              <h1 className="font-display text-3xl font-bold text-charcoal-900">Post not found</h1>
+              <p className="mt-3 text-lg text-charcoal-600">The article you are looking for does not exist.</p>
+              <div className="mt-8">
+                <Button href="/blogs" color="teal">Back to Blog</Button>
+              </div>
+            </Container>
+          </section>
         </main>
         <Footer />
       </>
@@ -132,12 +172,9 @@ export default async function BlogPostPage({
             <Prose>
               <MDXRemote source={entry.content} />
             </Prose>
-            <div className="mt-10 flex items-center gap-4">
-              <Button href="/giving-options" color="blue">Donate</Button>
-              <Button href="/newsletters#subscribe" variant="outline" color="slate">Subscribe</Button>
-            </div>
           </Container>
         </section>
+        <RelatedCta />
       </main>
       <Footer />
     </>

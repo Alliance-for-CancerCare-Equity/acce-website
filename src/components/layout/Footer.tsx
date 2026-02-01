@@ -1,6 +1,5 @@
 import Link from 'next/link'
-
-import { Container } from '@/components/ui/Container'
+import { Button } from '@/components/ui/Button'
 import { Logo } from '@/components/ui/Logo'
 
 const navigation = {
@@ -11,6 +10,18 @@ const navigation = {
     { name: 'Ways to Give', href: '/giving-options' },
     { name: 'Get Involved', href: '/opportunities' },
     { name: 'Contact Us', href: '/contact-us' },
+  ],
+  projects: [
+    { name: 'Fund Cancer Treatment', href: '/fund-cancer-treatment-and-related-costs' },
+    { name: 'Support Health Centers', href: '/support-community-healthcare-centers' },
+    { name: 'Patient & Family Support', href: '/support-patients-and-their-families' },
+    { name: 'Cancer Research', href: '/promote-and-advance-cancer-research' },
+  ],
+  getInvolved: [
+    { name: 'Volunteer', href: '/volunteer' },
+    { name: 'Fundraise', href: '/fundraise' },
+    { name: 'Partner With Us', href: '/partner-with-us' },
+    { name: 'Ongoing Campaigns', href: '/ongoing-campaigns' },
   ],
   social: [
     {
@@ -77,77 +88,47 @@ const navigation = {
   ],
 }
 
-export function Footer() {
+// Wave SVG divider component
+function WaveDivider() {
   return (
-    <footer className="bg-slate-50">
-      <Container>
-        <div className="py-4">
-          <div className="flex items-center justify-between">
-            <Logo />
-            <nav className="text-base" aria-label="quick links">
-              <div className="-my-1 flex justify-center gap-x-6">
-                {navigation.main.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="inline-block rounded-lg px-2 py-1 text-base text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            </nav>
-          </div>
-        </div>
-        <div className="flex flex-col items-center border-t border-slate-400/10 py-3 sm:flex-row-reverse sm:justify-between">
-          <div className="flex gap-x-6">
-            {navigation.social.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-slate-600 hover:text-slate-800"
-              >
-                <span className="sr-only">{item.name}</span>
-                <item.icon aria-hidden="true" className="size-6" />
-              </Link>
-            ))}
-          </div>
-          <p className="mt-6 text-base text-slate-500 sm:mt-0">
-            Copyright &copy; {new Date().getFullYear()} Alliance for Cancer Care
-            Equity. All rights reserved.
-          </p>
-        </div>
-      </Container>
-    </footer>
+    <div className="absolute top-0 left-0 right-0 overflow-hidden leading-none -translate-y-full">
+      <svg
+        className="relative block w-full h-16"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+          className="fill-charcoal-900"
+        />
+      </svg>
+    </div>
   )
 }
 
-export function CompactFooter() {
+export function Footer() {
   return (
-    <footer className="bg-transparent">
-      <Container>
-        <div className="border-t border-slate-900/10 py-4">
-          <div className="flex items-center justify-between gap-4">
-            <Logo />
-            <nav className="text-base" aria-label="quick links">
-              <div className="-my-1 flex flex-wrap justify-center gap-x-4 gap-y-2">
-                {navigation.main.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="inline-block rounded-lg px-2 py-1 text-base text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            </nav>
-            <div className="hidden sm:flex gap-x-4">
+    <footer className="relative bg-gradient-charcoal mt-20">
+      <WaveDivider />
+
+      {/* Main Footer Content */}
+      <div className="mx-auto max-w-7xl px-6 pt-16 pb-8 lg:px-8">
+        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+          {/* Brand Section */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <Logo className="brightness-0 invert" />
+            </div>
+            <p className="text-base text-charcoal-300 max-w-xs">
+              Advancing equity in cancer care for all. Every patient deserves access to quality treatment, regardless of their financial situation.
+            </p>
+            {/* Social Links */}
+            <div className="flex gap-4">
               {navigation.social.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-slate-600 hover:text-slate-800"
+                  className="text-charcoal-400 hover:text-gold-400 transition-colors"
                 >
                   <span className="sr-only">{item.name}</span>
                   <item.icon aria-hidden="true" className="size-6" />
@@ -155,8 +136,127 @@ export function CompactFooter() {
               ))}
             </div>
           </div>
+
+          {/* Links Grid */}
+          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-gold-400 uppercase tracking-wider">
+                  Quick Links
+                </h3>
+                <ul role="list" className="mt-4 space-y-3">
+                  {navigation.main.map((item) => (
+                    <li key={item.name}>
+                      <Link
+                        href={item.href}
+                        className="text-charcoal-300 hover:text-white transition-colors"
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-10 md:mt-0">
+                <h3 className="text-sm font-semibold text-gold-400 uppercase tracking-wider">
+                  Our Projects
+                </h3>
+                <ul role="list" className="mt-4 space-y-3">
+                  {navigation.projects.map((item) => (
+                    <li key={item.name}>
+                      <Link
+                        href={item.href}
+                        className="text-charcoal-300 hover:text-white transition-colors"
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-gold-400 uppercase tracking-wider">
+                  Get Involved
+                </h3>
+                <ul role="list" className="mt-4 space-y-3">
+                  {navigation.getInvolved.map((item) => (
+                    <li key={item.name}>
+                      <Link
+                        href={item.href}
+                        className="text-charcoal-300 hover:text-white transition-colors"
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-10 md:mt-0">
+                <h3 className="text-sm font-semibold text-gold-400 uppercase tracking-wider">
+                  Make a Difference
+                </h3>
+                <p className="mt-4 text-charcoal-300 text-sm">
+                  Your donation helps provide life-saving cancer treatment to those who need it most.
+                </p>
+                <div className="mt-4">
+                  <Button href="/giving-options" color="cta" size="md">
+                    Donate Now
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </Container>
+
+        {/* Bottom Bar */}
+        <div className="mt-16 pt-8 border-t border-charcoal-700">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-charcoal-400">
+              &copy; {new Date().getFullYear()} Alliance for Cancer Care Equity. All rights reserved.
+            </p>
+            <p className="text-sm text-charcoal-500">
+              A 501(c)(3) nonprofit organization. EIN: 88-2776425
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+export function CompactFooter() {
+  return (
+    <footer className="bg-charcoal-900">
+      <div className="mx-auto max-w-7xl px-6 py-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <Logo className="brightness-0 invert h-8" />
+          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            {navigation.main.slice(0, 4).map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-sm text-charcoal-300 hover:text-white transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+          <div className="flex gap-4">
+            {navigation.social.slice(0, 3).map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-charcoal-400 hover:text-gold-400 transition-colors"
+              >
+                <span className="sr-only">{item.name}</span>
+                <item.icon aria-hidden="true" className="size-5" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
     </footer>
   )
 }

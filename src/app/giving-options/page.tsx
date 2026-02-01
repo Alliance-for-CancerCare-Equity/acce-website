@@ -23,6 +23,7 @@ const givingOptionsContent = {
         href: 'https://www.paypal.com/donate/?hosted_button_id=PQGDEADWKKMA6',
         description: 'Secure online giving with Debit or Credit Card via PayPal.',
         features: ['Give any amount', 'Set up a monthly donation'],
+        color: 'teal',
       },
       {
         name: 'CanadaHelps',
@@ -31,6 +32,7 @@ const givingOptionsContent = {
         description:
           'Secure online giving with Debit or Credit Card via CanadaHelps.',
         features: ['Give any amount', 'Set up a monthly donation'],
+        color: 'lavender',
       },
       {
         name: 'Other Methods',
@@ -38,32 +40,33 @@ const givingOptionsContent = {
         href: 'mailto:donate@allianceforcancercareequity.ca',
         description: (
           <>
-            <strong className="font-semibold text-slate-900">
+            <strong className="font-semibold text-charcoal-900">
               Prefer Interac e-Transfer, Cheques, or MoMo?
             </strong>
             <br />
             <br />
-            <strong className="font-semibold text-slate-900">
+            <strong className="font-semibold text-charcoal-900">
               Interac e-Transfer
             </strong>{' '}
             (Canadian bank account holders) to:{' '}
-            <span className="text-slate-900">
+            <span className="text-charcoal-900">
               donate@allianceforcancercareequity.ca
             </span>
             <br />
             <br />
-            <strong className="font-semibold text-slate-900">By cheque</strong>{' '}
-            payable to “Alliance for CancerCare Equity”
+            <strong className="font-semibold text-charcoal-900">By cheque</strong>{' '}
+            payable to &ldquo;Alliance for CancerCare Equity&rdquo;
             <br />
             Mail to: 226 David Elsey Street, Kitchener, ON, Canada. N2A 4L5
             <br />
             <br />
-            <strong className="font-semibold text-slate-900">Via MoMo</strong>{' '}
+            <strong className="font-semibold text-charcoal-900">Via MoMo</strong>{' '}
             (Ghanaians with MoMo account) to ACCE MTN MoMo number{' '}
-            <span className="text-slate-900">053 048 2155</span>
+            <span className="text-charcoal-900">053 048 2155</span>
           </>
         ),
         features: [],
+        color: 'gold',
       },
     ],
   },
@@ -74,7 +77,7 @@ const givingOptionsContent = {
     partner_title: 'Partner in Equity',
     partner_description:
       'Your monthly gift as a Partner in Equity will profoundly impact cancer patients without the financial resources to cover their treatment costs. Join us today to redefine cancer care.',
-    included_header: 'What’s included',
+    included_header: "What's included",
     included_features: [
       'Pay for cancer treatment for patients in need.',
       'Provide a crucial lifeline to save lives.',
@@ -91,10 +94,10 @@ const givingOptionsContent = {
   faqs: {
     title: 'Frequently asked questions',
     subtitle_part1:
-      'Have a different question and can’t find the answer you’re looking for? Reach out to our support team by',
+      "Have a different question and can't find the answer you're looking for? Reach out to our support team by",
     subtitle_link_text: 'sending us an email',
     subtitle_link_href: 'mailto:support@allianceforcancercareequity.ca',
-    subtitle_part2: 'and we’ll get back to you as soon as we can.',
+    subtitle_part2: "and we'll get back to you as soon as we can.",
     questions: [
       {
         question: 'Why should I become a monthly donor?',
@@ -136,6 +139,7 @@ interface Tier {
   href: string
   description: string | ReactNode
   features: string[]
+  color: string
 }
 
 interface OneTimeDonationsProps {
@@ -143,6 +147,30 @@ interface OneTimeDonationsProps {
   title: string
   subtitle: string
   tiers: Tier[]
+}
+
+const colorStyles = {
+  teal: {
+    bg: 'bg-teal-50',
+    ring: 'ring-teal-200',
+    icon: 'bg-teal-100 text-teal-600',
+    check: 'text-teal-600',
+    button: 'teal' as const,
+  },
+  lavender: {
+    bg: 'bg-lavender-50',
+    ring: 'ring-lavender-200',
+    icon: 'bg-lavender-100 text-lavender-600',
+    check: 'text-lavender-600',
+    button: 'lavender' as const,
+  },
+  gold: {
+    bg: 'bg-gold-50',
+    ring: 'ring-gold-200',
+    icon: 'bg-gold-100 text-gold-600',
+    check: 'text-gold-600',
+    button: 'gold' as const,
+  },
 }
 
 function OneTimeDonations({
@@ -154,7 +182,7 @@ function OneTimeDonations({
   function TierIcon({ name }: { name: string }) {
     if (name === 'PayPal') {
       return (
-        <svg viewBox="0 0 24 24" aria-hidden="true" className="size-6 text-blue-700">
+        <svg viewBox="0 0 24 24" aria-hidden="true" className="size-6">
           <rect x="3" y="6" width="18" height="12" rx="2" className="fill-current/20" />
           <rect x="3" y="9" width="18" height="3" className="fill-current" />
         </svg>
@@ -162,7 +190,7 @@ function OneTimeDonations({
     }
     if (name === 'CanadaHelps') {
       return (
-        <svg viewBox="0 0 24 24" aria-hidden="true" className="size-6 text-emerald-700">
+        <svg viewBox="0 0 24 24" aria-hidden="true" className="size-6">
           <path
             className="fill-current"
             fillRule="evenodd"
@@ -174,81 +202,82 @@ function OneTimeDonations({
     }
     // Other Methods
     return (
-      <svg viewBox="0 0 24 24" aria-hidden="true" className="size-6 text-slate-700">
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="size-6">
         <rect x="3" y="5" width="18" height="14" rx="2" className="fill-current/20" />
         <path d="M4 7l8 6 8-6" className="stroke-current" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     )
   }
+
   return (
-    <div className="bg-white py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="relative overflow-hidden bg-gradient-hero py-20 sm:py-28">
+      {/* Decorative elements */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-lavender-300/30 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-20 w-96 h-96 bg-gold-300/20 rounded-full blur-3xl" />
+
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-base/7 font-semibold text-blue-600">{header}</h2>
-          <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-slate-900 sm:text-6xl">
+          <h2 className="text-sm font-semibold text-teal-600 uppercase tracking-wider">{header}</h2>
+          <p className="mt-2 font-display text-5xl font-bold tracking-tight text-charcoal-900 sm:text-6xl">
             {title}
           </p>
         </div>
-        <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-slate-600 sm:text-xl/8">
+        <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-charcoal-600 sm:text-xl/8">
           {subtitle}
         </p>
-        <div className="isolate mx-auto mt-10 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {tiers.map((tier) => (
-            <div
-              key={tier.id}
-              className={
-                `rounded-3xl p-8 ring-1 xl:p-10 ` +
-                (tier.name === 'PayPal'
-                  ? 'bg-blue-50 ring-blue-200'
-                  : tier.name === 'CanadaHelps'
-                    ? 'bg-emerald-50 ring-emerald-200'
-                    : 'bg-slate-50 ring-slate-200')
-              }
-            >
-              <div className="flex items-center justify-between gap-x-4">
-                <div className="flex items-center gap-x-3">
-                  <span className="inline-flex size-10 items-center justify-center rounded-md bg-white/70 ring-1 ring-black/5">
-                    <TierIcon name={tier.name} />
-                  </span>
-                  <h3
-                    id={`tier-${tier.id}`}
-                    className="text-lg/8 font-semibold text-slate-900"
-                  >
-                    {tier.name}
-                  </h3>
+        <div className="isolate mx-auto mt-12 grid max-w-md grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          {tiers.map((tier) => {
+            const styles = colorStyles[tier.color as keyof typeof colorStyles]
+            return (
+              <div
+                key={tier.id}
+                className={`rounded-3xl p-8 ring-2 ${styles.bg} ${styles.ring} shadow-soft hover:shadow-medium transition-all duration-300 xl:p-10`}
+              >
+                <div className="flex items-center justify-between gap-x-4">
+                  <div className="flex items-center gap-x-3">
+                    <span className={`inline-flex size-12 items-center justify-center rounded-xl ${styles.icon} shadow-soft`}>
+                      <TierIcon name={tier.name} />
+                    </span>
+                    <h3
+                      id={`tier-${tier.id}`}
+                      className="text-xl font-bold text-charcoal-900"
+                    >
+                      {tier.name}
+                    </h3>
+                  </div>
                 </div>
+                <p className="mt-4 text-sm/6 text-charcoal-600">
+                  {tier.description}
+                </p>
+                {tier.name !== 'Other Methods' && (
+                  <Button
+                    href={tier.href}
+                    color="cta"
+                    aria-describedby={tier.id}
+                    className="mt-6 block w-full"
+                  >
+                    Donate via {tier.name}
+                  </Button>
+                )}
+                {tier.features.length > 0 && (
+                  <ul
+                    role="list"
+                    className="mt-8 space-y-3 text-sm/6 text-charcoal-600 xl:mt-10"
+                  >
+                    {tier.features.map((feature) => (
+                      <li key={feature} className="flex gap-x-3">
+                        <CheckIcon
+                          aria-hidden="true"
+                          className={`h-6 w-5 flex-none ${styles.check}`}
+                        />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
-              <p className="mt-4 text-sm/6 text-slate-600">
-                {tier.description}
-              </p>
-              {tier.name !== 'Other Methods' && (
-                <Button
-                  href={tier.href}
-                  color="blue"
-                  aria-describedby={tier.id}
-                  className="mt-6 block w-full"
-                >
-                  Donate via {tier.name}
-                </Button>
-              )}
-              {tier.features.length > 0 && (
-                <ul
-                  role="list"
-                  className="mt-8 space-y-3 text-sm/6 text-slate-600 xl:mt-10"
-                >
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex gap-x-3">
-                      <CheckIcon
-                        aria-hidden="true"
-                        className="h-6 w-5 flex-none text-blue-600"
-                      />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </div>
@@ -283,39 +312,39 @@ function MonthlyGiving({
   cta_button2_href,
 }: MonthlyGivingProps) {
   return (
-    <div className="bg-white py-16 sm:py-24">
+    <div className="bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl sm:text-center">
-          <h2 className="text-5xl font-semibold tracking-tight text-pretty text-slate-900 sm:text-6xl sm:text-balance">
+          <h2 className="font-display text-5xl font-bold tracking-tight text-charcoal-900 sm:text-6xl">
             {title}
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg font-medium text-pretty text-slate-500 sm:text-xl/8">
+          <p className="mx-auto mt-6 max-w-2xl text-lg font-medium text-charcoal-500 sm:text-xl/8">
             {subtitle}
           </p>
         </div>
-        <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-slate-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+        <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-2 ring-lavender-200 bg-lavender-50/50 shadow-soft sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
           <div className="p-8 sm:p-10 lg:flex-auto">
-            <h3 className="text-3xl font-semibold tracking-tight text-slate-900">
+            <h3 className="font-display text-3xl font-bold tracking-tight text-charcoal-900">
               {partner_title}
             </h3>
-            <p className="mt-6 text-base/7 text-slate-600">
+            <p className="mt-6 text-base/7 text-charcoal-600">
               {partner_description}
             </p>
             <div className="mt-10 flex items-center gap-x-4">
-              <h4 className="flex-none text-sm/6 font-semibold text-blue-600">
+              <h4 className="flex-none text-sm/6 font-semibold text-teal-600 uppercase tracking-wider">
                 {included_header}
               </h4>
-              <div className="h-px flex-auto bg-slate-100" />
+              <div className="h-px flex-auto bg-lavender-200" />
             </div>
             <ul
               role="list"
-              className="mt-8 grid grid-cols-1 gap-4 text-sm/6 text-slate-600 sm:grid-cols-2 sm:gap-6"
+              className="mt-8 grid grid-cols-1 gap-4 text-sm/6 text-charcoal-600 sm:grid-cols-2 sm:gap-6"
             >
               {included_features.map((feature) => (
                 <li key={feature} className="flex gap-x-3">
                   <CheckIcon
                     aria-hidden="true"
-                    className="h-6 w-5 flex-none text-blue-600"
+                    className="h-6 w-5 flex-none text-teal-500"
                   />
                   {feature}
                 </li>
@@ -323,23 +352,25 @@ function MonthlyGiving({
             </ul>
           </div>
           <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:shrink-0 lg:self-stretch">
-            <div className="h-full rounded-2xl bg-slate-50 py-10 text-center inset-ring inset-ring-slate-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
+            <div className="h-full rounded-2xl bg-gradient-warm py-10 text-center lg:flex lg:flex-col lg:justify-center lg:py-16">
               <div className="mx-auto max-w-xs px-8">
-                <p className="text-base font-semibold text-slate-600">
+                <p className="text-base font-semibold text-charcoal-700">
                   {cta_title}
                 </p>
                 <div className="mt-10 flex flex-col items-center gap-y-4">
                   <Button
                     href={cta_button1_href}
-                    color="blue"
+                    color="cta"
                     className="w-full"
+                    size="lg"
                   >
                     {cta_button1_text}
                   </Button>
                   <Button
                     href={cta_button2_href}
-                    color="blue"
+                    color="teal"
                     className="w-full"
+                    size="lg"
                   >
                     {cta_button2_text}
                   </Button>
@@ -376,17 +407,17 @@ function DonationFaqs({
   questions,
 }: DonationFaqsProps) {
   return (
-    <div className="bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-8">
+    <div className="bg-lavender-50 py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
+          <h2 className="font-display text-4xl font-bold tracking-tight text-charcoal-900 sm:text-5xl">
             {title}
           </h2>
-          <p className="mt-6 text-base/7 text-slate-600">
+          <p className="mt-6 text-base/7 text-charcoal-600">
             {subtitle_part1}{' '}
             <a
               href={subtitle_link_href}
-              className="font-semibold text-blue-600 hover:text-blue-500"
+              className="font-semibold text-teal-600 hover:text-teal-500 transition-colors"
             >
               {subtitle_link_text}
             </a>{' '}
@@ -394,13 +425,13 @@ function DonationFaqs({
           </p>
         </div>
         <div className="mt-20">
-          <dl className="space-y-16 sm:grid sm:grid-cols-2 sm:space-y-0 sm:gap-x-6 sm:gap-y-16 lg:grid-cols-3 lg:gap-x-10">
+          <dl className="space-y-8 sm:grid sm:grid-cols-2 sm:space-y-0 sm:gap-8 lg:grid-cols-3">
             {questions.map((faq) => (
-              <div key={faq.question}>
-                <dt className="text-base/7 font-semibold text-slate-900">
+              <div key={faq.question} className="bg-white rounded-2xl p-6 shadow-soft">
+                <dt className="text-base/7 font-semibold text-charcoal-900">
                   {faq.question}
                 </dt>
-                <dd className="mt-2 text-base/7 text-slate-600">
+                <dd className="mt-2 text-base/7 text-charcoal-600">
                   {faq.answer}
                 </dd>
               </div>
