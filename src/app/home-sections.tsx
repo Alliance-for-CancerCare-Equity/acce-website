@@ -66,7 +66,7 @@ export function Hero({
   eventButton,
 }: HeroProps) {
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="relative min-h-screen overflow-x-hidden">
       {/* Urgency Ticker */}
       <UrgencyTicker />
 

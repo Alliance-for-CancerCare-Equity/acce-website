@@ -2,6 +2,12 @@
 
 @plugin '@tailwindcss/forms';
 
+/* Prevent horizontal scroll from decorative elements */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 @theme {
   /* ========================================
      ACCE BRAND COLOR SCALES

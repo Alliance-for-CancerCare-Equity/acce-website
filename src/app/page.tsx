@@ -42,7 +42,7 @@ const homePageContent = {
 
 export default function Home() {
   return (
-    <>
+    <div className="overflow-x-hidden">
       <Header overlay />
       <main>
         <Hero {...homePageContent.hero} />
@@ -55,6 +55,6 @@ export default function Home() {
         <NewsletterSubscribe {...homePageContent.newsletter} />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
