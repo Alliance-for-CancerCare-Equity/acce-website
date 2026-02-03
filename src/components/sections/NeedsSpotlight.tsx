@@ -12,9 +12,9 @@ const needs = {
     title: 'Treatment Funding Needed',
     description:
       'Every month, new patients come to us unable to afford life-saving cancer treatment. Your donation directly covers chemotherapy, surgery, and medication costs.',
-    raised: 100000,
+    raised: 132883,
     goal: 150000,
-    image: '/images/home.jpg',
+    image: '/ongoing_campaigns/josh.jpg',
     cta: 'Fund Treatment',
     href: '/giving-options',
   },

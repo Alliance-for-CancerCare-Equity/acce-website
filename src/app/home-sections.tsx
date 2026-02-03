@@ -73,8 +73,8 @@ export function Hero({
       {/* Full-bleed Background Image with Ken Burns effect */}
       <div className="absolute inset-0">
         <Image
-          alt="Cancer patients and caregivers"
-          src="/images/home.jpg"
+          alt="Rukmini Adjetey - Cancer Survivor supported by ACCE"
+          src="/stories/rukmini.jpg"
           fill
           priority
           className="object-cover object-center animate-ken-burns"

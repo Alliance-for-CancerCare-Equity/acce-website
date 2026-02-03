@@ -6,14 +6,7 @@ import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
-
-import rukminiImage from '../../../public/stories/rukmini.jpg'
-import adisaImage from '../../../public/stories/adisa.jpg'
-import cynthiaImage from '../../../public/stories/cynthia.jpeg'
-import salomeyImage from '../../../public/stories/salomey.jpg'
-import emmanuelImage from '../../../public/stories/emmanuel.jpg'
-import faustinaImage from '../../../public/stories/faustina.jpg'
-import ritaImage from '../../../public/stories/rita.jpg'
+import { patientStories } from '@/lib/stories'
 
 export const metadata: Metadata = {
   title: 'Patients Stories',
@@ -23,66 +16,8 @@ const patientsStoriesContent = {
   title: 'Real Patients, Real Stories',
   subtitle:
     'Alliance for CancerCare Equity is committed to realizing a bold vision of equitable cancer care for every patient in need. As demand for our assistance grows, our commitment to advancing cancer care equity only strengthens.',
-  people: [
-    {
-      name: 'Rukmini Adjetey',
-      role: 'Click to hear her story',
-      imageUrl: rukminiImage,
-      youtubeUrl: 'https://www.youtube.com/watch?v=DBfATugq8r4',
-    },
-    {
-      name: 'Adisa Iddrisu',
-      role: 'Click to hear her story',
-      imageUrl: adisaImage,
-      youtubeUrl: 'https://www.youtube.com/watch?v=ZtpmeGBW1JI',
-    },
-    {
-      name: 'Dr Cynthia Botchway',
-      role: 'Click to hear her story',
-      imageUrl: cynthiaImage,
-      youtubeUrl: 'https://www.youtube.com/watch?v=SCVRsCAezk8',
-    },
-    {
-      name: 'Salomey Appiah',
-      role: 'Click to hear her story',
-      imageUrl: salomeyImage,
-      youtubeUrl: 'https://www.youtube.com/watch?v=TfBabZ19vqw',
-    },
-    {
-      name: 'Emmanuel Grusi',
-      role: 'Click to hear his story',
-      imageUrl: emmanuelImage,
-      youtubeUrl: 'https://www.youtube.com/watch?v=uMiacIM7w1Y',
-    },
-    {
-      name: 'Faustina Anakwa',
-      role: 'Click to hear her story',
-      imageUrl: faustinaImage,
-      youtubeUrl: 'https://www.youtube.com/watch?v=0x-i-cFkdh0',
-    },
-    {
-      name: 'Rita Benson',
-      role: 'Click to hear her story',
-      imageUrl: ritaImage,
-      youtubeUrl: 'https://www.youtube.com/watch?v=pE6oODZvlV8',
-    },
-  ],
 }
 
-import { type StaticImageData } from 'next/image'
-
-interface Person {
-  name: string
-  role: string
-  imageUrl: StaticImageData
-  youtubeUrl: string
-}
-
-interface PatientsStoriesProps {
-  title: string
-  subtitle: string
-  people: Person[]
-}
 
 function StoriesHero() {
   return (
@@ -106,7 +41,7 @@ function StoriesHero() {
   )
 }
 
-function PatientsStories({ people }: { people: Person[] }) {
+function PatientsStories() {
   return (
     <section className="bg-lavender-50 py-20 sm:py-28">
       <Container>
@@ -114,54 +49,84 @@ function PatientsStories({ people }: { people: Person[] }) {
           role="list"
           className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {people.map((person) => (
-            <li key={person.name}>
-              <Link
-                href={person.youtubeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block"
-              >
-                <div className="relative h-80 w-full overflow-hidden rounded-3xl bg-white shadow-soft ring-2 ring-lavender-200 transition-all duration-300 group-hover:shadow-medium group-hover:ring-teal-300">
-                  {/* Blurred background fill */}
-                  <Image
-                    fill
-                    className="object-cover scale-110 blur-md opacity-40"
-                    src={person.imageUrl}
-                    alt=""
-                    aria-hidden
-                    sizes="(min-width: 1024px) 20rem, (min-width: 640px) 24rem, 100vw"
-                  />
-                  {/* Foreground image */}
-                  <Image
-                    fill
-                    className="relative z-10 object-contain object-center"
-                    src={person.imageUrl}
-                    alt={person.name}
-                    sizes="(min-width: 1024px) 20rem, (min-width: 640px) 24rem, 100vw"
-                    placeholder="blur"
-                  />
-                  {/* Play button overlay */}
-                  <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="flex size-16 items-center justify-center rounded-full bg-teal-500 shadow-strong">
-                      <svg className="size-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
+          {patientStories.map((story) => {
+            const hasFullStory = story.content.length > 0
+            const href = hasFullStory
+              ? `/patients-stories/${story.slug}`
+              : story.youtubeUrl
+            const linkProps = hasFullStory
+              ? {}
+              : { target: '_blank' as const, rel: 'noopener noreferrer' }
+
+            return (
+              <li key={story.name}>
+                <Link href={href} {...linkProps} className="group block">
+                  <div className="relative h-80 w-full overflow-hidden rounded-3xl bg-white shadow-soft ring-2 ring-lavender-200 transition-all duration-300 group-hover:shadow-medium group-hover:ring-teal-300">
+                    {/* Blurred background fill */}
+                    <Image
+                      fill
+                      className="object-cover scale-110 blur-md opacity-40"
+                      src={story.imageUrl}
+                      alt=""
+                      aria-hidden
+                      sizes="(min-width: 1024px) 20rem, (min-width: 640px) 24rem, 100vw"
+                    />
+                    {/* Foreground image */}
+                    <Image
+                      fill
+                      className="relative z-10 object-contain object-center"
+                      src={story.imageUrl}
+                      alt={story.name}
+                      sizes="(min-width: 1024px) 20rem, (min-width: 640px) 24rem, 100vw"
+                      placeholder="blur"
+                    />
+                    {/* Play button / Read story overlay */}
+                    <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="flex size-16 items-center justify-center rounded-full bg-teal-500 shadow-strong">
+                        {hasFullStory ? (
+                          <svg className="size-7 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                          </svg>
+                        ) : (
+                          <svg className="size-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        )}
+                      </div>
                     </div>
+                    {/* Badge for full stories */}
+                    {hasFullStory && (
+                      <div className="absolute top-4 right-4 z-20">
+                        <span className="inline-flex items-center rounded-full bg-gold-400 px-3 py-1 text-xs font-semibold text-charcoal-900">
+                          Full Story
+                        </span>
+                      </div>
+                    )}
                   </div>
-                </div>
-                <h3 className="mt-6 font-display text-xl font-bold leading-8 tracking-tight text-charcoal-900 group-hover:text-teal-600 transition-colors">
-                  {person.name}
-                </h3>
-                <p className="text-base/7 text-lavender-600 group-hover:text-teal-600 transition-colors flex items-center gap-2">
-                  <svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                  {person.role}
-                </p>
-              </Link>
-            </li>
-          ))}
+                  <h3 className="mt-6 font-display text-xl font-bold leading-8 tracking-tight text-charcoal-900 group-hover:text-teal-600 transition-colors">
+                    {story.name}
+                  </h3>
+                  <p className="text-base/7 text-lavender-600 group-hover:text-teal-600 transition-colors flex items-center gap-2">
+                    {hasFullStory ? (
+                      <>
+                        <svg className="size-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                        </svg>
+                        Read her full story
+                      </>
+                    ) : (
+                      <>
+                        <svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                        Click to hear {story.name.includes('Emmanuel') ? 'his' : 'her'} story
+                      </>
+                    )}
+                  </p>
+                </Link>
+              </li>
+            )
+          })}
         </ul>
       </Container>
     </section>
@@ -203,7 +168,7 @@ export default function PatientsStoriesPage() {
       <Header />
       <main>
         <StoriesHero />
-        <PatientsStories people={patientsStoriesContent.people} />
+        <PatientsStories />
         <StoriesCta />
       </main>
       <Footer />
