@@ -3,9 +3,8 @@
 @plugin '@tailwindcss/forms';
 
 /* Prevent horizontal scroll from decorative elements */
-html, body {
+html {
   overflow-x: hidden;
-  max-width: 100vw;
 }
 
 @theme {
