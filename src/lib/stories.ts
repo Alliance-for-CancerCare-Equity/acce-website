@@ -61,9 +61,15 @@ export const patientStories: PatientStory[] = [
     slug: 'salomey-appiah',
     name: 'Salomey Appiah',
     imageUrl: salomeyImage,
-    title: 'Salomey Appiah\'s Story',
+    title: 'A Mother\'s Courage: Salomey\'s Battle with Breast Cancer',
     youtubeUrl: 'https://www.youtube.com/watch?v=TfBabZ19vqw',
-    content: [],
+    quote: 'Thank you very much for your support, and my prayer is that God will bless everyone with kindness to donate to the Alliance for CancerCare Equity, so that they can always help those with cancer who have no means to afford their treatment.',
+    content: [
+      'In 2021, Salomey Appiah felt a lump in her breast and went to the hospital for a checkup. After several tests, she received the life-changing news that she has breast cancer. She was referred to the Breast Clinic at Komfo Anokye Teaching Hospital in Ghana, where doctors recommended chemotherapy followed by a mastectomy.',
+      'The news was heartbreaking. At the time, Salomey was still breastfeeding her baby, who was less than a year old. Facing the loss of her breast while caring for a young child felt overwhelming, but she chose to continue treatment with courage, thinking about her child and her future.',
+      'The journey quickly became not only physically and emotionally exhausting but also financially heavy. Earning less than 2,000 Ghana cedis (under $249 CAD) a month, Salomey relied on loans to continue chemotherapy, using most of her income to repay the debt. After completing chemotherapy and surgery, she was told she needed radiotherapy. With her savings gone, continuing treatment felt out of reach.',
+      'That is when she contacted Alliance for CancerCare Equity (ACCE) who then offered their support. Because of ACCE, Salomey was able to complete her radiotherapy and continue her recovery. Today, she shares her story with gratitude and hope, showing that caring hearts can truly change lives.',
+    ],
   },
   {
     slug: 'emmanuel-grusi',
