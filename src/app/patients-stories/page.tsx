@@ -9,7 +9,9 @@ import { Header } from '@/components/layout/Header'
 import { patientStories } from '@/lib/stories'
 
 export const metadata: Metadata = {
-  title: 'Patients Stories',
+  title: 'Patient Stories',
+  description:
+    'Read inspiring stories from cancer patients supported by ACCE. Real people, real journeys of hope, resilience, and healing.',
 }
 
 const patientsStoriesContent = {

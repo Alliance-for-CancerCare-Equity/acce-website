@@ -6,6 +6,8 @@ import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
   title: 'Who We Are',
+  description:
+    'Learn about ACCE\'s mission, vision, and values. We\'re a Canadian charity advancing equity in cancer care for underserved patients in Ghana and beyond.',
 }
 
 const whoWeAreContent = {

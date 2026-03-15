@@ -6,6 +6,8 @@ import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
   title: 'ACCE Champions',
+  description:
+    'Meet our ACCE Champions — community ambassadors who advocate for cancer care equity and help raise awareness for patients in need.',
 }
 
 const acceChampionsContent = {

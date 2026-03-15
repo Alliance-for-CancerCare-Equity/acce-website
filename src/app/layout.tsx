@@ -9,11 +9,11 @@ import '@/styles/tailwind.css'
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
   title: {
-    template: '%s | ACCE',
-    default: 'ACCE',
+    template: '%s | Alliance for CancerCare Equity',
+    default: 'Alliance for CancerCare Equity (ACCE) | Advancing Equity in Cancer Care',
   },
   description:
-    'ACCE is a registered charity in Canada dedicated to advancing equity in cancer care, from prevention through survivorship.',
+    'ACCE is a registered Canadian charity funding cancer treatment, supporting patients and families, and advancing equity in cancer care across Ghana and Canada.',
   keywords: [
     'cancer care',
     'equity',
@@ -31,10 +31,10 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
-    title: 'ACCE',
+    title: 'Alliance for CancerCare Equity (ACCE)',
     siteName: 'Alliance for CancerCare Equity',
     description:
-      'ACCE is a registered charity in Canada dedicated to advancing equity in cancer care, from prevention through survivorship.',
+      'ACCE is a registered Canadian charity funding cancer treatment, supporting patients and families, and advancing equity in cancer care across Ghana and Canada.',
     url: '/',
     images: [
       {

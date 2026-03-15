@@ -6,6 +6,8 @@ import { ProjectPage } from '@/components/sections/ProjectPage'
 
 export const metadata: Metadata = {
   title: 'Support Patients and their Families',
+  description:
+    'ACCE provides holistic support for cancer patients and their families — counseling, emotional care, and practical assistance throughout treatment.',
 }
 
 const supportPatientsAndFamiliesContent = {

@@ -7,6 +7,8 @@ import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
   title: "Save Baby Ariel's Life",
+  description:
+    'Help save Baby Ariel — donate to fund urgent cancer treatment for this young child. Every contribution brings hope and healing.',
 }
 
 export default function SaveBabyArielPage() {

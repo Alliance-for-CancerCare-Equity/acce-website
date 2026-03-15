@@ -7,6 +7,8 @@ import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
   title: 'Opportunities',
+  description:
+    'Explore ways to get involved with ACCE — volunteer, fundraise, or partner with us to help cancer patients access equitable care.',
 }
 
 const opportunitiesContent = {

@@ -7,6 +7,8 @@ import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
   title: 'Hope for Gilda',
+  description:
+    'Support the Hope for Gilda campaign — help fund cancer treatment for Gilda and give her a fighting chance at recovery.',
 }
 
 export default function HopeForGildaPage() {

@@ -5,6 +5,8 @@ import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
   title: 'Treatment Support',
+  description:
+    'Apply for cancer treatment assistance from ACCE. We help cover costs for chemotherapy, radiotherapy, and surgery for patients who cannot afford care.',
 }
 
 const supportTreatmentContent = {

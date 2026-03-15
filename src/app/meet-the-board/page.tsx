@@ -12,6 +12,8 @@ import jdarkoAvatar from '../../../public/avatars/4_jdarko.png'
 
 export const metadata: Metadata = {
   title: 'Meet the Board',
+  description:
+    'Meet the ACCE Board of Directors — the dedicated leaders guiding our mission to advance equity in cancer care across Ghana and Canada.',
 }
 
 const meetTheBoardContent = {

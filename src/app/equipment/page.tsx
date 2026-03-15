@@ -5,6 +5,8 @@ import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
   title: 'Equipment Support',
+  description:
+    'Request medical equipment assistance from ACCE. We help non-profit healthcare facilities access the tools they need to treat cancer patients.',
 }
 
 const equipmentSupportContent = {

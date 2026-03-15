@@ -7,6 +7,8 @@ import { ProjectPage } from '@/components/sections/ProjectPage'
 
 export const metadata: Metadata = {
   title: 'Fund Cancer Treatment and Related Costs',
+  description:
+    'ACCE covers full cancer treatment costs — radiotherapy, chemotherapy, and surgery — for patients in Ghana who cannot afford life-saving care.',
 }
 
 const fundCancerTreatmentContent = {

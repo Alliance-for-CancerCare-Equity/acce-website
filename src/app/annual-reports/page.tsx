@@ -8,6 +8,8 @@ import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
   title: 'Financial Statements and Annual Report',
+  description:
+    'View ACCE\'s annual reports and audited financial statements. We are committed to full transparency in how donor funds support cancer patients.',
 }
 
 const annualReportsContent = {

@@ -10,6 +10,8 @@ import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
   title: 'Ongoing Campaigns',
+  description:
+    'Support ACCE\'s active fundraising campaigns. See how your donation can directly help cancer patients currently in urgent need of treatment.',
 }
 
 const ongoingCampaignsContent = {

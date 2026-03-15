@@ -6,6 +6,8 @@ import { InvolvedPage } from '@/components/sections/InvolvedPage'
 
 export const metadata: Metadata = {
   title: 'Become a Volunteer',
+  description:
+    'Volunteer with ACCE and help cancer patients access the care they deserve. Join events, support fundraising, or contribute your professional skills.',
 }
 
 const volunteerContent = {

@@ -8,6 +8,8 @@ import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
   title: 'Projects Overview',
+  description:
+    'Explore ACCE\'s projects: funding cancer treatment, supporting patients and families, equipping healthcare centers, and advancing cancer research.',
 }
 
 const projectsOverviewContent = {

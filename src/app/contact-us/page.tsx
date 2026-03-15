@@ -7,6 +7,8 @@ import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
+  description:
+    'Get in touch with ACCE. Reach us by email, phone, or contact form for questions about donations, volunteering, or patient support.',
 }
 
 const contactUsContent = {

@@ -10,6 +10,8 @@ import { getAllPosts } from '@/lib/mdx'
 
 export const metadata: Metadata = {
   title: 'Blog',
+  description:
+    'Stay informed with ACCE\'s latest articles on cancer care, early detection, patient stories, and community health initiatives.',
 }
 
 type Post = {

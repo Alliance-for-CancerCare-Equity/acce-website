@@ -6,6 +6,8 @@ import { InvolvedPage } from '@/components/sections/InvolvedPage'
 
 export const metadata: Metadata = {
   title: 'Become a Partner',
+  description:
+    'Partner with ACCE to make a lasting impact on cancer care equity. Explore corporate sponsorship, event partnerships, and collaborative opportunities.',
 }
 
 const partnerWithUsContent = {

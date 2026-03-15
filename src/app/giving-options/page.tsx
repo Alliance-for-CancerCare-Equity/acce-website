@@ -8,6 +8,8 @@ import { Header } from '@/components/layout/Header'
 
 export const metadata: Metadata = {
   title: 'Giving Options',
+  description:
+    'Donate to ACCE via PayPal, CanadaHelps, Interac e-Transfer, or cheque. Your gift funds cancer treatment for patients who cannot afford care.',
 }
 
 const givingOptionsContent = {

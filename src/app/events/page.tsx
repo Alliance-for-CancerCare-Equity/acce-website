@@ -11,7 +11,8 @@ import { getAllEvents } from '@/lib/mdx'
 
 export const metadata: Metadata = {
   title: 'Events',
-  description: 'Join the Alliance for CancerCare Equity at our upcoming community events.',
+  description:
+    'Join ACCE at upcoming community events — galas, fundraisers, awareness walks, and more. Connect with our mission to advance cancer care equity.',
 }
 
 type Event = {
