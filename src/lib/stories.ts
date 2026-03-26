@@ -99,9 +99,18 @@ export const patientStories: PatientStory[] = [
     slug: 'rita-benson',
     name: 'Rita Benson',
     imageUrl: ritaImage,
-    title: 'Rita Benson\'s Story',
+    title: 'Saved in Time: Rita Benson\'s Journey Through Cervical Cancer',
     youtubeUrl: 'https://www.youtube.com/watch?v=pE6oODZvlV8',
-    content: [],
+    quote: 'Through ACCE, God has saved lives — including mine.',
+    content: [
+      'When Rita Benson first noticed the changes in her body, she did not think cancer could be the cause. The 35-year-old mother of two from Obuasi, Ghana, was living her normal life when unusual symptoms began to appear: vaginal bleeding, discharge with an unfamiliar colour and bleeding after sexual intercourse. Like many women, Benson initially attributed the signs to other illnesses. She made several trips to the hospital and took different medications, hoping the problem would resolve.',
+      'It did not. It was only after a biopsy that she received the life-altering diagnosis: stage 3 cervical cancer.',
+      'The news brought fear, uncertainty and overwhelming anxiety. Beyond the emotional toll of the diagnosis was the harsh reality of treatment costs. Cancer care is expensive, and Benson\'s family was already facing financial hardship. Her husband had lost his job, and she was responsible for caring for their two children. The thought of how to afford treatment weighed heavily on her. She recalls being worried about the burden.',
+      'The delay in accessing care was significant. Like many patients in similar circumstances, Benson\'s path to treatment was slowed by financial barriers — a challenge that continues to affect countless people facing cancer diagnoses.',
+      'Then help arrived. The Alliance for CancerCare Equity (ACCE) stepped in to cover the cost of her treatment. With this support, Benson was able to complete the necessary therapies. Today, she is experiencing significant improvement in her health and is filled with gratitude. She believes the intervention came at the right time.',
+      'Benson\'s story is a powerful reminder that early diagnosis, timely treatment and financial support can mean the difference between despair and hope. It also highlights the vital role organizations like ACCE play in ensuring that cancer patients are not left to fight alone.',
+      'There are many more patients like Rita — mothers, fathers, daughters and sons — who urgently need access to life-saving cancer care. Because no one should have to choose between survival and affordability.',
+    ],
   },
 ]
 
