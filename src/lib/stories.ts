@@ -91,9 +91,16 @@ export const patientStories: PatientStory[] = [
     slug: 'faustina-anakwa',
     name: 'Faustina Anakwa',
     imageUrl: faustinaImage,
-    title: 'Faustina Anakwa\'s Story',
+    title: 'From Uncertainty to Strength: A Lung Cancer Survivor\'s Story',
     youtubeUrl: 'https://www.youtube.com/watch?v=0x-i-cFkdh0',
-    content: [],
+    quote: 'Her story shows why cancer care equity matters. No one should have to fight for treatment while fighting for their life.',
+    content: [
+      'In 2018, 56-year-old woman Faustina Anakwa from Ghana\'s Eastern Region received news that changed her life: she was diagnosed with lung cancer. What began as a health concern quickly became a reality that demanded immediate and ongoing treatment. Instead of planning for the years ahead with peace of mind, she found herself preparing for hospital visits, medical tests, and difficult conversations about survival.',
+      'Lung cancer required long-term care, not a single procedure, but years of regular appointments, medication, monitoring, and the emotional weight of not knowing what each new result might show. The physical toll was heavy and the emotional strain was even heavier.',
+      'For more than six years, she has lived with this diagnosis, facing days filled with fear and moments of exhaustion and uncertainty. Yet she made a decision to keep going. She committed to her treatment plan, attended every appointment, and refused to let the diagnosis define the rest of her life.',
+      'She was able to continue because she had support through the Alliance for CancerCare Equity (ACCE), where she received the medical care she needed without interruption. ACCE ensured that access to treatment did not depend on financial capacity. Instead of worrying about how to afford care, she could focus on healing. That support brought stability during a time of deep uncertainty. It reminded her that her life mattered and that she would not face cancer alone.',
+      'When you support ACCE, you help ensure that more patients receive the care they deserve and the chance to keep living.',
+    ],
   },
   {
     slug: 'rita-benson',
