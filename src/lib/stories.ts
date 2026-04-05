@@ -53,9 +53,16 @@ export const patientStories: PatientStory[] = [
     slug: 'cynthia-botchway',
     name: 'Dr Cynthia Botchway',
     imageUrl: cynthiaImage,
-    title: 'Dr Cynthia Botchway\'s Story',
+    title: 'A Second Chance at Life after Head and Neck Cancer',
     youtubeUrl: 'https://www.youtube.com/watch?v=SCVRsCAezk8',
-    content: [],
+    quote: 'Please donate to help. There are people dying silently. I\'m pleading with anyone who can help to donate to ACCE, to help people like me.',
+    content: [
+      'In November 2023, Dr. Cynthia Botchway felt a small discomfort in her throat. At first, she thought it would go away, but it did not. Months of tests and long waits brought fear and uncertainty. Finally, she received the diagnosis she had been fearing: head and neck cancer.',
+      'At 45, and working in Ghana\'s Ministry of Education, her life changed in ways she never imagined. She underwent two major surgeries, including jaw reconstruction, followed by radiotherapy, which cost 70,000 GHS (nearly 9,000 CAD). The process was physically and emotionally challenging, and at times, it felt impossible.',
+      'Late one night, searching for help, she reached out to the Alliance for CancerCare Equity (ACCE). Within 30 minutes, someone responded. "That response brought me comfort. I felt that someone truly cared," she recalls. With the support of ACCE donors, Dr. Botchway was able to complete her treatment.',
+      'Recovery was difficult. She lost her ability to taste, speak, and swallow, and even simple everyday activities became a challenge. But slowly, she regained strength. Today, she is in remission and returning to the life she loves.',
+      'Dr. Botchway\'s journey is a powerful reminder that behind every diagnosis is a person holding onto hope. She urges others to help by donating to ACCE, to help people like her. Watch her full story and support more people like her. Your donation can make a huge difference.',
+    ],
   },
   {
     slug: 'salomey-appiah',
