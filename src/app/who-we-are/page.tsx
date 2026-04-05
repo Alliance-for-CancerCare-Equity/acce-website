@@ -68,8 +68,8 @@ function Hero() {
             <div className="ml-auto w-36 flex-none space-y-4 pt-28 sm:ml-0 sm:pt-60 lg:order-last lg:pt-36 xl:order-0 xl:pt-60">
               <div className="relative">
                 <Image
-                  alt="Patient support"
-                  src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1974&auto=format&fit=crop"
+                  alt="ACCE community event"
+                  src="/event_images/empowering-communities-2026/event-photo-1.jpeg"
                   width={396}
                   height={528}
                   className="aspect-[2/3] w-full rounded-2xl bg-lavender-50 object-cover shadow-medium ring-2 ring-lavender-200"
@@ -79,8 +79,8 @@ function Hero() {
             <div className="mr-auto w-36 flex-none space-y-4 sm:mr-0 sm:pt-48 lg:pt-36">
               <div className="relative">
                 <Image
-                  alt="Care team supporting patients"
-                  src="https://images.unsplash.com/photo-1631563019701-efcf403bc5fe?q=80&w=2691&auto=format&fit=crop"
+                  alt="ACCE community awareness session"
+                  src="/event_images/empowering-communities-2026/event-photo-2.jpeg"
                   width={396}
                   height={528}
                   className="aspect-[2/3] w-full rounded-2xl bg-teal-50 object-cover shadow-medium ring-2 ring-teal-200"
@@ -88,8 +88,8 @@ function Hero() {
               </div>
               <div className="relative">
                 <Image
-                  alt="Community care in hospital"
-                  src="https://images.unsplash.com/photo-1631217868902-fa06818573b4?q=80&w=2691&auto=format&fit=crop"
+                  alt="ACCE community discussion"
+                  src="/event_images/empowering-communities-2026/event-photo-3.jpeg"
                   width={396}
                   height={528}
                   className="aspect-[2/3] w-full rounded-2xl bg-gold-50 object-cover shadow-medium ring-2 ring-gold-200"
@@ -99,8 +99,8 @@ function Hero() {
             <div className="w-36 flex-none space-y-4 pt-24 sm:pt-0">
               <div className="relative">
                 <Image
-                  alt="Research and clinical care"
-                  src="https://images.unsplash.com/photo-1626315869436-d6781ba69d6e?q=80&w=2670&auto=format&fit=crop"
+                  alt="ACCE No Patient Left Behind campaign"
+                  src="/ongoing_campaigns/no-patient-left-behind.jpeg"
                   width={396}
                   height={528}
                   className="aspect-[2/3] w-full rounded-2xl bg-lavender-50 object-cover shadow-medium ring-2 ring-lavender-200"
@@ -108,8 +108,8 @@ function Hero() {
               </div>
               <div className="relative">
                 <Image
-                  alt="Family support and recovery"
-                  src="https://images.unsplash.com/photo-1548710123-e11f2e941a89?w=1000&auto=format&fit=crop&q=60"
+                  alt="ACCE community health event"
+                  src="/event_images/empowering-communities-2026/event-photo-1.jpeg"
                   width={396}
                   height={528}
                   className="aspect-[2/3] w-full rounded-2xl bg-teal-50 object-cover shadow-medium ring-2 ring-teal-200"
@@ -134,8 +134,8 @@ function MissionAndStats() {
           <div className="mt-10 flex flex-col gap-x-12 gap-y-16 lg:flex-row">
             <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
               <p className="text-xl/8 text-charcoal-700">{whoWeAreContent.about_p1}</p>
-              <p className="mt-8 text-base/7 text-charcoal-600">{whoWeAreContent.about_p2}</p>
-              <p className="mt-6 text-base/7 text-charcoal-600">{whoWeAreContent.about_p3}</p>
+              <p className="mt-8 text-xl/8 text-charcoal-700">{whoWeAreContent.about_p2}</p>
+              <p className="mt-6 text-xl/8 text-charcoal-700">{whoWeAreContent.about_p3}</p>
             </div>
             <div className="lg:flex lg:flex-auto lg:justify-center">
               <dl className="space-y-8">

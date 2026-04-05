@@ -23,7 +23,6 @@ import { Logo } from '@/components/ui/Logo'
 const aboutUsItems: FlyoutMenuItem[] = [
   { name: 'Who We Are', href: '/who-we-are', description: 'Our mission and values' },
   { name: 'Meet the Board', href: '/meet-the-board', description: 'Leadership team' },
-  { name: 'ACCE Champions', href: '/acce-champions', description: 'Community heroes' },
   { name: 'Annual Reports', href: '/annual-reports', description: 'Financial transparency' },
 ]
 

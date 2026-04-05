@@ -10,6 +10,7 @@ import { CommunityWall } from '@/components/sections/CommunityWall'
 import { PathwayCards } from '@/components/sections/PathwayCards'
 import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/app/home-sections'
+import { fetchCampaignData } from '@/lib/canadahelps'
 
 export const metadata: Metadata = {
   title: 'Alliance for CancerCare Equity | Advancing Equity in Cancer Care',
@@ -47,13 +48,15 @@ const homePageContent = {
   },
 }
 
-export default function Home() {
+export default async function Home() {
+  const campaign = await fetchCampaignData()
+
   return (
     <>
       <Header overlay />
       <main>
         <Hero {...homePageContent.hero} />
-        <NeedsSpotlight />
+        <NeedsSpotlight raised={campaign.raised} goal={campaign.goal} />
         <StoriesCarousel />
         <JourneyTimeline />
         <ImpactCalculator />

@@ -7,16 +7,19 @@ import { Container } from '@/components/ui/Container'
 import { ProgressBar } from '@/components/ui/ProgressBar'
 import { motion } from 'framer-motion'
 
+type NeedsSpotlightProps = {
+  raised: number
+  goal: number
+}
+
 const needs = {
   featured: {
-    title: 'Treatment Funding Needed',
+    title: 'No Patient Left Behind',
     description:
-      'Every month, new patients come to us unable to afford life-saving cancer treatment. Your donation directly covers chemotherapy, surgery, and medication costs.',
-    raised: 132883,
-    goal: 150000,
-    image: '/ongoing_campaigns/josh.jpg',
-    cta: 'Fund Treatment',
-    href: '/giving-options',
+      'Our campaign ensures that no cancer patient is denied treatment because they cannot afford it. Your donation directly funds life-saving chemotherapy, surgery, and medication for those in need.',
+    image: '/ongoing_campaigns/no-patient-left-behind.jpeg',
+    cta: 'Donate Now',
+    href: 'https://www.canadahelps.org/en/pages/no-patient-left-behind/',
   },
   secondary: [
     {
@@ -59,7 +62,7 @@ const colorStyles = {
   },
 }
 
-export function NeedsSpotlight() {
+export function NeedsSpotlight({ raised, goal }: NeedsSpotlightProps) {
   return (
     <section className="relative py-24 sm:py-32 bg-lavender-50 overflow-hidden">
       {/* Wave divider at top */}
@@ -141,8 +144,8 @@ export function NeedsSpotlight() {
               {/* Progress bar */}
               <div className="mt-6">
                 <ProgressBar
-                  value={needs.featured.raised}
-                  max={needs.featured.goal}
+                  value={raised}
+                  max={goal}
                   showValues
                   showPercentage
                   size="lg"
@@ -157,7 +160,7 @@ export function NeedsSpotlight() {
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                     </svg>
-                    Give Hope Today
+                    {needs.featured.cta}
                   </span>
                 </Button>
                 <Link
