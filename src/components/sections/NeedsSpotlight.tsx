@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
@@ -7,9 +8,30 @@ import { Container } from '@/components/ui/Container'
 import { ProgressBar } from '@/components/ui/ProgressBar'
 import { motion } from 'framer-motion'
 
-type NeedsSpotlightProps = {
-  raised: number
-  goal: number
+const CAMPAIGN_URL =
+  'https://www.canadahelps.org/en/pages/no-patient-left-behind/'
+
+function useCampaignData() {
+  const [raised, setRaised] = useState<number | null>(null)
+  const [goal, setGoal] = useState(50000)
+
+  useEffect(() => {
+    fetch(CAMPAIGN_URL)
+      .then((res) => res.text())
+      .then((html) => {
+        const match = html.match(
+          /fundraisingPage\s*:\s*(\{[\s\S]*?\})\s*,\s*\n\s*viewLanguage/,
+        )
+        if (match?.[1]) {
+          const data = JSON.parse(match[1])
+          setRaised(parseFloat(data.totalAmountRaised) || 0)
+          setGoal(parseFloat(data.goalAmount) || 50000)
+        }
+      })
+      .catch(() => {})
+  }, [])
+
+  return { raised, goal }
 }
 
 const needs = {
@@ -62,7 +84,8 @@ const colorStyles = {
   },
 }
 
-export function NeedsSpotlight({ raised, goal }: NeedsSpotlightProps) {
+export function NeedsSpotlight() {
+  const { raised, goal } = useCampaignData()
   return (
     <section className="relative py-24 sm:py-32 bg-lavender-50 overflow-hidden">
       {/* Wave divider at top */}
@@ -143,14 +166,18 @@ export function NeedsSpotlight({ raised, goal }: NeedsSpotlightProps) {
 
               {/* Progress bar */}
               <div className="mt-6">
-                <ProgressBar
-                  value={raised}
-                  max={goal}
-                  showValues
-                  showPercentage
-                  size="lg"
-                  color="teal"
-                />
+                {raised !== null ? (
+                  <ProgressBar
+                    value={raised}
+                    max={goal}
+                    showValues
+                    showPercentage
+                    size="lg"
+                    color="teal"
+                  />
+                ) : (
+                  <div className="h-8 rounded-full bg-charcoal-100 animate-pulse" />
+                )}
               </div>
 
               {/* CTA */}
