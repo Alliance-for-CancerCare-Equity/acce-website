@@ -64,57 +64,51 @@ function Hero() {
             </h2>
             <p className="mt-4 text-xl/8 text-charcoal-700">{whoWeAreContent.mission}</p>
           </div>
-          <div className="mt-14 flex justify-end gap-4 sm:-mt-32 sm:justify-start sm:pl-16 lg:mt-0 lg:pl-0">
-            <div className="ml-auto w-36 flex-none space-y-4 pt-28 sm:ml-0 sm:pt-60 lg:order-last lg:pt-36 xl:order-0 xl:pt-60">
-              <div className="relative">
-                <Image
-                  alt="ACCE community event"
-                  src="/event_images/empowering-communities-2026/event-photo-1.jpeg"
-                  width={396}
-                  height={528}
-                  className="aspect-[2/3] w-full rounded-2xl bg-lavender-50 object-cover shadow-medium ring-2 ring-lavender-200"
-                />
-              </div>
+          <div className="mt-14 grid grid-cols-2 gap-4 lg:mt-0 lg:pl-4">
+            <div className="col-span-2">
+              <Image
+                alt="ACCE Cancer Awareness event group photo"
+                src="/event_images/empowering-communities-2026/CancerAwareness-54.jpg"
+                width={7008}
+                height={4672}
+                className="w-full rounded-2xl bg-lavender-50 object-contain shadow-medium ring-2 ring-lavender-200"
+              />
             </div>
-            <div className="mr-auto w-36 flex-none space-y-4 sm:mr-0 sm:pt-48 lg:pt-36">
-              <div className="relative">
-                <Image
-                  alt="ACCE community awareness session"
-                  src="/event_images/empowering-communities-2026/event-photo-2.jpeg"
-                  width={396}
-                  height={528}
-                  className="aspect-[2/3] w-full rounded-2xl bg-teal-50 object-cover shadow-medium ring-2 ring-teal-200"
-                />
-              </div>
-              <div className="relative">
-                <Image
-                  alt="ACCE community discussion"
-                  src="/event_images/empowering-communities-2026/event-photo-3.jpeg"
-                  width={396}
-                  height={528}
-                  className="aspect-[2/3] w-full rounded-2xl bg-gold-50 object-cover shadow-medium ring-2 ring-gold-200"
-                />
-              </div>
+            <div>
+              <Image
+                alt="ACCE community event — morning session"
+                src="/event_images/empowering-communities-2026/AM.jpg"
+                width={1915}
+                height={921}
+                className="w-full rounded-2xl bg-teal-50 object-contain shadow-medium ring-2 ring-teal-200"
+              />
             </div>
-            <div className="w-36 flex-none space-y-4 pt-24 sm:pt-0">
-              <div className="relative">
-                <Image
-                  alt="ACCE No Patient Left Behind campaign"
-                  src="/ongoing_campaigns/no-patient-left-behind.jpeg"
-                  width={396}
-                  height={528}
-                  className="aspect-[2/3] w-full rounded-2xl bg-lavender-50 object-cover shadow-medium ring-2 ring-lavender-200"
-                />
-              </div>
-              <div className="relative">
-                <Image
-                  alt="ACCE community health event"
-                  src="/event_images/empowering-communities-2026/event-photo-1.jpeg"
-                  width={396}
-                  height={528}
-                  className="aspect-[2/3] w-full rounded-2xl bg-teal-50 object-cover shadow-medium ring-2 ring-teal-200"
-                />
-              </div>
+            <div>
+              <Image
+                alt="ACCE community event — afternoon session"
+                src="/event_images/empowering-communities-2026/PM.jpg"
+                width={1920}
+                height={961}
+                className="w-full rounded-2xl bg-gold-50 object-contain shadow-medium ring-2 ring-gold-200"
+              />
+            </div>
+            <div>
+              <Image
+                alt="ACCE community event — Bev"
+                src="/event_images/empowering-communities-2026/Bev.jpg"
+                width={1426}
+                height={765}
+                className="w-full rounded-2xl bg-lavender-50 object-contain shadow-medium ring-2 ring-lavender-200"
+              />
+            </div>
+            <div>
+              <Image
+                alt="ACCE community event — Natoya"
+                src="/event_images/empowering-communities-2026/Natoya.jpg"
+                width={5398}
+                height={3858}
+                className="w-full rounded-2xl bg-teal-50 object-contain shadow-medium ring-2 ring-teal-200"
+              />
             </div>
           </div>
         </div>
