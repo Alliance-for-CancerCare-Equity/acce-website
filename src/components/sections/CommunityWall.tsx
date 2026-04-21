@@ -41,7 +41,7 @@ const sizeClasses = {
 
 const partners = [
   { name: 'Korle Bu Teaching Hospital', logo: null },
-  { name: 'Cape Coast Teaching Hospital', logo: null },
+  { name: 'Sweden-Ghana Medical Center', logo: null },
   { name: 'Komfo Anokye Teaching Hospital', logo: null },
 ]
 

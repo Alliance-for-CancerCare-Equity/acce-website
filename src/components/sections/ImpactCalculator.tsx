@@ -8,14 +8,11 @@ import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
 
 // Impact data - what each donation amount can provide
 const impactTiers = [
-  { amount: 25, impact: '1 week of medication', icon: '💊' },
-  { amount: 50, impact: '2 weeks of medication', icon: '💊' },
-  { amount: 100, impact: '1 chemotherapy session support', icon: '💉' },
-  { amount: 250, impact: '1 month of treatment support', icon: '🏥' },
-  { amount: 500, impact: 'Transportation for 3 months', icon: '🚗' },
-  { amount: 1000, impact: 'Full surgery support', icon: '🩺' },
-  { amount: 2500, impact: '3 months of complete care', icon: '❤️' },
-  { amount: 5000, impact: '6 months of treatment funding', icon: '🌟' },
+  { amount: 50, impact: 'A needed lab test for a patient', icon: '🧪' },
+  { amount: 200, impact: 'A needed CT scan for a patient', icon: '🩻' },
+  { amount: 2000, impact: 'A needed PET imaging for a patient', icon: '🧬' },
+  { amount: 3000, impact: 'Full 6 cycle chemotherapy for a patient', icon: '💉' },
+  { amount: 3500, impact: 'Full radiotherapy for a patient', icon: '🎗️' },
 ]
 
 function getImpactForAmount(amount: number) {
@@ -29,7 +26,7 @@ function getImpactForAmount(amount: number) {
 }
 
 export function ImpactCalculator() {
-  const [donationAmount, setDonationAmount] = useState(100)
+  const [donationAmount, setDonationAmount] = useState(200)
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -159,9 +156,9 @@ export function ImpactCalculator() {
               <div className="relative mb-8">
                 <input
                   type="range"
-                  min="25"
-                  max="5000"
-                  step="25"
+                  min="50"
+                  max="3500"
+                  step="50"
                   value={donationAmount}
                   onChange={(e) => setDonationAmount(parseInt(e.target.value))}
                   className="w-full h-3 bg-charcoal-100 rounded-full appearance-none cursor-pointer
@@ -185,18 +182,18 @@ export function ImpactCalculator() {
                     [&::-moz-range-thumb]:cursor-pointer
                   "
                   style={{
-                    background: `linear-gradient(to right, #2A9D8F 0%, #2A9D8F ${((donationAmount - 25) / (5000 - 25)) * 100}%, #e5e7eb ${((donationAmount - 25) / (5000 - 25)) * 100}%, #e5e7eb 100%)`
+                    background: `linear-gradient(to right, #2A9D8F 0%, #2A9D8F ${((donationAmount - 50) / (3500 - 50)) * 100}%, #e5e7eb ${((donationAmount - 50) / (3500 - 50)) * 100}%, #e5e7eb 100%)`
                   }}
                 />
                 <div className="flex justify-between mt-2 text-sm text-charcoal-400">
-                  <span>$25</span>
-                  <span>$5,000</span>
+                  <span>$50</span>
+                  <span>$3,500</span>
                 </div>
               </div>
 
               {/* Quick amount buttons */}
               <div className="flex flex-wrap gap-2 justify-center mb-8">
-                {[50, 100, 250, 500, 1000].map((amount) => (
+                {[50, 200, 2000, 3000, 3500].map((amount) => (
                   <button
                     key={amount}
                     onClick={() => setDonationAmount(amount)}
