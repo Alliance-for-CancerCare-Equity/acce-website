@@ -94,6 +94,14 @@ function EventRow({ event, isPast = false }: { event: Event; isPast?: boolean })
         <p className="mt-4 text-base leading-7 text-charcoal-600 line-clamp-2">
           {event.excerpt}
         </p>
+
+        {isPast && (
+          <div className="mt-4">
+            <span className="pointer-events-none inline-flex items-center gap-1 rounded-full bg-teal-50 px-3 py-1 text-sm font-semibold text-teal-700 ring-1 ring-inset ring-teal-200 group-hover:bg-teal-100 transition-colors">
+              The full event is available here <span aria-hidden="true">&rarr;</span>
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Optional Image Thumbnail for Desktop */}
@@ -108,6 +116,24 @@ function EventRow({ event, isPast = false }: { event: Event; isPast?: boolean })
 
       <div className="mt-4 flex sm:hidden">
         <span className="text-sm font-semibold text-teal-600">View Details <span aria-hidden="true">&rarr;</span></span>
+      </div>
+    </div>
+  )
+}
+
+function UpcomingPlaceholder() {
+  return (
+    <div className="relative flex flex-col gap-6 rounded-2xl bg-white p-6 shadow-soft ring-1 ring-charcoal-100 sm:flex-row sm:items-center sm:p-8 border-2 border-dashed border-lavender-200">
+      <div className="flex h-20 w-20 flex-none flex-col items-center justify-center rounded-xl bg-gradient-to-br from-lavender-50 to-gold-50 ring-1 ring-lavender-200 text-lavender-700 sm:h-24 sm:w-24">
+        <span className="text-xs font-bold tracking-wider uppercase text-center leading-tight px-1">Coming<br />soon</span>
+      </div>
+      <div className="flex-auto">
+        <h3 className="font-display text-xl font-bold leading-8 tracking-tight text-charcoal-900">
+          New events on the horizon
+        </h3>
+        <p className="mt-3 text-base leading-7 text-charcoal-600">
+          Please visit again for information regarding upcoming events.
+        </p>
       </div>
     </div>
   )
@@ -128,7 +154,7 @@ function EventsList() {
 
   const today = new Date()
 
-  const upcomingEvents = events
+  const ongoingEvents = events
     .filter((e) => e.dateObj >= today)
     .sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime())
 
@@ -145,21 +171,29 @@ function EventsList() {
           <div>
             <div className="flex items-center gap-4 mb-8">
               <h2 className="font-display text-2xl font-bold tracking-tight text-charcoal-900">Upcoming Events</h2>
-              <div className="h-px flex-1 bg-gradient-to-r from-teal-300 to-transparent" />
+              <div className="h-px flex-1 bg-gradient-to-r from-lavender-300 to-transparent" />
             </div>
 
             <div className="space-y-8">
-              {upcomingEvents.length > 0 ? (
-                upcomingEvents.map((event) => (
-                  <EventRow key={event.slug} event={event} />
-                ))
-              ) : (
-                <div className="text-center py-12 rounded-2xl bg-white ring-1 ring-charcoal-100 border-2 border-dashed border-charcoal-200">
-                  <p className="text-lg text-charcoal-500">No upcoming events at the moment. Check back soon!</p>
-                </div>
-              )}
+              <UpcomingPlaceholder />
             </div>
           </div>
+
+          {/* Ongoing Events Section */}
+          {ongoingEvents.length > 0 && (
+            <div>
+              <div className="flex items-center gap-4 mb-8">
+                <h2 className="font-display text-2xl font-bold tracking-tight text-charcoal-900">Ongoing Events</h2>
+                <div className="h-px flex-1 bg-gradient-to-r from-teal-300 to-transparent" />
+              </div>
+
+              <div className="space-y-8">
+                {ongoingEvents.map((event) => (
+                  <EventRow key={event.slug} event={event} />
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Past Events Section */}
           {pastEvents.length > 0 && (

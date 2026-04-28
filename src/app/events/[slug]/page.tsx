@@ -115,6 +115,22 @@ function Prose({ children }: { children: React.ReactNode }) {
   )
 }
 
+function YouTube({ id, title }: { id: string; title?: string }) {
+  return (
+    <div className="my-8 overflow-hidden rounded-2xl shadow-strong ring-1 ring-charcoal-200">
+      <div className="relative aspect-video w-full bg-charcoal-900">
+        <iframe
+          src={`https://www.youtube.com/embed/${id}`}
+          title={title ?? 'Event video'}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 h-full w-full"
+        />
+      </div>
+    </div>
+  )
+}
+
 function EventCta() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-lavender-100 via-gold-50 to-teal-50 py-16 sm:py-20">
@@ -184,7 +200,7 @@ export default async function EventPage({
         <section className="bg-white py-12 sm:py-16">
           <Container>
             <Prose>
-              <MDXRemote source={entry.content} components={{ Button }} />
+              <MDXRemote source={entry.content} components={{ Button, YouTube }} />
             </Prose>
           </Container>
         </section>
