@@ -50,6 +50,10 @@ const annualReportsContent = {
         text: '2024 Annual Report',
         href: '/annual_reports/2024_annual_report.pdf',
       },
+      {
+        text: '2025 Annual Report',
+        href: '/annual_reports/2025_annual_report.pdf',
+      },
     ],
   },
 }
