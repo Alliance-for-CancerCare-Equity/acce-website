@@ -32,6 +32,10 @@ const annualReportsContent = {
         text: '2024 Annual Financial Statement',
         href: '/annual_reports/2024_financial_statement.pdf',
       },
+      {
+        text: '2025 Annual Financial Statement',
+        href: '/annual_reports/2025_financial_statement.pdf',
+      },
     ],
   },
   annual_reports: {
