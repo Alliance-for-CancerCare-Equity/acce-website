@@ -74,7 +74,7 @@ export function Hero({
       <div className="absolute inset-0">
         <Image
           alt="Rukmini Adjetey - Cancer Survivor supported by ACCE"
-          src="/stories/rukmini.jpg"
+          src="/stories/rukmini.png"
           fill
           priority
           className="object-cover object-center animate-ken-burns"

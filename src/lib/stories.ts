@@ -1,8 +1,8 @@
 import { type StaticImageData } from 'next/image'
 
-import rukminiImage from '../../public/stories/rukmini.jpg'
+import rukminiImage from '../../public/stories/rukmini.png'
 import adisaImage from '../../public/stories/adisa.jpg'
-import cynthiaImage from '../../public/stories/cynthia.jpeg'
+import cynthiaImage from '../../public/stories/cynthia.png'
 import salomeyImage from '../../public/stories/salomey.jpg'
 import emmanuelImage from '../../public/stories/emmanuel.jpg'
 import faustinaImage from '../../public/stories/faustina.jpg'
@@ -24,7 +24,7 @@ export const patientStories: PatientStory[] = [
     name: 'Rukmini Adjetey',
     title: 'From Diagnosis to Hope: Rukmini\'s Story',
     imageUrl: rukminiImage,
-    youtubeUrl: 'https://www.youtube.com/watch?v=DBfATugq8r4',
+    youtubeUrl: 'https://www.youtube.com/watch?v=wVpQ4W2ST9c',
     quote: 'My life wouldn\'t have been this hopeful without this organization stepping in to support me.',
     content: [
       'In July 2024, Rukmini Adjetey\'s life changed suddenly. Rukmini is a young woman from Ghana with many dreams for her future. One day, she found a lump in her breast. After medical tests, she received difficult news. She had breast cancer. The diagnosis brought fear, worry, and many questions about what would come next. Her life may quickly be filled with hospital visits, medical tests, and hard conversations about survival.',
@@ -54,7 +54,7 @@ export const patientStories: PatientStory[] = [
     name: 'Dr Cynthia Botchway',
     imageUrl: cynthiaImage,
     title: 'A Second Chance at Life after Head and Neck Cancer',
-    youtubeUrl: 'https://www.youtube.com/watch?v=SCVRsCAezk8',
+    youtubeUrl: 'https://www.youtube.com/watch?v=c6dbg6dNgyA',
     quote: 'Please donate to help. There are people dying silently. I\'m pleading with anyone who can help to donate to ACCE, to help people like me.',
     content: [
       'In November 2023, Dr. Cynthia Botchway felt a small discomfort in her throat. At first, she thought it would go away, but it did not. Months of tests and long waits brought fear and uncertainty. Finally, she received the diagnosis she had been fearing: head and neck cancer.',

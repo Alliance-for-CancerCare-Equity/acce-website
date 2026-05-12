@@ -7,9 +7,9 @@ import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 
 // Import patient images for the wall
-import rukminiImage from '../../../public/stories/rukmini.jpg'
+import rukminiImage from '../../../public/stories/rukmini.png'
 import adisaImage from '../../../public/stories/adisa.jpg'
-import cynthiaImage from '../../../public/stories/cynthia.jpeg'
+import cynthiaImage from '../../../public/stories/cynthia.png'
 import salomeyImage from '../../../public/stories/salomey.jpg'
 import emmanuelImage from '../../../public/stories/emmanuel.jpg'
 import faustinaImage from '../../../public/stories/faustina.jpg'

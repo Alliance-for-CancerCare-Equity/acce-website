@@ -8,9 +8,9 @@ import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 
 // Import patient images
-import rukminiImage from '../../../public/stories/rukmini.jpg'
+import rukminiImage from '../../../public/stories/rukmini.png'
 import adisaImage from '../../../public/stories/adisa.jpg'
-import cynthiaImage from '../../../public/stories/cynthia.jpeg'
+import cynthiaImage from '../../../public/stories/cynthia.png'
 import salomeyImage from '../../../public/stories/salomey.jpg'
 import emmanuelImage from '../../../public/stories/emmanuel.jpg'
 import faustinaImage from '../../../public/stories/faustina.jpg'
@@ -37,14 +37,14 @@ const stories: PatientStory[] = [
     condition: 'Cancer Survivor',
     quote: 'Without ACCE, I would not be alive today. They are truly angels on earth.',
     image: rukminiImage,
-    youtubeUrl: 'https://www.youtube.com/watch?v=DBfATugq8r4',
+    youtubeUrl: 'https://www.youtube.com/watch?v=wVpQ4W2ST9c',
   },
   {
     name: 'Dr Cynthia Botchway',
     condition: 'Cancer Survivor',
     quote: 'The support I received from ACCE was incredible. They were there every step of the way.',
     image: cynthiaImage,
-    youtubeUrl: 'https://www.youtube.com/watch?v=SCVRsCAezk8',
+    youtubeUrl: 'https://www.youtube.com/watch?v=c6dbg6dNgyA',
   },
   {
     name: 'Salomey Appiah',

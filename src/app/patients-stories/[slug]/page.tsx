@@ -88,8 +88,16 @@ function StoryContent({
             <Image
               fill
               src={story.imageUrl}
+              alt=""
+              aria-hidden
+              className="object-cover scale-110 blur-md opacity-40"
+              sizes="(min-width: 768px) 48rem, 100vw"
+            />
+            <Image
+              fill
+              src={story.imageUrl}
               alt={story.name}
-              className="object-cover"
+              className="relative z-10 object-contain object-center"
               sizes="(min-width: 768px) 48rem, 100vw"
               placeholder="blur"
             />
