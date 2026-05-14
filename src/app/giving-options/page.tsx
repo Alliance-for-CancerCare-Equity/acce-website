@@ -39,7 +39,7 @@ const givingOptionsContent = {
       {
         name: 'Other Methods',
         id: 'tier-other',
-        href: 'mailto:donate@allianceforcancercareequity.ca',
+        href: 'mailto:donate@accecan.ca',
         description: (
           <>
             <strong className="font-semibold text-charcoal-900">
@@ -52,7 +52,7 @@ const givingOptionsContent = {
             </strong>{' '}
             (Canadian bank account holders) to:{' '}
             <span className="text-charcoal-900">
-              donate@allianceforcancercareequity.ca
+              donate@accecan.ca
             </span>
             <br />
             <br />
