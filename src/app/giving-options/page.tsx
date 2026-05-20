@@ -98,7 +98,7 @@ const givingOptionsContent = {
     subtitle_part1:
       "Have a different question and can't find the answer you're looking for? Reach out to our support team by",
     subtitle_link_text: 'sending us an email',
-    subtitle_link_href: 'mailto:support@allianceforcancercareequity.ca',
+    subtitle_link_href: 'mailto:support@accecan.ca',
     subtitle_part2: "and we'll get back to you as soon as we can.",
     questions: [
       {

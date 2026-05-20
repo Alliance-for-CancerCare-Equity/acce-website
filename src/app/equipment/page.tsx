@@ -74,7 +74,7 @@ function EquipmentApplicationForm({
         </h2>
         <div className="mt-10 flex flex-col gap-16 sm:gap-y-16 lg:flex-row">
           <form
-            action="https://formsubmit.co/support@allianceforcancercareequity.ca"
+            action="https://formsubmit.co/support@accecan.ca"
             method="POST"
             className="lg:flex-auto"
           >

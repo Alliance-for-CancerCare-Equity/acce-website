@@ -81,13 +81,23 @@ export function CommunityWall() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className={`relative rounded-2xl overflow-hidden group cursor-pointer ${sizeClasses[member.size]}`}
+              className={`relative rounded-2xl overflow-hidden group cursor-pointer bg-white ${sizeClasses[member.size]}`}
             >
+              {/* Blurred background fill */}
+              <Image
+                src={member.image}
+                alt=""
+                aria-hidden="true"
+                fill
+                className="object-cover scale-110 blur-md opacity-40 transition-transform duration-500 group-hover:scale-125"
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+              />
+              {/* Foreground image */}
               <Image
                 src={member.image}
                 alt={member.name}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                className="relative z-10 object-contain object-center transition-transform duration-500 group-hover:scale-110"
                 sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
               />
               {/* Overlay */}

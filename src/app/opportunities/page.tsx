@@ -17,15 +17,11 @@ const opportunitiesContent = {
   subtitle:
     'At the Alliance for CancerCare Equity (ACCE), we believe that no one should be denied cancer treatment because of where they live or how much money they have. Yet every day, patients in Ghana and underserved communities in Canada are forced to choose between food, shelter, and lifesaving care.',
   opportunities_title: 'Current Volunteer Opportunities',
-  opportunities: [
-    {
-      text: 'Social Media & Digital Communications Volunteer',
-      href: 'https://www.allianceforcancercareequity.ca/_files/ugd/8b0cc2_e3229ade47174d018dc7be7cec27fcdd.pdf',
-    },
-    {
-      text: 'Event Organizer – Cancer Awareness Day (February 2026) (Volunteer)',
-      href: 'https://www.allianceforcancercareequity.ca/_files/ugd/8b0cc2_8042ee40f1ef4b739cdd65b5f7c0c49c.pdf',
-    },
+  volunteer_paragraphs: [
+    'We are always looking for passionate volunteers to help raise funds in support of Alliance for CancerCare Equity (ACCE). Whether you are organizing a community event, hosting a fundraiser, participating in a challenge, or have a creative fundraising idea, we would love to hear from you.',
+    'Your support helps ACCE continue its mission of advancing equitable cancer care and support for individuals and families affected by cancer.',
+    'If you are interested in fundraising for ACCE, please contact us at volunteer@accecan.ca and share your ideas and how you would like to support our cause.',
+    'For current volunteer opportunities, please email us at volunteer@accecan.ca'
   ],
   p1: 'This is not just a health issue—it’s a justice issue.',
   p2: 'We’re working to close the gap by providing direct financial support for cancer treatments, raising awareness, and advocating for equitable healthcare policies. But we can’t do it alone.',
@@ -55,11 +51,6 @@ const opportunitiesContent = {
   ],
 }
 
-interface Opportunity {
-  text: string
-  href: string
-}
-
 interface Link {
   text: string
   href: string
@@ -71,7 +62,7 @@ interface GetInvolvedProps {
   title: string
   subtitle: string
   opportunities_title: string
-  opportunities: Opportunity[]
+  volunteer_paragraphs: string[]
   p1: string
   p2: string
   p3: string
@@ -86,7 +77,7 @@ function GetInvolved({
   title,
   subtitle,
   opportunities_title,
-  opportunities,
+  volunteer_paragraphs,
   p1,
   p2,
   p3,
@@ -112,20 +103,11 @@ function GetInvolved({
             <h2 className="text-2xl font-semibold tracking-tight text-pretty text-slate-900">
               {opportunities_title}
             </h2>
-            <ul className="mt-6 list-disc space-y-2 pl-6 text-base/7 text-slate-600">
-              {opportunities.map((opportunity) => (
-                <li key={opportunity.text}>
-                  <a
-                    href={opportunity.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800"
-                  >
-                    {opportunity.text}
-                  </a>
-                </li>
+            <div className="mt-6 space-y-4 text-base/7 text-slate-600">
+              {volunteer_paragraphs.map((paragraph, idx) => (
+                <p key={idx}>{paragraph}</p>
               ))}
-            </ul>
+            </div>
             <p className="mt-8 text-base/7 text-slate-600">{p1}</p>
             <p className="mt-8 text-base/7 text-slate-600">{p2}</p>
             <p className="mt-8 text-base/7 text-slate-600">{p3}</p>

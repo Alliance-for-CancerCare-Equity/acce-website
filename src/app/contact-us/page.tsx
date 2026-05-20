@@ -17,9 +17,9 @@ const contactUsContent = {
     "We'd love to hear from you. Whether you have a question, a suggestion, or you'd like to get involved, please don't hesitate to reach out.",
   phone: '+1-226-698-2573',
   emails: [
-    'support@allianceforcancercareequity.ca',
-    'volunteer@allianceforcancercareequity.ca',
-    'info@allianceforcancercareequity.ca',
+    'support@accecan.ca',
+    'volunteer@accecan.ca',
+    'info@accecan.ca',
   ],
   submit_button_text: 'Send message',
 }
@@ -96,7 +96,7 @@ function Contact({
         {/* Form Side */}
         <div className="bg-white px-6 pt-12 pb-24 sm:pb-28 lg:px-8 lg:py-32">
           <form
-            action="https://formsubmit.co/info@allianceforcancercareequity.ca"
+            action="https://formsubmit.co/info@accecan.ca"
             method="POST"
             className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg"
           >

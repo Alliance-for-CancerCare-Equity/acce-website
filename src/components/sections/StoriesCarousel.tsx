@@ -137,13 +137,24 @@ export function StoriesCarousel() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.5 }}
-                  className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-strong"
+                  className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-strong bg-charcoal-800"
                 >
+                  {/* Blurred background fill */}
+                  <Image
+                    src={currentStory.image}
+                    alt=""
+                    aria-hidden="true"
+                    fill
+                    className="object-cover scale-110 blur-md opacity-40"
+                    placeholder="blur"
+                    priority
+                  />
+                  {/* Foreground image */}
                   <Image
                     src={currentStory.image}
                     alt={currentStory.name}
                     fill
-                    className="object-cover"
+                    className="relative z-10 object-contain object-center"
                     placeholder="blur"
                     priority
                   />
