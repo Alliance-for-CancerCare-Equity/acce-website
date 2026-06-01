@@ -12,7 +12,7 @@ import rukminiImage from '../../../public/stories/rukmini.png'
 import adisaImage from '../../../public/stories/adisa.jpg'
 import cynthiaImage from '../../../public/stories/cynthia.png'
 import salomeyImage from '../../../public/stories/salomey.jpg'
-import emmanuelImage from '../../../public/stories/emmanuel.jpg'
+import emmanuelImage from '../../../public/stories/emmanuel.png'
 import faustinaImage from '../../../public/stories/faustina.jpg'
 import ritaImage from '../../../public/stories/rita.jpg'
 
@@ -58,7 +58,7 @@ const stories: PatientStory[] = [
     condition: 'Cancer Survivor',
     quote: 'When I could not afford treatment, ACCE stepped in. They saved my life.',
     image: emmanuelImage,
-    youtubeUrl: 'https://www.youtube.com/watch?v=uMiacIM7w1Y',
+    youtubeUrl: 'https://www.youtube.com/watch?v=txQpp1Ngs0I',
   },
   {
     name: 'Faustina Anakwa',

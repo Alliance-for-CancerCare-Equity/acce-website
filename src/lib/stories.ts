@@ -4,7 +4,7 @@ import rukminiImage from '../../public/stories/rukmini.png'
 import adisaImage from '../../public/stories/adisa.jpg'
 import cynthiaImage from '../../public/stories/cynthia.png'
 import salomeyImage from '../../public/stories/salomey.jpg'
-import emmanuelImage from '../../public/stories/emmanuel.jpg'
+import emmanuelImage from '../../public/stories/emmanuel.png'
 import faustinaImage from '../../public/stories/faustina.jpg'
 import ritaImage from '../../public/stories/rita.jpg'
 
@@ -83,7 +83,7 @@ export const patientStories: PatientStory[] = [
     name: 'Emmanuel Grusi',
     imageUrl: emmanuelImage,
     title: 'Holding On to Hope: Yaw Emmanuel\'s Journey with Bladder Cancer',
-    youtubeUrl: 'https://www.youtube.com/watch?v=uMiacIM7w1Y',
+    youtubeUrl: 'https://www.youtube.com/watch?v=txQpp1Ngs0I',
     quote: 'What once felt like the end of hope has become a journey toward healing.',
     content: [
       'In 2022, Yaw Emmanuel, a 39-year-old husband and father of two from Asante Akyem Agogo, Ghana, began noticing blood in his urine and having difficulty urinating. Concerned, he sought medical care at the Asante Akyem Hospital, where tests revealed a diagnosis that would change his life: bladder cancer.',
