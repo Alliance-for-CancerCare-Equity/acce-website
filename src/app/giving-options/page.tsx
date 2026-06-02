@@ -5,6 +5,7 @@ import { CheckIcon } from '@heroicons/react/20/solid'
 import { Button } from '@/components/ui/Button'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
+import { ImpactCalculator } from '@/components/sections/ImpactCalculator'
 
 export const metadata: Metadata = {
   title: 'Giving Options',
@@ -212,7 +213,7 @@ function OneTimeDonations({
   }
 
   return (
-    <div className="relative overflow-hidden bg-gradient-hero py-20 sm:py-28">
+    <div id="one-time-donations" className="relative overflow-hidden bg-gradient-hero py-20 sm:py-28">
       {/* Decorative elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-lavender-300/30 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-gold-300/20 rounded-full blur-3xl" />
@@ -451,6 +452,7 @@ export default function GivingOptionsPage() {
       <Header />
       <main>
         <OneTimeDonations {...givingOptionsContent.one_time_donations} />
+        <ImpactCalculator isPage />
         <MonthlyGiving {...givingOptionsContent.monthly_giving} />
         <DonationFaqs {...givingOptionsContent.faqs} />
       </main>

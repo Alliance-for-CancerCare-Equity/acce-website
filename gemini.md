@@ -23,3 +23,9 @@ The website highlights stories of hope from cancer patients who have been suppor
     - [stories.ts](file:///Users/rogerchen/Developer/acce-website/src/lib/stories.ts)
     - [StoriesCarousel.tsx](file:///Users/rogerchen/Developer/acce-website/src/components/sections/StoriesCarousel.tsx)
     - [CommunityWall.tsx](file:///Users/rogerchen/Developer/acce-website/src/components/sections/CommunityWall.tsx)
+
+### Ways to Give Page Layout Update
+- **Component Addition**: Embedded the `ImpactCalculator` component inside the "Ways to Give" page ([page.tsx](file:///Users/rogerchen/Developer/acce-website/src/app/giving-options/page.tsx)), positioned after the "Choose Your Way to Give" (One-Time Donations) section and before the "Make it Monthly" section.
+- **homepage retention**: Kept the `ImpactCalculator` active on both the homepage and the giving options page.
+- **Action Button Scroll**: Updated [ImpactCalculator.tsx](file:///Users/rogerchen/Developer/acce-website/src/components/sections/ImpactCalculator.tsx) to accept an optional `isPage` prop. When true, the green "Donate $X Now" CTA button smooth-scrolls the user up to the actual payment tier methods (e.g. PayPal, CanadaHelps) located in `#one-time-donations` instead of redirecting the user to the current page.
+
