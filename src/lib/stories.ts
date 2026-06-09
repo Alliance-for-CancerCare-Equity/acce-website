@@ -6,7 +6,7 @@ import cynthiaImage from '../../public/stories/cynthia.png'
 import salomeyImage from '../../public/stories/salomey.jpg'
 import emmanuelImage from '../../public/stories/emmanuel.png'
 import faustinaImage from '../../public/stories/faustina.jpg'
-import ritaImage from '../../public/stories/rita.jpg'
+import ritaImage from '../../public/stories/rita.png'
 
 export interface PatientStory {
   slug: string
@@ -114,7 +114,7 @@ export const patientStories: PatientStory[] = [
     name: 'Rita Benson',
     imageUrl: ritaImage,
     title: 'Saved in Time: Rita Benson\'s Journey Through Cervical Cancer',
-    youtubeUrl: 'https://www.youtube.com/watch?v=pE6oODZvlV8',
+    youtubeUrl: 'https://www.youtube.com/watch?v=11lxmfUfzms',
     quote: 'Through ACCE, God has saved lives — including mine.',
     content: [
       'When Rita Benson first noticed the changes in her body, she did not think cancer could be the cause. The 35-year-old mother of two from Obuasi, Ghana, was living her normal life when unusual symptoms began to appear: vaginal bleeding, discharge with an unfamiliar colour and bleeding after sexual intercourse. Like many women, Benson initially attributed the signs to other illnesses. She made several trips to the hospital and took different medications, hoping the problem would resolve.',

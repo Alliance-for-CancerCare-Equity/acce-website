@@ -13,7 +13,7 @@ import cynthiaImage from '../../../public/stories/cynthia.png'
 import salomeyImage from '../../../public/stories/salomey.jpg'
 import emmanuelImage from '../../../public/stories/emmanuel.png'
 import faustinaImage from '../../../public/stories/faustina.jpg'
-import ritaImage from '../../../public/stories/rita.jpg'
+import ritaImage from '../../../public/stories/rita.png'
 
 interface CommunityMember {
   name: string
