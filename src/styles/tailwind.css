@@ -210,6 +210,14 @@ html {
   color: inherit;
 }
 
+.blog-prose img {
+  max-width: 100%;
+  height: auto;
+  margin: 2rem auto;
+  display: block;
+  border-radius: 0.75rem;
+}
+
 /* ========================================
    KEYFRAME ANIMATIONS
    ======================================== */
