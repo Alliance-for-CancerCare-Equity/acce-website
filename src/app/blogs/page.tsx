@@ -1,7 +1,7 @@
 import { type Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 
+import { BlogImage } from '@/components/ui/BlogImage'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Footer } from '@/components/layout/Footer'
@@ -54,27 +54,34 @@ function FeaturePost({ post }: { post: Post }) {
   return (
     <section className="bg-lavender-50 py-12">
       <Container>
-        <Link href={post.href} className="group relative isolate block overflow-hidden rounded-3xl bg-white shadow-medium ring-2 ring-lavender-200 hover:shadow-strong hover:ring-teal-300 transition-all duration-300">
-          <div className="relative h-[22rem] sm:h-[26rem]">
-            <Image
-              fill
-              src={post.imageUrl}
-              alt={post.title}
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/30 to-transparent" />
-          </div>
-          <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+        <Link
+          href={post.href}
+          className="group grid grid-cols-1 overflow-hidden rounded-3xl bg-white shadow-medium ring-2 ring-lavender-200 transition-all duration-300 hover:shadow-strong hover:ring-teal-300 lg:grid-cols-2"
+        >
+          <BlogImage
+            src={post.imageUrl}
+            alt={post.title}
+            priority
+            sizes="(min-width: 1024px) 40rem, 100vw"
+            className="aspect-[3/2] lg:aspect-auto lg:min-h-[24rem]"
+          />
+          <div className="flex flex-col justify-center gap-4 p-8 sm:p-10 lg:p-12">
             {post.category && (
-              <span className="inline-flex items-center rounded-full bg-teal-500 px-3 py-1 text-xs font-semibold text-white">
+              <span className="inline-flex w-fit items-center rounded-full bg-teal-500 px-3 py-1 text-xs font-semibold text-white">
                 {post.category}
               </span>
             )}
-            <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            <h2 className="font-display text-2xl font-bold tracking-tight text-charcoal-900 transition-colors group-hover:text-teal-600 sm:text-3xl lg:text-4xl">
               {post.title}
             </h2>
-            <p className="mt-2 max-w-3xl text-base/7 text-white/90">{post.excerpt}</p>
-            <p className="mt-3 text-sm/6 text-gold-300 font-medium">{post.date}</p>
+            <p className="text-base/7 text-charcoal-600">{post.excerpt}</p>
+            <p className="text-sm/6 font-medium text-charcoal-500">{post.date}</p>
+            <span className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-teal-600">
+              Read more
+              <svg className="size-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </span>
           </div>
         </Link>
       </Container>
@@ -85,15 +92,12 @@ function FeaturePost({ post }: { post: Post }) {
 function PostCard({ post }: { post: Post }) {
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-charcoal-100 hover:shadow-medium hover:ring-teal-200 transition-all duration-300">
-      <div className="relative h-48 overflow-hidden">
-        <Image
-          fill
-          src={post.imageUrl}
-          alt={post.title}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-      </div>
+      <BlogImage
+        src={post.imageUrl}
+        alt={post.title}
+        sizes="(min-width: 1024px) 22rem, (min-width: 640px) 50vw, 100vw"
+        className="aspect-[3/2]"
+      />
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-center gap-x-3 text-sm">
           {post.category && (

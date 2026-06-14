@@ -1,8 +1,8 @@
 import { type Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
+import { BlogImage } from '@/components/ui/BlogImage'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { Footer } from '@/components/layout/Footer'
@@ -84,10 +84,13 @@ function PostHeader({
         </p>
       </Container>
       <Container className="pb-12">
-        <div className="relative mx-auto aspect-[16/9] max-w-5xl overflow-hidden rounded-3xl shadow-strong ring-2 ring-lavender-200">
-          <Image fill src={imageUrl} alt={title} className="object-cover" sizes="(min-width: 1280px) 80rem, (min-width: 1024px) 64rem, (min-width: 640px) 100vw, 100vw" />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/20 to-transparent" />
-        </div>
+        <BlogImage
+          src={imageUrl}
+          alt={title}
+          priority
+          sizes="(min-width: 1024px) 64rem, 100vw"
+          className="mx-auto aspect-[16/9] max-w-5xl rounded-3xl shadow-strong ring-2 ring-lavender-200"
+        />
       </Container>
     </section>
   )
