@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { BlogImage } from '@/components/ui/BlogImage'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
+import { formatDate } from '@/lib/formatDate'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { getAllPosts } from '@/lib/mdx'
@@ -179,7 +180,7 @@ export default function BlogsPage() {
   const rawPosts = getAllPosts()
   const posts: Post[] = rawPosts.map((p) => ({
     title: p.title,
-    date: new Date(p.date).toLocaleDateString(undefined, {
+    date: formatDate(p.date, {
       year: 'numeric',
       month: 'short',
       day: '2-digit',

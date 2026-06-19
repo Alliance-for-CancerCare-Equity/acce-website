@@ -4,6 +4,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 
 import { BlogImage } from '@/components/ui/BlogImage'
 import { Button } from '@/components/ui/Button'
+import { formatDate } from '@/lib/formatDate'
 import { Container } from '@/components/ui/Container'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
@@ -80,7 +81,7 @@ function PostHeader({
           {title}
         </h1>
         <p className="mt-4 text-base/6 text-charcoal-500 font-medium">
-          {new Date(date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+          {formatDate(date)}
         </p>
       </Container>
       <Container className="pb-12">

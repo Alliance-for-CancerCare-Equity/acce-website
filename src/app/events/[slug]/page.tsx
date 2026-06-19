@@ -9,6 +9,7 @@ import { Container } from '@/components/ui/Container'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { getEventBySlug, getEventSlugs } from '@/lib/mdx'
+import { formatDate } from '@/lib/formatDate'
 
 type PageParams = { slug: string }
 
@@ -83,7 +84,7 @@ function EventHeader({
           <div className="flex items-center gap-2 text-teal-300">
             <CalendarDaysIcon className="size-5" />
             <span>
-              {new Date(date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+              {formatDate(date)}
             </span>
           </div>
           <div className="flex items-center gap-2 text-lavender-300">

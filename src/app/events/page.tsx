@@ -8,6 +8,7 @@ import { Container } from '@/components/ui/Container'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { getAllEvents } from '@/lib/mdx'
+import { formatDate } from '@/lib/formatDate'
 
 export const metadata: Metadata = {
   title: 'Events',
@@ -50,8 +51,8 @@ function EventsHero() {
 }
 
 function EventRow({ event, isPast = false }: { event: Event; isPast?: boolean }) {
-  const month = event.dateObj.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()
-  const day = event.dateObj.toLocaleDateString('en-US', { day: 'numeric' })
+  const month = formatDate(event.dateObj, { month: 'short' }).toUpperCase()
+  const day = formatDate(event.dateObj, { day: 'numeric' })
 
   return (
     <div className={`group relative flex flex-col gap-6 rounded-2xl p-6 shadow-soft transition-all duration-300 sm:flex-row sm:items-center sm:p-8 ${
@@ -83,7 +84,7 @@ function EventRow({ event, isPast = false }: { event: Event; isPast?: boolean })
         <div className="mt-2 flex flex-wrap gap-4 text-sm leading-6 text-charcoal-500">
           <div className="flex items-center gap-x-2">
             <CalendarDaysIcon className="h-5 w-5 text-lavender-500" aria-hidden="true" />
-            <time dateTime={event.dateObj.toISOString()}>{event.dateObj.toLocaleDateString()} • {event.time}</time>
+            <time dateTime={event.dateObj.toISOString()}>{formatDate(event.dateObj, { year: 'numeric', month: 'numeric', day: 'numeric' })} • {event.time}</time>
           </div>
           <div className="flex items-center gap-x-2">
             <MapPinIcon className="h-5 w-5 text-gold-500" aria-hidden="true" />
