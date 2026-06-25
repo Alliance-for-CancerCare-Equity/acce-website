@@ -1,11 +1,10 @@
 import { type StaticImageData } from 'next/image'
 
 import rukminiImage from '../../public/stories/rukmini.png'
-import adisaImage from '../../public/stories/adisa.jpg'
+import adisaImage from '../../public/stories/adisa.png'
 import cynthiaImage from '../../public/stories/cynthia.png'
-import salomeyImage from '../../public/stories/salomey.jpg'
+import salomeyImage from '../../public/stories/salomey.png'
 import emmanuelImage from '../../public/stories/emmanuel.png'
-import faustinaImage from '../../public/stories/faustina.jpg'
 import ritaImage from '../../public/stories/rita.png'
 
 export interface PatientStory {
@@ -39,7 +38,7 @@ export const patientStories: PatientStory[] = [
     name: 'Adisa Iddrisu',
     title: 'Adisa Iddrisu\'s Journey Through Cancer',
     imageUrl: adisaImage,
-    youtubeUrl: 'https://www.youtube.com/watch?v=ZtpmeGBW1JI',
+    youtubeUrl: 'https://www.youtube.com/watch?v=GxaqF-Lf88g',
     quote: 'The work of ACCE is truly inspiring, bringing hope, healing, and dignity to people who would otherwise be left without access to cancer care.',
     content: [
       'When Adisa Iddrisu received the words no one is ever prepared to hear, "you have cervical cancer," her world stood still. She began her initial surgical treatment in Ghana\'s Upper West Region, the place she calls home, holding onto hope despite the fear that filled her heart.',
@@ -69,7 +68,7 @@ export const patientStories: PatientStory[] = [
     name: 'Salomey Appiah',
     imageUrl: salomeyImage,
     title: 'A Mother\'s Courage: Salomey\'s Battle with Breast Cancer',
-    youtubeUrl: 'https://www.youtube.com/watch?v=TfBabZ19vqw',
+    youtubeUrl: 'https://www.youtube.com/watch?v=cDxfLwCynlc',
     quote: 'Thank you very much for your support, and my prayer is that God will bless everyone with kindness to donate to the Alliance for CancerCare Equity, so that they can always help those with cancer who have no means to afford their treatment.',
     content: [
       'In 2021, Salomey Appiah felt a lump in her breast and went to the hospital for a checkup. After several tests, she received the life-changing news that she has breast cancer. She was referred to the Breast Clinic at Komfo Anokye Teaching Hospital in Ghana, where doctors recommended chemotherapy followed by a mastectomy.',
@@ -92,21 +91,6 @@ export const patientStories: PatientStory[] = [
       'It was at this breaking point that a turning moment arrived. A doctor at the oncology clinic at Komfo Anokye Teaching Hospital recognized Yaw\'s distress and connected him with Alliance for CancerCare Equity (ACCE). Through ACCE\'s intervention, he was able to return to the hospital and resume his treatment. The organization stepped in to support his chemotherapy and has continued to stand by him throughout his radiotherapy.',
       'Although Yaw is still undergoing treatment and has not yet fully recovered, his health has improved significantly. At one point, he had lost so much weight that people in his community were deeply concerned. Now, with ongoing care and support, he is regaining strength, and many would not realize he is ill unless told.',
       'Yaw speaks with deep gratitude for the support he has received. What once felt like the end of hope has become a journey toward healing. Thanks to ACCE and the generosity of its supporters, Yaw continues to receive the care he needs and the chance to remain present for the family he loves.',
-    ],
-  },
-  {
-    slug: 'faustina-anakwa',
-    name: 'Faustina Anakwa',
-    imageUrl: faustinaImage,
-    title: 'From Uncertainty to Strength: A Lung Cancer Survivor\'s Story',
-    youtubeUrl: 'https://www.youtube.com/watch?v=0x-i-cFkdh0',
-    quote: 'Her story shows why cancer care equity matters. No one should have to fight for treatment while fighting for their life.',
-    content: [
-      'In 2018, 56-year-old woman Faustina Anakwa from Ghana\'s Eastern Region received news that changed her life: she was diagnosed with lung cancer. What began as a health concern quickly became a reality that demanded immediate and ongoing treatment. Instead of planning for the years ahead with peace of mind, she found herself preparing for hospital visits, medical tests, and difficult conversations about survival.',
-      'Lung cancer required long-term care, not a single procedure, but years of regular appointments, medication, monitoring, and the emotional weight of not knowing what each new result might show. The physical toll was heavy and the emotional strain was even heavier.',
-      'For more than six years, she has lived with this diagnosis, facing days filled with fear and moments of exhaustion and uncertainty. Yet she made a decision to keep going. She committed to her treatment plan, attended every appointment, and refused to let the diagnosis define the rest of her life.',
-      'She was able to continue because she had support through the Alliance for CancerCare Equity (ACCE), where she received the medical care she needed without interruption. ACCE ensured that access to treatment did not depend on financial capacity. Instead of worrying about how to afford care, she could focus on healing. That support brought stability during a time of deep uncertainty. It reminded her that her life mattered and that she would not face cancer alone.',
-      'When you support ACCE, you help ensure that more patients receive the care they deserve and the chance to keep living.',
     ],
   },
   {

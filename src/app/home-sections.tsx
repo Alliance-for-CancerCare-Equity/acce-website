@@ -418,13 +418,13 @@ export function FeatureStory() {
               <figure className="relative isolate">
                 <blockquote className="mt-6 text-xl/8 font-semibold text-white">
                   <p>
-                    &ldquo;I am so grateful to ACCE for coming to my aid. I was diagnosed with breast cancer and I didn&apos;t have money for the surgery. ACCE paid for my surgery and chemotherapy.&rdquo;
+                    &ldquo;I am so grateful to ACCE for coming to my aid. I was diagnosed with cervical cancer and I could not afford the radiotherapy I needed. ACCE covered my treatment and gave me a fighting chance.&rdquo;
                   </p>
                 </blockquote>
                 <figcaption className="mt-6 text-sm/6 leading-6 text-charcoal-200">
                   <strong className="font-semibold text-gold-400">Adisa Iddrisu</strong>
                   <span className="mx-2">–</span>
-                  <span>Breast Cancer Survivor</span>
+                  <span>Cervical Cancer Survivor</span>
                 </figcaption>
               </figure>
             </div>

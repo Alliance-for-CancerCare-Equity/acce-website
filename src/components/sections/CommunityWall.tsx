@@ -8,11 +8,10 @@ import { Button } from '@/components/ui/Button'
 
 // Import patient images for the wall
 import rukminiImage from '../../../public/stories/rukmini.png'
-import adisaImage from '../../../public/stories/adisa.jpg'
+import adisaImage from '../../../public/stories/adisa.png'
 import cynthiaImage from '../../../public/stories/cynthia.png'
-import salomeyImage from '../../../public/stories/salomey.jpg'
+import salomeyImage from '../../../public/stories/salomey.png'
 import emmanuelImage from '../../../public/stories/emmanuel.png'
-import faustinaImage from '../../../public/stories/faustina.jpg'
 import ritaImage from '../../../public/stories/rita.png'
 
 interface CommunityMember {
@@ -29,7 +28,6 @@ const communityMembers: CommunityMember[] = [
   { name: 'Dr Cynthia Botchway', role: 'Advocate', image: cynthiaImage, size: 'small' },
   { name: 'Salomey Appiah', role: 'Cancer Survivor', image: salomeyImage, size: 'medium' },
   { name: 'Emmanuel Grusi', role: 'Cancer Survivor', image: emmanuelImage, size: 'small' },
-  { name: 'Faustina Anakwa', role: 'Cancer Survivor', image: faustinaImage, size: 'large' },
   { name: 'Rita Benson', role: 'Cancer Survivor', image: ritaImage, size: 'medium' },
 ]
 

@@ -9,11 +9,10 @@ import { Button } from '@/components/ui/Button'
 
 // Import patient images
 import rukminiImage from '../../../public/stories/rukmini.png'
-import adisaImage from '../../../public/stories/adisa.jpg'
+import adisaImage from '../../../public/stories/adisa.png'
 import cynthiaImage from '../../../public/stories/cynthia.png'
-import salomeyImage from '../../../public/stories/salomey.jpg'
+import salomeyImage from '../../../public/stories/salomey.png'
 import emmanuelImage from '../../../public/stories/emmanuel.png'
-import faustinaImage from '../../../public/stories/faustina.jpg'
 import ritaImage from '../../../public/stories/rita.png'
 
 interface PatientStory {
@@ -27,10 +26,10 @@ interface PatientStory {
 const stories: PatientStory[] = [
   {
     name: 'Adisa Iddrisu',
-    condition: 'Breast Cancer Survivor',
-    quote: 'ACCE paid for my surgery and chemotherapy when I had nothing. They gave me hope when I had none.',
+    condition: 'Cervical Cancer Survivor',
+    quote: 'When I could not afford my radiotherapy, ACCE stepped in and covered it. They gave me hope when I had none.',
     image: adisaImage,
-    youtubeUrl: 'https://www.youtube.com/watch?v=ZtpmeGBW1JI',
+    youtubeUrl: 'https://www.youtube.com/watch?v=GxaqF-Lf88g',
   },
   {
     name: 'Rukmini Adjetey',
@@ -51,7 +50,7 @@ const stories: PatientStory[] = [
     condition: 'Cancer Survivor',
     quote: 'ACCE gave me a second chance at life. I am forever grateful for their compassion.',
     image: salomeyImage,
-    youtubeUrl: 'https://www.youtube.com/watch?v=TfBabZ19vqw',
+    youtubeUrl: 'https://www.youtube.com/watch?v=cDxfLwCynlc',
   },
   {
     name: 'Emmanuel Grusi',
@@ -59,13 +58,6 @@ const stories: PatientStory[] = [
     quote: 'When I could not afford treatment, ACCE stepped in. They saved my life.',
     image: emmanuelImage,
     youtubeUrl: 'https://www.youtube.com/watch?v=txQpp1Ngs0I',
-  },
-  {
-    name: 'Faustina Anakwa',
-    condition: 'Cancer Survivor',
-    quote: 'ACCE not only funded my treatment but also supported my family emotionally.',
-    image: faustinaImage,
-    youtubeUrl: 'https://www.youtube.com/watch?v=0x-i-cFkdh0',
   },
   {
     name: 'Rita Benson',
