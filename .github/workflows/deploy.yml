@@ -54,3 +54,9 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # The site artifact is large (~260 MB of PDFs/images), so Pages can
+          # take a while to process it when GitHub's queue is congested. The
+          # default 10-minute timeout has aborted otherwise-healthy deploys;
+          # allow up to 30 minutes.
+          timeout: 1800000
