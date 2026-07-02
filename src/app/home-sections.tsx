@@ -11,9 +11,9 @@ import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
 // Urgency Ticker Component
 function UrgencyTicker() {
   const items = [
-    { icon: '❤️', text: '65+ patients supported' },
+    { icon: '❤️', text: '70+ patients supported' },
     { icon: '🏥', text: '3 hospitals partnered' },
-    { icon: '💰', text: '$100k+ raised for treatment' },
+    { icon: '💰', text: '$135k+ raised for treatment' },
     { icon: '🌍', text: 'Serving communities across Ghana' },
     { icon: '🎗️', text: 'Fighting for cancer care equity' },
   ]
@@ -138,13 +138,13 @@ export function Hero({
               <div className="mt-16 flex flex-wrap gap-8 sm:gap-12 border-t border-white/10 pt-8">
                 <div>
                   <div className="font-display text-3xl sm:text-4xl font-bold text-white">
-                    <AnimatedNumber value={65} />+
+                    <AnimatedNumber value={70} />+
                   </div>
                   <div className="text-sm text-white/60 mt-1">Patients Helped</div>
                 </div>
                 <div>
                   <div className="font-display text-3xl sm:text-4xl font-bold text-white">
-                    $<AnimatedNumber value={100} />k+
+                    $<AnimatedNumber value={135} />k+
                   </div>
                   <div className="text-sm text-white/60 mt-1">Raised for Care</div>
                 </div>

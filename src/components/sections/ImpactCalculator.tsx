@@ -35,17 +35,17 @@ export function ImpactCalculator({ isPage = false }: { isPage?: boolean }) {
   // Stats with impact equations
   const impactStats = [
     {
-      value: 100,
+      value: 135,
       prefix: '$',
       suffix: 'k+',
       label: 'Raised',
-      equation: '= 65+ patients treated',
+      equation: '= 70+ patients treated',
     },
     {
-      value: 65,
+      value: 70,
       suffix: '+',
       label: 'Patients',
-      equation: '= 65+ families helped',
+      equation: '= 70+ families helped',
     },
     {
       value: 3,

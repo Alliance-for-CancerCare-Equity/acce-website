@@ -31,8 +31,8 @@ const whoWeAreContent = {
   ],
   stats: [
     { label: 'Founded', value: '2022' },
-    { label: 'Patients supported', value: '65+' },
-    { label: 'Amount raised', value: '$100k+' },
+    { label: 'Patients supported', value: '70+' },
+    { label: 'Amount raised', value: '$135k+' },
   ],
 }
 
