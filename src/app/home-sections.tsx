@@ -7,13 +7,14 @@ import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { CompactFooter } from '@/components/layout/Footer'
 import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
+import { impactStats, impactDisplay } from '@/lib/impact'
 
 // Urgency Ticker Component
 function UrgencyTicker() {
   const items = [
-    { icon: '❤️', text: '70+ patients supported' },
-    { icon: '🏥', text: '3 hospitals partnered' },
-    { icon: '💰', text: '$135k+ raised for treatment' },
+    { icon: '❤️', text: `${impactDisplay.patientsHelped} patients supported` },
+    { icon: '🏥', text: `${impactDisplay.partnerHospitals} hospitals partnered` },
+    { icon: '💰', text: `${impactDisplay.amountRaised} raised for treatment` },
     { icon: '🌍', text: 'Serving communities across Ghana' },
     { icon: '🎗️', text: 'Fighting for cancer care equity' },
   ]
@@ -138,19 +139,19 @@ export function Hero({
               <div className="mt-16 flex flex-wrap gap-8 sm:gap-12 border-t border-white/10 pt-8">
                 <div>
                   <div className="font-display text-3xl sm:text-4xl font-bold text-white">
-                    <AnimatedNumber value={70} />+
+                    <AnimatedNumber value={impactStats.patientsHelped} />+
                   </div>
                   <div className="text-sm text-white/60 mt-1">Patients Helped</div>
                 </div>
                 <div>
                   <div className="font-display text-3xl sm:text-4xl font-bold text-white">
-                    $<AnimatedNumber value={135} />k+
+                    $<AnimatedNumber value={impactStats.amountRaisedThousands} />k+
                   </div>
                   <div className="text-sm text-white/60 mt-1">Raised for Care</div>
                 </div>
                 <div>
                   <div className="font-display text-3xl sm:text-4xl font-bold text-white">
-                    <AnimatedNumber value={3} />
+                    <AnimatedNumber value={impactStats.partnerHospitals} />
                   </div>
                   <div className="text-sm text-white/60 mt-1">Partner Hospitals</div>
                 </div>

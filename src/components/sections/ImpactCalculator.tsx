@@ -5,6 +5,7 @@ import { motion, useInView } from 'framer-motion'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
 import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
+import { impactStats, impactDisplay } from '@/lib/impact'
 
 // Impact data - what each donation amount can provide
 const impactTiers = [
@@ -33,22 +34,22 @@ export function ImpactCalculator({ isPage = false }: { isPage?: boolean }) {
   const currentImpact = getImpactForAmount(donationAmount)
 
   // Stats with impact equations
-  const impactStats = [
+  const statCards = [
     {
-      value: 135,
+      value: impactStats.amountRaisedThousands,
       prefix: '$',
       suffix: 'k+',
       label: 'Raised',
-      equation: '= 70+ patients treated',
+      equation: `= ${impactDisplay.patientsHelped} patients treated`,
     },
     {
-      value: 70,
+      value: impactStats.patientsHelped,
       suffix: '+',
       label: 'Patients',
-      equation: '= 70+ families helped',
+      equation: `= ${impactDisplay.patientsHelped} families helped`,
     },
     {
-      value: 3,
+      value: impactStats.partnerHospitals,
       label: 'Hospitals',
       equation: '= 1000s of patients reached',
     },
@@ -87,7 +88,7 @@ export function ImpactCalculator({ isPage = false }: { isPage?: boolean }) {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="space-y-6">
-              {impactStats.map((stat, index) => (
+              {statCards.map((stat, index) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, x: -20 }}

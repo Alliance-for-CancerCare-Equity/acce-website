@@ -3,6 +3,7 @@ import Image from 'next/image'
 
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
+import { impactDisplay } from '@/lib/impact'
 
 export const metadata: Metadata = {
   title: 'Who We Are',
@@ -30,9 +31,9 @@ const whoWeAreContent = {
     { name: 'Integrity', description: 'We uphold the highest ethical standards in care and research.', color: 'gold' },
   ],
   stats: [
-    { label: 'Founded', value: '2022' },
-    { label: 'Patients supported', value: '70+' },
-    { label: 'Amount raised', value: '$135k+' },
+    { label: 'Founded', value: impactDisplay.foundedYear },
+    { label: 'Patients supported', value: impactDisplay.patientsHelped },
+    { label: 'Amount raised', value: impactDisplay.amountRaised },
   ],
 }
 
