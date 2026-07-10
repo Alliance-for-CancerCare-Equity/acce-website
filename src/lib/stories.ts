@@ -6,6 +6,7 @@ import cynthiaImage from '../../public/stories/cynthia.png'
 import salomeyImage from '../../public/stories/salomey.png'
 import emmanuelImage from '../../public/stories/emmanuel.png'
 import ritaImage from '../../public/stories/rita.png'
+import michealImage from '../../public/stories/micheal.png'
 
 export interface PatientStory {
   slug: string
@@ -14,6 +15,9 @@ export interface PatientStory {
   imageUrl: StaticImageData
   youtubeUrl: string
   quote?: string
+  /** Pronoun used in listing copy ("Read his/her full story"). Defaults to 'her'. */
+  pronoun?: 'his' | 'her'
+  /** Story paragraphs. Leave empty for video-only stories — the listing then links straight to YouTube. */
   content: string[]
 }
 
@@ -83,6 +87,7 @@ export const patientStories: PatientStory[] = [
     imageUrl: emmanuelImage,
     title: 'Holding On to Hope: Yaw Emmanuel\'s Journey with Bladder Cancer',
     youtubeUrl: 'https://www.youtube.com/watch?v=txQpp1Ngs0I',
+    pronoun: 'his',
     quote: 'What once felt like the end of hope has become a journey toward healing.',
     content: [
       'In 2022, Yaw Emmanuel, a 39-year-old husband and father of two from Asante Akyem Agogo, Ghana, began noticing blood in his urine and having difficulty urinating. Concerned, he sought medical care at the Asante Akyem Hospital, where tests revealed a diagnosis that would change his life: bladder cancer.',
@@ -109,6 +114,16 @@ export const patientStories: PatientStory[] = [
       'Benson\'s story is a powerful reminder that early diagnosis, timely treatment and financial support can mean the difference between despair and hope. It also highlights the vital role organizations like ACCE play in ensuring that cancer patients are not left to fight alone.',
       'There are many more patients like Rita — mothers, fathers, daughters and sons — who urgently need access to life-saving cancer care. Because no one should have to choose between survival and affordability.',
     ],
+  },
+  {
+    slug: 'micheal-carr',
+    name: 'Micheal Carr',
+    imageUrl: michealImage,
+    title: 'The Story of Micheal Carr: Stomach Cancer Survivor',
+    youtubeUrl: 'https://www.youtube.com/watch?v=p1w2cd_54ko',
+    quote: '[ACCE] has given me the opportunity to keep fighting this disease and continue my cancer journey with renewed hope.',
+    pronoun: 'his',
+    content: [],
   },
 ]
 
