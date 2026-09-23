@@ -127,7 +127,7 @@ function EventRow({ event, isPast = false }: { event: Event; isPast?: boolean })
 const upcomingEvent = {
   title: 'Empowering Communities: A Cancer Awareness and Education Event (2027)',
   date: '2027-04-03',
-  time: '9:00 AM – 3:00 PM EST',
+  time: '9:00 AM – 3:00 PM EDT',
 }
 
 function UpcomingPlaceholder() {
