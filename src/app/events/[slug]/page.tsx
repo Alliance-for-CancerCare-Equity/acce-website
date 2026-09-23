@@ -10,6 +10,7 @@ import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { getEventBySlug, getEventSlugs } from '@/lib/mdx'
 import { formatDate } from '@/lib/formatDate'
+import { getPublicImageSize } from '@/lib/imageSize'
 
 type PageParams = { slug: string }
 
@@ -59,6 +60,9 @@ function EventHeader({
   time: string
   imageUrl: string
 }) {
+  const frame = getPublicImageSize(imageUrl) ?? { width: 16, height: 9 }
+  const ratio = (frame.width / frame.height).toFixed(4)
+
   return (
     <section className="relative bg-gradient-to-br from-charcoal-800 via-charcoal-900 to-charcoal-950 overflow-hidden">
       <div className="absolute inset-0 bg-dot-pattern-light opacity-10" />
@@ -101,9 +105,18 @@ function EventHeader({
       </Container>
 
       <Container className="relative pb-12">
-        <div className="relative mx-auto aspect-[16/9] max-w-5xl overflow-hidden rounded-3xl shadow-strong ring-2 ring-white/10">
-          <Image fill src={imageUrl} alt={title} className="object-cover" sizes="(min-width: 1280px) 80rem, (min-width: 1024px) 64rem, (min-width: 640px) 100vw, 100vw" />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/30 to-transparent" />
+        {/* Show the whole image, never cropped: event images are often posters
+            with the details printed on them. The frame takes the image's own
+            shape, as wide as the column allows but never taller than the
+            window below the sticky header. */}
+        <div
+          className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl shadow-strong ring-2 ring-white/10"
+          style={{
+            aspectRatio: `${frame.width} / ${frame.height}`,
+            width: `min(100%, calc((100svh - 9rem) * ${ratio}))`,
+          }}
+        >
+          <Image fill priority src={imageUrl} alt={title} className="object-contain" sizes="(min-width: 1024px) 64rem, 100vw" />
         </div>
       </Container>
     </section>

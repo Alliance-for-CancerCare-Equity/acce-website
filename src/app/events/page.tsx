@@ -1,7 +1,7 @@
 import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { CalendarDaysIcon, MapPinIcon } from '@heroicons/react/24/outline'
+import { CalendarDaysIcon, ClockIcon, MapPinIcon } from '@heroicons/react/24/outline'
 
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
@@ -123,18 +123,40 @@ function EventRow({ event, isPast = false }: { event: Event; isPast?: boolean })
   )
 }
 
+// The next event, shown as a save-the-date until it has its own page.
+const upcomingEvent = {
+  title: 'Empowering Communities: A Cancer Awareness and Education Event (2027)',
+  date: '2027-04-03',
+  time: '9:00 AM – 3:00 PM EST',
+}
+
 function UpcomingPlaceholder() {
+  const { title, date, time } = upcomingEvent
   return (
     <div className="relative flex flex-col gap-6 rounded-2xl bg-white p-6 shadow-soft ring-1 ring-charcoal-100 sm:flex-row sm:items-center sm:p-8 border-2 border-dashed border-lavender-200">
       <div className="flex h-20 w-20 flex-none flex-col items-center justify-center rounded-xl bg-gradient-to-br from-lavender-50 to-gold-50 ring-1 ring-lavender-200 text-lavender-700 sm:h-24 sm:w-24">
-        <span className="text-xs font-bold tracking-wider uppercase text-center leading-tight px-1">Coming<br />soon</span>
+        <span className="text-sm font-bold tracking-wider">{formatDate(date, { month: 'short' }).toUpperCase()}</span>
+        <span className="text-3xl font-extrabold">{formatDate(date, { day: 'numeric' })}</span>
       </div>
       <div className="flex-auto">
-        <h3 className="font-display text-xl font-bold leading-8 tracking-tight text-charcoal-900">
-          Empowering Communities: A Cancer Awareness and Education Event (2027)
+        <span className="inline-flex items-center rounded-full bg-gold-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold-800 ring-1 ring-inset ring-gold-200">
+          Save the date
+        </span>
+        <h3 className="mt-3 font-display text-xl font-bold leading-8 tracking-tight text-charcoal-900">
+          {title}
         </h3>
+        <div className="mt-2 flex flex-wrap gap-x-6 gap-y-2 text-base font-semibold text-charcoal-700">
+          <div className="flex items-center gap-x-2">
+            <CalendarDaysIcon className="h-5 w-5 text-lavender-500" aria-hidden="true" />
+            <time dateTime={date}>{formatDate(date)}</time>
+          </div>
+          <div className="flex items-center gap-x-2">
+            <ClockIcon className="h-5 w-5 text-gold-500" aria-hidden="true" />
+            {time}
+          </div>
+        </div>
         <p className="mt-3 text-base leading-7 text-charcoal-600">
-          Please visit again for information regarding this event.
+          Please visit again for more information regarding this event.
         </p>
       </div>
     </div>
