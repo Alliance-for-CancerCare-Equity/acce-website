@@ -7,10 +7,10 @@
  * components; import from this module instead.
  */
 export const impactStats = {
-  /** Cumulative patients ACCE has helped (shown as "70+"). */
-  patientsHelped: 70,
-  /** Total raised for care, in thousands of dollars (135 => "$135k+"). */
-  amountRaisedThousands: 135,
+  /** Cumulative patients ACCE has helped (shown as "83+"). */
+  patientsHelped: 83,
+  /** Total raised for care, in thousands of dollars (148 => "$148k+"). */
+  amountRaisedThousands: 148,
   /** Partner hospitals. */
   partnerHospitals: 3,
   /** Year ACCE was founded. */
@@ -19,9 +19,9 @@ export const impactStats = {
 
 /** Pre-formatted display strings derived from {@link impactStats}. */
 export const impactDisplay = {
-  /** e.g. "70+" */
+  /** e.g. "83+" */
   patientsHelped: `${impactStats.patientsHelped}+`,
-  /** e.g. "$135k+" */
+  /** e.g. "$148k+" */
   amountRaised: `$${impactStats.amountRaisedThousands}k+`,
   /** e.g. "3" */
   partnerHospitals: `${impactStats.partnerHospitals}`,
