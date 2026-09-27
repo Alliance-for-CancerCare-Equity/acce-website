@@ -6,6 +6,7 @@ import { CalendarDaysIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/out
 
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
+import { YouTube } from '@/components/ui/YouTube'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { getEventBySlug, getEventSlugs } from '@/lib/mdx'
@@ -127,22 +128,6 @@ function Prose({ children }: { children: React.ReactNode }) {
   return (
     <div className="blog-prose mx-auto max-w-3xl text-base/7 text-charcoal-700">
       {children}
-    </div>
-  )
-}
-
-function YouTube({ id, title }: { id: string; title?: string }) {
-  return (
-    <div className="my-8 overflow-hidden rounded-2xl shadow-strong ring-1 ring-charcoal-200">
-      <div className="relative aspect-video w-full bg-charcoal-900">
-        <iframe
-          src={`https://www.youtube.com/embed/${id}`}
-          title={title ?? 'Event video'}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          className="absolute inset-0 h-full w-full"
-        />
-      </div>
     </div>
   )
 }
