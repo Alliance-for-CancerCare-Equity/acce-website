@@ -46,8 +46,8 @@ const homePageContent = {
       href: '#subscribe',
     },
     eventButton: {
-      text: '2026 Cancer Awareness Event',
-      href: '/events/empowering-communities-2026',
+      text: 'Harmony for Hope · November 7',
+      href: '/events/harmony-for-hope-2026',
     },
   },
   newsletter: {

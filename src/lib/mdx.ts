@@ -27,6 +27,12 @@ export type EventMeta = {
   imageUrl: string
   location: string
   time: string
+  /**
+   * Set for something already under way that stays open until `date`, such as
+   * a competition taking entries up to its deadline. It is then listed under
+   * Ongoing Events rather than Upcoming Events.
+   */
+  ongoing?: boolean
   slug: string
 }
 

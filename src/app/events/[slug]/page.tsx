@@ -99,7 +99,7 @@ function EventHeader({
             <span>{time}</span>
           </div>
           <div className="flex items-center gap-2 text-gold-300">
-            <MapPinIcon className="size-5" />
+            <MapPinIcon className="size-5 flex-none" />
             <span>{location}</span>
           </div>
         </div>

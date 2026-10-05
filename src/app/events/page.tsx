@@ -25,6 +25,7 @@ type Event = {
   imageUrl: string
   location: string
   time: string
+  ongoing: boolean
   slug: string
 }
 
@@ -88,7 +89,7 @@ function EventRow({ event, isPast = false }: { event: Event; isPast?: boolean })
             <time dateTime={event.dateObj.toISOString()}>{formatDate(event.dateObj, { year: 'numeric', month: 'numeric', day: 'numeric' })} • {event.time}</time>
           </div>
           <div className="flex items-center gap-x-2">
-            <MapPinIcon className="h-5 w-5 text-gold-500" aria-hidden="true" />
+            <MapPinIcon className="h-5 w-5 flex-none text-gold-500" aria-hidden="true" />
             {event.location}
           </div>
         </div>
@@ -123,15 +124,15 @@ function EventRow({ event, isPast = false }: { event: Event; isPast?: boolean })
   )
 }
 
-// The next event, shown as a save-the-date until it has its own page.
-const upcomingEvent = {
+// An announced event, shown as a save-the-date until it has its own page.
+const saveTheDate = {
   title: 'Empowering Communities: A Cancer Awareness and Education Event (2027)',
   date: '2027-04-03',
   time: '9:00 AM – 3:00 PM EDT',
 }
 
 function UpcomingPlaceholder() {
-  const { title, date, time } = upcomingEvent
+  const { title, date, time } = saveTheDate
   return (
     <div className="relative flex flex-col gap-6 rounded-2xl bg-white p-6 shadow-soft ring-1 ring-charcoal-100 sm:flex-row sm:items-center sm:p-8 border-2 border-dashed border-lavender-200">
       <div className="flex h-20 w-20 flex-none flex-col items-center justify-center rounded-xl bg-gradient-to-br from-lavender-50 to-gold-50 ring-1 ring-lavender-200 text-lavender-700 sm:h-24 sm:w-24">
@@ -173,14 +174,21 @@ function EventsList() {
     imageUrl: e.imageUrl,
     location: e.location,
     time: e.time,
+    ongoing: e.ongoing ?? false,
     slug: e.slug,
   }))
 
-  const today = new Date()
+  // Event dates are calendar days, so compare them with the start of today
+  // (in UTC, as date-only strings parse) rather than with this instant.
+  // Otherwise an event turns "past" at midnight UTC, the evening before it.
+  const today = new Date(new Date().toISOString().slice(0, 10))
 
-  const ongoingEvents = events
+  const currentEvents = events
     .filter((e) => e.dateObj >= today)
     .sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime())
+
+  const upcomingEvents = currentEvents.filter((e) => !e.ongoing)
+  const ongoingEvents = currentEvents.filter((e) => e.ongoing)
 
   const pastEvents = events
     .filter((e) => e.dateObj < today)
@@ -199,6 +207,9 @@ function EventsList() {
             </div>
 
             <div className="space-y-8">
+              {upcomingEvents.map((event) => (
+                <EventRow key={event.slug} event={event} />
+              ))}
               <UpcomingPlaceholder />
             </div>
           </div>
