@@ -1,10 +1,5 @@
 # ACCE Website Redesign — V2 (BOLD, COLORFUL, NON-BLAND)
 
-## Parked work — read this first
-- **Tim Long Memorial Fund page**: built on local branch `tim-long-memorial`,
-  awaiting founder approval, **not live**. Do not merge to `main` until
-  approved. Status, preview link, open questions, and resume steps:
-  `docs/TIM_LONG_MEMORIAL.md`.
 
 You are rebuilding the ACCE charity website from the ground up. The current site feels white, generic, and template-y.
 Your goal is a UNIQUE, BOLD, COLOR-RICH, emotionally resonant design that still reads as trustworthy and accessible.

@@ -1,4 +1,9 @@
-# Tim Long Memorial Fund — PARKED, awaiting founder approval
+# Tim Long Memorial Fund — LAUNCHED 2026-10-05 (founder approved)
+
+The sections below are the pre-launch notes, kept for history.
+
+---
+
 
 **Status (2026-08-29):** built and previewed, **not live**. Target launch is
 October/November 2026.
