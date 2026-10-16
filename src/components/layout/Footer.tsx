@@ -21,7 +21,7 @@ const navigation = {
     { name: 'Volunteer', href: '/volunteer' },
     { name: 'Fundraise', href: '/fundraise' },
     { name: 'Partner With Us', href: '/partner-with-us' },
-    { name: 'Ongoing Campaigns', href: '/ongoing-campaigns' },
+    { name: 'Join The Impact Club', href: '/ongoing-campaigns' },
   ],
   social: [
     {

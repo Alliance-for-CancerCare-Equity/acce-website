@@ -36,7 +36,7 @@ const ourProjectsItems: FlyoutMenuItem[] = [
 
 const waysToGiveItems: FlyoutMenuItem[] = [
   { name: 'Giving Options', href: '/giving-options', description: 'Ways to contribute' },
-  { name: 'Ongoing Campaigns', href: '/ongoing-campaigns', description: 'Active fundraising' },
+  { name: 'Join The Impact Club', href: '/ongoing-campaigns', description: 'Small Monthly Gifts' },
   {
     name: 'Tim Long Memorial Fund',
     href: '/giving-options/tim-long',

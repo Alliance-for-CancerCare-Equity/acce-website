@@ -1,6 +1,7 @@
 import { type Metadata } from 'next'
 import { type ReactNode } from 'react'
 import Image, { type StaticImageData } from 'next/image'
+import Link from 'next/link'
 import { CheckIcon } from '@heroicons/react/20/solid'
 
 import paypalQr from '../../../public/images/acce_paypal_qr.png'
@@ -87,25 +88,24 @@ const givingOptionsContent = {
     ],
   },
   monthly_giving: {
-    title: 'Make it Monthly',
+    title: 'Join the ACCE Impact Club',
     subtitle:
-      'Join us as a Partner in Hope, Cure, and Equity today with a monthly donation of $25 or more. Your commitment can be adjusted or canceled anytime.',
-    partner_title: 'Partner in Equity',
+      'Small monthly gifts. Lasting impact. Join our monthly giving community with a contribution starting at $5.',
+    partner_title: 'No Patient Left Behind',
     partner_description:
-      'Your monthly gift as a Partner in Equity will profoundly impact cancer patients without the financial resources to cover their treatment costs. Join us today to redefine cancer care.',
-    included_header: "What's included",
+      'When many people give a little, together we can do a lot. Your recurring gift helps ACCE build a more dependable source of support for patients and families facing financial barriers to cancer care.',
+    included_header: 'Your monthly gift helps support',
     included_features: [
-      'Pay for cancer treatment for patients in need.',
-      'Provide a crucial lifeline to save lives.',
-      'Make a real, lasting impact on patients and their families.',
-      'Invest in equity for cancer care.',
-      'Efficiently donate without having to remember each year.',
+      'Access to essential cancer treatment and care.',
+      'Patient and family support.',
+      'Community education and awareness.',
+      'Long-term efforts to advance cancer care equity.',
     ],
-    cta_title: 'Become a monthly donor',
-    cta_button1_text: 'Make it Monthly via PayPal',
-    cta_button1_href: 'https://www.paypal.com/donate/?hosted_button_id=PQGDEADWKKMA6',
-    cta_button2_text: 'Make it Monthly via CanadaHelps',
-    cta_button2_href: 'https://www.canadahelps.org/en/dn/80223',
+    cta_title: 'Join from $5 a month through CanadaHelps',
+    cta_button1_text: 'Join in English',
+    cta_button1_href: 'https://www.canadahelps.org/en/dn/148840',
+    cta_button2_text: 'Adhérer en français',
+    cta_button2_href: 'https://www.canadahelps.org/fr/dn/148840',
   },
   faqs: {
     title: 'Frequently asked questions',
@@ -377,6 +377,12 @@ function MonthlyGiving({
             <p className="mt-6 text-base/7 text-charcoal-600">
               {partner_description}
             </p>
+            <Link
+              href="/ongoing-campaigns"
+              className="mt-4 inline-block font-semibold text-teal-700 underline underline-offset-4 hover:text-teal-900"
+            >
+              Explore the Impact Club
+            </Link>
             <div className="mt-10 flex items-center gap-x-4">
               <h4 className="flex-none text-sm/6 font-semibold text-teal-600 uppercase tracking-wider">
                 {included_header}
@@ -418,6 +424,7 @@ function MonthlyGiving({
                     color="teal"
                     className="w-full"
                     size="lg"
+                    lang="fr"
                   >
                     {cta_button2_text}
                   </Button>
