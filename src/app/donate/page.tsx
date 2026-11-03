@@ -24,7 +24,7 @@ export default function DonateRedirect() {
     <>
       <meta httpEquiv="refresh" content={`0; url=${TARGET}`} />
       <main className="flex min-h-full flex-col items-center justify-center bg-gradient-hero px-6 py-24 text-center">
-        <Link href="/" aria-label="Home">
+        <Link href="/home" aria-label="Home">
           <Logo className="h-12 w-auto" />
         </Link>
         <h1 className="mt-10 font-display text-3xl font-bold tracking-tight text-charcoal-900 sm:text-4xl">

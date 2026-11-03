@@ -48,7 +48,7 @@ export function FlyoutMenu({
   return (
     <Popover className="relative">
       <PopoverButton
-        className="group inline-flex items-center gap-x-1.5 whitespace-nowrap rounded-lg px-3 py-2 text-sm font-bold text-charcoal-800 hover:bg-white/50 hover:text-charcoal-900 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-lavender-200"
+        className="group inline-flex items-center gap-x-1 xl:gap-x-1.5 whitespace-nowrap rounded-lg px-2 xl:px-2.5 2xl:px-3 py-2 text-[13px] xl:text-sm font-bold text-charcoal-800 hover:bg-white/50 hover:text-charcoal-900 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-lavender-200"
       >
         <span>{label}</span>
         <ChevronDownIcon

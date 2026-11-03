@@ -15,7 +15,7 @@ export default function Register() {
   return (
     <SlimLayout>
       <div className="flex">
-        <Link href="/" aria-label="Home">
+        <Link href="/home" aria-label="Home">
           <Logo className="h-10 w-auto" />
         </Link>
       </div>

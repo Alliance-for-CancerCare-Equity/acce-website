@@ -124,19 +124,25 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
       {/* Decorative top accent bar - warm and hopeful */}
       <div className="h-1.5 bg-gradient-to-r from-teal-500 via-lavender-500 to-gold-500" />
 
-      <nav className="flex items-center justify-between px-6 sm:px-8 lg:px-12 py-4">
-        <div className="flex items-center gap-x-8">
+      <nav className="flex items-center justify-between px-6 sm:px-8 lg:px-5 xl:px-8 2xl:px-12 py-4">
+        <div className="flex items-center gap-x-3 xl:gap-x-6 2xl:gap-x-8">
           <Link
-            href="/"
+            href="/home"
             aria-label="Home"
-            className="group relative -m-1.5 p-1.5 transition-transform hover:scale-105"
+            className="group relative shrink-0 -m-1.5 p-1.5 transition-transform hover:scale-105"
           >
             {/* Logo glow effect on hover */}
             <div className="absolute inset-0 bg-gradient-to-r from-gold-400/40 to-teal-400/40 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-            <Logo />
+            <Logo className="lg:h-11 lg:w-auto xl:h-[66px]" />
           </Link>
 
-          <div className="hidden lg:flex lg:items-center lg:gap-x-1">
+          <div className="hidden lg:flex lg:items-center lg:gap-x-0.5 xl:gap-x-1">
+            <Link
+              href="/home"
+              className="inline-flex items-center whitespace-nowrap rounded-lg px-2 xl:px-2.5 2xl:px-3 py-2 text-[13px] xl:text-sm font-bold text-charcoal-800 hover:bg-white/50 hover:text-charcoal-900 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-lavender-200"
+            >
+              Home
+            </Link>
             <FlyoutMenu label="About Us" items={aboutUsItems} accent="lavender" />
             <FlyoutMenu label="Our Projects" items={ourProjectsItems} accent="teal" />
             <FlyoutMenu label="Ways to Give" items={waysToGiveItems} accent="gold" />
@@ -146,14 +152,14 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
           </div>
         </div>
 
-        <div className="flex items-center gap-x-4">
+        <div className="flex shrink-0 items-center gap-x-4">
           {/* Desktop Donate Button */}
           <div className="hidden lg:block">
             <Link
               href="/giving-options"
-              className="group relative inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-red-500 to-red-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-red-500/30 transition-all duration-300 hover:from-red-600 hover:to-red-700 hover:shadow-xl hover:shadow-red-500/40 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 focus-visible:ring-offset-lavender-200"
+              className="group relative inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-r from-red-500 to-red-600 px-4 xl:px-6 py-2.5 text-[13px] xl:text-sm font-bold text-white shadow-lg shadow-red-500/30 transition-all duration-300 hover:from-red-600 hover:to-red-700 hover:shadow-xl hover:shadow-red-500/40 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 focus-visible:ring-offset-lavender-200"
             >
-              <HeartIcon className="w-4 h-4 transition-transform group-hover:scale-110" />
+              <HeartIcon className="w-4 h-4 shrink-0 transition-transform group-hover:scale-110" />
               Donate Now
               {/* Subtle pulse ring */}
               <span className="absolute inset-0 rounded-full border-2 border-red-400 animate-ping opacity-20" />
@@ -190,7 +196,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
 
             {/* Mobile Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-lavender-200 bg-white/80 backdrop-blur-lg">
-              <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/home" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
                 <span className="sr-only">Alliance for Cancer Care Equity</span>
                 <Logo width={140} height={51} />
               </Link>
@@ -206,6 +212,15 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
 
             {/* Mobile Navigation */}
             <div className="px-6 py-4">
+              <div className="border-b border-lavender-100">
+                <Link
+                  href="/home"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex w-full items-center justify-between py-4 text-base font-bold text-charcoal-900 hover:text-teal-600 transition-colors"
+                >
+                  Home
+                </Link>
+              </div>
               <MobileNavDisclosure label="About Us" items={aboutUsItems} accentColor="lavender" />
               <MobileNavDisclosure label="Our Projects" items={ourProjectsItems} accentColor="teal" />
               <MobileNavDisclosure label="Ways to Give" items={waysToGiveItems} accentColor="gold" />

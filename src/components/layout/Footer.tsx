@@ -4,7 +4,7 @@ import { Logo } from '@/components/ui/Logo'
 
 const navigation = {
   main: [
-    { name: 'Home', href: '/' },
+    { name: 'Home', href: '/home' },
     { name: 'About Us', href: '/who-we-are' },
     { name: 'Our Projects', href: '/projects-overview' },
     { name: 'Ways to Give', href: '/giving-options' },
@@ -117,7 +117,9 @@ export function Footer() {
           {/* Brand Section */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <Logo className="brightness-0 invert" />
+              <Link href="/home" aria-label="Home">
+                <Logo className="brightness-0 invert" />
+              </Link>
             </div>
             <p className="text-base text-charcoal-300 max-w-xs">
               Advancing equity in cancer care for all. Every patient deserves access to quality treatment, regardless of their financial situation.
@@ -231,7 +233,9 @@ export function CompactFooter() {
     <footer className="bg-charcoal-900">
       <div className="mx-auto max-w-7xl px-6 py-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Logo className="brightness-0 invert h-8" />
+          <Link href="/home" aria-label="Home">
+            <Logo className="brightness-0 invert h-8" />
+          </Link>
           <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             {navigation.main.slice(0, 4).map((item) => (
               <Link
