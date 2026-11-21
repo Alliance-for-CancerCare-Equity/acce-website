@@ -1,5 +1,6 @@
 'use client'
 
+import { AutoplayVideo } from '@/components/ui/AutoplayVideo'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
@@ -407,6 +408,30 @@ export default function StyleguidePage() {
             </div>
             <div className="p-6 bg-white rounded-xl shadow-soft text-center">
               <code className="text-sm text-teal-600">.animate-float</code>
+            </div>
+          </div>
+        </section>
+
+        {/* Video */}
+        <section className="mb-20">
+          <h2 className="font-display text-3xl font-bold text-charcoal-900 mb-8">
+            Autoplay Video
+          </h2>
+          <p className="text-charcoal-600 mb-6 max-w-3xl">
+            Used in the home page hero. It starts muted when the page loads and offers a
+            &ldquo;Play with sound&rdquo; button. Shown here with{' '}
+            <code className="text-sm text-teal-600">autoPlay=&#123;false&#125;</code>, which is also
+            what visitors who ask for reduced motion or data saving get.
+          </p>
+          <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-charcoal-950 via-lavender-950 to-charcoal-900 p-8 sm:p-12">
+            <div className="mx-auto max-w-2xl">
+              <AutoplayVideo
+                id="lz8HFrtUq-Y"
+                title="ACCE Organization Explainer"
+                poster="/images/acce_explainer_poster.jpg"
+                caption="Why ACCE exists and how we help · 2½ min"
+                autoPlay={false}
+              />
             </div>
           </div>
         </section>

@@ -47,9 +47,14 @@ const homePageContent = {
       text: 'Stay Connected',
       href: '#subscribe',
     },
-    eventButton: {
-      text: 'Harmony for Hope · November 7',
-      href: '/events/harmony-for-hope-2026',
+    // To promote an upcoming event above the headline, add:
+    // eventButton: { text: 'Event name · Date', href: '/events/<slug>' },
+    video: {
+      // ACCE Organization Explainer: https://youtu.be/lz8HFrtUq-Y
+      id: 'lz8HFrtUq-Y',
+      title: 'ACCE Organization Explainer',
+      poster: '/images/acce_explainer_poster.jpg',
+      caption: 'Why ACCE exists and how we help · 2½ min',
     },
   },
   newsletter: {

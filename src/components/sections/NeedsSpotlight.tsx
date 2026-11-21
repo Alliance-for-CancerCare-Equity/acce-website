@@ -39,7 +39,9 @@ const needs = {
     title: 'No Patient Left Behind',
     description:
       'Our campaign ensures that no cancer patient is denied treatment because they cannot afford it. Your donation directly funds life-saving chemotherapy, surgery, and medication for those in need.',
-    image: '/ongoing_campaigns/no-patient-left-behind.jpeg',
+    image: '/ongoing_campaigns/no-patient-left-behind-main.jpg',
+    imageAlt:
+      'No Patient Left Behind. A doctor with a patient and her family. Where a patient lives or earns should not determine their ability to survive cancer. Together, we can ensure equitable cancer care for all.',
     cta: 'Donate Now',
     href: 'https://www.canadahelps.org/en/pages/no-patient-left-behind/',
   },
@@ -137,27 +139,26 @@ export function NeedsSpotlight() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-3 relative bg-white rounded-3xl shadow-medium overflow-hidden group"
           >
-            {/* Image section */}
-            <div className="relative h-64 sm:h-80">
+            {/*
+              Campaign artwork. It carries its own logo and lettering, so it is
+              shown whole at its 3:2 shape with nothing laid over it.
+            */}
+            <div className="relative aspect-[3/2]">
               <Image
                 src={needs.featured.image}
-                alt="Cancer treatment"
+                alt={needs.featured.imageAlt}
                 fill
+                sizes="(min-width: 1024px) 45rem, 100vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/40 to-transparent" />
-
-              {/* Badge */}
-              <div className="absolute top-4 left-4">
-                <span className="inline-flex items-center rounded-full bg-red-500 px-3 py-1 text-sm font-semibold text-white">
-                  Featured Need
-                </span>
-              </div>
             </div>
 
             {/* Content section */}
             <div className="p-6 sm:p-8">
-              <h3 className="font-display text-2xl sm:text-3xl font-bold text-charcoal-900">
+              <span className="inline-flex items-center rounded-full bg-red-500 px-3 py-1 text-sm font-semibold text-white">
+                Featured Need
+              </span>
+              <h3 className="mt-4 font-display text-2xl sm:text-3xl font-bold text-charcoal-900">
                 {needs.featured.title}
               </h3>
               <p className="mt-3 text-charcoal-600 leading-relaxed">
@@ -211,7 +212,7 @@ export function NeedsSpotlight() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                  className={`flex-1 ${styles.bg} rounded-2xl p-6 border-2 ${styles.border} ${styles.hover} transition-all duration-300 group`}
+                  className={`flex flex-1 flex-col items-start justify-center ${styles.bg} rounded-2xl p-6 border-2 ${styles.border} ${styles.hover} transition-all duration-300 group`}
                 >
                   <div className={`inline-flex p-3 rounded-xl ${styles.icon} mb-4`}>
                     {need.icon}

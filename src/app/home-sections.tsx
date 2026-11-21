@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { CompactFooter } from '@/components/layout/Footer'
 import { AnimatedNumber } from '@/components/ui/AnimatedNumber'
+import { AutoplayVideo } from '@/components/ui/AutoplayVideo'
 import { impactStats, impactDisplay } from '@/lib/impact'
 
 // Urgency Ticker Component
@@ -61,6 +62,15 @@ interface HeroProps {
     text: string
     href: string
   }
+  /** The video that plays in the hero as soon as the page loads (muted, with a sound button). */
+  video: {
+    /** YouTube video id */
+    id: string
+    title: string
+    /** Still image shown while the player loads */
+    poster: string
+    caption?: string
+  }
 }
 
 export function Hero({
@@ -71,106 +81,112 @@ export function Hero({
   button2,
   button3,
   eventButton,
+  video,
 }: HeroProps) {
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="relative isolate min-h-screen overflow-hidden bg-charcoal-950">
       {/* Urgency Ticker */}
       <UrgencyTicker />
 
-      {/* Full-bleed Background Image with Ken Burns effect */}
-      <div className="absolute inset-0">
-        <Image
-          alt="Rukmini Adjetey - Cancer Survivor supported by ACCE"
-          src="/stories/rukmini.png"
-          fill
-          priority
-          className="object-cover object-center animate-ken-burns"
-        />
-        {/* Gradient overlays for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-900/70 to-charcoal-900/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal-950/80 via-transparent to-transparent" />
+      {/* Backdrop: deep charcoal warmed by lavender, gold and teal light */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-charcoal-950 via-lavender-950 to-charcoal-900" />
+        <div className="absolute -left-48 top-1/3 size-[38rem] rounded-full bg-lavender-500/25 blur-3xl" />
+        <div className="absolute -right-40 -top-24 size-[34rem] rounded-full bg-gold-500/20 blur-3xl" />
+        <div className="absolute -bottom-40 left-1/3 size-[30rem] rounded-full bg-teal-500/15 blur-3xl" />
+        <div className="absolute inset-0 bg-dot-pattern-light" />
       </div>
 
-      {/* Content positioned bottom-left (asymmetric) */}
-      <div className="relative z-20 min-h-screen flex items-end">
-        <div className="w-full pb-20 pt-32 sm:pb-28 lg:pb-32">
-          <Container>
-            <div className="max-w-3xl">
-              {/* Event Badge */}
-              {eventButton && (
-                <Link
-                  href={eventButton.href}
-                  className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm px-4 py-2 text-sm font-medium text-white ring-1 ring-inset ring-white/20 hover:bg-white/20 transition-colors mb-8"
-                >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-gold-500"></span>
-                  </span>
-                  {eventButton.text}
-                  <span aria-hidden="true" className="ml-1">→</span>
-                </Link>
-              )}
-
-              {/* Large emotional headline */}
-              <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.95]">
-                Every Cancer Patient Deserves a{' '}
-                <span className="relative inline-block">
-                  <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-500">
-                    Fighting Chance
-                  </span>
-                  <span className="absolute -bottom-2 left-0 w-full h-3 bg-gradient-to-r from-teal-500/50 to-lavender-500/50 blur-sm" />
-                </span>
-              </h1>
-
-              <p className="mt-8 text-lg sm:text-xl text-white/80 max-w-2xl leading-relaxed">
-                {subtitle}
-              </p>
-
-              {/* CTAs */}
-              <div className="mt-10 flex flex-wrap items-center gap-4">
-                <Button href={button1.href} color="cta" size="xl" className="animate-pulse-subtle">
-                  <span className="flex items-center gap-2">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-                    </svg>
-                    {button1.text} Now
-                  </span>
-                </Button>
-                <Button href={button2.href} variant="outline" color="white" size="lg">
-                  {button2.text}
-                </Button>
-                {button3 && (
-                  <Button href={button3.href} color="teal" size="lg">
-                    <span className="flex items-center gap-2">
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                      </svg>
-                      {button3.text}
+      <div className="relative z-20 flex min-h-screen items-center">
+        <div className="w-full pb-24 pt-36 sm:pb-28 sm:pt-40 lg:pb-32">
+          {/* Wider than the page's usual column on large monitors, so the video can grow with the screen. */}
+          <Container className="2xl:max-w-[96rem] 2xl:px-12">
+            {/* Phones read headline, video, then the rest. From lg up the video takes the right-hand column. */}
+            <div className="grid grid-cols-1 items-center gap-x-10 gap-y-8 lg:grid-cols-2 xl:grid-cols-[5fr_7fr] xl:gap-x-12">
+              <div className="lg:col-start-1 lg:row-start-1 lg:self-end">
+                {/* Event Badge */}
+                {eventButton && (
+                  <Link
+                    href={eventButton.href}
+                    className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm px-4 py-2 text-sm font-medium text-white ring-1 ring-inset ring-white/20 hover:bg-white/20 transition-colors mb-8"
+                  >
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-gold-500"></span>
                     </span>
-                  </Button>
+                    {eventButton.text}
+                    <span aria-hidden="true" className="ml-1">→</span>
+                  </Link>
                 )}
+
+                {/* Large emotional headline */}
+                <h1 className="font-display text-4xl sm:text-6xl lg:text-5xl 2xl:text-6xl font-bold tracking-tight text-white leading-[1.05]">
+                  Every Cancer Patient Deserves a{' '}
+                  <span className="relative inline-block">
+                    <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-500">
+                      Fighting Chance
+                    </span>
+                    <span className="absolute -bottom-2 left-0 w-full h-3 bg-gradient-to-r from-teal-500/50 to-lavender-500/50 blur-sm" />
+                  </span>
+                </h1>
               </div>
 
-              {/* Quick stats row */}
-              <div className="mt-16 flex flex-wrap gap-8 sm:gap-12 border-t border-white/10 pt-8">
-                <div>
-                  <div className="font-display text-3xl sm:text-4xl font-bold text-white">
-                    <AnimatedNumber value={impactStats.patientsHelped} />+
-                  </div>
-                  <div className="text-sm text-white/60 mt-1">Patients Helped</div>
+              {/* Explainer video */}
+              <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
+                <AutoplayVideo {...video} />
+              </div>
+
+              <div className="lg:col-start-1 lg:row-start-2 lg:self-start">
+                <p className="text-lg sm:text-xl text-white/80 max-w-2xl leading-relaxed">
+                  {subtitle}
+                </p>
+
+                {/* CTAs */}
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <Button href={button1.href} color="cta" size="xl" className="animate-pulse-subtle">
+                    <span className="flex items-center gap-2">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+                      </svg>
+                      {button1.text} Now
+                    </span>
+                  </Button>
+                  <Button href={button2.href} variant="outline" color="white" size="lg">
+                    {button2.text}
+                  </Button>
+                  {button3 && (
+                    <Button href={button3.href} color="teal" size="lg">
+                      <span className="flex items-center gap-2">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                        </svg>
+                        {button3.text}
+                      </span>
+                    </Button>
+                  )}
                 </div>
-                <div>
-                  <div className="font-display text-3xl sm:text-4xl font-bold text-white">
-                    $<AnimatedNumber value={impactStats.amountRaisedThousands} />k+
-                  </div>
-                  <div className="text-sm text-white/60 mt-1">Raised for Care</div>
+              </div>
+            </div>
+
+            {/* Quick stats row */}
+            <div className="mt-12 flex flex-wrap gap-8 sm:gap-12 border-t border-white/10 pt-8 lg:mt-16">
+              <div>
+                <div className="font-display text-3xl sm:text-4xl font-bold text-white">
+                  <AnimatedNumber value={impactStats.patientsHelped} />+
                 </div>
-                <div>
-                  <div className="font-display text-3xl sm:text-4xl font-bold text-white">
-                    <AnimatedNumber value={impactStats.partnerHospitals} />
-                  </div>
-                  <div className="text-sm text-white/60 mt-1">Partner Hospitals</div>
+                <div className="text-sm text-white/60 mt-1">Patients Helped</div>
+              </div>
+              <div>
+                <div className="font-display text-3xl sm:text-4xl font-bold text-white">
+                  $<AnimatedNumber value={impactStats.amountRaisedThousands} />k+
                 </div>
+                <div className="text-sm text-white/60 mt-1">Raised for Care</div>
+              </div>
+              <div>
+                <div className="font-display text-3xl sm:text-4xl font-bold text-white">
+                  <AnimatedNumber value={impactStats.partnerHospitals} />
+                </div>
+                <div className="text-sm text-white/60 mt-1">Partner Hospitals</div>
               </div>
             </div>
           </Container>
