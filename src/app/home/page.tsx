@@ -10,6 +10,7 @@ import { CommunityWall } from '@/components/sections/CommunityWall'
 import { PathwayCards } from '@/components/sections/PathwayCards'
 import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/app/home-sections'
+import { getStoryHighlights } from '@/lib/stories'
 
 export const metadata: Metadata = {
   alternates: { canonical: '/home' },
@@ -70,7 +71,7 @@ export default function Home() {
       <main>
         <Hero {...homePageContent.hero} />
         <NeedsSpotlight />
-        <StoriesCarousel />
+        <StoriesCarousel stories={getStoryHighlights()} />
         <JourneyTimeline />
         <ImpactCalculator />
         <CommunityWall />

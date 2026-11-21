@@ -22,6 +22,8 @@ export type StoryBlock = string | { list: string[] }
 export interface PatientStory {
   slug: string
   name: string
+  /** Short label shown under the name, as printed on the story's thumbnail ("Breast Cancer Survivor"). */
+  condition?: string
   title: string
   imageUrl: StaticImageData
   youtubeUrl: string
@@ -39,6 +41,7 @@ export const patientStories: PatientStory[] = [
   {
     slug: 'rukmini-adjetey',
     name: 'Rukmini Adjetey',
+    condition: 'Breast Cancer Survivor',
     title: 'From Diagnosis to Hope: Rukmini\'s Story',
     imageUrl: rukminiImage,
     youtubeUrl: 'https://www.youtube.com/watch?v=wVpQ4W2ST9c',
@@ -54,6 +57,7 @@ export const patientStories: PatientStory[] = [
   {
     slug: 'cynthia-botchway',
     name: 'Dr Cynthia Botchway',
+    condition: 'Head and Neck Cancer Survivor',
     imageUrl: cynthiaImage,
     title: 'A Second Chance at Life after Head and Neck Cancer',
     youtubeUrl: 'https://www.youtube.com/watch?v=c6dbg6dNgyA',
@@ -69,11 +73,12 @@ export const patientStories: PatientStory[] = [
   {
     slug: 'emmanuel-grusi',
     name: 'Emmanuel Grusi',
+    condition: 'Bladder Cancer Survivor',
     imageUrl: emmanuelImage,
     title: 'Holding On to Hope: Yaw Emmanuel\'s Journey with Bladder Cancer',
     youtubeUrl: 'https://www.youtube.com/watch?v=txQpp1Ngs0I',
     pronoun: 'his',
-    quote: 'What once felt like the end of hope has become a journey toward healing.',
+    quote: '[ACCE] supported me and enabled me to return to the hospital to continue my treatment.',
     content: [
       'In 2022, Yaw Emmanuel, a 39-year-old husband and father of two from Asante Akyem Agogo, Ghana, began noticing blood in his urine and having difficulty urinating. Concerned, he sought medical care at the Asante Akyem Hospital, where tests revealed a diagnosis that would change his life: bladder cancer.',
       'The news was devastating. Yaw had never encountered cancer before, either personally or within his family, and the diagnosis left him overwhelmed with fear. At the time, his children were still very young. His eldest was just three and a half years old, and his youngest only two years old. While sitting in the hospital, his thoughts were consumed not by his own mortality, but by his children\'s future. He worried about who would care for them and how they would be supported if he could no longer provide. It was these fears that brought him to tears.',
@@ -86,13 +91,14 @@ export const patientStories: PatientStory[] = [
   {
     slug: 'abigail-adjei',
     name: 'Abigail Adjei',
+    condition: 'Breast Cancer Survivor',
     imageUrl: abigailImage,
     title: 'At Just 36, Abigail Faced Breast Cancer. Her Biggest Fear Was How to Pay for Treatment.',
     youtubeUrl: 'https://www.youtube.com/watch?v=5ScVxG7gp4A',
     quote: 'Your support eased the burden on my family. Your support gave me hope to keep fighting.',
     content: [
       'Meet Abigail. She is 36 years old, a wife, and a mother with a family and a future she wants to be part of.',
-      'But in August last year, Abigail discovered a lump in her right breast.',
+      'But in August 2025, Abigail discovered a lump in her right breast.',
       'She went to the hospital for an ultrasound scan. Although the scan did not initially reveal anything suspicious, her family history of breast cancer meant further investigation was necessary.',
       'Her first biopsy did not provide a clear result. She had to undergo another ultrasound and biopsy before receiving the diagnosis no one wants to hear:',
       '**Abigail had breast cancer.**',
@@ -135,6 +141,7 @@ export const patientStories: PatientStory[] = [
   {
     slug: 'fuseini-sumaila',
     name: 'Fuseini Sumaila',
+    condition: 'Bone Cancer Patient',
     imageUrl: fuseiniImage,
     title: 'He Is Only 21. He Lost Part of His Leg to Cancer. And His Family Nearly Ran Out of Money for Treatment.',
     youtubeUrl: 'https://www.youtube.com/watch?v=j6KGwEil3X4',
@@ -193,6 +200,7 @@ export const patientStories: PatientStory[] = [
   {
     slug: 'christine',
     name: 'Christine',
+    condition: 'Breast Cancer Survivor',
     imageUrl: christineImage,
     title: 'Christine\'s Story: Hope When It Mattered Most',
     youtubeUrl: 'https://www.youtube.com/watch?v=HRFcUy8kruw',
@@ -240,6 +248,7 @@ export const patientStories: PatientStory[] = [
   {
     slug: 'michael-carr',
     name: 'Michael Carr',
+    condition: 'Stomach Cancer Survivor',
     imageUrl: michaelImage,
     title: 'A Lifeline When It Was Needed Most: Michael Carr\'s Journey with Stomach Cancer',
     youtubeUrl: 'https://www.youtube.com/watch?v=p1w2cd_54ko',
@@ -259,6 +268,7 @@ export const patientStories: PatientStory[] = [
   {
     slug: 'salomey-appiah',
     name: 'Salomey Appiah',
+    condition: 'Breast Cancer Survivor',
     imageUrl: salomeyImage,
     title: 'A Mother\'s Courage: Salomey\'s Battle with Breast Cancer',
     youtubeUrl: 'https://www.youtube.com/watch?v=cDxfLwCynlc',
@@ -273,6 +283,7 @@ export const patientStories: PatientStory[] = [
   {
     slug: 'rita-benson',
     name: 'Rita Benson',
+    condition: 'Cervical Cancer Survivor',
     imageUrl: ritaImage,
     title: 'Saved in Time: Rita Benson\'s Journey Through Cervical Cancer',
     youtubeUrl: 'https://www.youtube.com/watch?v=11lxmfUfzms',
@@ -290,6 +301,7 @@ export const patientStories: PatientStory[] = [
   {
     slug: 'adisa-iddrisu',
     name: 'Adisa Iddrisu',
+    condition: 'Cervical Cancer Survivor',
     title: 'Adisa Iddrisu\'s Journey Through Cancer',
     imageUrl: adisaImage,
     youtubeUrl: 'https://www.youtube.com/watch?v=GxaqF-Lf88g',
@@ -314,4 +326,18 @@ export function getAllStorySlugs(): string[] {
 
 export function getStoriesWithContent(): PatientStory[] {
   return patientStories.filter((story) => story.content.length > 0)
+}
+
+/** What the home page carousel shows for a story: everything except the long text. */
+export type StoryHighlight = Pick<
+  PatientStory,
+  'slug' | 'name' | 'condition' | 'imageUrl' | 'youtubeUrl' | 'quoteBy'
+> & { quote: string }
+
+/** Every story that has a quote, in page order, without its text (which the carousel never shows). */
+export function getStoryHighlights(): StoryHighlight[] {
+  return patientStories.flatMap(
+    ({ slug, name, condition, imageUrl, youtubeUrl, quote, quoteBy }) =>
+      quote ? [{ slug, name, condition, imageUrl, youtubeUrl, quote, quoteBy }] : [],
+  )
 }
