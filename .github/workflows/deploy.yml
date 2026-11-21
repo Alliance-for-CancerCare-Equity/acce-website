@@ -32,12 +32,12 @@ jobs:
       NEXT_PUBLIC_MAILCHIMP_DC: ${{ vars.NEXT_PUBLIC_MAILCHIMP_DC }}
     steps:
       - name: Check out your repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: '18'
+          node-version: '24'
 
       - name: Install dependencies
         run: |
@@ -47,11 +47,8 @@ jobs:
       - name: Build your site (static export to out/)
         run: npm run build
 
-      - name: Add .nojekyll (needed for _next/)
-        run: touch out/.nojekyll
-
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: out/
 
@@ -68,7 +65,7 @@ jobs:
       # the same stale listing, so pause before the retry.
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
         continue-on-error: true
 
       - name: Wait before retrying the deploy
@@ -77,4 +74,4 @@ jobs:
 
       - name: Retry deploy (artifact not listed yet, or Pages queue timed out)
         if: steps.deployment.outcome == 'failure'
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

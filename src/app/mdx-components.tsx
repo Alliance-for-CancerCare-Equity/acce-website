@@ -64,10 +64,10 @@ export default function useMDXComponents(components: MDXComponents): MDXComponen
         {children}
       </blockquote>
     ),
-    img: (props) => (
+    img: ({ alt = '', ...props }) => (
       // Keep MDX <img> for flexibility; style it nicely
       // eslint-disable-next-line @next/next/no-img-element
-      <img {...props} className="mx-auto rounded-xl shadow-md" />
+      <img {...props} alt={alt} className="mx-auto rounded-xl shadow-md" />
     ),
     ...components,
   }
