@@ -60,11 +60,21 @@ jobs:
       # congested. The action caps its timeout at 10 minutes (larger values are
       # clamped), so instead of failing the run on the first timeout, retry the
       # deployment once.
+      #
+      # The first attempt can also fail instantly: deploy-pages looks the
+      # artifact up through the artifacts list API, which can lag a moment
+      # behind the upload and report "Found 0 artifact(s)" for an artifact
+      # that was finalized milliseconds earlier. Retrying straight away hits
+      # the same stale listing, so pause before the retry.
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
         continue-on-error: true
 
-      - name: Retry deploy (Pages queue exceeded the 10-minute timeout)
+      - name: Wait before retrying the deploy
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 30
+
+      - name: Retry deploy (artifact not listed yet, or Pages queue timed out)
         if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v4
