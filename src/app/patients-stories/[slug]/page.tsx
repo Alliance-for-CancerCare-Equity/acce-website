@@ -75,6 +75,20 @@ function StoryHeader({
   )
 }
 
+/** Turns the **bold** markers used in story text into bold type. */
+function renderBold(text: string) {
+  // Splitting on a captured group leaves the bold pieces at the odd positions.
+  return text.split(/\*\*([\s\S]+?)\*\*/g).map((part, index) =>
+    index % 2 === 1 ? (
+      <strong key={index} className="font-semibold text-charcoal-900">
+        {part}
+      </strong>
+    ) : (
+      part
+    ),
+  )
+}
+
 function StoryContent({
   story,
 }: {
@@ -106,11 +120,22 @@ function StoryContent({
           </div>
 
           <div className="prose prose-lg prose-charcoal max-w-none">
-            {story.content.map((paragraph, index) => (
-              <p key={index} className="text-lg/8 text-charcoal-700 mb-6">
-                {paragraph}
-              </p>
-            ))}
+            {story.content.map((block, index) =>
+              typeof block === 'string' ? (
+                <p key={index} className="text-lg/8 text-charcoal-700 mb-6 whitespace-pre-line">
+                  {renderBold(block)}
+                </p>
+              ) : (
+                <ul key={index} role="list" className="mb-6 space-y-3">
+                  {block.list.map((item, itemIndex) => (
+                    <li key={itemIndex} className="flex gap-x-4 text-lg/8 text-charcoal-700">
+                      <span aria-hidden="true" className="mt-3 size-2 flex-none rounded-full bg-teal-500" />
+                      <span>{renderBold(item)}</span>
+                    </li>
+                  ))}
+                </ul>
+              ),
+            )}
           </div>
 
           {story.quote && (
@@ -119,7 +144,7 @@ function StoryContent({
                 &ldquo;{story.quote}&rdquo;
               </p>
               <footer className="mt-4 text-base font-semibold text-lavender-700">
-                &mdash; {story.name}
+                &mdash; {story.quoteBy ?? story.name}
               </footer>
             </blockquote>
           )}
