@@ -89,8 +89,8 @@ export const patientStories: PatientStory[] = [
     ],
   },
   {
-    slug: 'abigail-adjei',
-    name: 'Abigail Adjei',
+    slug: 'abigail',
+    name: 'Abigail',
     condition: 'Breast Cancer Survivor',
     imageUrl: abigailImage,
     title: 'At Just 36, Abigail Faced Breast Cancer. Her Biggest Fear Was How to Pay for Treatment.',
