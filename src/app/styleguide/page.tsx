@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/Textarea'
 import { Select } from '@/components/ui/Select'
 import { Checkbox } from '@/components/ui/Checkbox'
 import { RadioGroup } from '@/components/ui/Radio'
+import { YouTube } from '@/components/ui/YouTube'
 
 const brandColors = [
   { name: 'Lavender', key: 'lavender', hex: '#9B8BB8', usage: 'Compassion, softness' },
@@ -431,6 +432,51 @@ export default function StyleguidePage() {
                 poster="/images/acce_explainer_poster.jpg"
                 caption="Why ACCE exists and how we help · 2½ min"
                 autoPlay={false}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Event video */}
+        <section className="mb-20">
+          <h2 className="font-display text-3xl font-bold text-charcoal-900 mb-8">
+            Event Video
+          </h2>
+          <p className="text-charcoal-600 mb-6 max-w-3xl">
+            Used on event pages for recordings. The frame shows a thumbnail until play is pressed,
+            so a page with many videos loads no players up front. A photo thumbnail takes the play
+            button in the middle. A title card has its own lettering there, so it takes{' '}
+            <code className="text-sm text-teal-600">playButton=&quot;corner&quot;</code>. Inside a
+            tinted program card, <code className="text-sm text-teal-600">className</code> replaces
+            the default margin.
+          </p>
+          <div className="grid items-start gap-8 lg:grid-cols-2">
+            <div className="rounded-3xl bg-white p-4 shadow-soft sm:p-6">
+              <h3 className="text-lg font-semibold text-charcoal-800">Photo thumbnail</h3>
+              <YouTube
+                id="P-_xCkfQGsg"
+                title="Dr Ernest Osei, President and CEO, ACCE"
+                thumbnail="/event_images/empowering-communities-2026/CancerAwareness-45.jpg"
+                className="mt-5"
+              />
+            </div>
+            <div className="rounded-3xl bg-lavender-50 p-4 ring-1 ring-inset ring-lavender-200 sm:p-6">
+              <h3 className="flex items-center gap-3 font-display text-xl font-semibold text-charcoal-900">
+                <span className="flex size-10 flex-none items-center justify-center rounded-full bg-lavender-700 text-lg font-bold text-white shadow-soft">
+                  2
+                </span>
+                <span>Program card with a title card</span>
+              </h3>
+              <ul className="mt-4 list-disc space-y-2 pl-[4.25rem] text-charcoal-700 marker:text-lavender-600">
+                <li>Southern Ontario Adventist Choir</li>
+                <li>Soloist: Kate Stehouwer</li>
+              </ul>
+              <YouTube
+                id="o8tYJE_s4Ls"
+                title="Musical Performance 1: Southern Ontario Adventist Choir and Kate Stehouwer"
+                thumbnail="/event_images/harmony-for-hope-2026/video-02-musical-performance-1.jpg"
+                className="mt-5"
+                playButton="corner"
               />
             </div>
           </div>
